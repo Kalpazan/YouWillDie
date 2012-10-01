@@ -7,6 +7,11 @@ import static java.util.Calendar.DECEMBER;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -19,11 +24,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyActivity extends Activity {
-	
-	private CountDownTimer timer;
-	private TextView textTime;
-	
-	/**
+
+    private CountDownTimer timer;
+    private TextView textTime;
+
+    private NotificationManager notifManager;
+    private static final int NOTIFY_ID = 101; // не знаю что это на самом деле. 
+
+    /**
      * Called when the activity is first created.
      */
     @Override
@@ -34,7 +42,20 @@ public class MyActivity extends Activity {
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
         buttonCreate();
         startCountDown();
+
+        notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Это временное решение с кнопкой, так чисто для демонстрации работы нотификейшна
+
+        Button button = (Button) findViewById(R.id.buttonNotif);
+        button.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
+                note("хуй", "ну хуй и что, больше слово не мог придумать");
+            }
+        });
     }
+
+         // Это конец временного решения.
 
     public void startCountDown() {
         textTime = (TextView) findViewById(R.id.textTime);
@@ -62,20 +83,20 @@ public class MyActivity extends Activity {
 
     @Override
     protected void onPause() {
-    	super.onPause();
-    	timer.cancel();
+        super.onPause();
+        timer.cancel();
     }
-    
+
     @Override
     protected void onResume() {
-    	super.onResume();
-    	timer.start();
+        super.onResume();
+        timer.start();
     }
-    
+
     public void updateTimerText(String timeString) {
-    	textTime.setText(timeString);
-	}
-    
+        textTime.setText(timeString);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -99,6 +120,30 @@ public class MyActivity extends Activity {
         final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_SHORT);
         toast.setGravity(0, 0, 0);
         toast.show();
+    }
+
+    public void note(String text1, String text2) {
+        int icon = R.drawable.icon_2;
+        String text = "You still have a chance!";
+        long when = System.currentTimeMillis();
+
+        Notification notification = new Notification(icon, text, when);
+
+        Context context = getApplicationContext();
+        String contentTitle = text1;
+        String contentText = text2;
+
+        Intent notificationIntent = new Intent(
+                this, MyActivity.class);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(
+                this, 0, notificationIntent, 0);
+
+
+        notification.setLatestEventInfo(context, contentTitle,
+                contentText, contentIntent);
+
+        notifManager.notify(NOTIFY_ID, notification);
     }
 }
 
