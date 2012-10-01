@@ -29,7 +29,7 @@ public class MyActivity extends Activity {
     private TextView textTime;
 
     private NotificationManager notifManager;
-    private static final int NOTIFY_ID = 101; // не знаю что это на самом деле. 
+    private static final int NOTIFY_ID = 101; 
 
     /**
      * Called when the activity is first created.
@@ -45,17 +45,13 @@ public class MyActivity extends Activity {
 
         notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // Это временное решение с кнопкой, так чисто для демонстрации работы нотификейшна
-
         Button button = (Button) findViewById(R.id.buttonNotif);
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
-                note("хуй", "ну хуй и что, больше слово не мог придумать");
+                note("���", "�� ��� � ���, ������ ����� �� ��� ���������");
             }
         });
     }
-
-         // Это конец временного решения.
 
     public void startCountDown() {
         textTime = (TextView) findViewById(R.id.textTime);
@@ -105,8 +101,7 @@ public class MyActivity extends Activity {
     }
 
     public void buttonCreate() {
-        final Toast toast = Toast.makeText(getApplicationContext(),
-                "is not available for you, sorry :(", LENGTH_SHORT);
+        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
         toast.setGravity(0, 0, 0);
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new Button.OnClickListener() {
@@ -122,7 +117,7 @@ public class MyActivity extends Activity {
         toast.show();
     }
 
-    public void note(String text1, String text2) {
+    public void note(String title, String notificationMessage) {
         int icon = R.drawable.icon_2;
         String text = "You still have a chance!";
         long when = System.currentTimeMillis();
@@ -130,18 +125,13 @@ public class MyActivity extends Activity {
         Notification notification = new Notification(icon, text, when);
 
         Context context = getApplicationContext();
-        String contentTitle = text1;
-        String contentText = text2;
 
-        Intent notificationIntent = new Intent(
-                this, MyActivity.class);
+        Intent notificationIntent = new Intent(this, MyActivity.class);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(
-                this, 0, notificationIntent, 0);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
 
-        notification.setLatestEventInfo(context, contentTitle,
-                contentText, contentIntent);
+        notification.setLatestEventInfo(context, title, notificationMessage, contentIntent);
 
         notifManager.notify(NOTIFY_ID, notification);
     }
