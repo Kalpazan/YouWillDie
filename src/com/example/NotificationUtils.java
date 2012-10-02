@@ -22,26 +22,28 @@ public class NotificationUtils {
 
 
     //приватный контструктор для Singleton
-    private NotificationUtils(Context context){
+    private NotificationUtils(Context context) {
         this.context = context;
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notifications = new HashMap<Integer, Notification>();
     }
+
     /**
      * Получение ссылки на синглтон
      */
-    public static NotificationUtils getInstance(Context context){
-        if(instance==null){
+    public static NotificationUtils getInstance(Context context) {
+        if (instance == null) {
             instance = new NotificationUtils(context);
-        } else{
+        } else {
             instance.context = context;
         }
         return instance;
     }
-    public int createInfoNotification(String message){
+
+    public int createInfoNotification(String message) {
         Intent notificationIntent = new Intent(context, MyActivity.class); // по клику на уведомлении откроется HomeActivity
         NotificationCompat.Builder nb = new NotificationCompat.Builder(context)
-//NotificationCompat.Builder nb = new NotificationBuilder(context) //для версии Android > 3.0
+                //NotificationCompat.Builder nb = new NotificationBuilder(context) //для версии Android > 3.0
                 .setSmallIcon(R.drawable.icon_2) //иконка уведомления
                 .setAutoCancel(true) //уведомление закроется по клику на него
                 .setTicker(message) //текст, который отобразится вверху статус-бара при создании уведомления
@@ -55,4 +57,5 @@ public class NotificationUtils {
         manager.notify(lastId, notification); // отображаем его пользователю.
         notifications.put(lastId, notification); //теперь мы можем обращаться к нему по id
         return lastId++;
-    }}
+    }
+}
