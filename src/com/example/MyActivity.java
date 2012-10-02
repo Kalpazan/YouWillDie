@@ -7,6 +7,11 @@ import static java.util.Calendar.DECEMBER;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -23,6 +28,9 @@ public class MyActivity extends Activity {
     private CountDownTimer timer;
     private TextView textTime;
 
+    private NotificationManager notifManager;
+    private static final int NOTIFY_ID = 101; 
+
     /**
      * Called when the activity is first created.
      */
@@ -35,11 +43,12 @@ public class MyActivity extends Activity {
         buttonCreate();
         startCountDown();
 
+        notifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         Button button = (Button) findViewById(R.id.buttonNotif);
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
-                NotificationUtils n = NotificationUtils.getInstance(getApplicationContext());
-                n.createInfoNotification("info notification");
+                note("хуй", "ну хуй и что, больше слово не мог придумать");
             }
         });
     }
@@ -60,6 +69,7 @@ public class MyActivity extends Activity {
                 return true;
             case R.id.help:
                 showMessage("Who will help you?");
+
                 showMessage("No one!");
                 return true;
             default:
@@ -69,11 +79,13 @@ public class MyActivity extends Activity {
 
     @Override
     protected void onPause() {
+        super.onPause();
         timer.cancel();
     }
 
     @Override
     protected void onResume() {
+        super.onResume();
         timer.start();
     }
 
@@ -105,5 +117,23 @@ public class MyActivity extends Activity {
         toast.show();
     }
 
+    public void note(String title, String notificationMessage) {
+        int icon = R.drawable.icon_2;
+        String text = "You still have a chance!";
+        long when = System.currentTimeMillis();
+
+        Notification notification = new Notification(icon, text, when);
+
+        Context context = getApplicationContext();
+
+        Intent notificationIntent = new Intent(this, MyActivity.class);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+
+
+        notification.setLatestEventInfo(context, title, notificationMessage, contentIntent);
+
+        notifManager.notify(NOTIFY_ID, notification);
+    }
 }
 
