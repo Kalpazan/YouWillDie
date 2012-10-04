@@ -48,7 +48,7 @@ public class MyActivity extends Activity {
         textTime = (TextView) findViewById(R.id.textTime);
         final Calendar finalDate = Calendar.getInstance();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
-        timer = new FinalCountdown(finalDate.getTimeInMillis(), 1, this).start();
+        timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this).start();
     }
 
     @Override

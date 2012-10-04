@@ -35,7 +35,7 @@ public class FinalCountdown extends CountDownTimer {
         		"%s hours\n " +
         		"%s min\n " +
         		"%s sec\n " +
-        		"%s \nmilliseconds";
+        		"%03d \nmilliseconds";
         activity.updateTimerText(String.format(left, daysLeft, hourLeft, minutesLeft, secondsLeft, millisecLeft));
     }
 
