@@ -7,6 +7,7 @@ import static java.util.Calendar.DECEMBER;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Menu;
@@ -22,6 +23,7 @@ public class MyActivity extends Activity {
 
     private CountDownTimer timer;
     private TextView textTime;
+    MediaPlayer mediaPlayer;
 
     /**
      * Called when the activity is first created.
@@ -34,6 +36,7 @@ public class MyActivity extends Activity {
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
         buttonCreate();
         startCountDown();
+        playSound();
 
         Button button = (Button) findViewById(R.id.buttonNotif);
         button.setOnClickListener(new Button.OnClickListener() {
@@ -42,6 +45,12 @@ public class MyActivity extends Activity {
                 n.createInfoNotification("info notification");
             }
         });
+    }
+
+    public void playSound() {
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stopwatch);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
     }
 
     public void startCountDown() {
@@ -71,12 +80,14 @@ public class MyActivity extends Activity {
     protected void onPause() {
         super.onPause();
         timer.cancel();
+        mediaPlayer.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         timer.start();
+        mediaPlayer.start();
     }
 
     public void updateTimerText(String timeString) {
