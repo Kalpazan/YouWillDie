@@ -7,6 +7,7 @@ import static java.util.Calendar.DECEMBER;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -29,8 +30,8 @@ public class MyActivity extends Activity {
      * Called when the activity is first created.
      */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
         setContentView(R.layout.main);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
@@ -45,6 +46,8 @@ public class MyActivity extends Activity {
                 n.createInfoNotification("info notification");
             }
         });
+        
+        NotificationSchedulerService.startService(getApplicationContext());
     }
 
     public void playSound() {
@@ -76,6 +79,14 @@ public class MyActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+    	 Bundle extras = intent.getExtras();
+         if (extras != null) {
+         	showMessage(extras.getString("msg"));
+         }
+    }
+    
     @Override
     protected void onPause() {
         super.onPause();

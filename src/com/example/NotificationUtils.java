@@ -16,12 +16,12 @@ public class NotificationUtils {
     private static NotificationUtils instance;
 
     private static Context context;
-    private NotificationManager manager; // РЎРёСЃС‚РµРјРЅР°СЏ СѓС‚РёР»РёС‚Р°, СѓРїР°СЂР»СЏСЋС‰Р°СЏ СѓРІРµРґРѕРјР»РµРЅРёСЏРјРё
-    private int lastId = 0; //РїРѕСЃС‚РѕСЏРЅРЅРѕ СѓРІРµР»РёС‡РёРІР°СЋС‰РµРµСЃСЏ РїРѕР»Рµ, СѓРЅРёРєР°Р»СЊРЅС‹Р№ РЅРѕРјРµСЂ РєР°Р¶РґРѕРіРѕ СѓРІРµРґРѕРјР»РµРЅРёСЏ
-    private HashMap<Integer, Notification> notifications; //РјР°СЃСЃРёРІ РєР»СЋС‡-Р·РЅР°С‡РµРЅРёРµ РЅР° РІСЃРµ РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СѓРІРµРґРѕРјР»РµРЅРёСЏ
+    private NotificationManager manager; // Системная утилита, упарляющая уведомлениями
+    private int lastId = 0; //постоянно увеличивающееся поле, уникальный номер каждого уведомления
+    private HashMap<Integer, Notification> notifications; //массив ключ-значение на все отображаемые пользователю уведомления
 
 
-    //РїСЂРёРІР°С‚РЅС‹Р№ РєРѕРЅС‚СЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ Singleton
+    //приватный контструктор для Singleton
     private NotificationUtils(Context context) {
         this.context = context;
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -29,7 +29,7 @@ public class NotificationUtils {
     }
 
     /**
-     * РџРѕР»СѓС‡РµРЅРёРµ СЃСЃС‹Р»РєРё РЅР° СЃРёРЅРіР»С‚РѕРЅ
+     * Получение ссылки на синглтон
      */
     public static NotificationUtils getInstance(Context context) {
         if (instance == null) {
@@ -41,21 +41,21 @@ public class NotificationUtils {
     }
 
     public int createInfoNotification(String message) {
-        Intent notificationIntent = new Intent(context, MyActivity.class); // РїРѕ РєР»РёРєСѓ РЅР° СѓРІРµРґРѕРјР»РµРЅРёРё РѕС‚РєСЂРѕРµС‚СЃСЏ HomeActivity
+        Intent notificationIntent = new Intent(context, MyActivity.class); // по клику на уведомлении откроется HomeActivity
         NotificationCompat.Builder nb = new NotificationCompat.Builder(context)
-                //NotificationCompat.Builder nb = new NotificationBuilder(context) //РґР»СЏ РІРµСЂСЃРёРё Android > 3.0
-                .setSmallIcon(R.drawable.icon_2) //РёРєРѕРЅРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ
-                .setAutoCancel(true) //СѓРІРµРґРѕРјР»РµРЅРёРµ Р·Р°РєСЂРѕРµС‚СЃСЏ РїРѕ РєР»РёРєСѓ РЅР° РЅРµРіРѕ
-                .setTicker(message) //С‚РµРєСЃС‚, РєРѕС‚РѕСЂС‹Р№ РѕС‚РѕР±СЂР°Р·РёС‚СЃСЏ РІРІРµСЂС…Сѓ СЃС‚Р°С‚СѓСЃ-Р±Р°СЂР° РїСЂРё СЃРѕР·РґР°РЅРёРё СѓРІРµРґРѕРјР»РµРЅРёСЏ
-                .setContentText(message) // РћСЃРЅРѕРІРЅРѕР№ С‚РµРєСЃС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ
+                //NotificationCompat.Builder nb = new NotificationBuilder(context) //для версии Android > 3.0
+                .setSmallIcon(R.drawable.icon_2) //иконка уведомления
+                .setAutoCancel(true) //уведомление закроется по клику на него
+                .setTicker(message) //текст, который отобразится вверху статус-бара при создании уведомления
+                .setContentText(message) // Основной текст уведомления
                 .setContentIntent(PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT))
-                .setWhen(System.currentTimeMillis()) //РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРµ РІСЂРµРјСЏ СѓРІРµРґРѕРјР»РµРЅРёСЏ
-                .setContentTitle("AppName") //Р·Р°РіРѕР»РѕРІРѕРє СѓРІРµРґРѕРјР»РµРЅРёСЏ
-                .setDefaults(Notification.FLAG_SHOW_LIGHTS); // Р·РІСѓРє, РІРёР±СЂРѕ Рё РґРёРѕРґРЅС‹Р№ РёРЅРґРёРєР°С‚РѕСЂ РІС‹СЃС‚Р°РІР»СЏСЋС‚СЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+                .setWhen(System.currentTimeMillis()) //отображаемое время уведомления
+                .setContentTitle("AppName") //заголовок уведомления
+                .setDefaults(Notification.FLAG_SHOW_LIGHTS); // звук, вибро и диодный индикатор выставляются по умолчанию
 
-        Notification notification = nb.build(); //РіРµРЅРµСЂРёСЂСѓРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ
-        manager.notify(lastId, notification); // РѕС‚РѕР±СЂР°Р¶Р°РµРј РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ.
-        notifications.put(lastId, notification); //С‚РµРїРµСЂСЊ РјС‹ РјРѕР¶РµРј РѕР±СЂР°С‰Р°С‚СЊСЃСЏ Рє РЅРµРјСѓ РїРѕ id
+        Notification notification = nb.build(); //генерируем уведомление
+        manager.notify(lastId, notification); // отображаем его пользователю.
+        notifications.put(lastId, notification); //теперь мы можем обращаться к нему по id
         return lastId++;
     }
 }
