@@ -7,7 +7,7 @@ public class NotificationTemplate {
 	private String title;
 	private int icon = R.drawable.icon_2;
 	
-	public NotificationTemplate(String mainText, String title, String statusBarText, int icon) {
+	public NotificationTemplate(String title, String mainText, String statusBarText, int icon) {
 		this.statusBarText = statusBarText;
 		this.mainText = mainText;
 		this.title = title;
