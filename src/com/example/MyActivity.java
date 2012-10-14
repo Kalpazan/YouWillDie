@@ -16,7 +16,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +28,7 @@ public class MyActivity extends Activity {
 
     private CountDownTimer timer;
     private TextView textTime;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     /**
      * Called when the activity is first created.
@@ -39,18 +43,32 @@ public class MyActivity extends Activity {
         startCountDown();
         playSound();
 
-        Button button = (Button) findViewById(R.id.buttonNotif);
-        button.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View view) {
-                NotificationUtils n = NotificationUtils.getInstance(getApplicationContext());
-                n.createInfoNotification("info notification");
-            }
-        });
+        setupHistoryList();
         
         NotificationSchedulerService.startService(getApplicationContext());
     }
 
-    public void playSound() {
+    private void setupHistoryList() {
+    	ListView historyListView = (ListView) findViewById(R.id.content);
+    	final NotificationProvider provider = new NotificationProvider();
+		historyListView.setAdapter(new NotificationsListAdapter(this, provider));
+    	
+//		final WebView notificationText = (WebView) findViewById(R.id.notification_text);
+		final TextView notificationText = (TextView) findViewById(R.id.notification_text);
+		final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
+		
+    	historyListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+				NotificationTemplate notification = provider.getNotifications()[position];
+//				notificationText.loadData(notification.getMainText(), "text/html", null);
+				notificationText.setText(notification.getMainText());
+				slider.animateClose();
+			}
+		});
+    }
+
+	public void playSound() {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stopwatch);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
@@ -113,14 +131,14 @@ public class MyActivity extends Activity {
     }
 
     public void buttonCreate() {
-        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
-        toast.setGravity(0, 0, 0);
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View view) {
-                toast.show();
-            }
-        });
+//        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
+//        toast.setGravity(0, 0, 0);
+//        Button button = (Button) findViewById(R.id.button);
+//        button.setOnClickListener(new Button.OnClickListener() {
+//            public void onClick(View view) {
+//                toast.show();
+//            }
+//        });
     }
 
     public void showMessage(String string) {

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">YouWillDie</string>
     <string name="exit">Exit</string>
     <string name="help">Help</string>
+    <string name="older_messages">Предыдущие сообщения</string>
+    <string name="dead_fish">Купи 61 консерву с мертвой рыбой, тебе они будут необходимы при межгалактическом перемещении.</string>
+    <string name="day">День -62</string>
+    <string name="time_left" formatted="false">До дня X осталось:\\n %s дней %s ч %s м\\n %s.03d сек.</string>
+
 </resources>

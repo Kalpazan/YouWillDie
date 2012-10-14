@@ -30,12 +30,8 @@ public class FinalCountdown extends CountDownTimer {
         long secondsLeft = (timeLeft % MINUTE) / 1000;
         long millisecLeft = timeLeft % 1000;
         
-        String left = "You will die in...\n wait... wait...\n " +
-        		"%s days\n " +
-        		"%s hours\n " +
-        		"%s min\n " +
-        		"%s sec\n " +
-        		"%03d \nmilliseconds";
+        String left ="%s days %s h %s m  " +
+        		"%s.%03d sec";
         activity.updateTimerText(String.format(left, daysLeft, hourLeft, minutesLeft, secondsLeft, millisecLeft));
     }
 

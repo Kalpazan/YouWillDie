@@ -29,5 +29,5 @@ public class NotificationTemplate {
 	public int getIcon() {
 		return icon;
 	}
-	
+
 }
