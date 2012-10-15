@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -72,6 +73,9 @@ public class MyActivity extends Activity {
 
     public void startCountDown() {
         textTime = (TextView) findViewById(R.id.textTime);
+        Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
+        textTime.setTypeface(type);
+        textTime.setTextSize(35);
         final Calendar finalDate = Calendar.getInstance();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
         timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this).start();
@@ -81,7 +85,7 @@ public class MyActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.exit:
-                showMessage("All the same, this does not stop. I'll wait for you");
+                showMessage("All the same, this does not stop. It is waiting for you.");
                 System.exit(0);
                 return true;
             case R.id.help:
