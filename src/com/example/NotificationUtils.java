@@ -11,26 +11,23 @@ import java.util.HashMap;
 
 public class NotificationUtils {
 
+    //copypasted from http://habrahabr.ru/post/140928/
+
     private static final String TAG = NotificationUtils.class.getSimpleName();
 
     private static NotificationUtils instance;
 
     private static Context context;
-    private NotificationManager manager; // Системная утилита, упарляющая уведомлениями
-    private int lastId = 0; //постоянно увеличивающееся поле, уникальный номер каждого уведомления
-    private HashMap<Integer, Notification> notifications; //массив ключ-значение на все отображаемые пользователю уведомления
+    private NotificationManager manager;
+    private int lastId = 0;
+    private HashMap<Integer, Notification> notifications;
 
-
-    //приватный контструктор для Singleton
     private NotificationUtils(Context context) {
         this.context = context;
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notifications = new HashMap<Integer, Notification>();
     }
 
-    /**
-     * Получение ссылки на синглтон
-     */
     public static NotificationUtils getInstance(Context context) {
         if (instance == null) {
             instance = new NotificationUtils(context);
@@ -41,21 +38,21 @@ public class NotificationUtils {
     }
 
     public int createInfoNotification(String message) {
-        Intent notificationIntent = new Intent(context, MyActivity.class); // по клику на уведомлении откроется HomeActivity
+        Intent notificationIntent = new Intent(context, MyActivity.class);
         NotificationCompat.Builder nb = new NotificationCompat.Builder(context)
-                //NotificationCompat.Builder nb = new NotificationBuilder(context) //для версии Android > 3.0
-                .setSmallIcon(R.drawable.icon_2) //иконка уведомления
-                .setAutoCancel(true) //уведомление закроется по клику на него
-                .setTicker(message) //текст, который отобразится вверху статус-бара при создании уведомления
-                .setContentText(message) // Основной текст уведомления
+                //NotificationCompat.Builder nb = new NotificationBuilder(context) //for ver. Android > 3.0
+                .setSmallIcon(R.drawable.icon_2)
+                .setAutoCancel(true)
+                .setTicker(message)
+                .setContentText(message)
                 .setContentIntent(PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT))
-                .setWhen(System.currentTimeMillis()) //отображаемое время уведомления
-                .setContentTitle("AppName") //заголовок уведомления
-                .setDefaults(Notification.FLAG_SHOW_LIGHTS); // звук, вибро и диодный индикатор выставляются по умолчанию
+                .setWhen(System.currentTimeMillis())
+                .setContentTitle("AppName")
+                .setDefaults(Notification.FLAG_SHOW_LIGHTS);
 
-        Notification notification = nb.build(); //генерируем уведомление
-        manager.notify(lastId, notification); // отображаем его пользователю.
-        notifications.put(lastId, notification); //теперь мы можем обращаться к нему по id
+        Notification notification = nb.build();
+        manager.notify(lastId, notification);
+        notifications.put(lastId, notification);
         return lastId++;
     }
 }

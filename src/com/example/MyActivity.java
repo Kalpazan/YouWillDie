@@ -17,12 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
-import android.widget.AdapterView;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
-import android.widget.SlidingDrawer;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MyActivity extends Activity {
 
@@ -131,14 +127,14 @@ public class MyActivity extends Activity {
     }
 
     public void buttonCreate() {
-//        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
-//        toast.setGravity(0, 0, 0);
-//        Button button = (Button) findViewById(R.id.button);
-//        button.setOnClickListener(new Button.OnClickListener() {
-//            public void onClick(View view) {
-//                toast.show();
-//            }
-//        });
+        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
+        toast.setGravity(0, 0, 0);
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
+                toast.show();
+            }
+        });
     }
 
     public void showMessage(String string) {
