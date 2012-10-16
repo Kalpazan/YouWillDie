@@ -17,9 +17,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
+import com.bugsense.trace.BugSenseHandler;
 
 public class MyActivity extends Activity {
 
@@ -33,6 +33,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        BugSenseHandler.initAndStartSession(MyActivity.this, "YOURAPIKEY");
         setContentView(R.layout.main);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
@@ -43,6 +44,8 @@ public class MyActivity extends Activity {
         setupHistoryList();
         
         NotificationSchedulerService.startService(getApplicationContext());
+
+        BugSenseHandler.flush(MyActivity.this); //How to use it. See https://www.bugsense.com/docs
     }
 
     private void setupHistoryList() {
