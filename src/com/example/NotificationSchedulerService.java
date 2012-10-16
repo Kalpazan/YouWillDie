@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import com.bugsense.trace.BugSenseHandler;
 
 public class NotificationSchedulerService extends Service {
 
@@ -29,6 +30,7 @@ public class NotificationSchedulerService extends Service {
 
 	@Override
 	public void onCreate() {
+        BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		NotificationTemplate[] notifications = new NotificationProvider()
 				.getNotifications();
 		for (final NotificationTemplate template : notifications) {
@@ -74,6 +76,7 @@ public class NotificationSchedulerService extends Service {
 	static class BootListener extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
+            BugSenseHandler.initAndStartSession(context, "f48c5119");
 			if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 				startService(context);
 			}

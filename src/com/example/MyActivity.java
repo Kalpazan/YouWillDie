@@ -33,7 +33,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        BugSenseHandler.initAndStartSession(MyActivity.this, "YOURAPIKEY");
+        BugSenseHandler.initAndStartSession(MyActivity.this, "f48c5119");
         setContentView(R.layout.main);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
@@ -44,8 +44,6 @@ public class MyActivity extends Activity {
         setupHistoryList();
         
         NotificationSchedulerService.startService(getApplicationContext());
-
-        BugSenseHandler.flush(MyActivity.this); //How to use it. See https://www.bugsense.com/docs
     }
 
     private void setupHistoryList() {
@@ -113,6 +111,7 @@ public class MyActivity extends Activity {
         super.onPause();
         timer.cancel();
         mediaPlayer.pause();
+        BugSenseHandler.flush(MyActivity.this); //How to use it. See https://www.bugsense.com/docs
     }
 
     @Override
