@@ -22,22 +22,18 @@ public class NotificationsListAdapter extends BaseAdapter {
 		this.provider = provider;
 	}
 
-	@Override
 	public int getCount() {
 		return provider.getPreviousNotificationsCount();
 	}
 
-	@Override
 	public Object getItem(int position) {
 		return position;
 	}
 
-	@Override
 	public long getItemId(int position) {
 		return position;
 	}
 
-	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View vi = convertView;
 		if (convertView == null)

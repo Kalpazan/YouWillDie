@@ -17,8 +17,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.*;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SlidingDrawer;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bugsense.trace.BugSenseHandler;
 
 public class MyActivity extends Activity {
@@ -56,7 +62,6 @@ public class MyActivity extends Activity {
 		final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
 		
     	historyListView.setOnItemClickListener(new OnItemClickListener() {
-			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				NotificationTemplate notification = provider.getNotifications()[position];
 //				notificationText.loadData(notification.getMainText(), "text/html", null);
