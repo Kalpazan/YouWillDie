@@ -47,31 +47,33 @@ public class MyActivity extends Activity {
         startCountDown();
         playSound();
 
+
         setupHistoryList();
-        
+
         NotificationSchedulerService.startService(getApplicationContext());
+
     }
 
     private void setupHistoryList() {
-    	ListView historyListView = (ListView) findViewById(R.id.content);
-    	final NotificationProvider provider = new NotificationProvider();
-		historyListView.setAdapter(new NotificationsListAdapter(this, provider));
-    	
+        ListView historyListView = (ListView) findViewById(R.id.content);
+        final NotificationProvider provider = new NotificationProvider();
+        historyListView.setAdapter(new NotificationsListAdapter(this, provider));
+
 //		final WebView notificationText = (WebView) findViewById(R.id.notification_text);
-		final TextView notificationText = (TextView) findViewById(R.id.notification_text);
-		final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
-		
-    	historyListView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				NotificationTemplate notification = provider.getNotifications()[position];
+        final TextView notificationText = (TextView) findViewById(R.id.notification_text);
+        final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
+
+        historyListView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                NotificationTemplate notification = provider.getNotifications()[position];
 //				notificationText.loadData(notification.getMainText(), "text/html", null);
-				notificationText.setText(notification.getMainText());
-				slider.animateClose();
-			}
-		});
+                notificationText.setText(notification.getMainText());
+                slider.animateClose();
+            }
+        });
     }
 
-	public void playSound() {
+    public void playSound() {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stopwatch);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
@@ -105,12 +107,12 @@ public class MyActivity extends Activity {
 
     @Override
     protected void onNewIntent(Intent intent) {
-    	 Bundle extras = intent.getExtras();
-         if (extras != null) {
-         	showMessage(extras.getString("msg"));
-         }
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            showMessage(extras.getString("msg"));
+        }
     }
-    
+
     @Override
     protected void onPause() {
         super.onPause();
