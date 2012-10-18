@@ -33,7 +33,7 @@
         </service>
 
         <receiver
-            android:name=".NotificationSchedulerService.BootListener"
+            android:name=".NotificationSchedulerService$BootListener"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

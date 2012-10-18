@@ -26,10 +26,8 @@ public class NotificationSchedulerService extends Service {
 
 	@Override
 	public void onCreate() {
-		BugSenseHandler
-				.initAndStartSession(getApplicationContext(), "f48c5119");
-		NotificationTemplate[] notifications = new NotificationProvider()
-				.getNotifications();
+		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
+		NotificationTemplate[] notifications = new NotificationProvider().getNotifications();
 		for (final NotificationTemplate template : notifications) {
 			TimerTask task = new TimerTask() {
 				@Override
@@ -43,8 +41,7 @@ public class NotificationSchedulerService extends Service {
 
 	public void createInfoNotification(NotificationTemplate template) {
 		Context context = getApplicationContext();
-		manager = (NotificationManager) getApplicationContext()
-				.getSystemService(Context.NOTIFICATION_SERVICE);
+		manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 		Intent notificationIntent = new Intent(context, MyActivity.class);
 		notificationIntent.putExtra("msg", template.getMainText());
 
@@ -69,7 +66,7 @@ public class NotificationSchedulerService extends Service {
 				NotificationSchedulerService.class));
 	}
 
-	static class BootListener extends BroadcastReceiver {
+	public static class BootListener extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			BugSenseHandler.initAndStartSession(context, "f48c5119");
