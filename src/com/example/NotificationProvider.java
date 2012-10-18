@@ -47,24 +47,28 @@ public class NotificationProvider {
 		return Arrays.asList(notifications);
 	}
 
-	public void updateLastNotificationNumber(int number) {
-		// We need an Editor object to make preference changes.
-	    // All objects are from android.context.Context
+	public synchronized void updateLastNotificationNumber(int number) {
 	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
 	    SharedPreferences.Editor editor = settings.edit();
 	    editor.putInt(LAST_NOTIFICATION_NUM, number);
 
-	    // Commit the edits!
 	    editor.commit();
 	}
 	
-	public int getLastNotificationNumber() {
+	public synchronized int getLastNotificationNumber() {
 	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
 	    return settings.getInt(LAST_NOTIFICATION_NUM, -1);
 	}
 
-	public NotificationTemplate getNotification(int i) {
-		return notifications[i];
+	public boolean hasNotificationWithNumber(int number) {
+		return number < notifications.length && number >= 0;
+	}
+	
+	public NotificationTemplate getNotification(int number) {
+		if (number < notifications.length) {
+			return notifications[number];
+		}
+		return null;
 	}
 	
 }

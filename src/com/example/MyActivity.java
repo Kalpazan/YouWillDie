@@ -83,7 +83,7 @@ public class MyActivity extends Activity {
         textTime = (TextView) findViewById(R.id.textTime);
         Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
         textTime.setTypeface(type);
-        textTime.setTextSize(35);
+//        textTime.setTextSize(35);
         final Calendar finalDate = Calendar.getInstance();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
         timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this).start();

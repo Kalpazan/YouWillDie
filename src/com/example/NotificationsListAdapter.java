@@ -17,13 +17,12 @@ public class NotificationsListAdapter extends BaseAdapter {
 
 	public NotificationsListAdapter(Activity a, NotificationProvider provider) {
 		activity = a;
-		inflater = (LayoutInflater) activity
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.provider = provider;
 	}
 
 	public int getCount() {
-		return provider.getPreviousNotificationsCount();
+		return provider.getLastNotificationNumber() + 1;
 	}
 
 	public Object getItem(int position) {
@@ -35,15 +34,15 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View vi = convertView;
+		View view = convertView;
 		if (convertView == null)
-			vi = inflater.inflate(R.layout.list_row, null);
+			view = inflater.inflate(R.layout.list_row, null);
 
-		TextView title = (TextView) vi.findViewById(R.id.title); // title
-		TextView artist = (TextView) vi.findViewById(R.id.artist); // artist
+		TextView title = (TextView) view.findViewById(R.id.title); // title
+		TextView artist = (TextView) view.findViewById(R.id.artist); // artist
 																	// name
-		TextView duration = (TextView) vi.findViewById(R.id.duration); // duration
-		ImageView thumb_image = (ImageView) vi.findViewById(R.id.list_image); // thumb
+		TextView duration = (TextView) view.findViewById(R.id.duration); // duration
+		ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image); // thumb
 																				// image
 		NotificationTemplate notification = provider.getPreviousNotifications().get(position);
 
@@ -53,7 +52,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		duration.setText("1:11");
 		thumb_image.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
 		
-		return vi;
+		return view;
 	}
 
 }

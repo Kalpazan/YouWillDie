@@ -30,37 +30,42 @@ public class NotificationSchedulerService extends Service {
 	public void onCreate() {
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		notificationProvider = new NotificationProvider(getApplicationContext());
-		
+
 		scheduleNextNotification(60 * 3 * 1000);
 	}
 
 	public void scheduleNextNotification(long delay) {
 		final int lastNumber = notificationProvider.getLastNotificationNumber();
-		
+
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				int nextNotificationNumber = lastNumber + 1;
-				
-				createInfoNotification(notificationProvider.getNotification(nextNotificationNumber));
-				notificationProvider.updateLastNotificationNumber(nextNotificationNumber); 
-				
-				Calendar calendar = GregorianCalendar.getInstance();
-				calendar.setTimeInMillis(System.currentTimeMillis());
-				calendar.add(1, Calendar.DATE);
-				int randomHoursNumber = new Random().nextInt(5);
-				calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-				
-				scheduleNextNotification(calendar.getTimeInMillis() - System.currentTimeMillis());
+
+				if (notificationProvider.hasNotificationWithNumber(nextNotificationNumber)) {
+
+					createInfoNotification(notificationProvider.getNotification(nextNotificationNumber));
+					notificationProvider.updateLastNotificationNumber(nextNotificationNumber);
+
+					Calendar calendar = GregorianCalendar.getInstance();
+					calendar.setTimeInMillis(System.currentTimeMillis());
+					calendar.add(1, Calendar.DATE);
+					int randomHoursNumber = new Random().nextInt(5);
+					calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+
+					// diff between now and needed time
+					scheduleNextNotification(calendar.getTimeInMillis() - System.currentTimeMillis());
+				}
 			}
 		};
-		
+
 		new Timer().schedule(task, delay);
 	}
-	
+
 	public void createInfoNotification(NotificationTemplate template) {
 		Context context = getApplicationContext();
-		manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+		manager = (NotificationManager) getApplicationContext()
+				.getSystemService(Context.NOTIFICATION_SERVICE);
 		Intent notificationIntent = new Intent(context, MyActivity.class);
 		notificationIntent.putExtra("msg", template.getMainText());
 
@@ -80,8 +85,7 @@ public class NotificationSchedulerService extends Service {
 	}
 
 	static void startService(Context context) {
-		context.startService(new Intent(context,
-				NotificationSchedulerService.class));
+		context.startService(new Intent(context, NotificationSchedulerService.class));
 	}
 
 	public static class BootListener extends BroadcastReceiver {
