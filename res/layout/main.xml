@@ -95,8 +95,8 @@
             <LinearLayout
                     android:id="@+id/handle"
                     android:layout_width="fill_parent"
-                    android:layout_height="30dip"
-                    android:background="@drawable/carbon_white_bg"
+                    android:layout_height="43dip"
+                    android:background="@drawable/history_handle_bg"
                     android:gravity="center"
                     android:orientation="horizontal">
 
