@@ -3,8 +3,6 @@ package com.example;
 import static android.app.Notification.FLAG_SHOW_LIGHTS;
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
-import java.util.HashMap;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,28 +15,48 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+
 import com.bugsense.trace.BugSenseHandler;
 
 public class NotificationSchedulerService extends Service {
 
 	private NotificationManager manager;
-	private HashMap<Integer, Notification> notifications = new HashMap<Integer, Notification>();
+	private NotificationProvider notificationProvider;
 
 	@Override
 	public void onCreate() {
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
-		NotificationTemplate[] notifications = new NotificationProvider().getNotifications();
-		for (final NotificationTemplate template : notifications) {
-			TimerTask task = new TimerTask() {
-				@Override
-				public void run() {
-					createInfoNotification(template);
-				}
-			};
-			new Timer().schedule(task, new Random().nextInt(60 * 5) * 1000);
-		}
+		notificationProvider = new NotificationProvider(getApplicationContext());
+		
+		scheduleNextNotification(10000);
 	}
 
+	public void scheduleNextNotification(long delay) {
+		final int lastNumber = notificationProvider.getLastNotificationNumber();
+		
+		TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				int nextNotificationNumber = lastNumber + 1;
+				
+				createInfoNotification(notificationProvider.getNotification(nextNotificationNumber));
+				notificationProvider.updateLastNotificationNumber(nextNotificationNumber); 
+				
+//				Calendar calendar = GregorianCalendar.getInstance();
+//				calendar.setTimeInMillis(System.currentTimeMillis());
+//				calendar.add(1, Calendar.DATE);
+//				int randomHoursNumber = new Random().nextInt(5);
+//				calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+//				
+//				scheduleNextNotification(calendar.getTimeInMillis() - System.currentTimeMillis());
+				
+				scheduleNextNotification(20000);
+			}
+		};
+		
+		new Timer().schedule(task, delay);
+	}
+	
 	public void createInfoNotification(NotificationTemplate template) {
 		Context context = getApplicationContext();
 		manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -58,7 +76,6 @@ public class NotificationSchedulerService extends Service {
 
 		Notification notification = nb.build();
 		manager.notify(template.getTitle().hashCode(), notification);
-		notifications.put(template.getTitle().hashCode(), notification);
 	}
 
 	static void startService(Context context) {

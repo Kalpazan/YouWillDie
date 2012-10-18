@@ -56,7 +56,7 @@ public class MyActivity extends Activity {
 
     private void setupHistoryList() {
         ListView historyListView = (ListView) findViewById(R.id.content);
-        final NotificationProvider provider = new NotificationProvider();
+        final NotificationProvider provider = new NotificationProvider(getApplicationContext());
         historyListView.setAdapter(new NotificationsListAdapter(this, provider));
 
 //		final WebView notificationText = (WebView) findViewById(R.id.notification_text);
@@ -109,7 +109,9 @@ public class MyActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            showMessage(extras.getString("msg"));
+            String notificationTitle = extras.getString("msg");
+            
+			showMessage(notificationTitle);
         }
     }
 
