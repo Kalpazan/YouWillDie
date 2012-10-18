@@ -3,6 +3,9 @@ package com.example;
 import static android.app.Notification.FLAG_SHOW_LIGHTS;
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,7 +31,7 @@ public class NotificationSchedulerService extends Service {
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		notificationProvider = new NotificationProvider(getApplicationContext());
 		
-		scheduleNextNotification(10000);
+		scheduleNextNotification(60 * 3 * 1000);
 	}
 
 	public void scheduleNextNotification(long delay) {
@@ -42,15 +45,13 @@ public class NotificationSchedulerService extends Service {
 				createInfoNotification(notificationProvider.getNotification(nextNotificationNumber));
 				notificationProvider.updateLastNotificationNumber(nextNotificationNumber); 
 				
-//				Calendar calendar = GregorianCalendar.getInstance();
-//				calendar.setTimeInMillis(System.currentTimeMillis());
-//				calendar.add(1, Calendar.DATE);
-//				int randomHoursNumber = new Random().nextInt(5);
-//				calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-//				
-//				scheduleNextNotification(calendar.getTimeInMillis() - System.currentTimeMillis());
+				Calendar calendar = GregorianCalendar.getInstance();
+				calendar.setTimeInMillis(System.currentTimeMillis());
+				calendar.add(1, Calendar.DATE);
+				int randomHoursNumber = new Random().nextInt(5);
+				calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
 				
-				scheduleNextNotification(20000);
+				scheduleNextNotification(calendar.getTimeInMillis() - System.currentTimeMillis());
 			}
 		};
 		
