@@ -17,12 +17,13 @@
  
         <ImageView
             android:id="@+id/list_image"
+            android:background="#dbdbdc"
             android:layout_width="50dip"
             android:layout_height="50dip"
             android:src="@drawable/icon_1"/>
  
     </LinearLayout>
- 
+
     <!-- Title Of Song-->
     <TextView
         android:id="@+id/title"
@@ -59,7 +60,9 @@
         android:src="@drawable/arrow"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"/-->
-
+
+
+
     <TextView
         android:id="@+id/artist"
         android:layout_width="fill_parent"
