@@ -17,33 +17,12 @@
             android:layout_marginBottom="20dp"
             android:textSize="20dip"/>
 
-    <!--
-    LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal" >
 
-
-
-        <Button
-            android:id="@+id/buttonNotif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="20px"
-            android:text="Notify"
-            android:textSize="20px" />
-    </LinearLayout
-
-
-
-    -->
     <Button
             android:id="@+id/button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:padding="20px"
             android:text="slow down time!"
             android:textSize="20px"/>
