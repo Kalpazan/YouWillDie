@@ -48,12 +48,12 @@ public class MainActivity extends Activity {
         buttonCreate();
         startCountDown();
         playSound();
-
-
+        
         setupHistoryList();
 
         NotificationSchedulerService.startService(getApplicationContext());
-
+        
+        listAdapter.notifyDataSetChanged();
     }
 
     private void setupHistoryList() {
@@ -122,6 +122,10 @@ public class MainActivity extends Activity {
         super.onPause();
         timer.cancel();
         mediaPlayer.pause();
+        
+        final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
+        slider.animateClose();
+        
         BugSenseHandler.flush(MainActivity.this); //How to use it. See https://www.bugsense.com/docs
     }
 
