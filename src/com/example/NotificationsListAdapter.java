@@ -5,8 +5,10 @@ import static com.example.FinalCountdown.HOUR;
 import static com.example.FinalCountdown.MINUTE;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -46,13 +48,29 @@ public class NotificationsListAdapter extends BaseAdapter {
 																	
 		TextView notificationTime = (TextView) view.findViewById(R.id.time); 
 		ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image);
-		NotificationTemplate notification = provider.getPreviousNotifications().get(position);
+		final NotificationTemplate notification = provider.getPreviousNotifications().get(position);
 
 		title.setText(notification.getTitle());
 		artist.setText(notification.getMainText());
 		
 		notificationTime.setText(formatDate(provider.getNotofocationTime(position)));
 		thumb_image.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
+		
+		view.setClickable(true);
+		view.setOnLongClickListener(new OnLongClickListener() {
+			
+			public boolean onLongClick(View v) {
+				Intent intent = new Intent(activity.getApplicationContext(), MainActivity.class);
+				intent.setAction(Intent.ACTION_SEND);
+				intent.putExtra(Intent.EXTRA_TEXT, "Чувак охуенная прога! Зырь что написала: " + notification.getMainText());
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				Intent chooserIntent = Intent.createChooser(intent, "Отправить другу");
+				chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				chooserIntent.setAction(Intent.ACTION_SEND);
+				activity.getApplicationContext().startActivity(chooserIntent);
+				return true;
+			}
+		});
 		
 		return view;
 	}

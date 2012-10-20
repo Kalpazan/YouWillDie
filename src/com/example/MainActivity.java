@@ -5,6 +5,8 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -50,10 +52,19 @@ public class MainActivity extends Activity {
         playSound();
         
         setupHistoryList();
-
+        
         NotificationSchedulerService.startService(getApplicationContext());
         
         listAdapter.notifyDataSetChanged();
+        
+        
+        TimerTask task = new TimerTask() {
+			@Override
+			public void run() {
+				listAdapter.notifyDataSetChanged();
+			}
+		};
+		new Timer().schedule(task, 0);
     }
 
     private void setupHistoryList() {
