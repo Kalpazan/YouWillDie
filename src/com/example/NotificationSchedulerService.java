@@ -66,7 +66,7 @@ public class NotificationSchedulerService extends Service {
 		Context context = getApplicationContext();
 		manager = (NotificationManager) getApplicationContext()
 				.getSystemService(Context.NOTIFICATION_SERVICE);
-		Intent notificationIntent = new Intent(context, MyActivity.class);
+		Intent notificationIntent = new Intent(context, MainActivity.class);
 		notificationIntent.putExtra("msg", template.getMainText());
 
 		NotificationCompat.Builder nb = new NotificationCompat.Builder(context)

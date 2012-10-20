@@ -38,7 +38,7 @@ public class NotificationUtils {
     }
 
     public int createInfoNotification(String message) {
-        Intent notificationIntent = new Intent(context, MyActivity.class);
+        Intent notificationIntent = new Intent(context, MainActivity.class);
         NotificationCompat.Builder nb = new NotificationCompat.Builder(context)
                 //NotificationCompat.Builder nb = new NotificationBuilder(context) //for ver. Android > 3.0
                 .setSmallIcon(R.drawable.icon_2)

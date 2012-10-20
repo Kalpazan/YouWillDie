@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">YouWillDie</string>
+    <string name="app_name">Survival Guide</string>
     <string name="exit">Exit</string>
     <string name="help">Help</string>
     <string name="older_messages">Предыдущие сообщения</string>

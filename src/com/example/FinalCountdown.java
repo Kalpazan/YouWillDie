@@ -7,9 +7,9 @@ public class FinalCountdown extends CountDownTimer {
 	private static final int HOUR = MINUTE * 60;
 	
 	private long bigBoomTime;
-	private MyActivity activity;
+	private MainActivity activity;
 	
-	public FinalCountdown(long millisInFuture, long countDownInterval, MyActivity activity) {
+	public FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
 		super(millisInFuture, countDownInterval);
 		this.bigBoomTime = millisInFuture;
 		this.activity = activity;

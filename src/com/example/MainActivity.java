@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
 
-public class MyActivity extends Activity {
+public class MainActivity extends Activity {
 
     private CountDownTimer timer;
     private TextView textTime;
@@ -39,7 +39,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        BugSenseHandler.initAndStartSession(MyActivity.this, "f48c5119");
+        BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
         setContentView(R.layout.main);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
@@ -120,7 +120,7 @@ public class MyActivity extends Activity {
         super.onPause();
         timer.cancel();
         mediaPlayer.pause();
-        BugSenseHandler.flush(MyActivity.this); //How to use it. See https://www.bugsense.com/docs
+        BugSenseHandler.flush(MainActivity.this); //How to use it. See https://www.bugsense.com/docs
     }
 
     @Override
