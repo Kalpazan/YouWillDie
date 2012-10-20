@@ -47,13 +47,15 @@ public class NotificationSchedulerService extends Service {
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				int nextNotificationNumber = lastNumber + 1;
+				int currentNotificationNumber = lastNumber + 1;
 
-				if (notificationProvider.hasNotificationWithNumber(nextNotificationNumber)) {
+				if (notificationProvider.hasNotificationWithNumber(currentNotificationNumber)) {
 
-					createInfoNotification(notificationProvider.getNotification(nextNotificationNumber));
-					notificationProvider.updateLastNotificationNumber(nextNotificationNumber);
-
+					createInfoNotification(notificationProvider.getNotification(currentNotificationNumber));
+					
+					notificationProvider.updateLastNotificationNumber(currentNotificationNumber);
+					notificationProvider.saveNotificationTime(currentNotificationNumber, System.currentTimeMillis());
+					
 					Calendar calendar = GregorianCalendar.getInstance();
 					calendar.setTimeInMillis(System.currentTimeMillis());
 					calendar.add(DATE, 1);

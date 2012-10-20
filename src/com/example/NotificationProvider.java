@@ -5,9 +5,12 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
 
 public class NotificationProvider {
 
+	private static final String TIME_PREFIX = "time_of_";
 	private static final String LAST_NOTIFICATION_NUM = "lastNotificationNum";
 	private static final String STORE_NAME = "huj";
 	
@@ -47,6 +50,19 @@ public class NotificationProvider {
 		return Arrays.asList(notifications);
 	}
 
+	public void saveNotificationTime(int notificationNumber, long time) {
+	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
+	    SharedPreferences.Editor editor = settings.edit();
+	    editor.putLong(TIME_PREFIX + notificationNumber, time);
+
+	    editor.commit();
+	}
+	
+	public long getNotofocationTime(int notificationNumber) {
+		SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
+	    return settings.getLong(TIME_PREFIX + notificationNumber, -1);
+	}
+	
 	public synchronized void updateLastNotificationNumber(int number) {
 	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
 	    SharedPreferences.Editor editor = settings.edit();

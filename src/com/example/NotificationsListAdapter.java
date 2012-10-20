@@ -1,5 +1,8 @@
 package com.example;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import static com.example.FinalCountdown.HOUR;
+import static com.example.FinalCountdown.MINUTE;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,7 +20,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 
 	public NotificationsListAdapter(Activity a, NotificationProvider provider) {
 		activity = a;
-		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
 		this.provider = provider;
 	}
 
@@ -38,21 +41,39 @@ public class NotificationsListAdapter extends BaseAdapter {
 		if (convertView == null)
 			view = inflater.inflate(R.layout.list_row, null);
 
-		TextView title = (TextView) view.findViewById(R.id.title); // title
-		TextView artist = (TextView) view.findViewById(R.id.artist); // artist
-																	// name
-		TextView duration = (TextView) view.findViewById(R.id.duration); // duration
-		ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image); // thumb
-																				// image
+		TextView title = (TextView) view.findViewById(R.id.title); 
+		TextView artist = (TextView) view.findViewById(R.id.artist); 
+																	
+		TextView notificationTime = (TextView) view.findViewById(R.id.time); 
+		ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image);
 		NotificationTemplate notification = provider.getPreviousNotifications().get(position);
 
-		// Setting all values in listview
 		title.setText(notification.getTitle());
 		artist.setText(notification.getMainText());
-		duration.setText("1:11");
+		
+		notificationTime.setText(formatDate(provider.getNotofocationTime(position)));
 		thumb_image.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
 		
 		return view;
 	}
 
+	private String formatDate(long time) {
+		long diff = System.currentTimeMillis() - time;
+
+		if (diff < 5 * MINUTE) {
+			return "только что";
+		} 
+		
+		if (diff < 24 * HOUR) {
+			return "сегодня";
+		} 
+		
+		if (diff < 24 * HOUR * 2) {
+			return "вчера";
+		} 
+		
+		long days = diff / (24 * HOUR);
+		return days == 2 ? days + " дня назад" : days + " дней назад";
+	}
+	
 }

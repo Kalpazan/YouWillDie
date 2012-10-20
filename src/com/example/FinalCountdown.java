@@ -3,8 +3,8 @@ package com.example;
 import android.os.CountDownTimer;
 
 public class FinalCountdown extends CountDownTimer {
-	private static final int MINUTE = 1000 * 60;
-	private static final int HOUR = MINUTE * 60;
+	public static final int MINUTE = 1000 * 60;
+	public static final int HOUR = MINUTE * 60;
 	
 	private long bigBoomTime;
 	private MainActivity activity;

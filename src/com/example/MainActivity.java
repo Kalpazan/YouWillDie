@@ -32,7 +32,9 @@ public class MainActivity extends Activity {
     private CountDownTimer timer;
     private TextView textTime;
     private MediaPlayer mediaPlayer;
-
+	private NotificationsListAdapter listAdapter;
+    
+    
     /**
      * Called when the activity is first created.
      */
@@ -57,7 +59,8 @@ public class MainActivity extends Activity {
     private void setupHistoryList() {
         ListView historyListView = (ListView) findViewById(R.id.content);
         final NotificationProvider provider = new NotificationProvider(getApplicationContext());
-        historyListView.setAdapter(new NotificationsListAdapter(this, provider));
+        listAdapter = new NotificationsListAdapter(this, provider);
+		historyListView.setAdapter(listAdapter);
 
 //		final WebView notificationText = (WebView) findViewById(R.id.notification_text);
         final TextView notificationText = (TextView) findViewById(R.id.notification_text);
@@ -110,8 +113,7 @@ public class MainActivity extends Activity {
         Bundle extras = intent.getExtras();
         if (extras != null) {
             String notificationTitle = extras.getString("msg");
-            
-			showMessage(notificationTitle);
+            showMessage(notificationTitle);
         }
     }
 
