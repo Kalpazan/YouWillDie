@@ -135,7 +135,7 @@ public class MainActivity extends Activity {
         mediaPlayer.pause();
         
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
-        slider.animateClose();
+        slider.close();
         
         BugSenseHandler.flush(MainActivity.this); //How to use it. See https://www.bugsense.com/docs
     }

@@ -58,19 +58,19 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		view.setClickable(true);
 		view.setOnLongClickListener(new OnLongClickListener() {
-			
-			public boolean onLongClick(View v) {
-				Intent intent = new Intent(activity.getApplicationContext(), MainActivity.class);
-				intent.setAction(Intent.ACTION_SEND);
-				intent.putExtra(Intent.EXTRA_TEXT, "Чувак охуенная прога! Зырь что написала: " + notification.getMainText());
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				Intent chooserIntent = Intent.createChooser(intent, "Отправить другу");
-				chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				chooserIntent.setAction(Intent.ACTION_SEND);
-				activity.getApplicationContext().startActivity(chooserIntent);
-				return true;
-			}
-		});
+
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(activity.getApplicationContext(), MainActivity.class);
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "Чувак охуенная прога. Написала: "+ notification.getMainText());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent chooserIntent = Intent.createChooser(intent, "Отправить другу");
+                chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.getApplicationContext().startActivity(chooserIntent);
+                return true;
+            }
+        });
 		
 		return view;
 	}
