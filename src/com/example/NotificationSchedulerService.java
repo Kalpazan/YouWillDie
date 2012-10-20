@@ -2,6 +2,9 @@ package com.example;
 
 import static android.app.Notification.FLAG_SHOW_LIGHTS;
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
+import static java.util.Calendar.DATE;
+import static java.util.Calendar.HOUR_OF_DAY;
+import static java.util.Calendar.MINUTE;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -26,12 +29,16 @@ public class NotificationSchedulerService extends Service {
 	private NotificationManager manager;
 	private NotificationProvider notificationProvider;
 
+	private static boolean alreadySchedled = false;
+	
 	@Override
 	public void onCreate() {
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		notificationProvider = new NotificationProvider(getApplicationContext());
 
-		scheduleNextNotification(60 * 3 * 1000);
+		if (!alreadySchedled) {
+			scheduleNextNotification(60 * 3 * 1000);
+		}
 	}
 
 	public void scheduleNextNotification(long delay) {
@@ -49,17 +56,23 @@ public class NotificationSchedulerService extends Service {
 
 					Calendar calendar = GregorianCalendar.getInstance();
 					calendar.setTimeInMillis(System.currentTimeMillis());
-					calendar.add(1, Calendar.DATE);
-					int randomHoursNumber = new Random().nextInt(5);
-					calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+					calendar.add(DATE, 1);
+					
+					int randomHoursNumber = new Random().nextInt(10);
+					calendar.set(HOUR_OF_DAY, 11 + randomHoursNumber);
+				
+					int randomMinsNumber = new Random().nextInt(60);
+					calendar.set(MINUTE, randomMinsNumber);
 
 					// diff between now and needed time
-					scheduleNextNotification(calendar.getTimeInMillis() - System.currentTimeMillis());
+					long timeToNextCall = calendar.getTimeInMillis() - System.currentTimeMillis();
+					scheduleNextNotification(timeToNextCall);
 				}
 			}
 		};
 
 		new Timer().schedule(task, delay);
+		alreadySchedled = true;
 	}
 
 	public void createInfoNotification(NotificationTemplate template) {
