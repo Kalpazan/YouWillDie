@@ -31,36 +31,11 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-        <LinearLayout
+        <ViewFlipper
+                android:id="@+id/view_flipper"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:orientation="vertical">
-
-            <TextView
-                    style="@style/AudioFileInfoOverlayText"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/day"
-                    android:textColor="#EEE3C4"
-                    android:textSize="20dp"
-                    />
-
-            <TextView
-                    android:id="@+id/notification_text"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/dead_fish"
-                    android:textColor="#EEE3C4"
-                    android:textSize="20dp"
-                    android:autoLink="web"
-                    />
-        </LinearLayout>
+                />
 
 
         <SlidingDrawer

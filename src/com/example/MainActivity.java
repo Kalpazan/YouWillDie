@@ -9,32 +9,25 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.AdapterView;
+import android.view.*;
+import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SlidingDrawer;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     private CountDownTimer timer;
     private TextView textTime;
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
+    private ViewFlipper flipper;
     
     
     /**
@@ -50,7 +43,15 @@ public class MainActivity extends Activity {
         buttonCreate();
         startCountDown();
         playSound();
-        
+
+        flipper = (ViewFlipper)findViewById(R.id.view_flipper);
+        flipper.setOnClickListener(this);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //int layouts[] = new int[]{ R.layout.view_1, R.layout.view_2};
+        //for (int layout : layouts)
+            flipper.addView(inflater.inflate(R.layout.view_1, null));
+            flipper.addView(inflater.inflate(R.layout.view_2, null));
+
         setupHistoryList();
         
         NotificationSchedulerService.startService(getApplicationContext());
@@ -165,6 +166,7 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                 toast.show();
+
             }
         });
     }
@@ -175,5 +177,9 @@ public class MainActivity extends Activity {
         toast.show();
     }
 
+    @Override
+    public void onClick(View view) {
+        flipper.showNext();
+    }
 }
 
