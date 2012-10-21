@@ -162,11 +162,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void buttonCreate() {
         final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
         toast.setGravity(0, 0, 0);
-        Button button = (Button) findViewById(R.id.button);
+
+        View button = findViewById(R.id.slow_down_button);
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                 toast.show();
-
             }
         });
     }
