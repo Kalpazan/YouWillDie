@@ -1,57 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mainLayout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@drawable/main_bg"
-    android:orientation="vertical" >
+              android:id="@+id/mainLayout"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@drawable/main_bg"
+              android:orientation="vertical">
 
-    <include layout="@layout/top_panel" android:id="@+id/top_panel" />
+    <include layout="@layout/top_panel" android:id="@+id/top_panel"/>
 
     <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
         <ViewFlipper
-            android:id="@+id/view_flipper"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
-
-        <SlidingDrawer
-            android:id="@+id/drawer"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="bottom"
-            android:content="@+id/content"
-            android:handle="@+id/handle" >
-
-            <LinearLayout
-                android:id="@+id/handle"
+                android:id="@+id/view_flipper"
                 android:layout_width="fill_parent"
-                android:layout_height="43dip"
-                android:background="@drawable/history_handle_bg"
-                android:gravity="center"
-                android:orientation="horizontal" >
+                android:layout_height="fill_parent">
+            <include layout="@layout/message_view"/>
+            <include layout="@layout/help_view"/>
+        </ViewFlipper>
 
-                <TextView
-                    android:id="@+id/history"
-                    style="@style/AudioFileInfoOverlayText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/older_messages"
-                    android:textSize="16dip" />
-            </LinearLayout>
+        <include layout="@layout/sliding_drawer"/>
 
-            <ListView
-                android:id="@+id/content"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@drawable/carbon_white_bg"
-                android:cacheColorHint="#000000"
-                android:listSelector="@drawable/list_selector" >
-            </ListView>
-        </SlidingDrawer>
     </FrameLayout>
 
 </LinearLayout>
