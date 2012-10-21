@@ -55,8 +55,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		notificationTime.setText(formatDate(provider.getNotofocationTime(position)));
 		thumb_image.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
-		
-		view.setClickable(true);
+
 		view.setOnLongClickListener(new OnLongClickListener() {
 
             public boolean onLongClick(View v) {
@@ -71,7 +70,7 @@ public class NotificationsListAdapter extends BaseAdapter {
                 return true;
             }
         });
-		
+
 		return view;
 	}
 

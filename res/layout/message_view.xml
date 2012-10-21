@@ -34,7 +34,7 @@
                           android:layout_height="fill_parent"
                           android:orientation="horizontal">
                 <Button
-                        android:id="@+id/button"
+                        android:id="@+id/share_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -42,7 +42,7 @@
                         android:text="share"
                         android:textSize="20dp"/>
                 <Button
-                        android:id="@+id/button"
+                        android:id="@+id/second_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
