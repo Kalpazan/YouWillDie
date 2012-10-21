@@ -62,11 +62,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         
         flipper = (ViewFlipper)findViewById(R.id.view_flipper);
         flipper.setOnClickListener(this);
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //int layouts[] = new int[]{ R.layout.view_1, R.layout.view_2};
-        //for (int layout : layouts)
-            flipper.addView(inflater.inflate(R.layout.view_1, null));
-            flipper.addView(inflater.inflate(R.layout.view_2, null));
 
         setupHistoryList();
         
