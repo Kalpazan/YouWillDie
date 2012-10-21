@@ -15,11 +15,24 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SlidingDrawer;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.bugsense.trace.BugSenseHandler;
+import com.example.points.PointsController;
+import com.example.store.Store;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -28,6 +41,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
     private ViewFlipper flipper;
+    
+    private PointsController pointsController;
+    private Store store;
     
     
     /**
@@ -41,9 +57,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
         buttonCreate();
-        startCountDown();
-        playSound();
-
+        store = new Store(getApplicationContext());
+        pointsController = new PointsController(this);
+        
         flipper = (ViewFlipper)findViewById(R.id.view_flipper);
         flipper.setOnClickListener(this);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -66,24 +82,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			}
 		};
 		new Timer().schedule(task, 0);
+
+		startCountDown();
+		playSound();
     }
 
     private void setupHistoryList() {
         ListView historyListView = (ListView) findViewById(R.id.content);
-        final NotificationProvider provider = new NotificationProvider(getApplicationContext());
-        listAdapter = new NotificationsListAdapter(this, provider);
+        final NotificationProvider provider = new NotificationProvider();
+		listAdapter = new NotificationsListAdapter(this, provider);
 		historyListView.setAdapter(listAdapter);
 
-//		final WebView notificationText = (WebView) findViewById(R.id.notification_text);
         final TextView notificationText = (TextView) findViewById(R.id.notification_text);
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
 
         historyListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 NotificationTemplate notification = provider.getNotifications()[position];
-//				notificationText.loadData(notification.getMainText(), "text/html", null);
                 notificationText.setText(notification.getMainText());
                 slider.animateClose();
+                pointsController.addPoints(5);
             }
         });
     }
@@ -167,6 +185,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
                 toast.show();
+                pointsController.addPoints(1);
             }
         });
     }
@@ -181,5 +200,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         flipper.showNext();
     }
+
+    public Store getStore() {
+		return store;
+	}
+    
+    public PointsController getPointsController() {
+		return pointsController;
+	}
 }
 

@@ -23,26 +23,29 @@ import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 
 import com.bugsense.trace.BugSenseHandler;
+import com.example.store.Store;
 
 public class NotificationSchedulerService extends Service {
 
 	private NotificationManager manager;
 	private NotificationProvider notificationProvider;
+	private Store store;
 
 	private static boolean alreadySchedled = false;
 	
 	@Override
 	public void onCreate() {
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
-		notificationProvider = new NotificationProvider(getApplicationContext());
-
+		notificationProvider = new NotificationProvider();
+		store = new Store(getApplicationContext());
+		
 		if (!alreadySchedled) {
 			scheduleNextNotification(60 * 3 * 1000);
 		}
 	}
 
 	public void scheduleNextNotification(long delay) {
-		final int lastNumber = notificationProvider.getLastNotificationNumber();
+		final int lastNumber = store.getLastNotificationNumber();
 
 		TimerTask task = new TimerTask() {
 			@Override
@@ -53,8 +56,8 @@ public class NotificationSchedulerService extends Service {
 
 					createInfoNotification(notificationProvider.getNotification(currentNotificationNumber));
 					
-					notificationProvider.updateLastNotificationNumber(currentNotificationNumber);
-					notificationProvider.saveNotificationTime(currentNotificationNumber, System.currentTimeMillis());
+					store.updateLastNotificationNumber(currentNotificationNumber);
+					store.saveNotificationTime(currentNotificationNumber, System.currentTimeMillis());
 					
 					Calendar calendar = GregorianCalendar.getInstance();
 					calendar.setTimeInMillis(System.currentTimeMillis());

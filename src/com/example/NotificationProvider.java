@@ -3,17 +3,8 @@ package com.example;
 import java.util.Arrays;
 import java.util.List;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
-
 public class NotificationProvider {
 
-	private static final String TIME_PREFIX = "time_of_";
-	private static final String LAST_NOTIFICATION_NUM = "lastNotificationNum";
-	private static final String STORE_NAME = "huj";
-	
 	private NotificationTemplate[] notifications = {
 			new NotificationTemplate("Click to see tits!", "(*)(.)", "c====3", R.drawable.icon_2),
 			new NotificationTemplate("Hi man!", " упи 61 консерву с мертвой рыбой, тебе они будут необходимы при межгалактическом перемещении", "c=3", R.drawable.icon_3),
@@ -30,13 +21,6 @@ public class NotificationProvider {
 			new NotificationTemplate("Hi man!", "≈сли ты хочешь, чтобы у теб€ были домашние животные, налови тараканов и пауков", "c=3", R.drawable.icon_3),
 	};
 	
-	private Context context;
-	
-	
-	public NotificationProvider(Context context) {
-		this.context = context;
-	}
-
 	public NotificationTemplate[] getNotifications() {
 		return notifications;
 	}
@@ -48,32 +32,6 @@ public class NotificationProvider {
 
 	public List<NotificationTemplate> getPreviousNotifications() {
 		return Arrays.asList(notifications);
-	}
-
-	public void saveNotificationTime(int notificationNumber, long time) {
-	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
-	    SharedPreferences.Editor editor = settings.edit();
-	    editor.putLong(TIME_PREFIX + notificationNumber, time);
-
-	    editor.commit();
-	}
-	
-	public long getNotofocationTime(int notificationNumber) {
-		SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
-	    return settings.getLong(TIME_PREFIX + notificationNumber, -1);
-	}
-	
-	public synchronized void updateLastNotificationNumber(int number) {
-	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
-	    SharedPreferences.Editor editor = settings.edit();
-	    editor.putInt(LAST_NOTIFICATION_NUM, number);
-
-	    editor.commit();
-	}
-	
-	public synchronized int getLastNotificationNumber() {
-	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
-	    return settings.getInt(LAST_NOTIFICATION_NUM, -1);
 	}
 
 	public boolean hasNotificationWithNumber(int number) {
