@@ -7,15 +7,16 @@
 
     <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:background="@drawable/help_view_icon"
+            android:layout_marginBottom="45dp">
      <TextView
             android:id="@+id/notification_text"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
             style="@style/AudioFileInfoOverlayText"
-            android:background="@drawable/help_view_icon"
-            android:text="@string/dead_pig"
+            android:text="@string/help_text"
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:autoLink="web">
