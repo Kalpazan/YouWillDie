@@ -12,4 +12,7 @@
     <color name="bottom_panel_bg_color">#3A2313</color>
     <color name="button_color">#DA6625</color>
 
+    <dimen name="margin_frame">20dp</dimen>
+
+
 </resources>
