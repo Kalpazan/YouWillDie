@@ -5,7 +5,7 @@ public class NotificationTemplate {
 	private String statusBarText;
 	private String mainText;
 	private String title;
-	private int icon = R.drawable.icon_1;
+	private int icon = R.drawable.icon_tongue;
 	
 	public NotificationTemplate(String title, String mainText, String statusBarText, int icon) {
 		this.statusBarText = statusBarText;
