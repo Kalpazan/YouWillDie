@@ -1,6 +1,11 @@
 <resources>
 
     <dimen name="corner_radius">15dp</dimen>
+
+    <!-- top panel -->
+    <dimen name="top_panel_size">100dp</dimen>
+    <dimen name="top_panel_bottom_padding">15dp</dimen>
+    <dimen name="top_panel_icon_size">70dp</dimen>
     
     <color name="message_bg_color">#FAF398</color>
     <color name="main_bg_color">#703E18</color>

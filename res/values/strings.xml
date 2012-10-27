@@ -18,6 +18,6 @@
         Следи за этим. Выполняя указания МПГЖНС, шансы будут расти в зависимости от активности действий
         Пока что все. До встречи на марсе, бля!</string>
     <string name="day">День - 60</string>
-    <string name="time_left" formatted="false">До дня X осталось:\\n %s дней %s ч %s м\\n %s.03d сек.</string>
+    <string name="time_left" formatted="false">50 д 12 ч 15 м 21.456</string>
 
 </resources>

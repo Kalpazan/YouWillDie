@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
     <item android:id="@+id/background">
         <shape>
             <corners android:radius="@dimen/corner_radius" />
+
             <gradient
-                    android:startColor="#ff444000"
-                    android:centerColor="#ff444000"
-                    android:centerY="0.75"
-                    android:endColor="#ff444000"
-                    android:angle="270"
-            />
+                android:angle="270"
+                android:endColor="#ff444000"
+                android:startColor="#ff847C00" />
         </shape>
     </item>
-    
-    <item android:id="@+id/secondaryProgress">
+
+    <!--
+    item android:id="@+id/secondaryProgress">
         <clip>
             <shape>
                 <corners android:radius="@dimen/corner_radius" />
                 <gradient
                         android:startColor="#80ffd300"
-                        android:centerColor="#80ffb600"
-                        android:centerY="0.75"
                         android:endColor="#a0ffcb00"
                         android:angle="270"
                 />
             </shape>
         </clip>
-    </item>
-    
+    </item
+    -->
+
     <item android:id="@+id/progress">
         <clip>
             <shape>
                 <corners android:radius="@dimen/corner_radius" />
+
                 <gradient
-                        android:startColor="#ffDA6625"
-                        android:centerColor="#ffDA6625"
-                        android:centerY="0.75"
-                        android:endColor="#ffDA6625"
-                        android:angle="270"
-                />
+                    android:angle="270"
+                    android:endColor="#ff7B3602"
+                    android:startColor="#ffDA6625" />
             </shape>
         </clip>
     </item>
-    
+
+    <item android:id="@+id/pattern">
+        <bitmap
+            android:src="@drawable/white_carbonfiber"
+            android:tileMode="repeat" />
+    </item>
+
 </layer-list>

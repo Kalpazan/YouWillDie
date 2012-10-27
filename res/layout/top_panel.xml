@@ -8,19 +8,20 @@
     android:orientation="horizontal"
     tools:ignore="ContentDescription" >
 
-	<LinearLayout 
-	    android:layout_width="100dp"
-	    android:layout_height="100dp"
-	    android:gravity="center_vertical|right">
-    <ImageView
-        android:id="@+id/survivor_icon"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center_vertical|right"
-        android:layout_marginRight="10dp"
-        android:src="@drawable/icon2" />
-	</LinearLayout>
-    
+    <LinearLayout
+        android:layout_width="@dimen/top_panel_size"
+        android:layout_height="@dimen/top_panel_size"
+        android:gravity="center_vertical|right" >
+
+        <ImageView
+            android:id="@+id/survivor_icon"
+            android:layout_width="@dimen/top_panel_icon_size"
+            android:layout_height="@dimen/top_panel_icon_size"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/icon2" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -28,7 +29,7 @@
 
         <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
@@ -38,9 +39,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginLeft="4dp"
                 android:gravity="left|bottom"
                 android:text="@string/time_left"
-                android:textSize="18dip" />
+                android:textSize="20dip" />
 
             <!--
                  ImageButton
@@ -52,7 +54,7 @@
                 android:background="@drawable/clock"
                 android:gravity="center_vertical"
                 android:padding="2dp"
-                android:text="замедлить!" /
+                android:text="замедлить!" /
             -->
         </FrameLayout>
 
@@ -60,13 +62,13 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal" >
-
+
             <FrameLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
-                android:layout_marginBottom="10dp"
-                android:layout_weight=".8"
+                android:layout_marginBottom="@dimen/top_panel_bottom_padding"
+                android:layout_weight=".7"
                 android:orientation="vertical" >
 
                 <ProgressBar
@@ -84,19 +86,20 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
                     android:gravity="left"
-                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="@dimen/corner_radius"
                     android:text="14/100"
                     android:textSize="12dp" />
-            </FrameLayout>
 
-            <TextView
-                android:id="@+id/bonus_points"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:text="+12"
-                android:textColor="#00ff00"
-                android:textSize="10dp" />
+                <TextView
+                    android:id="@+id/bonus_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:text="+12"
+                    android:textColor="#00ff00"
+                    android:textSize="10dp" 
+                    android:layout_marginRight="@dimen/corner_radius"/>
+            </FrameLayout>
 
             <!--
                      TextView
@@ -106,7 +109,7 @@
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="14dp"
                     android:text="новичек"
-                    android:textSize="16dp" /
+                    android:textSize="16dp" /
             -->
 
             <ImageButton
