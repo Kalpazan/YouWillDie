@@ -68,6 +68,14 @@
                     android:layout_gravity="left|center_vertical"
                     android:max="100"
                     android:progress="32" />
+                
+                <View 
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginRight="@dimen/progress_bar_text_margins"
+                    android:background="@drawable/scale_bitmap_pattern"
+                    />
 
                 <TextView
                     android:id="@+id/progressText"

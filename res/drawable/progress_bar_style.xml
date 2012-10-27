@@ -35,13 +35,5 @@
             </shape>
         </clip>
     </item>
-    <item>
-	        <bitmap
-	            xmlns:android="http://schemas.android.com/apk/res/android"
-	            android:src="@drawable/progress_scale"
-	            android:tileMode="repeat"
-	             />
-        
-    </item>
 
 </layer-list>
