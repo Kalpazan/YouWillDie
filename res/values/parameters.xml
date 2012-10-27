@@ -1,9 +1,10 @@
 <resources>
 
-    <item name="corner_radius" type="integer">15</item>
+    <dimen name="corner_radius">15dp</dimen>
     
     <color name="message_bg_color">#FAF398</color>
     <color name="main_bg_color">#703E18</color>
     <color name="bottom_panel_bg_color">#3A2313</color>
+    <color name="button_color">#DA6625</color>
 
 </resources>
