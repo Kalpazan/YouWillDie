@@ -13,8 +13,8 @@
     </style>
 
     <style name="timeLeftTextStyle">
-        <item name="android:textColor">#ff00FF00</item>
-        <item name="android:textSize">35sp</item>
+        <item name="android:textColor">@color/message_bg_color</item>
+        <item name="android:textSize">22dp</item>
     </style>
 
     <style name="levelProgressBar">

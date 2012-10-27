@@ -1,6 +1,7 @@
 <resources>
 
     <dimen name="corner_radius">15dp</dimen>
+    <dimen name="progress_bar_text_margins">7dp</dimen>
 
     <!-- top panel -->
     <dimen name="top_panel_size">100dp</dimen>

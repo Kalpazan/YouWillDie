@@ -9,16 +9,17 @@
     tools:ignore="ContentDescription" >
 
     <LinearLayout
-        android:layout_width="@dimen/top_panel_size"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/top_panel_size"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="5dp"
         android:gravity="center_vertical|right" >
 
         <ImageView
             android:id="@+id/survivor_icon"
             android:layout_width="@dimen/top_panel_icon_size"
             android:layout_height="@dimen/top_panel_icon_size"
-            android:layout_gravity="center_vertical|right"
-            android:layout_marginRight="6dp"
+            android:layout_gravity="center_vertical|left"
             android:src="@drawable/icon2" />
     </LinearLayout>
 
@@ -40,22 +41,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="4dp"
+                android:layout_marginBottom="4dp"
                 android:gravity="left|bottom"
-                android:text="@string/time_left"
-                android:textSize="20dip" />
+                android:text="@string/time_left" />
 
-            <!--
-                 ImageButton
-                android:id="@+id/slow_down_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/clock"
-                android:gravity="center_vertical"
-                android:padding="2dp"
-                android:text="замедлить!" /
-            -->
         </FrameLayout>
 
         <LinearLayout
@@ -78,16 +67,17 @@
                     android:layout_height="20dp"
                     android:layout_gravity="left|center_vertical"
                     android:max="100"
-                    android:progress="12" />
+                    android:progress="32" />
 
                 <TextView
                     android:id="@+id/progressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
+                    android:layout_marginLeft="@dimen/progress_bar_text_margins"
                     android:gravity="left"
-                    android:layout_marginLeft="@dimen/corner_radius"
                     android:text="14/100"
+                    android:textColor="@color/message_bg_color"
                     android:textSize="12dp" />
 
                 <TextView
@@ -95,34 +85,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="@dimen/progress_bar_text_margins"
                     android:text="+12"
                     android:textColor="#00ff00"
-                    android:textSize="10dp" 
-                    android:layout_marginRight="@dimen/corner_radius"/>
+                    android:textSize="12dp" />
             </FrameLayout>
-
-            <!--
-                     TextView
-                    android:id="@+id/rank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="14dp"
-                    android:text="новичек"
-                    android:textSize="16dp" /
-            -->
 
             <Button
                 android:id="@+id/help_button"
                 android:layout_width="0dp"
-                android:layout_weight=".2"
-                android:textColor="@color/button_color"
-                android:textSize="16dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_weight=".2"
                 android:background="#00000000"
                 android:gravity="center"
-                android:text="\?" />
+                android:text="\?"
+                android:textColor="@color/button_color"
+                android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
 

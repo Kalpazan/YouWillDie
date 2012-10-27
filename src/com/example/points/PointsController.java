@@ -1,7 +1,6 @@
 package com.example.points;
 
 import static android.graphics.Color.TRANSPARENT;
-import android.graphics.Color;
 import android.view.animation.AlphaAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -74,6 +73,15 @@ public class PointsController {
 		AlphaAnimation animation = new AlphaAnimation((float)1, (float)0);
 		animation.setDuration(ANIMATION_DURATION);
 		animation.setFillAfter(true);
+		
+//		ScaleAnimation scaleAnimation = new ScaleAnimation((float)1, (float)1.3, (float)1, (float)1.3, RELATIVE_TO_SELF, (float).5, RELATIVE_TO_SELF, (float).5);
+//		scaleAnimation.setDuration(ANIMATION_DURATION);
+//		scaleAnimation.setFillAfter(false);
+//		
+//		AnimationSet animationSet = new AnimationSet(true);
+//		animationSet.addAnimation(animation);
+//		animationSet.addAnimation(scaleAnimation);
+
 		bonusText.startAnimation(animation);
 		
 		int points = getCurrentPoints();
