@@ -95,6 +95,12 @@ public class MainActivity extends Activity {
 		}
     }
     
+    private void showMessageView() {
+    	if (!isMessageViewActive() && canShowMessageView()) {
+    		flipper.showNext();
+    	}
+	}
+    
     private boolean canShowMessageView() {
     	return store.getLastNotificationNumber() != -1;
 	}
@@ -160,10 +166,11 @@ public class MainActivity extends Activity {
             int id = extras.getInt(NotificationSchedulerService.EXTRA_NAME);
             NotificationTemplate notification = provider.getNotification(id);
             messagesController.setCurrentMessage(notification);
+            showMessageView();
         }
     }
 
-    @Override
+	@Override
     protected void onPause() {
         super.onPause();
         timer.cancel();
