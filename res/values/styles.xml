@@ -19,10 +19,10 @@
 
     <style name="levelProgressBar">
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:progressDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:progressDrawable">@drawable/progress_bar_style</item>
         <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
-        <item name="android:minHeight">20dip</item>
-        <item name="android:maxHeight">20dip</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:maxHeight">30dip</item>
     </style>
 
 </resources>

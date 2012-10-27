@@ -34,7 +34,7 @@ import com.bugsense.trace.BugSenseHandler;
 import com.example.points.PointsController;
 import com.example.store.Store;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity {
 
     private CountDownTimer timer;
     private TextView textTime;
@@ -61,14 +61,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
         pointsController = new PointsController(this);
         
         flipper = (ViewFlipper)findViewById(R.id.view_flipper);
-        flipper.setOnClickListener(this);
+        findViewById(R.id.help_button).setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flipper.showNext();
+            }
+        });
 
         setupHistoryList();
         
         NotificationSchedulerService.startService(getApplicationContext());
         
         listAdapter.notifyDataSetChanged();
-        
         
         TimerTask task = new TimerTask() {
 			@Override
@@ -173,27 +177,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     public void buttonCreate() {
-        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
-        toast.setGravity(0, 0, 0);
-
-        View button = findViewById(R.id.slow_down_button);
-        button.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View view) {
-                toast.show();
-                pointsController.addPoints(1);
-            }
-        });
+//        final Toast toast = Toast.makeText(getApplicationContext(), "is not available for you, sorry :(", LENGTH_SHORT);
+//        toast.setGravity(0, 0, 0);
+//
+//        View button = findViewById(R.id.slow_down_button);
+//        button.setOnClickListener(new Button.OnClickListener() {
+//            public void onClick(View view) {
+//                toast.show();
+//                pointsController.addPoints(1);
+//            }
+//        });
     }
 
     public void showMessage(String string) {
         final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_SHORT);
         toast.setGravity(0, 0, 0);
         toast.show();
-    }
-
-    @Override
-    public void onClick(View view) {
-        flipper.showNext();
     }
 
     public Store getStore() {

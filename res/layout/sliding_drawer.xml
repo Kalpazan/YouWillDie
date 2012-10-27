@@ -16,7 +16,7 @@
                 android:id="@+id/handle"
                 android:layout_width="fill_parent"
                 android:layout_height="43dip"
-                android:background="@drawable/history_handle_bg"
+                android:background="#3A2313"
                 android:gravity="center"
                 android:orientation="horizontal">
 
