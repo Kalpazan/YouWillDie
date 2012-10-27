@@ -27,6 +27,7 @@ import com.example.store.Store;
 
 public class NotificationSchedulerService extends Service {
 
+	public static final String EXTRA_NAME = "com.example.msgId";
 	private NotificationManager manager;
 	private NotificationProvider notificationProvider;
 	private Store store;
@@ -54,7 +55,7 @@ public class NotificationSchedulerService extends Service {
 
 				if (notificationProvider.hasNotificationWithNumber(currentNotificationNumber)) {
 
-					createInfoNotification(notificationProvider.getNotification(currentNotificationNumber));
+					createInfoNotification(notificationProvider.getNotification(currentNotificationNumber), currentNotificationNumber);
 					
 					store.updateLastNotificationNumber(currentNotificationNumber);
 					store.saveNotificationTime(currentNotificationNumber, System.currentTimeMillis());
@@ -80,12 +81,12 @@ public class NotificationSchedulerService extends Service {
 		alreadySchedled = true;
 	}
 
-	public void createInfoNotification(NotificationTemplate template) {
+	public void createInfoNotification(NotificationTemplate template, int notificationId) {
 		Context context = getApplicationContext();
 		manager = (NotificationManager) getApplicationContext()
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 		Intent notificationIntent = new Intent(context, MainActivity.class);
-		notificationIntent.putExtra("msg", template.getMainText());
+		notificationIntent.putExtra(EXTRA_NAME, notificationId);
 
 		NotificationCompat.Builder nb = new NotificationCompat.Builder(context)
 				.setSmallIcon(template.getIcon())

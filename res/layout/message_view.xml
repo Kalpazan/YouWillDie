@@ -18,7 +18,7 @@
                 android:textColor="@color/bottom_panel_bg_color"
                 android:textSize="30dp"/>
         <ImageView
-                android:id="@+id/list_image"
+                android:id="@+id/messageIcon"
                 android:layout_height="60dp"
                 android:layout_width="wrap_content"
                 android:layout_gravity="right"
@@ -55,12 +55,14 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:text="@string/dead_fish"
+                        android:autoLink="web"
                         android:textColor="@color/bottom_panel_bg_color"
                         android:textSize="20dp"
-                        android:autoLink="web"/>
+                        />
 
             </ScrollView>
+            
+            
             <Button
                     android:id="@+id/share_button"
                     android:background="@drawable/button"
