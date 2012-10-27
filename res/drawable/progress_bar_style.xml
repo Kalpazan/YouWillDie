@@ -40,10 +40,6 @@
         </clip>
     </item>
 
-    <item android:id="@+id/pattern">
-        <bitmap
-            android:src="@drawable/white_carbonfiber"
-            android:tileMode="repeat" />
-    </item>
+    
 
 </layer-list>
