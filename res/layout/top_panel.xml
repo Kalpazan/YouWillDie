@@ -11,12 +11,13 @@
 	<LinearLayout 
 	    android:layout_width="100dp"
 	    android:layout_height="100dp"
-	    android:gravity="center_horizontal">
+	    android:gravity="center_vertical|right">
     <ImageView
         android:id="@+id/survivor_icon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="10dp"
         android:src="@drawable/icon2" />
 	</LinearLayout>
     

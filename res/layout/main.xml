@@ -3,7 +3,7 @@
               android:id="@+id/mainLayout"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="#703E18"
+              android:background="@color/main_bg_color"
               android:orientation="vertical">
 
     <LinearLayout
