@@ -12,9 +12,8 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_frame"
-                android:layout_marginLeft="@dimen/margin_frame"
-                android:layout_gravity="left"
+                android:layout_marginLeft="40dp"
+                android:layout_gravity="left|bottom"
                 android:text="@string/day"
                 android:textColor="@color/bottom_panel_bg_color"
                 android:textSize="30dp"/>
@@ -29,7 +28,7 @@
 
 
         <ImageView android:src="@drawable/corner"
-                   android:layout_height="15dp"
+                   android:layout_height="10dp"
                    android:layout_width="wrap_content"
                    android:layout_marginRight="@dimen/margin_frame"
                    android:layout_gravity="right"/>
@@ -44,19 +43,20 @@
                      android:layout_marginBottom="65dp"
                      android:orientation="vertical">
             <ScrollView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:padding="@dimen/margin_frame"
-                    >
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/margin_frame"
+                    android:paddingRight="@dimen/margin_frame"
+                    android:paddingTop="@dimen/margin_frame"
+                    android:paddingBottom="60dp">
+
                 <TextView
                         android:id="@+id/notification_text"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-
                         android:gravity="center_horizontal"
-
                         android:text="@string/dead_fish"
-                        android:textColor="#000000"
+                        android:textColor="@color/bottom_panel_bg_color"
                         android:textSize="20dp"
                         android:autoLink="web"/>
 
@@ -67,13 +67,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
-                    android:layout_marginRight="@dimen/margin_frame"
-                    android:layout_marginBottom="@dimen/margin_frame"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
                     android:clickable="true"
-                    android:padding="10dp"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="share"
                     android:textColor="@color/message_bg_color"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
         </FrameLayout>
 
 </LinearLayout>
