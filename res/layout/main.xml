@@ -22,8 +22,9 @@
                 android:id="@+id/view_flipper"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
+                
+			<include layout="@layout/help_view"/>
             <include layout="@layout/message_view"/>
-            <include layout="@layout/help_view"/>
         </ViewFlipper>
 
         <include layout="@layout/sliding_drawer"/>
