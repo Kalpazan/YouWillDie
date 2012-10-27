@@ -33,10 +33,11 @@
 
         <ListView
                 android:id="@+id/content"
+                android:divider="@color/main_bg_color"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@color/main_bg_color"
-                android:cacheColorHint="#000000"
+                android:cacheColorHint="@color/bottom_panel_bg_color"
                 android:listSelector="@drawable/list_selector">
         </ListView>
     </SlidingDrawer>
