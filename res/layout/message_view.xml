@@ -7,36 +7,32 @@
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
+                 android:layout_marginTop="@dimen/margin_frame"
                  android:orientation="horizontal">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_frame"
+                android:layout_marginBottom="@dimen/margin_frame"
                 android:layout_marginLeft="@dimen/margin_frame"
                 android:layout_gravity="left"
                 android:text="@string/day"
                 android:textColor="@color/bottom_panel_bg_color"
-                android:textSize="35dp"/>
+                android:textSize="30dp"/>
         <ImageView
                 android:id="@+id/list_image"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_width="wrap_content"
-
                 android:layout_gravity="right"
-                android:layout_marginRight="@dimen/margin_frame"
-                android:layout_marginTop="@dimen/margin_frame"
-                android:src="@drawable/icon_5"/>
+                android:layout_marginBottom="@dimen/margin_frame"
+                android:src="@drawable/icon_tongue"/>
     </FrameLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-                  android:orientation="vertical">
 
-        <ImageView android:layout_height="wrap_content"
-                   android:layout_width="fill_parent"
-                   android:src="@drawable/corner"
-                android:layout_gravity="right"/>
+        <ImageView android:src="@drawable/corner"
+                   android:layout_height="15dp"
+                   android:layout_width="wrap_content"
+                   android:layout_marginRight="@dimen/margin_frame"
+                   android:layout_gravity="right"/>
 
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                      android:gravity="center_vertical"
@@ -49,21 +45,21 @@
                      android:orientation="vertical">
             <ScrollView
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    android:layout_height="fill_parent"
+                    android:padding="@dimen/margin_frame"
+                    >
                 <TextView
                         android:id="@+id/notification_text"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_frame"
-                        android:layout_marginRight="@dimen/margin_frame"
-                        android:layout_marginTop="@dimen/margin_frame"
-                        android:layout_marginBottom="@dimen/margin_frame"
-                        android:layout_gravity="center"
+
+                        android:gravity="center_horizontal"
+
                         android:text="@string/dead_fish"
                         android:textColor="#000000"
                         android:textSize="20dp"
-                        android:autoLink="web">
-                </TextView>
+                        android:autoLink="web"/>
+
             </ScrollView>
             <Button
                     android:id="@+id/share_button"
@@ -73,12 +69,13 @@
                     android:layout_gravity="right|bottom"
                     android:layout_marginRight="@dimen/margin_frame"
                     android:layout_marginBottom="@dimen/margin_frame"
+                    android:clickable="true"
                     android:padding="10dp"
                     android:text="share"
-                    android:textColor="#FAF398"
+                    android:textColor="@color/message_bg_color"
                     android:textSize="20dp"/>
         </FrameLayout>
-    </LinearLayout>
+
 </LinearLayout>
 
 
