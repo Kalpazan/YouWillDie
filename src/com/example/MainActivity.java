@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
     
     private MessageDisplayController messagesController;
     private NotificationProvider provider = new NotificationProvider();
-    
+    private Button helpButton;
     
     @Override
     public void onCreate(Bundle bundle) {
@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
         ShareButtonListener shareBtnListener = new ShareButtonListener(messagesController, pointsController);
         findViewById(R.id.share_button).setOnClickListener(shareBtnListener);
         
-        final Button helpButton = (Button) findViewById(R.id.help_button);
+        helpButton = (Button) findViewById(R.id.help_button);
         flipper = (ViewFlipper)findViewById(R.id.view_flipper);
         
         if (canShowMessageView() && !isMessageViewActive() && !messagesController.hasMessage() ) {
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 
     private void toggleHelp(ViewFlipper flipper, Button helpButton) {
 		boolean messageViewActive = isMessageViewActive();
-		if (messageViewActive && canShowMessageView()) {
+		if (messageViewActive || canShowMessageView()) {
 			helpButton.setText(messageViewActive ? "Ok" : "?");
 	    	flipper.showNext();
 		}
@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
     
     private void showMessageView() {
     	if (!isMessageViewActive() && canShowMessageView()) {
-    		flipper.showNext();
+    		toggleHelp(flipper, helpButton);
     	}
 	}
     
@@ -137,7 +137,6 @@ public class MainActivity extends Activity {
         textTime = (TextView) findViewById(R.id.textTime);
         Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
         textTime.setTypeface(type);
-//        textTime.setTextSize(35);
         final Calendar finalDate = Calendar.getInstance();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
         timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this).start();
