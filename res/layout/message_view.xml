@@ -28,7 +28,7 @@
 
 
         <ImageView android:src="@drawable/corner"
-                   android:layout_height="10dp"
+                   android:layout_height="7dp"
                    android:layout_width="wrap_content"
                    android:layout_marginRight="@dimen/margin_frame"
                    android:layout_gravity="right"/>
