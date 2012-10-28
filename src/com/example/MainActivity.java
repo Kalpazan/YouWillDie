@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
         
         provider = new NotificationProvider();
         messagesController = new MessageDisplayController(provider, this);
-        ShareButtonListener shareBtnListener = new ShareButtonListener(messagesController, pointsController);
+        ShareButtonListener shareBtnListener = new ShareButtonListener(MainActivity.this, messagesController, pointsController);
         findViewById(R.id.share_button).setOnClickListener(shareBtnListener);
         
         Button helpButton = (Button) findViewById(R.id.help_button);
