@@ -2,18 +2,15 @@ package com.example;
 
 import static android.app.Notification.FLAG_SHOW_LIGHTS;
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
-import static java.util.Calendar.DATE;
-import static java.util.Calendar.HOUR_OF_DAY;
-import static java.util.Calendar.MINUTE;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
-import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -23,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.example.store.Store;
@@ -37,9 +35,9 @@ public class NotificationSchedulerService extends Service {
 	private static boolean alreadySchedled = false;
 
 	private static ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(1);
-	
+
 	@Override
-	public void onCreate() {
+	public int onStartCommand(Intent intent, int flags, int startId) {
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		notificationProvider = new NotificationProvider();
 		store = new Store(getApplicationContext());
@@ -54,27 +52,34 @@ public class NotificationSchedulerService extends Service {
 				scheduleNextNotification(timeToNextCall);
 			}
 		}
+		
+		return Service.START_STICKY;
 	}
-
+	
 	public void scheduleNextNotification(long delay) {
-		final int lastNumber = store.getLastNotificationNumber();
 		if (delay < 0) delay = 0;
+		Log.d("notification", "scheduling Next Notification for delay "+ delay);
 		
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
-				int currentNotificationNumber = lastNumber + 1;
-
+				Log.d("notification", "running task");
+				final int currentNotificationNumber = store.getLastNotificationNumber() + 1;
+				Log.d("notification", "curr notif number = " + currentNotificationNumber);
+				
 				if (notificationProvider.hasNotificationWithNumber(currentNotificationNumber)) {
-
+					Log.d("notification", "sending this notification");
 					createInfoNotification(notificationProvider.getNotification(currentNotificationNumber), currentNotificationNumber);
 					
+					Log.d("notification", "updating store");
 					store.updateLastNotificationNumber(currentNotificationNumber);
 					long currentTime = System.currentTimeMillis();
 					store.saveNotificationTime(currentNotificationNumber, currentTime);
 					
 					long nextNotificationTime = getNextNotificationTime(currentTime);
+					Log.d("notification", "next notification time = " + nextNotificationTime);
 					long timeToNextCall = nextNotificationTime - currentTime;
+					Log.d("notification", "time to next call = " + timeToNextCall);
 					scheduleNextNotification(timeToNextCall);
 				}
 			}
@@ -87,18 +92,25 @@ public class NotificationSchedulerService extends Service {
 	private long getNextNotificationTime(long lastNotificationTime) {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
-//		calendar.add(DATE, 1);
-//		
-//		int randomHoursNumber = new Random().nextInt(10);
-//		calendar.set(HOUR_OF_DAY, 11 + randomHoursNumber);
-//	
-//		int randomMinsNumber = new Random().nextInt(60);
-//		calendar.set(MINUTE, randomMinsNumber);
+		calendar.add(Calendar.DATE, 1);
 		
-		calendar.add(Calendar.MINUTE, 10);
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+	
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(Calendar.MINUTE, randomMinsNumber);
 		
 		return calendar.getTimeInMillis();
 	}
+	
+	public void setOneTimeAlarm() {
+		  Intent intent = new Intent(this, BootListener.class);
+		  intent.setAction(Intent.ACTION_RUN);
+		  PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+		  AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+		  am.set(AlarmManager.ELAPSED_REALTIME, System.currentTimeMillis() + (5 * 1000), pendingIntent);
+	}
+	
 	
 	public void createInfoNotification(NotificationTemplate template, int notificationId) {
 		Context context = getApplicationContext();
