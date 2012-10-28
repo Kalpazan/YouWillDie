@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.store.Store;
@@ -22,6 +23,8 @@ public class NotificationsListAdapter extends BaseAdapter {
 	private NotificationProvider provider;
 	private Store store;
 	
+	private int previousSize;
+	
 	public NotificationsListAdapter(MainActivity a, NotificationProvider provider) {
 		activity = a;
 		inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -30,15 +33,21 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
-		return store.getLastNotificationNumber() + 1;
+		int size = store.getLastNotificationNumber() + 1;
+		if (size != previousSize) {
+			previousSize = size;
+			notifyDataSetChanged();
+		}
+		previousSize = size;
+		return size;
 	}
 
 	public Object getItem(int position) {
-		return position;
+		return flipPosition(position);
 	}
 
 	public long getItemId(int position) {
-		return position;
+		return flipPosition(position);
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {

@@ -11,6 +11,8 @@ import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -33,6 +35,8 @@ public class NotificationSchedulerService extends Service {
 	private Store store;
 
 	private static boolean alreadySchedled = false;
+
+	private static ScheduledThreadPoolExecutor scheduledThreadPoolExecutor = new ScheduledThreadPoolExecutor(1);
 	
 	@Override
 	public void onCreate() {
@@ -41,13 +45,21 @@ public class NotificationSchedulerService extends Service {
 		store = new Store(getApplicationContext());
 		
 		if (!alreadySchedled) {
-			scheduleNextNotification(60 * 1 * 1000);
+			if (store.getLastNotificationNumber() == -1) {
+				scheduleNextNotification(60 * 10 * 1000);
+			} else {
+				long lastNotificationTime = store.getNotofocationTime(store.getLastNotificationNumber());
+				long nextNotificationTime = getNextNotificationTime(lastNotificationTime);
+				long timeToNextCall = nextNotificationTime - System.currentTimeMillis();
+				scheduleNextNotification(timeToNextCall);
+			}
 		}
 	}
 
 	public void scheduleNextNotification(long delay) {
 		final int lastNumber = store.getLastNotificationNumber();
-
+		if (delay < 0) delay = 0;
+		
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
@@ -58,29 +70,36 @@ public class NotificationSchedulerService extends Service {
 					createInfoNotification(notificationProvider.getNotification(currentNotificationNumber), currentNotificationNumber);
 					
 					store.updateLastNotificationNumber(currentNotificationNumber);
-					store.saveNotificationTime(currentNotificationNumber, System.currentTimeMillis());
+					long currentTime = System.currentTimeMillis();
+					store.saveNotificationTime(currentNotificationNumber, currentTime);
 					
-					Calendar calendar = GregorianCalendar.getInstance();
-					calendar.setTimeInMillis(System.currentTimeMillis());
-					calendar.add(DATE, 1);
-					
-					int randomHoursNumber = new Random().nextInt(10);
-					calendar.set(HOUR_OF_DAY, 11 + randomHoursNumber);
-				
-					int randomMinsNumber = new Random().nextInt(60);
-					calendar.set(MINUTE, randomMinsNumber);
-
-					// diff between now and needed time
-					long timeToNextCall = calendar.getTimeInMillis() - System.currentTimeMillis();
+					long nextNotificationTime = getNextNotificationTime(currentTime);
+					long timeToNextCall = nextNotificationTime - currentTime;
 					scheduleNextNotification(timeToNextCall);
 				}
 			}
 		};
 
-		new Timer().schedule(task, delay);
+		scheduledThreadPoolExecutor.schedule(task, delay, TimeUnit.MILLISECONDS);
 		alreadySchedled = true;
 	}
 
+	private long getNextNotificationTime(long lastNotificationTime) {
+		Calendar calendar = GregorianCalendar.getInstance();
+		calendar.setTimeInMillis(lastNotificationTime);
+		calendar.add(DATE, 1);
+		
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(HOUR_OF_DAY, 11 + randomHoursNumber);
+	
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(MINUTE, randomMinsNumber);
+		
+//		calendar.add(Calendar.MINUTE, 15);
+		
+		return calendar.getTimeInMillis();
+	}
+	
 	public void createInfoNotification(NotificationTemplate template, int notificationId) {
 		Context context = getApplicationContext();
 		manager = (NotificationManager) getApplicationContext()

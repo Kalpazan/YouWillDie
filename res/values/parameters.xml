@@ -9,8 +9,8 @@
     <dimen name="top_panel_icon_size">70dp</dimen>
     
     <color name="message_bg_color">#FAF398</color>
-    <color name="main_bg_color">#703E18</color>
-    <color name="bottom_panel_bg_color">#3A2313</color>
+    <color name="main_bg_color">#5C341B</color>
+    <color name="bottom_panel_bg_color">#39190E</color>
     <color name="button_color">#DA6625</color>
 
     <dimen name="margin_frame">20dp</dimen>

@@ -15,7 +15,7 @@ public class PointsController {
 	private TextView bonusText;
 	private ProgressBar progressBar;
 	private TextView progressText;
-//	private TextView rank;
+	private TextView rank;
 	
 	private Store store;
 
@@ -32,7 +32,7 @@ public class PointsController {
 		store = activity.getStore();
 
 		progressText = (TextView) activity.findViewById(R.id.progressText);
-//		rank = (TextView) activity.findViewById(R.id.rank);
+		rank = (TextView) activity.findViewById(R.id.rank);
 		bonusText = (TextView) activity.findViewById(R.id.bonus_points);
 		bonusText.setTextColor(TRANSPARENT);
 
@@ -55,7 +55,7 @@ public class PointsController {
 		nextLevelPoints -= maxLevel(currentLevel)? 0 : levels[currentLevel].pointsNeeded;
 		progressBar.setProgress((points * 100) / nextLevelPoints);
 		
-//		rank.setText("Вы " + levels[currentLevel].name);
+		rank.setText("вы " + levels[currentLevel].name + "!");
 	}	
 	
 	private boolean maxLevel(int currentLevel) {
