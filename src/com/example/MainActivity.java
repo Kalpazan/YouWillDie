@@ -27,7 +27,6 @@ import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.example.controller.MessageDisplayController;
-import com.example.listeners.ShareButtonListener;
 import com.example.points.PointsController;
 import com.example.store.Store;
 
@@ -56,8 +55,14 @@ public class MainActivity extends Activity {
         
         provider = new NotificationProvider();
         messagesController = new MessageDisplayController(provider, this);
-        ShareButtonListener shareBtnListener = new ShareButtonListener(MainActivity.this, messagesController, pointsController);
-        findViewById(R.id.share_button).setOnClickListener(shareBtnListener);
+
+        findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SendToChooser sendToChooser = new SendToChooser(MainActivity.this, messagesController.getCurrentMessage().getMainText(), pointsController);
+                sendToChooser.sendViaCustomChooser();
+            }
+        });
         
         Button helpButton = (Button) findViewById(R.id.help_button);
         
@@ -103,7 +108,7 @@ public class MainActivity extends Activity {
         
         int maxVolume = 11;
 		float log1=(float)(Math.log(maxVolume-2)/Math.log(maxVolume));
-        mediaPlayer.setVolume(1-log1, 1-log1);
+        mediaPlayer.setVolume(1 - log1, 1 - log1);
         mediaPlayer.start();
     }
 

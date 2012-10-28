@@ -8,6 +8,7 @@ import android.content.pm.ResolveInfo;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.example.points.PointsController;
 
 import java.util.List;
 
@@ -16,9 +17,10 @@ public class SendToChooser {
 
     private Activity activity;
     private String messageText;
+    private PointsController pointsController;
 
-    public SendToChooser(Activity activity, String messageText) {
-
+    public SendToChooser(Activity activity, String messageText, PointsController pointsController) {
+        this.pointsController=pointsController;
         this.messageText = messageText;
         this.activity = activity;
     }
@@ -39,13 +41,15 @@ public class SendToChooser {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                pointsController.addPoints(20);
                 ResolveInfo ri = (ResolveInfo) listView.getAdapter().getItem(position);
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setClassName(ri.activityInfo.packageName, ri.activityInfo.name);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Sample subject");
-                intent.putExtra(Intent.EXTRA_TEXT, "Sample text");
+                intent.putExtra(Intent.EXTRA_TEXT, messageText);
 
                 activity.startActivity(intent);
             }
