@@ -46,7 +46,7 @@ public class NotificationSchedulerService extends Service {
 		
 		if (!alreadySchedled) {
 			if (store.getLastNotificationNumber() == -1) {
-				scheduleNextNotification(60 * 10 * 1000);
+				scheduleNextNotification(60 * 3 * 1000);
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(store.getLastNotificationNumber());
 				long nextNotificationTime = getNextNotificationTime(lastNotificationTime);
