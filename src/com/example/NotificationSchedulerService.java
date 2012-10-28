@@ -46,7 +46,7 @@ public class NotificationSchedulerService extends Service {
 		
 		if (!alreadySchedled) {
 			if (store.getLastNotificationNumber() == -1) {
-				scheduleNextNotification(60 * 3 * 1000);
+				scheduleNextNotification(30 * 1 * 1000);
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(store.getLastNotificationNumber());
 				long nextNotificationTime = getNextNotificationTime(lastNotificationTime);
@@ -87,15 +87,15 @@ public class NotificationSchedulerService extends Service {
 	private long getNextNotificationTime(long lastNotificationTime) {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
-		calendar.add(DATE, 1);
+//		calendar.add(DATE, 1);
+//		
+//		int randomHoursNumber = new Random().nextInt(10);
+//		calendar.set(HOUR_OF_DAY, 11 + randomHoursNumber);
+//	
+//		int randomMinsNumber = new Random().nextInt(60);
+//		calendar.set(MINUTE, randomMinsNumber);
 		
-		int randomHoursNumber = new Random().nextInt(10);
-		calendar.set(HOUR_OF_DAY, 11 + randomHoursNumber);
-	
-		int randomMinsNumber = new Random().nextInt(60);
-		calendar.set(MINUTE, randomMinsNumber);
-		
-//		calendar.add(Calendar.MINUTE, 15);
+		calendar.add(Calendar.MINUTE, 10);
 		
 		return calendar.getTimeInMillis();
 	}
