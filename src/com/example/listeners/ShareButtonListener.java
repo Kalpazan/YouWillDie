@@ -21,7 +21,6 @@ public class ShareButtonListener implements OnClickListener {
 		this.pointsController = pointsController;
 	}
 
-	@Override
 	public void onClick(View v) {
 		pointsController.addPoints(20);
         Intent intent = new Intent(v.getContext(), MainActivity.class);

@@ -41,7 +41,7 @@ public class NotificationSchedulerService extends Service {
 		store = new Store(getApplicationContext());
 		
 		if (!alreadySchedled) {
-			scheduleNextNotification(60 * 3 * 1000);
+			scheduleNextNotification(60 * 1 * 1000);
 		}
 	}
 

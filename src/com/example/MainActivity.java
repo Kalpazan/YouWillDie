@@ -24,7 +24,6 @@ import android.widget.ListView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.example.controller.MessageDisplayController;
@@ -38,14 +37,12 @@ public class MainActivity extends Activity {
     private TextView textTime;
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
-    private ViewFlipper flipper;
     
     private PointsController pointsController;
     private Store store;
     
     private MessageDisplayController messagesController;
     private NotificationProvider provider = new NotificationProvider();
-    private Button helpButton;
     
     @Override
     public void onCreate(Bundle bundle) {
@@ -62,18 +59,13 @@ public class MainActivity extends Activity {
         ShareButtonListener shareBtnListener = new ShareButtonListener(messagesController, pointsController);
         findViewById(R.id.share_button).setOnClickListener(shareBtnListener);
         
-        helpButton = (Button) findViewById(R.id.help_button);
-        flipper = (ViewFlipper)findViewById(R.id.view_flipper);
+        Button helpButton = (Button) findViewById(R.id.help_button);
         
-        if (canShowMessageView() && !isMessageViewActive() && !messagesController.hasMessage() ) {
-        	messagesController.setCurrentMessage(provider.getNotification(store.getLastNotificationNumber()));
-			toggleHelp(flipper, helpButton);
-		}
+        messagesController.init();
         
 		helpButton.setOnClickListener(new Button.OnClickListener() {
-            @Override
             public void onClick(View view) {
-				toggleHelp(flipper, helpButton);
+				messagesController.flipViews();
             }
         });
 
@@ -87,28 +79,6 @@ public class MainActivity extends Activity {
 		playSound();
     }
 
-    private void toggleHelp(ViewFlipper flipper, Button helpButton) {
-		boolean messageViewActive = isMessageViewActive();
-		if (messageViewActive || canShowMessageView()) {
-			helpButton.setText(messageViewActive ? "Ok" : "?");
-	    	flipper.showNext();
-		}
-    }
-    
-    private void showMessageView() {
-    	if (!isMessageViewActive() && canShowMessageView()) {
-    		toggleHelp(flipper, helpButton);
-    	}
-	}
-    
-    private boolean canShowMessageView() {
-    	return store.getLastNotificationNumber() != -1;
-	}
-    
-    private boolean isMessageViewActive() {
-    	return flipper.getDisplayedChild() == 1;
-	}
-    
     private void setupHistoryList(final NotificationProvider provider, final MessageDisplayController messageController) {
         ListView historyListView = (ListView) findViewById(R.id.content);
 		listAdapter = new NotificationsListAdapter(this, provider);
@@ -120,7 +90,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 NotificationTemplate notification = provider.getNotifications()[position];
                 messageController.setCurrentMessage(notification);
-                
+                messageController.showMessageView();
                 slider.animateClose();
                 pointsController.addPoints(5);
             }
@@ -165,7 +135,7 @@ public class MainActivity extends Activity {
             int id = extras.getInt(NotificationSchedulerService.EXTRA_NAME);
             NotificationTemplate notification = provider.getNotification(id);
             messagesController.setCurrentMessage(notification);
-            showMessageView();
+            messagesController.showMessageView();
         }
     }
 
