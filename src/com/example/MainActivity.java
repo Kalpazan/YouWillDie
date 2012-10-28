@@ -5,6 +5,7 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -32,8 +33,9 @@ import com.example.store.Store;
 
 public class MainActivity extends Activity {
 
-    private CountDownTimer timer;
+    private FinalCountdown timer;
     private TextView textTime;
+    private TextView textDaysLeft;
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
     
@@ -114,11 +116,14 @@ public class MainActivity extends Activity {
 
     public void startCountDown() {
         textTime = (TextView) findViewById(R.id.textTime);
+
         Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
         textTime.setTypeface(type);
         final Calendar finalDate = Calendar.getInstance();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
-        timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this).start();
+        timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this);
+        timer.start();
+
     }
 
     @Override
@@ -150,6 +155,7 @@ public class MainActivity extends Activity {
 
 	@Override
     protected void onPause() {
+
         super.onPause();
         timer.cancel();
         mediaPlayer.pause();
@@ -165,6 +171,10 @@ public class MainActivity extends Activity {
         super.onResume();
         timer.start();
         mediaPlayer.start();
+
+        textDaysLeft = (TextView) findViewById(R.id.days_left);
+        textDaysLeft.setText(timer.getDaysLeft() + " days left");
+
     }
 
     public void updateTimerText(String timeString) {
