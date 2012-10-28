@@ -6,6 +6,9 @@ import java.util.List;
 public class NotificationProvider {
 
 	private NotificationTemplate[] notifications = {
+			new NotificationTemplate("Рог", "Привыкай к единорогам: их у нас много. Многорог - всего один", "кстати", R.drawable.icon_tongue),
+			new NotificationTemplate("Стой!", "Прямо сейчас подними голову и посмотри по сторонам. Постарайся запомнить свою планету перед отлетом. Можешь даже сделать несколько фотографий на память", "фотко", R.drawable.icon_tongue),
+			new NotificationTemplate("Радость", "Апокалипсис... Ну зато тебе не нужен айфон. Серьезно: наше приложение на нем не работает", ":)", R.drawable.icon_tongue),
 			new NotificationTemplate("Click to see tits!", "(*)(.)", "c====3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Купи 61 консерву с мертвой рыбой, тебе они будут необходимы при межгалактическом перемещении", "c=3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Не забудь чаще звонить своим друзьям и говорить с ними. Нужно больше общения (тут ссылка на фейсбук)", "c=3", R.drawable.icon_tongue),
@@ -13,8 +16,7 @@ public class NotificationProvider {
 			new NotificationTemplate("Hi man!", "Составь список неободимой растительности и животного мира, которые ты хочешь видеть на новой планете. (тут нужно придумать какой-то ресурс общаговский, типа evernote, <a href='drive.google.com'>googleDoc</a>, or Dropbox.com)", "c=3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Если ты еще не умеешь готовить - приготовь борщ! (тут мы будем указывать ссылку на рецепт с сайта, администрация которого заплатит нам деньги за рекламу) ", "c=3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Пора учить азбуку морзе - нужно же будет как-то поддерживать связь с соседями ", "c=3", R.drawable.icon_tongue),
-			new NotificationTemplate("Hi man!", "Срочно иди и займись сексом - пора уже думать о восстановлении популяции людей."+
-	"И помни: чем больше детей у тебя будет, тем больше полей сможет вспахать твоя семья!", "c=3", R.drawable.icon_tongue),
+			new NotificationTemplate("Hi man!", "Срочно иди и займись сексом - пора уже думать о восстановлении популяции людей. И помни: чем больше детей у тебя будет, тем больше полей сможет вспахать твоя семья!", "c=3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Купи саперную лопату! Тебе она подадобится, чтобы что-то откапывать и закапывать.", "c=3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Приобрети там-там для общения с дальними соседями", "c=3", R.drawable.icon_tongue),
 			new NotificationTemplate("Hi man!", "Ты никогда не был в гей-баре. Скоро конец света. Ты отлично держишься, продолжай в том же духе", "c=3", R.drawable.icon_tongue),
