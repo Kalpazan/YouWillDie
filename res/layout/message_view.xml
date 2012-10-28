@@ -78,7 +78,8 @@
                     android:paddingRight="10dp"
                     android:text="share"
                     android:textColor="@color/message_bg_color"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    />
         </FrameLayout>
 
 </LinearLayout>

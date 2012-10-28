@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 
         historyListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                NotificationTemplate notification = provider.getNotifications()[position];
+                NotificationTemplate notification = provider.getNotifications()[listAdapter.flipPosition(position)];
                 messageController.setCurrentMessage(notification);
                 messageController.showMessageView();
                 slider.animateClose();

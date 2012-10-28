@@ -2,7 +2,9 @@ package com.example;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static com.example.FinalCountdown.HOUR;
-import static com.example.FinalCountdown.MINUTE;
+
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.points.PointsController;
 import com.example.store.Store;
 
 public class NotificationsListAdapter extends BaseAdapter {
@@ -20,14 +21,12 @@ public class NotificationsListAdapter extends BaseAdapter {
 	private static LayoutInflater inflater = null;
 	private NotificationProvider provider;
 	private Store store;
-	private PointsController pointsController;
 	
 	public NotificationsListAdapter(MainActivity a, NotificationProvider provider) {
 		activity = a;
 		inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
 		this.provider = provider;
 		this.store = a.getStore();
-		this.pointsController = a.getPointsController();
 	}
 
 	public int getCount() {
@@ -43,6 +42,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
+		position = flipPosition(position);
 		View view = convertView;
 		if (convertView == null)
 			view = inflater.inflate(R.layout.list_row, null);
@@ -63,23 +63,34 @@ public class NotificationsListAdapter extends BaseAdapter {
 		return view;
 	}
 
+	public int flipPosition(int position) {
+		return store.getLastNotificationNumber() - position;
+	}
+	
 	private String formatDate(long time) {
-		long diff = System.currentTimeMillis() - time;
+		Calendar someTime = Calendar.getInstance();
+		
+		Calendar messageTime = Calendar.getInstance();
+		messageTime.setTimeInMillis(time);
 
-		if (diff < 5 * MINUTE) {
-			return "только что";
-		} 
+		someTime.add(Calendar.MINUTE, -5);
+		if (someTime.before(messageTime)) return "Только что";
 		
-		if (diff < 24 * HOUR) {
-			return "сегодня";
-		} 
+		someTime.set(Calendar.HOUR_OF_DAY, 0);
+		long startOfToday = someTime.getTimeInMillis();
+		if(someTime.before(messageTime)) return "сегодня";
+
+		someTime.add(Calendar.HOUR_OF_DAY, -24);
+		if(someTime.before(messageTime)) return "вчера";
 		
-		if (diff < 24 * HOUR * 2) {
-			return "вчера";
-		} 
+		someTime.add(Calendar.DAY_OF_MONTH, -2);
+		if(someTime.before(messageTime)) return "недавно";
 		
-		long days = diff / (24 * HOUR);
-		return days == 2 ? days + " дня назад" : days + " дней назад";
+		long days = (startOfToday - time) / (24 * HOUR);
+		
+		boolean stupidNumber = days % 10  < 5;
+		
+		return days + (stupidNumber ? " дня назад" : " дней назад");
 	}
 	
 }
