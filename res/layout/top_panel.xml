@@ -77,13 +77,19 @@
                     android:background="@drawable/scale_bitmap_pattern"
                     />
 
+                <LinearLayout 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                                        >
                 <TextView
                     android:id="@+id/progressText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
                     android:layout_marginLeft="@dimen/progress_bar_text_margins"
-                    android:gravity="left"
+                    android:gravity="left|center_vertical"
                     android:text="14/100"
                     android:textColor="@color/message_bg_color"
                     android:textSize="12dp" />
@@ -92,11 +98,26 @@
                     android:id="@+id/bonus_points"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/progress_bar_text_margins"
+                    android:text="+12"
+                    android:textColor="#09D60E"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                     />
+                </LinearLayout>
+                
+                <TextView
+                    android:id="@+id/rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
                     android:layout_marginRight="@dimen/progress_bar_text_margins"
-                    android:text="+12"
-                    android:textColor="#00ff00"
+                    android:gravity="right|center_vertical"
+                    android:text="you are hero!"
+                    android:textColor="@color/message_bg_color"
                     android:textSize="12dp" />
+                
             </FrameLayout>
 
             <Button
