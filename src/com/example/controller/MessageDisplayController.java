@@ -49,7 +49,7 @@ public class MessageDisplayController {
 	}
 	
 	public boolean hasMessage() {
-		return currentMessage == null;
+		return currentMessage != null;
 	}
 	
 	private void updateView() {
@@ -84,7 +84,7 @@ public class MessageDisplayController {
     		if (!hasMessage()) {
     			int id = store.getLastNotificationNumber();
     			setCurrentMessage(provider.getNotification(id));
-    		}
+    		} 
     		
     		showMessageView();
     	} else {

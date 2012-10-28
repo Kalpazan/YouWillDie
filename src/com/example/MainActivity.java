@@ -100,6 +100,10 @@ public class MainActivity extends Activity {
     public void playSound() {
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stopwatch);
         mediaPlayer.setLooping(true);
+        
+        int maxVolume = 11;
+		float log1=(float)(Math.log(maxVolume-2)/Math.log(maxVolume));
+        mediaPlayer.setVolume(1-log1, 1-log1);
         mediaPlayer.start();
     }
 
