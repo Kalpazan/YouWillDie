@@ -10,7 +10,6 @@ import java.util.TimerTask;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -102,15 +101,6 @@ public class NotificationSchedulerService extends Service {
 		
 		return calendar.getTimeInMillis();
 	}
-	
-	public void setOneTimeAlarm() {
-		  Intent intent = new Intent(this, BootListener.class);
-		  intent.setAction(Intent.ACTION_RUN);
-		  PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
-		  AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-		  am.set(AlarmManager.ELAPSED_REALTIME, System.currentTimeMillis() + (5 * 1000), pendingIntent);
-	}
-	
 	
 	public void createInfoNotification(NotificationTemplate template, int notificationId) {
 		Context context = getApplicationContext();

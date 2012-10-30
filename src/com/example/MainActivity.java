@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 
         setupHistoryList(provider, messagesController);
         
-        NotificationSchedulerService.startService(getApplicationContext());
+        NotificationServiceThatJustWorks.startService(getApplicationContext());
         
         listAdapter.notifyDataSetChanged();
 
