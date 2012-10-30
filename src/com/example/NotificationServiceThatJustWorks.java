@@ -1,12 +1,12 @@
 package com.example;
 
-import static android.app.AlarmManager.ELAPSED_REALTIME_WAKEUP;
 import static android.app.Notification.FLAG_SHOW_LIGHTS;
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -53,15 +53,18 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	private long getNextNotificationTime(long lastNotificationTime) {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
-//		calendar.add(Calendar.DATE, 1);
-//
-//		int randomHoursNumber = new Random().nextInt(10);
-//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-//
-//		int randomMinsNumber = new Random().nextInt(60);
-//		calendar.set(Calendar.MINUTE, randomMinsNumber);
+		
+		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+			calendar.add(Calendar.DATE, 1);	
+		}
 
-		calendar.add(Calendar.MINUTE, 5);
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(Calendar.MINUTE, randomMinsNumber);
+
+//		calendar.add(Calendar.MINUTE, 5);
 		
 		return calendar.getTimeInMillis();
 	}
