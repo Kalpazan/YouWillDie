@@ -55,7 +55,7 @@ public class SendToChooser {
             }
         });
 
-        Dialog d = new Dialog(activity, android.R.style.Theme_Light_NoTitleBar);
+        Dialog d = new Dialog(activity, R.style.shareDialogStyle);
         d.setContentView(dialogView);
         d.show();
     }
