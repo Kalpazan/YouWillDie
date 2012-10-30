@@ -116,7 +116,7 @@ public class MainActivity extends Activity {
 
     public void startCountDown() {
         textTime = (TextView) findViewById(R.id.textTime);
-
+        textDaysLeft = (TextView) findViewById(R.id.days_left);
         Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
         textTime.setTypeface(type);
         final Calendar finalDate = Calendar.getInstance();
@@ -172,13 +172,13 @@ public class MainActivity extends Activity {
         timer.start();
         mediaPlayer.start();
 
-        textDaysLeft = (TextView) findViewById(R.id.days_left);
-        textDaysLeft.setText(timer.getDaysLeft() + " days left");
+
 
     }
 
     public void updateTimerText(String timeString) {
         textTime.setText(timeString);
+        textDaysLeft.setText(timer.getDaysLeft() + " days left");
     }
 
     @Override
