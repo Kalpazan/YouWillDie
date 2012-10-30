@@ -33,4 +33,12 @@
         <item name="android:maxHeight">30dip</item>
     </style>
 
+    <style name="shareDialogStyle" parent="android:Theme.Dialog">
+        <item name="android:title">@string/app_name</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+
+    </style>
+
 </resources>
