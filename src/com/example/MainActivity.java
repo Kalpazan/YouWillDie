@@ -5,14 +5,12 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -77,8 +75,11 @@ public class MainActivity extends Activity {
         });
 
         setupHistoryList(provider, messagesController);
-        
-        NotificationServiceThatJustWorks.startService(getApplicationContext());
+      
+        if (isFirstLaunch()) {
+        	NotificationServiceThatJustWorks.startService(getApplicationContext());
+        	store.registerFirstLaunch();
+        }
         
         listAdapter.notifyDataSetChanged();
 
@@ -86,7 +87,11 @@ public class MainActivity extends Activity {
 		playSound();
     }
 
-    private void setupHistoryList(final NotificationProvider provider, final MessageDisplayController messageController) {
+    private boolean isFirstLaunch() {
+		return !store.wasLaunchedBefore();
+	}
+
+	private void setupHistoryList(final NotificationProvider provider, final MessageDisplayController messageController) {
         ListView historyListView = (ListView) findViewById(R.id.content);
 		listAdapter = new NotificationsListAdapter(this, provider);
 		historyListView.setAdapter(listAdapter);
@@ -146,7 +151,7 @@ public class MainActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            int id = extras.getInt(NotificationSchedulerService.EXTRA_NAME);
+            int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
             NotificationTemplate notification = provider.getNotification(id);
             messagesController.setCurrentMessage(notification);
             messagesController.showMessageView();

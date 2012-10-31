@@ -54,4 +54,12 @@ public class Store {
 
 	    editor.commit();
 	}
+
+	public void registerFirstLaunch() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("wasLaunched", true).commit();
+	}
+
+	public boolean wasLaunchedBefore() {
+		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("wasLaunched", false);
+	}
 }

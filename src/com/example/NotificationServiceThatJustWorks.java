@@ -77,7 +77,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 
 		NotificationCompat.Builder nb = new NotificationCompat.Builder(context).setSmallIcon(template.getIcon()).setAutoCancel(true).setTicker(template.getStatusBarText())
 				.setContentText(template.getMainText()).setContentIntent(PendingIntent.getActivity(context, 0, notificationIntent, FLAG_CANCEL_CURRENT)).setContentTitle(template.getTitle())
-				.setDefaults(FLAG_SHOW_LIGHTS);
+				.setDefaults(Notification.FLAG_SHOW_LIGHTS);
 
 		return nb.build();
 	}
