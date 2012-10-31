@@ -54,17 +54,17 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
 		
-		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
-			calendar.add(Calendar.DATE, 1);	
-		}
+//		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+//			calendar.add(Calendar.DATE, 1);	
+//		}
+//
+//		int randomHoursNumber = new Random().nextInt(10);
+//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+//
+//		int randomMinsNumber = new Random().nextInt(60);
+//		calendar.set(Calendar.MINUTE, randomMinsNumber);
 
-		int randomHoursNumber = new Random().nextInt(10);
-		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-
-		int randomMinsNumber = new Random().nextInt(60);
-		calendar.set(Calendar.MINUTE, randomMinsNumber);
-
-//		calendar.add(Calendar.MINUTE, 5);
+		calendar.add(Calendar.MINUTE, 2);
 		
 		return calendar.getTimeInMillis();
 	}
@@ -130,26 +130,29 @@ public class NotificationServiceThatJustWorks extends IntentService {
 
 		long when = 0;
 		int lastNotificationNumber = store.getLastNotificationNumber();
-		int currentNum = lastNotificationNumber + 1;
 
 		Log.d("notification", "last notification number = " + lastNotificationNumber);
 		
 		if (!isStartIntent) {
+			lastNotificationNumber++;
+			
 			Log.d("notification", "this was real intent to send smth");
-			NotificationTemplate template = notificationProvider.getNotification(currentNum);
-			Notification notification = createInfoNotification(template, currentNum);
+			Log.d("notification", "about to send. id = "+lastNotificationNumber);
+			
+			NotificationTemplate template = notificationProvider.getNotification(lastNotificationNumber);
+			Notification notification = createInfoNotification(template, lastNotificationNumber);
 
 			Log.d("notification", "so sending");
 			manager.notify(template.getTitle().hashCode(), notification);
 
-			Log.d("notification", "saving notId " + currentNum + " at " + new Date(System.currentTimeMillis()).toGMTString());
-			store.saveNotificationTime(currentNum, System.currentTimeMillis());
-			store.updateLastNotificationNumber(currentNum);
+			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
+			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());
+			store.updateLastNotificationNumber(lastNotificationNumber);
 		}
 		
-		if (notificationProvider.hasNotificationWithNumber(currentNum + 1)) {
+		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
 			if (lastNotificationNumber == -1) {
-				when = System.currentTimeMillis() + 3 * 60 * 1000;
+				when = System.currentTimeMillis() + 1 * 60 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);
