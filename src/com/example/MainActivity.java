@@ -78,6 +78,8 @@ public class MainActivity extends Activity {
         	Log.d("notification", "first launch");
         	NotificationServiceThatJustWorks.startService(getApplicationContext());
         	store.registerFirstLaunch();
+            pointsController.addPoints(3);
+            store.registerPointsAddingOnCreate();
         }
         
         listAdapter.notifyDataSetChanged();
