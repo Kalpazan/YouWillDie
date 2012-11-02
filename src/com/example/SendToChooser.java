@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.example.points.PointsController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SendToChooser {
@@ -30,7 +31,10 @@ public class SendToChooser {
         intent.setType("text/plain");
 
         PackageManager pm = activity.getPackageManager();
+
         List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
+
+        infos =  resolveInfoFilter(infos);
 
         View dialogView = View.inflate(activity, R.layout.custom_chooser, null);
 
@@ -56,8 +60,21 @@ public class SendToChooser {
         });
 
         Dialog d = new Dialog(activity, R.style.shareDialogStyle);
+        d.setTitle("+20 to your chans to live");
         d.setContentView(dialogView);
         d.show();
+    }
+
+    private List<ResolveInfo> resolveInfoFilter(List<ResolveInfo> infos) {
+        List<ResolveInfo> filteredInfos = new ArrayList<ResolveInfo>();
+        for (ResolveInfo resolveInfo : infos){
+            String pckgName = resolveInfo.activityInfo.packageName;
+              if (!pckgName.contains("bluetooth") & !pckgName.contains("zxing") & !pckgName.contains("git")
+                      & !pckgName.contains("box")){
+                  filteredInfos.add(resolveInfo);
+              }
+        }
+        return filteredInfos;
     }
 
     private class AppAdapter extends BaseAdapter {
