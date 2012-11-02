@@ -71,6 +71,7 @@ public class SendToChooser {
             String pckgName = resolveInfo.activityInfo.packageName;
               if (pckgName.contains("mms") || pckgName.contains("sms") ||pckgName.contains("twi")
                       || pckgName.contains("face") || pckgName.contains("vkont")|| pckgName.contains("gm")
+                      || pckgName.contains("mail")|| pckgName.contains("skype")|| pckgName.contains("icq")
                       || pckgName.contains("mail")){
                   filteredInfos.add(resolveInfo);
               }
