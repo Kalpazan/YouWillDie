@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
     private MessageDisplayController messagesController;
     private NotificationProvider provider = new NotificationProvider();
     
+    public static MainActivity instance;
+    
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -78,6 +80,8 @@ public class MainActivity extends Activity {
         	Log.d("notification", "first launch");
         	NotificationServiceThatJustWorks.startService(getApplicationContext());
         	store.registerFirstLaunch();
+            pointsController.addPoints(3);
+            store.registerPointsAddingOnCreate();
         }
         
         listAdapter.notifyDataSetChanged();
@@ -151,6 +155,7 @@ public class MainActivity extends Activity {
 
 	@Override
     protected void onPause() {
+		MainActivity.instance = null;
         super.onPause();
         timer.cancel();
         mediaPlayer.pause();
@@ -168,6 +173,7 @@ public class MainActivity extends Activity {
         startCountDown();
         mediaPlayer.start();
         messagesController.init();
+        MainActivity.instance = this;
     }
 
     public void updateTimerText(String timeString) {
@@ -195,5 +201,22 @@ public class MainActivity extends Activity {
     public PointsController getPointsController() {
 		return pointsController;
 	}
+
+    private NotificationTemplate nextNotification;
+    
+	public synchronized void setCurrentNotification(NotificationTemplate template) {
+		nextNotification = template;
+	}
+	
+	public synchronized void checkForUpdates() {
+		if (nextNotification != null) {
+			messagesController.setCurrentMessage(nextNotification);
+			messagesController.showMessageView();
+			pointsController.addPoints(5);
+			listAdapter.notifyDataSetChanged();
+			nextNotification = null;
+		}
+	}
+	
 }
 
