@@ -63,7 +63,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		int randomMinsNumber = new Random().nextInt(60);
 		calendar.set(Calendar.MINUTE, randomMinsNumber);
 
-//		calendar.add(Calendar.MINUTE, 2);
+		calendar.add(Calendar.SECOND, 40);
 		
 		return calendar.getTimeInMillis();
 	}
@@ -74,8 +74,11 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		Intent notificationIntent = new Intent(context, MainActivity.class);
 		notificationIntent.putExtra(EXTRA_NAME, notificationId);
 
-		NotificationCompat.Builder nb = new NotificationCompat.Builder(context).setSmallIcon(template.getIcon()).setAutoCancel(true).setTicker(template.getStatusBarText())
-				.setContentText(template.getMainText()).setContentIntent(PendingIntent.getActivity(context, 0, notificationIntent, FLAG_CANCEL_CURRENT)).setContentTitle(template.getTitle())
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, notificationIntent, FLAG_CANCEL_CURRENT);
+		
+		NotificationCompat.Builder nb = 
+				new NotificationCompat.Builder(context).setSmallIcon(template.getIcon()).setAutoCancel(true).setTicker(template.getStatusBarText())
+				.setContentText(template.getMainText()).setContentIntent(pendingIntent).setContentTitle(template.getTitle())
 				.setDefaults(Notification.FLAG_SHOW_LIGHTS);
 
 		return nb.build();
@@ -156,7 +159,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
 			if (lastNotificationNumber == -1) {
-				when = System.currentTimeMillis() + 10 * 1000;//1 * 60 * 1000;
+				when = System.currentTimeMillis() + 3 * 60 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);

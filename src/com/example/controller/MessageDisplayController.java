@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -18,6 +19,7 @@ public class MessageDisplayController {
 	private ImageView icon;
 	private Resources resources;
 	private Store store;
+	private SlidingDrawer slidingDrawer;
 	
 	private ViewFlipper viewFlipper;
 	private Button helpButton;
@@ -31,6 +33,8 @@ public class MessageDisplayController {
 		store = activity.getStore();
 		viewFlipper = (ViewFlipper) activity.findViewById(R.id.view_flipper);
 		helpButton = (Button) activity.findViewById(R.id.help_button);
+		slidingDrawer = (SlidingDrawer) activity.findViewById(R.id.drawer);
+		
 		provider = notificationProvider;
 	}
 
@@ -57,6 +61,9 @@ public class MessageDisplayController {
     	if (isMessageViewActive()) {
     		helpButton.setText("Ok");
 	    	viewFlipper.showNext();
+	    	if (slidingDrawer.isOpened()) {
+	    		slidingDrawer.animateClose();
+	    	}
     	}
 	}
 	
@@ -64,6 +71,9 @@ public class MessageDisplayController {
     	if (!isMessageViewActive() && canShowMessageView()) {
     		helpButton.setText("?");
 	    	viewFlipper.showNext();
+	    	if (slidingDrawer.isOpened()) {
+	    		slidingDrawer.animateClose();
+	    	}
     	}
 	}
     
