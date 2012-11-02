@@ -1,6 +1,5 @@
 package com.example;
 
-import static android.app.Notification.FLAG_SHOW_LIGHTS;
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
 import java.sql.Date;
@@ -140,10 +139,15 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			Log.d("notification", "about to send. id = "+lastNotificationNumber);
 			
 			NotificationTemplate template = notificationProvider.getNotification(lastNotificationNumber);
-			Notification notification = createInfoNotification(template, lastNotificationNumber);
 
-			Log.d("notification", "so sending");
-			manager.notify(template.getTitle().hashCode(), notification);
+			if (MainActivity.instance != null) {
+				MainActivity.instance.setCurrentNotification(template);
+			} else {
+				Notification notification = createInfoNotification(template, lastNotificationNumber);
+	
+				Log.d("notification", "so sending");
+				manager.notify(template.getTitle().hashCode(), notification);
+			}
 
 			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
 			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());

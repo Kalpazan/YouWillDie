@@ -8,6 +8,7 @@ public class FinalCountdown extends CountDownTimer {
 	
 	private MainActivity activity;
     private long daysLeft;
+    private int counter;
 
     public long getDaysLeft() {
         return daysLeft;
@@ -33,6 +34,13 @@ public class FinalCountdown extends CountDownTimer {
 
         String left ="%s ä %s ÷ %s ì %s.%03d";
         activity.updateTimerText(String.format(left, daysLeft, hourLeft, minutesLeft, secondsLeft, millisecLeft));
+        
+        counter++;
+        counter %= 50;
+        
+        if (counter == 0) {
+        	activity.checkForUpdates();
+        }
     }
 
 }
