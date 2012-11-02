@@ -3,6 +3,10 @@ package com.example.store;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Store {
 
 	private static final String POINTS = "points";
@@ -62,4 +66,16 @@ public class Store {
 	public boolean wasLaunchedBefore() {
 		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("wasLaunched", false);
 	}
+
+    public void registerPointsAddingOnCreate() {
+
+        context.getSharedPreferences(STORE_NAME, 0).edit().putLong("added", new Date().getTime()).commit();
+    }
+
+    public boolean wasPointsAddedOnCreate() {
+        SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
+        Date date = new Date(settings.getLong("added", 0));
+        if (date.getHours() == new Date().getHours()) return false;
+        return true;
+    }
 }

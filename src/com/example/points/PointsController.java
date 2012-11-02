@@ -10,6 +10,8 @@ import com.example.MainActivity;
 import com.example.R;
 import com.example.store.Store;
 
+import java.util.Date;
+
 public class PointsController {
 
     private static final int ANIMATION_DURATION = 2200;
@@ -39,7 +41,10 @@ public class PointsController {
 
         progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
 
-        addPoints(2);
+        if (store.wasPointsAddedOnCreate()) {
+            addPoints(2);
+            store.registerPointsAddingOnCreate();
+        }
         update();
     }
 
@@ -68,7 +73,7 @@ public class PointsController {
     }
 
     public void addPoints(int bonus) {
-        if (store.getCurrentPoints() < levels[levels.length-1].pointsNeeded ) {
+        if (store.getCurrentPoints() < levels[levels.length - 1].pointsNeeded) {
             bonusText.setText("+" + bonus);
             bonusText.setTextColor(0xff00ff00);
 
