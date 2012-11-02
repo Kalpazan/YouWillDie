@@ -7,7 +7,6 @@ import static java.util.Calendar.DECEMBER;
 import java.util.Calendar;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -67,8 +66,6 @@ public class MainActivity extends Activity {
         
         Button helpButton = (Button) findViewById(R.id.help_button);
         
-        messagesController.init();
-        
 		helpButton.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
 				messagesController.flipViews();
@@ -85,7 +82,8 @@ public class MainActivity extends Activity {
         
         listAdapter.notifyDataSetChanged();
 
-		startCountDown();
+//		startCountDown();
+        Log.d("time", "onCreate!");
 		playSound();
     }
 
@@ -127,8 +125,10 @@ public class MainActivity extends Activity {
         Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
         textTime.setTypeface(type);
         final Calendar finalDate = Calendar.getInstance();
+        finalDate.clear();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
-        timer = new FinalCountdown(finalDate.getTimeInMillis(), 17, this);
+
+        timer = new FinalCountdown(finalDate.getTimeInMillis() - System.currentTimeMillis(), 17, this);
         timer.start();
 
     }
@@ -149,20 +149,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
-            NotificationTemplate notification = provider.getNotification(id);
-            messagesController.setCurrentMessage(notification);
-            messagesController.showMessageView();
-        }
-    }
-
 	@Override
     protected void onPause() {
-
         super.onPause();
         timer.cancel();
         mediaPlayer.pause();
@@ -175,12 +163,11 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onResume() {
+    	Log.d("time", "onResume!");
         super.onResume();
-        timer.start();
+        startCountDown();
         mediaPlayer.start();
-
-
-
+        messagesController.init();
     }
 
     public void updateTimerText(String timeString) {

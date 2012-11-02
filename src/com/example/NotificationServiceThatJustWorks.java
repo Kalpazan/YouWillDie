@@ -54,17 +54,17 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
 		
-//		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
-//			calendar.add(Calendar.DATE, 1);	
-//		}
-//
-//		int randomHoursNumber = new Random().nextInt(10);
-//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-//
-//		int randomMinsNumber = new Random().nextInt(60);
-//		calendar.set(Calendar.MINUTE, randomMinsNumber);
+		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+			calendar.add(Calendar.DATE, 1);	
+		}
 
-		calendar.add(Calendar.MINUTE, 2);
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(Calendar.MINUTE, randomMinsNumber);
+
+//		calendar.add(Calendar.MINUTE, 2);
 		
 		return calendar.getTimeInMillis();
 	}
@@ -152,7 +152,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
 			if (lastNotificationNumber == -1) {
-				when = System.currentTimeMillis() + 1 * 60 * 1000;
+				when = System.currentTimeMillis() + 10 * 1000;//1 * 60 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);
