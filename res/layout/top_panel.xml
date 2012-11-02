@@ -20,7 +20,7 @@
             android:layout_width="@dimen/top_panel_icon_size"
             android:layout_height="@dimen/top_panel_icon_size"
             android:layout_gravity="center_vertical|left"
-            android:src="@drawable/icon2" />
+            android:src="@drawable/icon_top_panel" />
     </LinearLayout>
 
     <LinearLayout
