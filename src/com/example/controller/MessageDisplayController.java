@@ -24,7 +24,6 @@ public class MessageDisplayController {
 	
 	private NotificationProvider provider;
 	
-	
 	public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
 		msgText = (TextView) activity.findViewById(R.id.notification_text);
 		icon = (ImageView) activity.findViewById(R.id.messageIcon);

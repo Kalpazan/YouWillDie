@@ -6,7 +6,6 @@ public class FinalCountdown extends CountDownTimer {
 	public static final int MINUTE = 1000 * 60;
 	public static final int HOUR = MINUTE * 60;
 	
-	private long bigBoomTime;
 	private MainActivity activity;
     private long daysLeft;
 
@@ -14,9 +13,8 @@ public class FinalCountdown extends CountDownTimer {
         return daysLeft;
     }
 
-    public FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
+	public FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
 		super(millisInFuture, countDownInterval);
-		this.bigBoomTime = millisInFuture;
 		this.activity = activity;
 	}
 
@@ -27,8 +25,6 @@ public class FinalCountdown extends CountDownTimer {
 
 	@Override
 	public void onTick(long timeLeft) {
-    	timeLeft = bigBoomTime - System.currentTimeMillis();
-    	
     	daysLeft = timeLeft / (HOUR * 24);
         long hourLeft = (timeLeft / HOUR) - (24 * daysLeft);
         long minutesLeft = (timeLeft % HOUR) / MINUTE;
