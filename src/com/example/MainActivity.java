@@ -80,7 +80,8 @@ public class MainActivity extends Activity {
         	Log.d("notification", "first launch");
         	NotificationServiceThatJustWorks.startService(getApplicationContext());
         	store.registerFirstLaunch();
-            pointsController.addPoints(3);
+            showMessage("Get up to 10 poits per day!");
+            pointsController.addPoints(10);
             store.registerPointsAddingOnCreate();
         }
         
@@ -108,7 +109,10 @@ public class MainActivity extends Activity {
                 messageController.setCurrentMessage(notification);
                 messageController.showMessageView();
                 slider.animateClose();
-                pointsController.addPoints(5);
+                if (store.wasPointsAddedOnMsgView()){
+                    pointsController.addPoints(6);
+                    store.registerPointsAddingOnMsgView();
+                }
             }
         });
     }
@@ -212,7 +216,11 @@ public class MainActivity extends Activity {
 		if (nextNotification != null) {
 			messagesController.setCurrentMessage(nextNotification);
 			messagesController.showMessageView();
-			pointsController.addPoints(5);
+			if (store.wasPointsAddedOnMsgView()){
+                pointsController.addPoints(4);
+                store.registerPointsAddingOnMsgView();
+            }
+
 			listAdapter.notifyDataSetChanged();
 			nextNotification = null;
 		}

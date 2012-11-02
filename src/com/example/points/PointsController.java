@@ -23,13 +23,13 @@ public class PointsController {
     private Store store;
 
     private static Level[] levels = {
-            new Level("жертва", 0),
-            new Level("житель", 21),
-            new Level("стажер", 50),
-            new Level("спасатель", 103),
-            new Level("крепкий орешек", 170),
-            new Level("герой", 210),
-            new Level("агент МПСЖФ", 500)};
+            new Level("*", 0),
+            new Level("**", 21),
+            new Level("***", 50),
+            new Level("****", 103),
+            new Level("*****", 170),
+            new Level("******", 210),
+            new Level("******* - агент", 500)};
 
     public PointsController(MainActivity activity) {
         store = activity.getStore();
@@ -41,10 +41,10 @@ public class PointsController {
 
         progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
 
-        if (store.wasPointsAddedOnCreate()) {
-            addPoints(2);
-            store.registerPointsAddingOnCreate();
-        }
+//        if (store.wasPointsAddedOnCreate()) {
+//            addPoints(2);
+//            store.registerPointsAddingOnCreate();
+//        }
         update();
     }
 
@@ -61,7 +61,7 @@ public class PointsController {
         nextLevelPoints -= maxLevel(currentLevel) ? 0 : levels[currentLevel].pointsNeeded;
         progressBar.setProgress((points * 100) / nextLevelPoints);
 
-        rank.setText("вы " + levels[currentLevel].name + "!");
+        rank.setText(levels[currentLevel].name);
     }
 
     private boolean maxLevel(int currentLevel) {

@@ -68,13 +68,23 @@ public class Store {
 	}
 
     public void registerPointsAddingOnCreate() {
-
-        context.getSharedPreferences(STORE_NAME, 0).edit().putLong("added", new Date().getTime()).commit();
+        context.getSharedPreferences(STORE_NAME, 0).edit().putLong("pointsOnCreate", new Date().getTime()).commit();
     }
 
     public boolean wasPointsAddedOnCreate() {
         SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
-        Date date = new Date(settings.getLong("added", 0));
+        Date date = new Date(settings.getLong("pointsOnCreate", 0));
+        if (date.getDay() == new Date().getDay() & date.getMonth() == new Date().getMonth()) return false;
+        return true;
+    }
+
+    public void registerPointsAddingOnMsgView() {
+        context.getSharedPreferences(STORE_NAME, 0).edit().putLong("pointsOnMsgView", new Date().getTime()).commit();
+    }
+
+    public boolean wasPointsAddedOnMsgView() {
+        SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
+        Date date = new Date(settings.getLong("pointsOnMsgView", 0));
         if (date.getDay() == new Date().getDay() & date.getMonth() == new Date().getMonth()) return false;
         return true;
     }
