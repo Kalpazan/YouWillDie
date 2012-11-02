@@ -75,7 +75,7 @@ public class Store {
     public boolean wasPointsAddedOnCreate() {
         SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
         Date date = new Date(settings.getLong("added", 0));
-        if (date.getHours() == new Date().getHours()) return false;
+        if (date.getDay() == new Date().getDay() & date.getMonth() == new Date().getMonth()) return false;
         return true;
     }
 }

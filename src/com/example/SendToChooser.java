@@ -69,8 +69,9 @@ public class SendToChooser {
         List<ResolveInfo> filteredInfos = new ArrayList<ResolveInfo>();
         for (ResolveInfo resolveInfo : infos){
             String pckgName = resolveInfo.activityInfo.packageName;
-              if (!pckgName.contains("bluetooth") & !pckgName.contains("zxing") & !pckgName.contains("git")
-                      & !pckgName.contains("box")){
+              if (pckgName.contains("mms") || pckgName.contains("sms") ||pckgName.contains("twi")
+                      || pckgName.contains("face") || pckgName.contains("vkont")|| pckgName.contains("gm")
+                      || pckgName.contains("mail")){
                   filteredInfos.add(resolveInfo);
               }
         }
