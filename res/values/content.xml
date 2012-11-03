@@ -12,21 +12,21 @@
 		с уважением, глава МКПСЖФ.
     </string>
     <string-array name="icons">
-        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_bat</item>
+		<item>@drawable/icon_smile</item>
+		<item>@drawable/icon_crazy</item>
+		<item>@drawable/icon_gasmask</item>
+		<item>@drawable/icon_gentelman</item>
+		<item>@drawable/icon_crying</item>
+		<item>@drawable/icon_drug</item>
+		<item>@drawable/icon_hipster</item>
+		<item>@drawable/icon_horny</item>
+		<item>@drawable/icon_money</item>
+		<item>@drawable/icon_pirate</item>
+		<item>@drawable/icon_radioactive</item>
+		<item>@drawable/icon_star</item>
 		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
-		<item>@drawable/icon_tongue</item>
+		<item>@drawable/icon_wtf</item>
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>

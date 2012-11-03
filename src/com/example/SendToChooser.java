@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.example.points.PointsController;
 
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class SendToChooser {
     private Activity activity;
     private String messageText;
     private PointsController pointsController;
+    private Dialog d;
 
     public SendToChooser(Activity activity, String messageText, PointsController pointsController) {
         this.pointsController=pointsController;
@@ -45,7 +47,7 @@ public class SendToChooser {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                d.hide();
                 pointsController.addPoints(20);
                 ResolveInfo ri = (ResolveInfo) listView.getAdapter().getItem(position);
 
@@ -56,13 +58,15 @@ public class SendToChooser {
                 intent.putExtra(Intent.EXTRA_TEXT, messageText);
 
                 activity.startActivity(intent);
+
             }
         });
 
-        Dialog d = new Dialog(activity, R.style.shareDialogStyle);
+        d = new Dialog(activity, R.style.shareDialogStyle);
         d.setTitle(activity.getResources().getString(R.string.chooser_title));
         d.setContentView(dialogView);
         d.show();
+
     }
 
     private List<ResolveInfo> resolveInfoFilter(List<ResolveInfo> infos) {
@@ -71,8 +75,7 @@ public class SendToChooser {
             String pckgName = resolveInfo.activityInfo.packageName;
               if (pckgName.contains("mms") || pckgName.contains("sms") ||pckgName.contains("twi")
                       || pckgName.contains("face") || pckgName.contains("vkont")|| pckgName.contains("gm")
-                      || pckgName.contains("mail")|| pckgName.contains("skype")|| pckgName.contains("icq")
-                      || pckgName.contains("mail")){
+                      || pckgName.contains("mail")|| pckgName.contains("skype")|| pckgName.contains("icq")){
                   filteredInfos.add(resolveInfo);
               }
         }
