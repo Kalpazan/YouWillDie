@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
 
             android:text="send"
-            android:textColor="@color/button_color"
+            android:textColor="@color/bottom_panel_bg_color"
             android:textSize="20dip"/>
 
 </LinearLayout>
