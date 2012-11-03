@@ -53,11 +53,6 @@ public class NotificationProvider {
 		return notifications.length;
 	}
 
-
-	public List<NotificationTemplate> getPreviousNotifications() {
-		return Arrays.asList(notifications);
-	}
-
 	public boolean hasNotificationWithNumber(int number) {
 		return number < notifications.length && number >= 0;
 	}
