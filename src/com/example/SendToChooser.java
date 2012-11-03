@@ -36,7 +36,7 @@ public class SendToChooser {
 
         List<ResolveInfo> infos = pm.queryIntentActivities(intent, 0);
 
-        infos =  resolveInfoFilter(infos);
+        //infos =  resolveInfoFilter(infos);
 
         View dialogView = View.inflate(activity, R.layout.custom_chooser, null);
 
@@ -122,8 +122,11 @@ public class SendToChooser {
             image.setImageDrawable(ri.activityInfo.loadIcon(mPm));
 
             TextView title = (TextView) container.findViewById(R.id.app_title);
+            if (ri.activityInfo.loadLabel(mPm).equals("")) {
+                title.setText(ri.activityInfo.packageName);
+            }  else {
             title.setText(ri.activityInfo.loadLabel(mPm));
-
+            }
             return container;
         }
     }
