@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SlidingDrawer;
@@ -26,6 +28,10 @@ public class MessageDisplayController {
 	
 	private NotificationProvider provider;
 	
+	String header = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><style>   body{    text-align:justify;}  </style><html><body>" +
+			"";
+	
+	
 	public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
 		msgText = (TextView) activity.findViewById(R.id.notification_text);
 		icon = (ImageView) activity.findViewById(R.id.messageIcon);
@@ -35,6 +41,17 @@ public class MessageDisplayController {
 		helpButton = (Button) activity.findViewById(R.id.help_button);
 		slidingDrawer = (SlidingDrawer) activity.findViewById(R.id.drawer);
 		
+		WebView helpText = (WebView) activity.findViewById(R.id.help_text);
+		helpText.loadData(header +
+				"<img src=\"file:///android_assets/icon_hipster.png\" />"+
+				"<img src=\"file:///android_assets/Resources/icon_hipster.png\" />"+
+				"<img src=\"file:/android_res/drawable/icon_drug.png\" />"+
+				"<img src=\"file:/res/drawable/icon_drug.png\" />"+
+				"<img src=\"res/drawable/icon_bat.png\" />"+
+				"C вами на связи межгалактический комитет по сохранности живых форм (далее МКПСЖФ) "+
+        
+		"Эта программа послана землянам дабы спасти человечество. <img src=\"file:///android_res/drawable/icon_hipster.png\"/> много планет постигла таже участь что вскоре настигнет вашу..	<br>чтобы сохранить земную расу вы должны выполнять наши ежедневные указания. из-за недостаточного финансирования МКПСЖФ мы не можем передавать на вашу планету белее 1го сообщения в день. цените эту помощь! и возможно некоторые из вас выживут. наши корабли уже в пути. продержитесь 1н световой парсек после наступления конца света и человечество будете спасены с уважением, глава МКПСЖФ.", "text/html", null);
+		helpText.setBackgroundColor(Color.TRANSPARENT);
 		provider = notificationProvider;
 	}
 

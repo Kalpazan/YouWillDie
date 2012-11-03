@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="8dp"
             >
-        <TextView
+        <!-- TextView
                 android:id="@+id/help_text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -33,7 +33,14 @@
                 android:text="@string/help_text"
                 android:textColor="@color/bottom_panel_bg_color"
                 android:textSize="18dp"
-                android:autoLink="web"/>
+                android:autoLink="web"/-->
+             <WebView 
+                 android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/help_text"
+                android:background="#00000000"
+                
+                 />
 		</LinearLayout>
             
     </ScrollView>
