@@ -10,6 +10,8 @@ public class FinalCountdown extends CountDownTimer {
     private long daysLeft;
     private int counter;
 
+    private String timeLeftStr;
+    
     public long getDaysLeft() {
         return daysLeft;
     }
@@ -17,6 +19,7 @@ public class FinalCountdown extends CountDownTimer {
 	public FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
 		super(millisInFuture, countDownInterval);
 		this.activity = activity;
+		timeLeftStr = activity.getResources().getString(R.string.time_left);
 	}
 
 	@Override
@@ -32,8 +35,7 @@ public class FinalCountdown extends CountDownTimer {
         long secondsLeft = (timeLeft % MINUTE) / 1000;
         long millisecLeft = timeLeft % 1000;
 
-        String left ="%s ä %s ÷ %s ì %s.%03d";
-        activity.updateTimerText(String.format(left, daysLeft, hourLeft, minutesLeft, secondsLeft, millisecLeft));
+        activity.updateTimerText(String.format(timeLeftStr, daysLeft, hourLeft, minutesLeft, secondsLeft, millisecLeft));
         
         counter++;
         counter %= 50;

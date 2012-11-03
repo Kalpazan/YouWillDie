@@ -1,7 +1,6 @@
 package com.example.points;
 
 import static android.graphics.Color.TRANSPARENT;
-
 import android.view.animation.AlphaAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -9,8 +8,6 @@ import android.widget.TextView;
 import com.example.MainActivity;
 import com.example.R;
 import com.example.store.Store;
-
-import java.util.Date;
 
 public class PointsController {
 

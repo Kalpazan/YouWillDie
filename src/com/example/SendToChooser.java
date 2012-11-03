@@ -60,7 +60,7 @@ public class SendToChooser {
         });
 
         Dialog d = new Dialog(activity, R.style.shareDialogStyle);
-        d.setTitle("+20 to your chans to live");
+        d.setTitle(activity.getResources().getString(R.string.chooser_title));
         d.setContentView(dialogView);
         d.show();
     }

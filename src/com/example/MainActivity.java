@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
     private Store store;
     
     private MessageDisplayController messagesController;
-    private NotificationProvider provider = new NotificationProvider();
+    private NotificationProvider provider;
     
     public static MainActivity instance;
     
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
         store = new Store(getApplicationContext());
         pointsController = new PointsController(this);
         
-        provider = new NotificationProvider();
+        provider = new NotificationProvider(getResources());
         messagesController = new MessageDisplayController(provider, this);
 
         findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
@@ -182,7 +182,7 @@ public class MainActivity extends Activity {
 
     public void updateTimerText(String timeString) {
         textTime.setText(timeString);
-        textDaysLeft.setText(timer.getDaysLeft() + " days left");
+        textDaysLeft.setText(timer.getDaysLeft() + getResources().getString(R.string.days_left));
     }
 
     @Override

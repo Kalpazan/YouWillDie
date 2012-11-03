@@ -6,6 +6,7 @@ import static com.example.FinalCountdown.HOUR;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,29 +78,30 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 	
 	private String formatDate(long time) {
+		Resources res = activity.getResources();
 		Calendar someTime = Calendar.getInstance();
 		
 		Calendar messageTime = Calendar.getInstance();
 		messageTime.setTimeInMillis(time);
 
 		someTime.add(Calendar.MINUTE, -5);
-		if (someTime.before(messageTime)) return "Только что";
+		if (someTime.before(messageTime)) return res.getString(R.string.few_mins_ago);
 		
 		someTime.set(Calendar.HOUR_OF_DAY, 0);
 		long startOfToday = someTime.getTimeInMillis();
-		if(someTime.before(messageTime)) return "сегодня";
+		if(someTime.before(messageTime)) return res.getString(R.string.today);
 
 		someTime.add(Calendar.HOUR_OF_DAY, -24);
-		if(someTime.before(messageTime)) return "вчера";
+		if(someTime.before(messageTime)) return res.getString(R.string.yesterday);
 		
 		someTime.add(Calendar.DAY_OF_MONTH, -2);
-		if(someTime.before(messageTime)) return "недавно";
+		if(someTime.before(messageTime)) return res.getString(R.string.recently);
 		
 		long days = (startOfToday - time) / (24 * HOUR);
 		
 		boolean stupidNumber = days % 10  < 5;
 		
-		return days + (stupidNumber ? " дня назад" : " дней назад");
+		return days + (stupidNumber ? res.getString(R.string.days_ago_ru1) : res.getString(R.string.days_ago_ru2));
 	}
 	
 }

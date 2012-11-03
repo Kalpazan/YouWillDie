@@ -1,11 +1,9 @@
 package com.example.store;
 
+import java.util.Date;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class Store {
 

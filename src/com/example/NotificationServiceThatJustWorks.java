@@ -40,7 +40,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	public void init() {
 		Log.d("notification", "init called");
 		BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
-		notificationProvider = new NotificationProvider();
+		notificationProvider = new NotificationProvider(getResources());
 		store = new Store(getApplicationContext());
 		manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 	}
