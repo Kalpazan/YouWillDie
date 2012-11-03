@@ -9,25 +9,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/message_bg"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="65dp"
             android:layout_marginTop="20dp"
-            android:padding="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:scrollbarSize="6dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="6dp"
+            >
+        
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="8dp"
+            >
         <TextView
                 android:id="@+id/help_text"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                style="@style/AudioFileInfoOverlayText"
+                android:layout_height="wrap_content"
+                android:gravity="left"
                 android:text="@string/help_text"
-                android:textColor="#000000"
-                android:textSize="15dp"
-                android:autoLink="web">
-
-        </TextView>
-
+                android:textColor="@color/bottom_panel_bg_color"
+                android:textSize="18dp"
+                android:autoLink="web"/>
+		</LinearLayout>
+            
     </ScrollView>
 
 </LinearLayout>

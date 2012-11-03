@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.store.Store;
@@ -62,7 +61,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 																	
 		TextView notificationTime = (TextView) view.findViewById(R.id.time); 
 		ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image);
-		final NotificationTemplate notification = provider.getPreviousNotifications().get(position);
+		final NotificationTemplate notification = provider.getNotification(position);
 
 		title.setText(notification.getTitle());
 		artist.setText(notification.getMainText());
