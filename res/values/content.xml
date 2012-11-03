@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="html_header">
+        <![CDATA[
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <html><head>
+        <meta charset="utf-8">
+        <style>
+		   .leftimg {
+		   	align:left;
+		    float:left;
+		    margin: 0px 0px 0px 0px;
+		   }
+		   .rightimg  {
+		    float: right;  
+		    margin: 7px 0 7px 7px;
+		   }
+	  	   body{
+	  	       text-align:justify;
+	  	   }
+	  	 </style>
+	  	 </head>
+	  	 ]]>
+    </string>
+    
     <string name="help_text">
+        <![CDATA[
+        <body style="background-color:"#FAF398">
+        <img src="file:///android_res/drawable/icon_hipster.png" width="20%" class="leftimg" align="left" vspace="3px" hspace="3px"/>
         C вами на связи межгалактический комитет по сохранности живых форм (далее МКПСЖФ)
         
 		Эта программа послана землянам дабы спасти человечество.
@@ -10,6 +36,7 @@
 		цените эту помощь! и возможно некоторые из вас выживут.
 		наши корабли уже в пути. продержитесь 1н световой парсек после наступления конца света и человечество будете спасены
 		с уважением, глава МКПСЖФ.
+		]]>
     </string>
     <string-array name="icons">
         <item>@drawable/icon_bat</item>
@@ -42,6 +69,7 @@
 		<item>@drawable/icon_star</item>
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_wtf</item>
+		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>

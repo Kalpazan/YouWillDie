@@ -6,8 +6,8 @@
               android:background="@color/main_bg_color">
 
     <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/message_bg"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -38,7 +38,7 @@
                  android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/help_text"
-                android:background="#00000000"
+                android:background="#FAF398"
                 
                  />
 		</LinearLayout>
