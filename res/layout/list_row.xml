@@ -26,11 +26,11 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="65dp"
                     android:layout_marginTop="20dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:orientation="horizontal">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       android:layout_width="fill_parent"
-                      android:layout_height="80dp"
+                      android:layout_height="fill_parent"
                       android:layout_centerInParent="true"
                       android:background="@drawable/dotted_frame"
                       android:orientation="vertical">
@@ -42,17 +42,17 @@
                         android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="left"
+                        android:layout_gravity="left|center_vertical"
                         android:paddingLeft="15dp"
-                        android:textColor="#040404"
+                        android:textColor="#444000"
                         android:typeface="sans"
-                        android:textSize="15dip"
+                        android:textSize="10dip"
                         android:textStyle="bold"/>
                 <TextView
                         android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
+                        android:layout_gravity="right|center_vertical"
                         android:paddingRight="15dp"
                         android:textColor="@color/button_color"
                         android:textSize="10dip"
@@ -65,13 +65,11 @@
             <TextView
                     android:id="@+id/artist"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/title"
-                    android:layout_below="@+id/title"
-                    android:layout_toLeftOf="@+id/time"
-                    android:padding="10dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_vertical"
+                    android:padding="15dp"
                     android:text="@string/dead_fish"
-                    android:textColor="#343434"
+                    android:textColor="@color/bottom_panel_bg_color"
                     android:textSize="10dip"/>
         </LinearLayout>
     </RelativeLayout>

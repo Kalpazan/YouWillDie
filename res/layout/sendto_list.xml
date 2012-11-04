@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+    <ImageView
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:src="@drawable/dotted_line"/>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="5dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-    <ImageView
-            android:id="@+id/app_image"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:src="@drawable/corner"/>
+        <ImageView
+                android:id="@+id/app_image"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/corner"/>
 
-    <TextView
-            android:id="@+id/app_title"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/app_image"
-            android:text="send"
-            android:textColor="@color/bottom_panel_bg_color"
-            android:textSize="20dip"/>
+        <TextView
+                android:id="@+id/app_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/app_image"
+                android:layout_marginLeft="20dp"
+                android:text="send"
+                android:textColor="@color/bottom_panel_bg_color"
+                android:textSize="20dip"/>
 
 </RelativeLayout>
+</LinearLayout>

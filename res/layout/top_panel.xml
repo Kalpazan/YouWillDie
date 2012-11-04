@@ -132,16 +132,6 @@
                 android:gravity="left|bottom"
                 android:textSize="@dimen/timer_num_size" />
 
-            <TextView
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="2dp"
-                android:gravity="left|bottom"
-                android:text="s"
-                android:textSize="@dimen/timer_text_size" />
         </LinearLayout>
 
         <LinearLayout
