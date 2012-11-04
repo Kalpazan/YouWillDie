@@ -143,17 +143,17 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			NotificationTemplate template = notificationProvider.getNotification(lastNotificationNumber);
 
 			if (MainActivity.instance != null) {
-				MainActivity.instance.setCurrentNotification(template);
+				MainActivity.instance.setCurrentNotification(template, lastNotificationNumber);
 			} else {
 				Notification notification = createInfoNotification(template, lastNotificationNumber);
 	
 				Log.d("notification", "so sending");
 				manager.notify(template.getTitle().hashCode(), notification);
+				store.updateLastNotificationNumber(lastNotificationNumber);
 			}
 
 			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
 			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());
-			store.updateLastNotificationNumber(lastNotificationNumber);
 		}
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {

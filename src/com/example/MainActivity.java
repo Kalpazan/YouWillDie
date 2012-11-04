@@ -196,9 +196,11 @@ public class MainActivity extends Activity {
 	}
 
     private NotificationTemplate nextNotification;
+    private int notificationId;
     
-	public synchronized void setCurrentNotification(NotificationTemplate template) {
+	public synchronized void setCurrentNotification(NotificationTemplate template, int id) {
 		nextNotification = template;
+		notificationId = id;
 	}
 	
 	public synchronized void checkForUpdates() {
@@ -210,8 +212,10 @@ public class MainActivity extends Activity {
                 store.registerPointsAddingOnMsgView();
             }
 
+			store.updateLastNotificationNumber(notificationId);
 			listAdapter.notifyDataSetChanged();
 			nextNotification = null;
+			notificationId = -1;
 		}
 	}
 	
