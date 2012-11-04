@@ -7,7 +7,7 @@
     <string name="older_messages">Предыдущие сообщения</string>
     <string name="dead_fish">Привыкай к единорогам, у нас их много. Многорог всего один :-( </string>
     
-    <string name="day">54 days left</string>
+    <string name="day">days left</string>
     <string name="millisecFormatter" formatted="false">.%03d</string>
     <string name="days_left"> days left</string>
     
@@ -20,6 +20,6 @@
     <string name="days_ago_ru1"> дня назад</string>
     <string name="days_ago_ru2"> дней назад</string>
     
-    <string name="chooser_title">+20 to your chance to live</string>
+    <string name="chooser_title">share and get 20 points</string>
 
 </resources>

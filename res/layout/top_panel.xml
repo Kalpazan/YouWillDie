@@ -118,17 +118,17 @@
                     android:layout_marginBottom="4dp"
                     android:textSize="@dimen/timer_num_size"
                     android:gravity="left|bottom"/>
-            <TextView
+            <!--<TextView-->
 
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_text_size"
-                    android:gravity="left|bottom"
-                    android:text="s"/>
+                    <!--style="@style/timeLeftTextStyle"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="bottom"-->
+                    <!--android:layout_marginLeft="2dp"-->
+                    <!--android:layout_marginBottom="4dp"-->
+                    <!--android:textSize="@dimen/timer_text_size"-->
+                    <!--android:gravity="left|bottom"-->
+                    <!--android:text="s"/>-->
         </LinearLayout>
 
         <LinearLayout
