@@ -1,12 +1,10 @@
 package com.example.points;
 
 import static android.graphics.Color.TRANSPARENT;
-import android.os.AsyncTask;
 import android.view.animation.AlphaAnimation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bugsense.trace.BugSenseHandler;
 import com.example.MainActivity;
 import com.example.R;
 import com.example.controller.RateViewController;

@@ -1,5 +1,8 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -7,12 +10,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import com.example.points.PointsController;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-import java.util.List;
+import com.example.points.PointsController;
 
 public class SendToChooser {
 

@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.example.controller.MessageDisplayController;
 import com.example.controller.RateViewController;
+import com.example.controller.UserMessageController;
 import com.example.points.PointsController;
 import com.example.store.Store;
 
@@ -37,7 +38,8 @@ public class MainActivity extends Activity {
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
 	private RateViewController rateViewController;
-    private PointsController pointsController;
+	private UserMessageController userMessageController;
+	private PointsController pointsController;
     private Store store;
     
     private MessageDisplayController messagesController;
@@ -91,6 +93,7 @@ public class MainActivity extends Activity {
         	NotificationServiceThatJustWorks.startService(getApplicationContext());
         	store.registerFirstLaunch();
             pointsController.addPoints(10);
+            getUserMessageController().showMessage("Твой первый запуск? +10 очков!");
             store.registerPointsAddingOnCreate();
         }
         
@@ -118,6 +121,7 @@ public class MainActivity extends Activity {
                 slider.animateClose();
                 if (store.wasPointsAddedOnMsgView()){
                     pointsController.addPoints(6);
+                    getUserMessageController().showMessage("Перечитываешь? Молодец!");
                     store.registerPointsAddingOnMsgView();
                 }
             }
@@ -222,6 +226,7 @@ public class MainActivity extends Activity {
 			messagesController.showMessageView();
 			if (store.wasPointsAddedOnMsgView()){
                 pointsController.addPoints(4);
+                getUserMessageController().showMessage("новое сообщение: +4 очка!");
                 store.registerPointsAddingOnMsgView();
             }
 
@@ -237,6 +242,13 @@ public class MainActivity extends Activity {
 			rateViewController = new RateViewController(this, pointsController, store);
 		}
 		return rateViewController;
+	}
+	
+	public UserMessageController getUserMessageController() {
+		if (userMessageController == null) {
+			userMessageController = new UserMessageController(this);
+		}
+		return userMessageController;
 	}
 	
 }
