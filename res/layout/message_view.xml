@@ -64,11 +64,36 @@
                         />
 
             </ScrollView>
-            
-            
+
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="fill_parent"
+                          android:layout_height="fill_parent"
+                          android:orientation="horizontal">
+
+                <Button
+                        android:id="@+id/link_button"
+                        android:background="@drawable/button_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|bottom"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:clickable="true"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="6dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="  link  "
+                        android:textColor="@color/message_bg_color"
+                        android:textSize="15dp"
+                        android:shadowColor="#99000000"
+                        android:shadowRadius="1"
+                        android:shadowDx="-.5"
+                        android:shadowDy="-1"
+                        />
             <Button
                     android:id="@+id/share_button"
-                    android:background="@drawable/button"
+                    android:background="@drawable/button_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
@@ -87,6 +112,7 @@
                     android:shadowDx="-.5"
                     android:shadowDy="-1"
                     />
+            </FrameLayout>
         </FrameLayout>
 
 </LinearLayout>

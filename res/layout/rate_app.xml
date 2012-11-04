@@ -28,7 +28,7 @@
         android:layout_gravity="center_vertical"
 		android:layout_marginLeft="12dp"
 		
-        android:background="@drawable/button"
+        android:background="@drawable/button_share"
         android:clickable="true"
         android:paddingBottom="2dp"
         android:paddingLeft="10dp"
