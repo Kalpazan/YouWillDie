@@ -16,6 +16,7 @@
     <color name="bottom_panel_bg_color">#3A2313</color>
     <color name="button_color">#DA6625</color>
     <color name="green">#444000</color>
+    <color name="light_green">#00FF00</color>
 
     <dimen name="margin_frame">20dp</dimen>
 
