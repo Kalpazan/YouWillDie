@@ -191,7 +191,7 @@
                             />
                 </LinearLayout>
 
-                <TextView
+                <!-- TextView
                         android:id="@+id/rank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -200,7 +200,18 @@
                         android:gravity="right|center_vertical"
                         android:text="you are hero!"
                         android:textColor="@color/message_bg_color"
-                        android:textSize="12dp"/>
+                        android:textSize="12dp"/ -->
+                        
+                <ImageView 
+                  	android:layout_width="24dp"
+                   	android:layout_height="28dp"
+                   	android:layout_marginRight="10dp"
+					android:layout_marginTop="-1dp"
+                    android:src="@drawable/one_start_rank"
+                    android:gravity="right|center_vertical"
+                    android:layout_gravity="right"
+                    />
+                 	    
 
             </FrameLayout>
 

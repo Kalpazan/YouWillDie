@@ -61,7 +61,6 @@ public class FinalCountdown extends CountDownTimer {
         textTimeMilisec.setText(String.format(formatter,(int)millisecLeft));
 
 
-
         counter++;
         counter %= 50;
         
