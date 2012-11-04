@@ -50,28 +50,50 @@ public class NotificationsListAdapter extends BaseAdapter {
 		return flipPosition(position);
 	}
 
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View view, ViewGroup parent) {
 		position = flipPosition(position);
-		View view = convertView;
-		if (convertView == null)
+		
+		if (view == null) {
 			view = inflater.inflate(R.layout.list_row, null);
-
-		TextView title = (TextView) view.findViewById(R.id.title); 
-		TextView artist = (TextView) view.findViewById(R.id.artist); 
-																	
-		TextView notificationTime = (TextView) view.findViewById(R.id.time); 
-		ImageView thumb_image = (ImageView) view.findViewById(R.id.list_image);
+			view.setTag(new ViewHolder(view));
+		} 
+		
+		ViewHolder row = (ViewHolder) view.getTag();
+		
+		if (row.position == position) {
+			// nothing changed
+			return view;
+		} 
+		
+		row.position = position;
+		
 		final NotificationTemplate notification = provider.getNotification(position);
 
-		title.setText(notification.getTitle());
-		artist.setText(notification.getMainText());
+		row.title.setText(notification.getTitle());
+		row.artist.setText(notification.getMainText());
 		
-		notificationTime.setText(formatDate(store.getNotofocationTime(position)));
-		thumb_image.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
+		row.notificationTime.setText(formatDate(store.getNotofocationTime(position)));
+		row.icon.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
 
 		return view;
 	}
 
+	private class ViewHolder {
+		TextView title;
+		TextView artist;
+		TextView notificationTime;
+		ImageView icon;
+		int position;
+		
+		public ViewHolder(View view) {
+			title = (TextView) view.findViewById(R.id.title); 
+			artist = (TextView) view.findViewById(R.id.artist); 
+																		
+			notificationTime = (TextView) view.findViewById(R.id.time); 
+			icon = (ImageView) view.findViewById(R.id.list_image);
+		}
+	}
+	
 	public int flipPosition(int position) {
 		return store.getLastNotificationNumber() - position;
 	}

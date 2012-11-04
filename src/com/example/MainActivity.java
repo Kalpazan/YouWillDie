@@ -2,13 +2,11 @@ package com.example;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static android.widget.Toast.LENGTH_LONG;
-import static android.widget.Toast.LENGTH_SHORT;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SlidingDrawer;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
@@ -78,18 +75,14 @@ public class MainActivity extends Activity {
         setupHistoryList(provider, messagesController);
       
         if (isFirstLaunch()) {
-        	Log.d("notification", "first launch");
         	NotificationServiceThatJustWorks.startService(getApplicationContext());
         	store.registerFirstLaunch();
-            showMessage("Get up to 10 poits per day!");
             pointsController.addPoints(10);
             store.registerPointsAddingOnCreate();
         }
         
         listAdapter.notifyDataSetChanged();
 
-//		startCountDown();
-        Log.d("time", "onCreate!");
 		playSound();
     }
 

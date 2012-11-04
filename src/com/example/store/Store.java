@@ -1,6 +1,7 @@
 package com.example.store;
 
 import java.util.Date;
+import java.util.HashMap;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,6 +13,8 @@ public class Store {
 	private static final String LAST_NOTIFICATION_NUM = "lastNotificationNum";
 	private static final String STORE_NAME = "huj";
 	
+	private HashMap<Integer, Long> notificationTimesCache = new HashMap<Integer, Long>();
+	
 	private Context context;
 	
 	public Store(Context context) {
@@ -22,13 +25,22 @@ public class Store {
 	    SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
 	    SharedPreferences.Editor editor = settings.edit();
 	    editor.putLong(TIME_PREFIX + notificationNumber, time);
+	    notificationTimesCache.put(notificationNumber, time);
 
 	    editor.commit();
 	}
 	
 	public long getNotofocationTime(int notificationNumber) {
+		Long cachedValue = notificationTimesCache.get(notificationNumber);
+		if (cachedValue != null) {
+			return cachedValue;
+		}
+		
 		SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
-	    return settings.getLong(TIME_PREFIX + notificationNumber, -1);
+	    long value = settings.getLong(TIME_PREFIX + notificationNumber, -1);
+		notificationTimesCache.put(notificationNumber, value);
+	    
+	    return value;
 	}
 	
 	public synchronized void updateLastNotificationNumber(int number) {
