@@ -4,7 +4,7 @@
     <string name="app_name">Survival Guide</string>
     <string name="exit">Exit</string>
     <string name="help">Help</string>
-    <string name="older_messages">Предыдущие сообщения</string>
+    <string name="older_messages">История сообщений</string>
     <string name="dead_fish">Привыкай к единорогам, у нас их много. Многорог всего один :-( </string>
     
     <string name="day">days left</string>

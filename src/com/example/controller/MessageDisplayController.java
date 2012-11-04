@@ -27,6 +27,7 @@ public class MessageDisplayController {
 	
 	private ViewFlipper viewFlipper;
 	private Button helpButton;
+	private WebView helpText;
 	
 	private NotificationProvider provider;
 	
@@ -43,9 +44,7 @@ public class MessageDisplayController {
 		slidingDrawer = (SlidingDrawer) activity.findViewById(R.id.drawer);
 		header = activity.getResources().getString(R.string.html_header);
 		
-		WebView helpText = (WebView) activity.findViewById(R.id.help_text);
-		String helpHtmlMessage = activity.getResources().getString(R.string.help_text);
-		helpText.loadDataWithBaseURL(null, header + helpHtmlMessage, "text/html", "UTF-8", null);
+		helpText = (WebView) activity.findViewById(R.id.help_text);
 		helpText.setVerticalScrollBarEnabled(false);
 //		helpText.setBackgroundColor(Color.TRANSPARENT);
 		provider = notificationProvider;
@@ -71,7 +70,21 @@ public class MessageDisplayController {
 	}
 
 	public void showHelpView() {
-    	if (isMessageViewActive()) {
+		showWebView(resources.getString(R.string.help_text));
+	}
+	
+	public void showGreetingView() {
+    	helpText.loadDataWithBaseURL(null, header + resources.getString(R.string.greeting_text), "text/html", "UTF-8", null);
+    		
+		if (slidingDrawer.isOpened()) {
+			slidingDrawer.animateClose();
+		}
+	}
+	
+	private void showWebView(String htmlText) {
+		if (isMessageViewActive()) {
+    		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
+    		
     		helpButton.setText("Ok");
 	    	viewFlipper.showNext();
 	    	if (slidingDrawer.isOpened()) {
@@ -107,6 +120,7 @@ public class MessageDisplayController {
     		
     		showMessageView();
     	} else {
+    		showGreetingView();
     		helpButton.setVisibility(View.INVISIBLE);
     	}
 	}
