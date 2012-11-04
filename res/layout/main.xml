@@ -7,10 +7,11 @@
               android:orientation="vertical">
 
 
-    <LinearLayout
+    <LinearLayout android:id="@+id/top_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="1dp" >
+        android:paddingBottom="1dp" 
+        android:orientation="vertical">
         
     	<include layout="@layout/top_panel" android:id="@+id/top_panel"/>
 	</LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="30dp"
+    android:background="#3A2313"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:id="@+id/rate_view"
+     >
+
+    <TextView
+        android:id="@+id/rate__view_text"
+        style="@style/AudioFileInfoOverlayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/rate_message"
+        android:textColor="@color/button_color"
+        android:textSize="16dip" />
+
+    <Button
+        android:id="@+id/rate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+		android:layout_marginLeft="12dp"
+		
+        android:background="@drawable/button"
+        android:clickable="true"
+        android:paddingBottom="2dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:shadowColor="#99000000"
+        android:shadowDx="-.5"
+        android:shadowDy="-1"
+        android:shadowRadius="1"
+        android:text="+1"
+        android:textColor="@color/message_bg_color"
+        android:textSize="14dp"
+		/>
+
+</LinearLayout>

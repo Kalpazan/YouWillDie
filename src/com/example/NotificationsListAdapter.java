@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,11 @@ import com.example.store.Store;
 public class NotificationsListAdapter extends BaseAdapter {
 
 	private Activity activity;
-	private static LayoutInflater inflater = null;
+	public static LayoutInflater inflater = null;
 	private NotificationProvider provider;
 	private Store store;
 	
-	private int previousSize;
+	private int previousSize = -1;
 	
 	public NotificationsListAdapter(MainActivity a, NotificationProvider provider) {
 		activity = a;
@@ -33,12 +34,14 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
+		long start = System.currentTimeMillis();
 		int size = store.getLastNotificationNumber() + 1;
-		if (size != previousSize) {
+		if (size != previousSize && previousSize != -1) {
 			previousSize = size;
 			notifyDataSetChanged();
 		}
 		previousSize = size;
+		Log.d("lview", "count took: " + (System.currentTimeMillis() - start));
 		return size;
 	}
 
@@ -51,6 +54,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View view, ViewGroup parent) {
+		Log.d("lview", "getView");
 		position = flipPosition(position);
 		
 		if (view == null) {
@@ -62,6 +66,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		if (row.position == position) {
 			// nothing changed
+			Log.d("lview", "same position");
 			return view;
 		} 
 		
@@ -95,7 +100,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 	
 	public int flipPosition(int position) {
-		return store.getLastNotificationNumber() - position;
+		return (previousSize - 1 ) - position;
 	}
 	
 	private String formatDate(long time) {

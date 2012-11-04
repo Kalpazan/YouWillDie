@@ -98,4 +98,12 @@ public class Store {
         if (date.getDay() == new Date().getDay() & date.getMonth() == new Date().getMonth()) return false;
         return true;
     }
+
+	public void registerRate() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("hasRated", true).commit();
+	}
+	
+	public boolean hasAlreadyRated() {
+		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("hasRated", false);
+	}
 }

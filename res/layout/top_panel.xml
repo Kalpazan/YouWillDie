@@ -1,197 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="fill_parent"
-              android:layout_height="100dp"
-              android:background="@drawable/top_panel_gradient"
-              android:gravity="left|center_vertical"
-              android:orientation="horizontal"
-              tools:ignore="ContentDescription">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/top_panel_gradient"
+    android:gravity="left|center_vertical"
+    android:orientation="horizontal"
+    tools:ignore="ContentDescription" >
 
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/top_panel_size"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center_vertical|right">
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/top_panel_size"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center_vertical|right" >
 
         <ImageView
-                android:id="@+id/survivor_icon"
+                android:id="@+id/survivor_btn"
                 android:layout_width="@dimen/top_panel_icon_size"
                 android:layout_height="@dimen/top_panel_icon_size"
                 android:layout_gravity="center_vertical|left"
-                android:src="@drawable/icon_top_panel"/>
+                android:src="@drawable/icon_top_panel"
+                android:clickable="true"/>
+       
+
+        <!-- ImageButton
+            android:id="@+id/survivor_btn"
+            android:layout_width="@dimen/top_panel_icon_size"
+            android:layout_height="@dimen/top_panel_icon_size"
+            android:layout_gravity="center_vertical|left"
+            android:src="@drawable/icon_top_panel" /-->
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
         <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
 
             <TextView
-                    android:id="@+id/textTimeDay"
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_num_size"
-                    android:gravity="left|bottom"/>
-            <TextView
-
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_text_size"
-                    android:gravity="left|bottom"
-                    android:text="d"/>
-            <TextView
-                    android:id="@+id/textTimeHour"
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_num_size"
-                    android:gravity="left|bottom"/>
-            <TextView
-
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_text_size"
-                    android:gravity="left|bottom"
-                    android:text="h"/>
-            <TextView
-                    android:id="@+id/textTimeMin"
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_num_size"
-                    android:gravity="left|bottom"/>
-            <TextView
-
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_text_size"
-                    android:gravity="left|bottom"
-                    android:text="m"/>
-            <TextView
-                    android:id="@+id/textTimeSec"
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_num_size"
-                    android:gravity="left|bottom"/>
+                android:id="@+id/textTimeDay"
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="2dp"
+                android:gravity="left|bottom"
+                android:textSize="@dimen/timer_num_size" />
 
             <TextView
-                    android:id="@+id/textTimeMilisec"
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_num_size"
-                    android:gravity="left|bottom"/>
-            <TextView
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="2dp"
+                android:gravity="left|bottom"
+                android:text="d"
+                android:textSize="@dimen/timer_text_size" />
 
-                    style="@style/timeLeftTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="@dimen/timer_text_size"
-                    android:gravity="left|bottom"
-                    android:text="s"/>
+            <TextView
+                android:id="@+id/textTimeHour"
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="left|bottom"
+                android:textSize="@dimen/timer_num_size" />
+
+            <TextView
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="2dp"
+                android:gravity="left|bottom"
+                android:text="h"
+                android:textSize="@dimen/timer_text_size" />
+
+            <TextView
+                android:id="@+id/textTimeMin"
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="left|bottom"
+                android:textSize="@dimen/timer_num_size" />
+
+            <TextView
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="2dp"
+                android:gravity="left|bottom"
+                android:text="m"
+                android:textSize="@dimen/timer_text_size" />
+
+            <TextView
+                android:id="@+id/textTimeSec"
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:gravity="left|bottom"
+                android:textSize="@dimen/timer_num_size" />
+
+            <TextView
+                android:id="@+id/textTimeMilisec"
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="0dp"
+                android:gravity="left|bottom"
+                android:textSize="@dimen/timer_num_size" />
+
+            <TextView
+                style="@style/timeLeftTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="2dp"
+                android:gravity="left|bottom"
+                android:text="s"
+                android:textSize="@dimen/timer_text_size" />
         </LinearLayout>
 
         <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
 
             <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left|bottom"
-                    android:layout_marginBottom="@dimen/top_panel_bottom_padding"
-                    android:layout_weight=".7"
-                    android:orientation="vertical">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:layout_marginBottom="@dimen/top_panel_bottom_padding"
+                android:layout_weight=".7"
+                android:orientation="vertical" >
 
                 <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="@style/levelProgressBar"
-                        android:layout_width="fill_parent"
-                        android:layout_height="20dp"
-                        android:layout_gravity="left|center_vertical"
-                        android:max="100"
-                        android:progress="32"/>
+                    android:id="@+id/progressBar"
+                    style="@style/levelProgressBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:max="100"
+                    android:progress="32" />
 
                 <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="20dp"
-                        android:layout_gravity="left|center_vertical"
-                        android:layout_marginRight="@dimen/progress_bar_text_margins"
-                        android:background="@drawable/scale_bitmap_pattern"
-                        />
+                    android:layout_width="fill_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginRight="@dimen/progress_bar_text_margins"
+                    android:background="@drawable/scale_bitmap_pattern" />
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/progressText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_gravity="center_vertical"
-                        >
-                    <TextView
-                            android:id="@+id/progressText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|center_vertical"
-                            android:layout_marginLeft="@dimen/progress_bar_text_margins"
-                            android:gravity="left|center_vertical"
-                            android:text="14/100"
-                            android:textColor="@color/message_bg_color"
-                            android:textSize="12dp"/>
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_marginLeft="@dimen/progress_bar_text_margins"
+                        android:gravity="left|center_vertical"
+                        android:text="14/100"
+                        android:textColor="@color/message_bg_color"
+                        android:textSize="12dp" />
 
                     <TextView
-                            android:id="@+id/bonus_points"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="@dimen/progress_bar_text_margins"
-                            android:text="+12"
-                            android:textColor="#09D60E"
-                            android:textSize="14dp"
-                            android:textStyle="bold"
-                            />
+                        android:id="@+id/bonus_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/progress_bar_text_margins"
+                        android:text="+12"
+                        android:textColor="#09D60E"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- TextView
+                <!--
+                     TextView
                         android:id="@+id/rank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -200,32 +212,30 @@
                         android:gravity="right|center_vertical"
                         android:text="you are hero!"
                         android:textColor="@color/message_bg_color"
-                        android:textSize="12dp"/ -->
-                        
-                <ImageView 
-                  	android:layout_width="24dp"
-                   	android:layout_height="28dp"
-                   	android:layout_marginRight="10dp"
-					android:layout_marginTop="-1dp"
-                    android:src="@drawable/one_start_rank"
-                    android:gravity="right|center_vertical"
-                    android:layout_gravity="right"
-                    />
-                 	    
+                        android:textSize="12dp"/
+                -->
 
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-1dp"
+                    android:gravity="right|center_vertical"
+                    android:src="@drawable/one_start_rank" />
             </FrameLayout>
 
             <Button
-                    android:id="@+id/help_button"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight=".2"
-                    android:background="#00000000"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:text="Ok"
-                    android:textColor="@color/button_color"
-                    android:textSize="18dp"/>
+                android:id="@+id/help_button"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight=".2"
+                android:background="#00000000"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Ok"
+                android:textColor="@color/button_color"
+                android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
 

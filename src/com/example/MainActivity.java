@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.example.controller.MessageDisplayController;
+import com.example.controller.RateViewController;
 import com.example.points.PointsController;
 import com.example.store.Store;
 
@@ -34,7 +36,7 @@ public class MainActivity extends Activity {
 //    private TextView textDaysLeft;
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
-    
+	private RateViewController rateViewController;
     private PointsController pointsController;
     private Store store;
     
@@ -64,6 +66,17 @@ public class MainActivity extends Activity {
             }
         });
         
+        findViewById(R.id.survivor_btn).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if (getRateViewController().isVisible()) {
+					getRateViewController().hideRateView();
+				} else {
+					getRateViewController().showRateView(false);
+				}
+			}
+		});
+        
         Button helpButton = (Button) findViewById(R.id.help_button);
         
 		helpButton.setOnClickListener(new Button.OnClickListener() {
@@ -81,7 +94,7 @@ public class MainActivity extends Activity {
             store.registerPointsAddingOnCreate();
         }
         
-        listAdapter.notifyDataSetChanged();
+//        listAdapter.notifyDataSetChanged();
 
 		playSound();
     }
@@ -197,7 +210,7 @@ public class MainActivity extends Activity {
 
     private NotificationTemplate nextNotification;
     private int notificationId;
-    
+
 	public synchronized void setCurrentNotification(NotificationTemplate template, int id) {
 		nextNotification = template;
 		notificationId = id;
@@ -217,6 +230,13 @@ public class MainActivity extends Activity {
 			nextNotification = null;
 			notificationId = -1;
 		}
+	}
+
+	public RateViewController getRateViewController() {
+		if (rateViewController == null) {
+			rateViewController = new RateViewController(this, pointsController, store);
+		}
+		return rateViewController;
 	}
 	
 }

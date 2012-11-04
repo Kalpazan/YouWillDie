@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -10,7 +9,10 @@ import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.example.*;
+import com.example.MainActivity;
+import com.example.NotificationProvider;
+import com.example.NotificationTemplate;
+import com.example.R;
 import com.example.store.Store;
 
 public class MessageDisplayController {
