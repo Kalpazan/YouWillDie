@@ -1,6 +1,7 @@
 package com.example;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.LENGTH_SHORT;
 import static java.util.Calendar.DECEMBER;
 
@@ -32,8 +33,8 @@ import com.example.store.Store;
 public class MainActivity extends Activity {
 
     private FinalCountdown timer;
-    private TextView textTime;
-    private TextView textDaysLeft;
+
+//    private TextView textDaysLeft;
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
     
@@ -128,10 +129,8 @@ public class MainActivity extends Activity {
     }
 
     public void startCountDown() {
-        textTime = (TextView) findViewById(R.id.textTime);
-        textDaysLeft = (TextView) findViewById(R.id.days_left);
-        Typeface type = Typeface.createFromAsset(getAssets(), "TEXASLED.TTF");
-        textTime.setTypeface(type);
+        BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
+
         final Calendar finalDate = Calendar.getInstance();
         finalDate.clear();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
@@ -180,10 +179,7 @@ public class MainActivity extends Activity {
         MainActivity.instance = this;
     }
 
-    public void updateTimerText(String timeString) {
-        textTime.setText(timeString);
-        textDaysLeft.setText(timer.getDaysLeft() + getResources().getString(R.string.days_left));
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -193,7 +189,7 @@ public class MainActivity extends Activity {
     }
 
     public void showMessage(String string) {
-        final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_SHORT);
+        final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_LONG);
         toast.setGravity(0, 0, 0);
         toast.show();
     }

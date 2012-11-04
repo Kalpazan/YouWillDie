@@ -8,7 +8,7 @@
     <string name="dead_fish">Привыкай к единорогам, у нас их много. Многорог всего один :-( </string>
     
     <string name="day">54 days left</string>
-    <string name="time_left" formatted="false">%s д %s ч %s м %s.%03d</string>
+    <string name="millisecFormatter" formatted="false">.%03d</string>
     <string name="days_left"> days left</string>
     
     <!-- past days -->

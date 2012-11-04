@@ -18,6 +18,7 @@
             android:id="@+id/app_title"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@id/app_image"
             android:text="send"
             android:textColor="@color/bottom_panel_bg_color"

@@ -5,7 +5,7 @@
     <solid android:color="#FAF398"/>
     <stroke android:width="1px"
             android:dashGap="2px"
-            android:dashWidth="2px"
+            android:dashWidth="4px"
             android:color="#000000"/>
     <corners android:bottomRightRadius="10dp"
              android:bottomLeftRadius="10dp"

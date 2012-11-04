@@ -82,6 +82,7 @@
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>
 		<item>@drawable/icon_tongue</item>
+		<item>@drawable/icon_tongue</item>
     </string-array>
     
 	<string-array name="messages">
