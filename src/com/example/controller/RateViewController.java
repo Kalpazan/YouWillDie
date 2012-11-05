@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
+import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.example.MainActivity;
 import com.example.NotificationsListAdapter;
@@ -22,7 +23,8 @@ public class RateViewController {
 	private Store store;
 	private MainActivity activity;
 	private boolean isViewVisible;
-	
+	private InternetController internetController;
+
 	public RateViewController(MainActivity activity, PointsController pointsController, Store store) {
 		this.pointsController = pointsController;
 		this.store = store;
@@ -45,10 +47,18 @@ public class RateViewController {
 
 	public void rateClicked() {
 		hideRateView();
-		pointsController.addPoints(50);
+        internetController = new InternetController(activity);
 		store.registerRate();
 		try {
-			activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
+            if (internetController.isNetworkAvailable()) {
+
+                pointsController.addPoints(50);
+                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
+
+            } else {
+                activity.showMessage("You are not online!!!!");
+            }
+
 		} catch (Exception e) {
 			activity.showMessage("Seems like you don't have Google Play installed..");
 			BugSenseHandler.sendException(e);
