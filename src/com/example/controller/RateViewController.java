@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
-import android.widget.Toast;
 import com.bugsense.trace.BugSenseHandler;
 import com.example.MainActivity;
 import com.example.NotificationsListAdapter;

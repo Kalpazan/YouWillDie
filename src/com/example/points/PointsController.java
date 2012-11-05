@@ -2,6 +2,7 @@ package com.example.points;
 
 import static android.graphics.Color.TRANSPARENT;
 import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -17,17 +18,19 @@ public class PointsController {
     private ProgressBar progressBar;
     private TextView progressText;
     private MainActivity activity;
+    private ImageView rank;
 
     private Store store;
 
     private static Level[] levels = {
-            new Level("*", 0),
-            new Level("**", 21),
-            new Level("***", 50),
-            new Level("****", 103),
-            new Level("*****", 170),
-            new Level("******", 210),
-            new Level("******* - агент", 500)};
+            new Level(R.drawable.one_start_rank, 0),
+            new Level(R.drawable.ranc_2, 21),
+            new Level(R.drawable.ranc_3, 50),
+            new Level(R.drawable.ranc_4, 103),
+            new Level(R.drawable.ranc_5, 170),
+            new Level(R.drawable.ranc_6, 210)
+//            new Level(R.drawable.ranc_7, 500)
+            };
 
     public PointsController(MainActivity activity) {
         store = activity.getStore();
@@ -36,7 +39,8 @@ public class PointsController {
         progressText = (TextView) activity.findViewById(R.id.progressText);
         bonusText = (TextView) activity.findViewById(R.id.bonus_points);
         bonusText.setTextColor(TRANSPARENT);
-
+        rank = (ImageView) activity.findViewById(R.id.pagon);
+        
         progressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
 
         update();
@@ -53,6 +57,7 @@ public class PointsController {
         points -= maxLevel(currentLevel) ? 0 : levels[currentLevel].pointsNeeded;
         nextLevelPoints -= maxLevel(currentLevel) ? 0 : levels[currentLevel].pointsNeeded;
         progressBar.setProgress((points * 100) / nextLevelPoints);
+        rank.setImageDrawable(activity.getResources().getDrawable(levels[currentLevel].imageId));
     }
 
     private boolean maxLevel(int currentLevel) {
@@ -84,17 +89,13 @@ public class PointsController {
         
         int currentLevel = getCurrentLevel(currentPoints);
 		
-        if (currentPoints + bonus > levels[currentLevel].pointsNeeded && currentLevel != lastLevel) {
+        if (currentLevel != lastLevel && currentPoints + bonus > levels[currentLevel+1].pointsNeeded) {
         	switch (currentLevel+1) {
 			case 2:
 			case 3:
 			case 4:
 				RateViewController rateController = activity.getRateViewController();
 				rateController.showRateView(true);
-				break;
-			default:
-//		        rank.setText(levels[currentLevel].name);
-				break;
 			}
         }
     }

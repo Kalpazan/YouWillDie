@@ -9,6 +9,7 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,6 +50,7 @@ public class MainActivity extends Activity {
     
     @Override
     public void onCreate(Bundle bundle) {
+//    	Debug.startMethodTracing("SurvivalGuide");
         super.onCreate(bundle);
         BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
         setContentView(R.layout.main);
@@ -177,6 +179,7 @@ public class MainActivity extends Activity {
         slider.close();
         
         BugSenseHandler.flush(MainActivity.this); //How to use it. See https://www.bugsense.com/docs
+        Debug.stopMethodTracing();
     }
 
     @Override

@@ -143,7 +143,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"
-                android:layout_marginBottom="@dimen/top_panel_bottom_padding"
+                android:layout_marginBottom="12dp"
                 android:layout_weight=".7"
                 android:orientation="vertical" >
 
@@ -187,32 +187,21 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/progress_bar_text_margins"
                         android:text="+12"
-                        android:textColor="#09D60E"
+                        android:textColor="@color/light_green"
                         android:textSize="14dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <!--
-                     TextView
-                        android:id="@+id/rank"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|center_vertical"
-                        android:layout_marginRight="@dimen/progress_bar_text_margins"
-                        android:gravity="right|center_vertical"
-                        android:text="you are hero!"
-                        android:textColor="@color/message_bg_color"
-                        android:textSize="12dp"/
-                -->
-
                 <ImageView
+                    android:id="@+id/pagon"
                     android:layout_width="24dp"
                     android:layout_height="28dp"
                     android:layout_gravity="right"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="-1dp"
+					android:layout_marginTop="1dp"
                     android:gravity="right|center_vertical"
                     android:src="@drawable/one_start_rank" />
+                
             </FrameLayout>
 
             <Button
