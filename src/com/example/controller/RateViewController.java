@@ -55,7 +55,7 @@ public class RateViewController {
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
 
             } else {
-                activity.showMessage("You are not online!!!!");
+                activity.showMessage("You are not online");
             }
 
 		} catch (Exception e) {

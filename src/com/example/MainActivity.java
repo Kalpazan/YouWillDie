@@ -213,9 +213,10 @@ public class MainActivity extends Activity {
     }
 
     public void showMessage(String string) {
-        final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_LONG);
-        toast.setGravity(0, 0, 0);
-        toast.show();
+        getUserMessageController().showMessage(string);
+//        final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_LONG);
+//        toast.setGravity(0, 0, 0);
+//        toast.show();
     }
 
     public Store getStore() {

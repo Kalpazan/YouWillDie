@@ -25,32 +25,35 @@ public class UserMessageController {
 	}
 	
 	public synchronized void showMessage(String message) {
-		LinearLayout topLayout = (LinearLayout) activity.findViewById(R.id.top_layout);
-		topLayout.addView(getView(message));
-		isViewVisible = true;
-		msgView.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				hideMessageView();
-			}
-		}, 1500);
+		if (!isViewVisible) {
+            LinearLayout topLayout = (LinearLayout) activity.findViewById(R.id.top_layout);
+            topLayout.addView(getView(message));
+            isViewVisible = true;
+            msgView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    hideMessageView();
+                }
+            }, 1500);
+        }
 	}
 	
 	public synchronized void hideMessageView() {
-		Animation fadeout = new AlphaAnimation(1.f, 0.f);
-		fadeout.setDuration(FADE_DELAY);
-		msgView.startAnimation(fadeout);
-		msgView.postDelayed(new Runnable() {
-		    @Override
-		    public void run() {
-		    	((LinearLayout) activity.findViewById(R.id.top_layout)).removeView(getView(null));
-		    }
-		}, FADE_DELAY);
-		
-		isViewVisible = false;
+		if (isViewVisible) {
+            Animation fadeout = new AlphaAnimation(1.f, 0.f);
+            fadeout.setDuration(FADE_DELAY);
+            msgView.startAnimation(fadeout);
+            msgView.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ((LinearLayout) activity.findViewById(R.id.top_layout)).removeView(getView(null));
+                    isViewVisible = false;
+                }
+            }, FADE_DELAY);
+        }
 	}
 
-	public void rateClicked() {
+	public void viewClicked() {
 		hideMessageView();
 	}
 	
@@ -61,7 +64,7 @@ public class UserMessageController {
 			msgView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					hideMessageView();
+					viewClicked();
 				}
 			});
 			textView = (TextView) msgView.findViewById(R.id.user_message_text);
