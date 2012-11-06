@@ -18,8 +18,8 @@
     <color name="button_pressed_color">#703E18</color>
     <color name="green">#444000</color>
     <color name="light_green">#09D60E</color>
-    <color name="link_btn_color">#ff107cff</color>
-    <color name="link_btn_pressed_color">#ff1f00ff</color>
+    <color name="link_btn_color">#444000</color>
+    <color name="link_btn_pressed_color">#ff704200</color>
 
     <dimen name="margin_frame">20dp</dimen>
 

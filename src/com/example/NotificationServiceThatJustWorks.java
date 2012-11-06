@@ -5,6 +5,7 @@ import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -51,15 +52,15 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
 		
-//		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
-//			calendar.add(Calendar.DATE, 1);
-//		}
-//
-//		int randomHoursNumber = new Random().nextInt(10);
-//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-//
-//		int randomMinsNumber = new Random().nextInt(60);
-//		calendar.set(Calendar.MINUTE, randomMinsNumber);
+		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+			calendar.add(Calendar.DATE, 1);
+		}
+
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(Calendar.MINUTE, randomMinsNumber);
 
 		calendar.add(Calendar.SECOND, 20);
 		
@@ -163,7 +164,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 				store.saveNotificationTime(0, System.currentTimeMillis());
 				store.saveNotificationTime(1, System.currentTimeMillis());
 				store.saveNotificationTime(2, System.currentTimeMillis());
-				when = System.currentTimeMillis() + 30;// * 60 * 1000;
+				when = System.currentTimeMillis() + 3 * 60 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);
