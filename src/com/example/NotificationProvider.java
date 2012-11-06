@@ -5,9 +5,11 @@ import android.content.res.TypedArray;
 
 public class NotificationProvider {
 
+	private static NotificationProvider instance;
+	
 	private NotificationTemplate[] notifications;
 	
-	public NotificationProvider(Resources resources) {
+	private NotificationProvider(Resources resources) {
 		String[] messages = resources.getStringArray(R.array.messages);
 		TypedArray imgs = resources.obtainTypedArray(R.array.icons);
 		
@@ -22,6 +24,14 @@ public class NotificationProvider {
 				notifications[i] = new NotificationTemplate(strings[0].split(" ")[0], strings[0], "instruction for today", icon);
 			}
 		}
+	}
+	
+	public synchronized static NotificationProvider getInstance(Resources resources) {
+		if (instance == null) {
+			instance = new NotificationProvider(resources);
+		}
+		
+		return instance;
 	}
 	
 	public NotificationTemplate[] getNotifications() {

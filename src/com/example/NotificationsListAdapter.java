@@ -36,7 +36,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 	public int getCount() {
 		long start = System.currentTimeMillis();
 		int size = store.getLastNotificationNumber() + 1;
-		if (size != previousSize && previousSize != -1) {
+		if (size != previousSize) {
 			previousSize = size;
 			notifyDataSetChanged();
 		}
@@ -88,7 +88,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		TextView artist;
 		TextView notificationTime;
 		ImageView icon;
-		int position;
+		int position = -2;
 		
 		public ViewHolder(View view) {
 			title = (TextView) view.findViewById(R.id.title); 

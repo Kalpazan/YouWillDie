@@ -49,25 +49,27 @@ public class FinalCountdown extends CountDownTimer {
 	@Override
 	public void onTick(long timeLeft) {
 
-    	long daysLeft = timeLeft / (HOUR * 24);
+		long daysLeft = timeLeft / (HOUR * 24);
         textTimeDay.setText(String.valueOf(daysLeft));
         long hourLeft = (timeLeft / HOUR) - (24 * daysLeft);
         textTimeHour.setText(String.valueOf(hourLeft));
         long minutesLeft = (timeLeft % HOUR) / MINUTE;
-        textTimeMin.setText(String.valueOf(minutesLeft));
+		
         long secondsLeft = (timeLeft % MINUTE) / 1000;
         textTimeSec.setText(String.valueOf(secondsLeft));
         long millisecLeft = timeLeft % 1000;
         textTimeMilisec.setText(String.format(formatter,(int)millisecLeft));
 
 
-        counter++;
-        counter %= 50;
+        counter %= 100;
         
         if (counter == 0) {
         	activity.checkForUpdates();
+        	
+            textTimeMin.setText(String.valueOf(minutesLeft));
             textDaysLeft.setText(String.valueOf(daysLeft)+" " + activity.getResources().getString(R.string.days_left));
         }
+        counter++;
     }
 
 }

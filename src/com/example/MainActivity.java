@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Debug;
 import android.util.Log;
@@ -51,57 +52,53 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle) {
 //    	Debug.startMethodTracing("SurvivalGuide");
-        super.onCreate(bundle);
-        BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
-        setContentView(R.layout.main);
-        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
-        store = new Store(getApplicationContext());
-        pointsController = new PointsController(this);
-        
-        provider = new NotificationProvider(getResources());
-        messagesController = new MessageDisplayController(provider, this);
-
-        findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SendToChooser sendToChooser = new SendToChooser(MainActivity.this, messagesController.getCurrentMessage().getMainText(), pointsController);
-                sendToChooser.sendViaCustomChooser();
-            }
-        });
-        
-        findViewById(R.id.survivor_btn).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (getRateViewController().isVisible()) {
-					getRateViewController().hideRateView();
-				} else {
-					getRateViewController().showRateView(false);
+        try {
+	    	super.onCreate(bundle);
+	        
+	        setContentView(R.layout.main);
+	        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+	        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
+	        store = new Store(getApplicationContext());
+	        pointsController = new PointsController(this);
+	        
+	        provider = NotificationProvider.getInstance(getResources());
+	        messagesController = new MessageDisplayController(provider, this);
+	
+	        findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
+	            @Override
+	            public void onClick(View view) {
+	                SendToChooser sendToChooser = new SendToChooser(MainActivity.this, messagesController.getCurrentMessage().getMainText(), pointsController);
+	                sendToChooser.sendViaCustomChooser();
+	            }
+	        });
+	        
+	        findViewById(R.id.survivor_btn).setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (getRateViewController().isVisible()) {
+						getRateViewController().hideRateView();
+					} else {
+						getRateViewController().showRateView(false);
+					}
 				}
-			}
-		});
-        
-        Button helpButton = (Button) findViewById(R.id.help_button);
-        
-		helpButton.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View view) {
-				messagesController.flipViews();
-            }
-        });
-
-        setupHistoryList(provider, messagesController);
-      
-        if (isFirstLaunch()) {
-        	NotificationServiceThatJustWorks.startService(getApplicationContext());
-        	store.registerFirstLaunch();
-            pointsController.addPoints(10);
-            getUserMessageController().showMessage("Твой первый запуск? +10 очков!");
-            store.registerPointsAddingOnCreate();
+			});
+	        
+	        Button helpButton = (Button) findViewById(R.id.help_button);
+	        
+			helpButton.setOnClickListener(new Button.OnClickListener() {
+	            public void onClick(View view) {
+					messagesController.flipViews();
+	            }
+	        });
+			
+	        setupHistoryList(provider, messagesController);
+	      
+			playSound();
+	//		Debug.stopMethodTracing();
+        } catch (Exception e) {
+        	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
+        	BugSenseHandler.sendException(e);
         }
-        
-//        listAdapter.notifyDataSetChanged();
-
-		playSound();
     }
 
     private boolean isFirstLaunch() {
@@ -141,13 +138,11 @@ public class MainActivity extends Activity {
     }
 
     public void startCountDown() {
-        BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
-
         final Calendar finalDate = Calendar.getInstance();
         finalDate.clear();
         finalDate.set(2012, DECEMBER, 21, 0, 0);
 
-        timer = new FinalCountdown(finalDate.getTimeInMillis() - System.currentTimeMillis(), 17, this);
+        timer = new FinalCountdown(finalDate.getTimeInMillis() - System.currentTimeMillis(), 51, this);
         timer.start();
 
     }
@@ -186,9 +181,25 @@ public class MainActivity extends Activity {
     protected void onResume() {
     	Log.d("time", "onResume!");
         super.onResume();
+        if (isFirstLaunch()) {
+        	new AsyncTask<Void, Void, Void>() {
+				@Override
+				protected Void doInBackground(Void... params) {
+					NotificationServiceThatJustWorks.startService(getApplicationContext());
+					return null;
+				}
+			}.execute((Void)null);
+			
+        	store.registerFirstLaunch();
+            pointsController.addPoints(10);
+            getUserMessageController().showMessage("Твой первый запуск? +10 очков!");
+            store.registerPointsAddingOnCreate();
+        }
+        
         startCountDown();
         mediaPlayer.start();
         messagesController.init();
+        
         MainActivity.instance = this;
     }
 
