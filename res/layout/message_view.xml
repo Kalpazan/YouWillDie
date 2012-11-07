@@ -21,10 +21,12 @@
                 android:textSize="30dp"/>
         <ImageView
                 android:id="@+id/messageIcon"
-                android:layout_height="100dp"
-                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_width="80dp"
                 android:layout_gravity="right"
-                android:layout_marginRight="@dimen/margin_frame"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="@dimen/image_margin_frame"
                 android:padding="5dp"
                 android:src="@drawable/icon_crazy"/>
     </FrameLayout>
@@ -46,10 +48,11 @@
                      android:layout_marginBottom="65dp"
                      android:orientation="vertical">
             <ScrollView
+                	android:id="@+id/message_scroll_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/margin_frame"
-                    android:paddingRight="@dimen/margin_frame"
+                    android:paddingLeft="@dimen/message_margin_frame"
+                    android:paddingRight="@dimen/message_margin_frame"
                     android:paddingTop="@dimen/margin_frame"
                     android:paddingBottom="60dp">
 
@@ -60,7 +63,8 @@
                         android:gravity="center_horizontal"
                         android:autoLink="web"
                         android:textColor="@color/bottom_panel_bg_color"
-                        android:textSize="20dp"
+                        android:textSize="16dp"
+                        android:text="какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и "
                         />
 
             </ScrollView>

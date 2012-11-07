@@ -22,6 +22,8 @@
     <color name="link_btn_pressed_color">#ff704200</color>
 
     <dimen name="margin_frame">20dp</dimen>
+    <dimen name="image_margin_frame">30dp</dimen>
+    <dimen name="message_margin_frame">18dp</dimen>
     <dimen name="margin_frame_with_padding">39dp</dimen>
 
 

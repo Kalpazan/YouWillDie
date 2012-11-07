@@ -1,12 +1,12 @@
 package com.example;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-import static android.widget.Toast.LENGTH_LONG;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,7 +23,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SlidingDrawer;
-import android.widget.Toast;
 
 import com.bugsense.trace.BugSenseHandler;
 import com.example.controller.MessageDisplayController;
@@ -36,7 +35,6 @@ public class MainActivity extends Activity {
 
     private FinalCountdown timer;
 
-//    private TextView textDaysLeft;
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
 	private RateViewController rateViewController;
@@ -51,7 +49,6 @@ public class MainActivity extends Activity {
     
     @Override
     public void onCreate(Bundle bundle) {
-//    	Debug.startMethodTracing("SurvivalGuide");
         try {
 	    	super.onCreate(bundle);
 	        
@@ -94,7 +91,6 @@ public class MainActivity extends Activity {
 	        setupHistoryList(provider, messagesController);
 	      
 			playSound();
-	//		Debug.stopMethodTracing();
         } catch (Exception e) {
         	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
         	BugSenseHandler.sendException(e);
@@ -177,6 +173,17 @@ public class MainActivity extends Activity {
         Debug.stopMethodTracing();
     }
 
+	@Override
+    protected void onNewIntent(Intent intent) {
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
+            NotificationTemplate notification = provider.getNotification(id);
+            messagesController.setCurrentMessage(notification);
+            messagesController.showMessageView();
+        }
+    }
+	
     @Override
     protected void onResume() {
     	Log.d("time", "onResume!");

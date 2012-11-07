@@ -4,7 +4,11 @@ import android.content.res.Resources;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -29,6 +33,8 @@ public class MessageDisplayController {
 	private Button helpButton;
 	private WebView helpText;
 	
+	private ScrollView messageScrollView;
+	
 	private NotificationProvider provider;
 	
 	private String header;
@@ -43,6 +49,7 @@ public class MessageDisplayController {
 		helpButton = (Button) activity.findViewById(R.id.help_button);
 		slidingDrawer = (SlidingDrawer) activity.findViewById(R.id.drawer);
 		header = activity.getResources().getString(R.string.html_header);
+		messageScrollView = (ScrollView) activity.findViewById(R.id.message_scroll_view);
 		
 		helpText = (WebView) activity.findViewById(R.id.help_text);
 		helpText.setVerticalScrollBarEnabled(false);
@@ -96,6 +103,7 @@ public class MessageDisplayController {
     public void showMessageView() {
     	if (!isMessageViewActive() && canShowMessageView()) {
     		helpButton.setText("?");
+    		messageScrollView.scrollTo(0, 0);
 	    	viewFlipper.showNext();
 	    	if (slidingDrawer.isOpened()) {
 	    		slidingDrawer.animateClose();
