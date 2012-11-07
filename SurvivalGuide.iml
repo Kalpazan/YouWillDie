@@ -42,6 +42,7 @@
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="bugsense3.0.5 (2)" level="project" />
     <orderEntry type="library" name="android-support-v4 (2)" level="project" />
+    <orderEntry type="library" name="bugsense3.0.6" level="project" />
   </component>
 </module>
 

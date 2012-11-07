@@ -8,7 +8,7 @@
             android:id="@+id/custom_chooser"
             android:divider="@color/bottom_panel_bg_color"
             android:layout_width="wrap_content"
-            android:layout_height="240dp"
+            android:layout_height="250dp"
             android:cacheColorHint="@android:color/transparent">
     </ListView>
 
