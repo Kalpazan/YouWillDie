@@ -1,4 +1,4 @@
-package com.example;
+package com.lutshe;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;

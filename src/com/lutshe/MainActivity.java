@@ -1,4 +1,4 @@
-package com.example;
+package com.lutshe;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static java.util.Calendar.DECEMBER;
@@ -23,11 +23,11 @@ import android.widget.ListView;
 import android.widget.SlidingDrawer;
 
 import com.bugsense.trace.BugSenseHandler;
-import com.example.controller.MessageDisplayController;
-import com.example.controller.RateViewController;
-import com.example.controller.UserMessageController;
-import com.example.points.PointsController;
-import com.example.store.Store;
+import com.lutshe.controller.MessageDisplayController;
+import com.lutshe.controller.RateViewController;
+import com.lutshe.controller.UserMessageController;
+import com.lutshe.points.PointsController;
+import com.lutshe.store.Store;
 
 public class MainActivity extends Activity {
 
@@ -157,6 +157,12 @@ public class MainActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	mediaPlayer.pause();
+    }
+    
 	@Override
     protected void onPause() {
 		MainActivity.instance = null;
@@ -207,6 +213,8 @@ public class MainActivity extends Activity {
 	        messagesController.init();
 	        
 	        MainActivity.instance = this;
+		} else {
+			mediaPlayer.pause();
 		}
 	}
 	

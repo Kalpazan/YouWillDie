@@ -1,4 +1,4 @@
-package com.example;
+package com.lutshe;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

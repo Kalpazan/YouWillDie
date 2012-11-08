@@ -1,4 +1,4 @@
-package com.example;
+package com.lutshe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.points.PointsController;
+import com.lutshe.points.PointsController;
 
 public class SendToChooser {
 

@@ -1,4 +1,4 @@
-package com.example.store;
+package com.lutshe.store;
 
 import java.util.Date;
 import java.util.HashMap;

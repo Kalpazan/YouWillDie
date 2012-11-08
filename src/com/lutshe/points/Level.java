@@ -1,4 +1,4 @@
-package com.example.points;
+package com.lutshe.points;
 
 public class Level {
 	int imageId;

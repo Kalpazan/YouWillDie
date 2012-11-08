@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.lutshe.controller;
 
 import android.content.res.Resources;
 import android.view.View;
@@ -10,11 +10,11 @@ import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.example.MainActivity;
-import com.example.NotificationProvider;
-import com.example.NotificationTemplate;
-import com.example.R;
-import com.example.store.Store;
+import com.lutshe.MainActivity;
+import com.lutshe.NotificationProvider;
+import com.lutshe.NotificationTemplate;
+import com.lutshe.R;
+import com.lutshe.store.Store;
 
 public class MessageDisplayController {
 	

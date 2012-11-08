@@ -1,4 +1,4 @@
-package com.example;
+package com.lutshe;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
@@ -21,7 +21,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.bugsense.trace.BugSenseHandler;
-import com.example.store.Store;
+import com.lutshe.store.Store;
 
 public class NotificationServiceThatJustWorks extends IntentService {
 
@@ -32,7 +32,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		super("blabla");
 	}
 
-	public static final String EXTRA_NAME = "com.example.msgId";
+	public static final String EXTRA_NAME = "com.lutshe.msgId";
 	private NotificationManager manager;
 	private NotificationProvider notificationProvider;
 	private Store store;

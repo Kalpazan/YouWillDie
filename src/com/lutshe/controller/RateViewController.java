@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.lutshe.controller;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,11 +9,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
 import com.bugsense.trace.BugSenseHandler;
-import com.example.MainActivity;
-import com.example.NotificationsListAdapter;
-import com.example.R;
-import com.example.points.PointsController;
-import com.example.store.Store;
+import com.lutshe.MainActivity;
+import com.lutshe.NotificationsListAdapter;
+import com.lutshe.R;
+import com.lutshe.points.PointsController;
+import com.lutshe.store.Store;
 
 public class RateViewController {
 

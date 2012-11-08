@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.lutshe.controller;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,9 +9,9 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.MainActivity;
-import com.example.NotificationsListAdapter;
-import com.example.R;
+import com.lutshe.MainActivity;
+import com.lutshe.NotificationsListAdapter;
+import com.lutshe.R;
 
 public class UserMessageController {
 	private static final int FADE_DELAY = 1500;

@@ -1,4 +1,4 @@
-package com.example.points;
+package com.lutshe.points;
 
 import static android.graphics.Color.TRANSPARENT;
 import android.view.animation.AlphaAnimation;
@@ -6,10 +6,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.MainActivity;
-import com.example.R;
-import com.example.controller.RateViewController;
-import com.example.store.Store;
+import com.lutshe.MainActivity;
+import com.lutshe.R;
+import com.lutshe.controller.RateViewController;
+import com.lutshe.store.Store;
 
 public class PointsController {
 
@@ -28,8 +28,8 @@ public class PointsController {
             new Level(R.drawable.ranc_3, 80),
             new Level(R.drawable.ranc_4, 150),
             new Level(R.drawable.ranc_5, 220),
-            new Level(R.drawable.ranc_6, 310),
-            new Level(R.drawable.ranc_7, 500),
+            new Level(R.drawable.ranc_7, 310),
+            new Level(R.drawable.ranc_6, 500),
             new Level(R.drawable.ranc_8, 1000)
             };
 

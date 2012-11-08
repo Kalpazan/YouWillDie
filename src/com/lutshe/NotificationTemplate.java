@@ -1,4 +1,5 @@
-package com.example;
+package com.lutshe;
+
 
 public class NotificationTemplate {
 	

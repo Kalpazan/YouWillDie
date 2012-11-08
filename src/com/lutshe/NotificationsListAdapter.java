@@ -1,7 +1,7 @@
-package com.example;
+package com.lutshe;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-import static com.example.FinalCountdown.HOUR;
+import static com.lutshe.FinalCountdown.HOUR;
 
 import java.util.Calendar;
 
@@ -15,7 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.store.Store;
+import com.lutshe.store.Store;
 
 public class NotificationsListAdapter extends BaseAdapter {
 

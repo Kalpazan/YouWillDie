@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example"
+    package="com.lutshe"
     android:installLocation="internalOnly"
     android:versionCode="1"
     android:versionName="1.9" >
@@ -30,7 +30,7 @@
             android:name=".NotificationServiceThatJustWorks"
             android:enabled="true" >
             <intent-filter>
-                <action android:name="com.example.NotificationServiceThatJustWorks" />
+                <action android:name="com.lutshe.NotificationServiceThatJustWorks" />
             </intent-filter>
         </service>
 
@@ -46,7 +46,7 @@
             android:name=".AlarmListener"
             android:enabled="true" >
             <intent-filter>
-                <action android:name="com.example.AlarmListener" />
+                <action android:name="com.lutshe.AlarmListener" />
             </intent-filter>
         </receiver>
 
@@ -55,7 +55,7 @@
             android:name=".NotificationSchedulerService"
             android:enabled="true" >
             <intent-filter>
-                <action android:name="com.example.NotificationSchedulerService" />
+                <action android:name="com.lutshe.NotificationSchedulerService" />
             </intent-filter>
         </service>
 

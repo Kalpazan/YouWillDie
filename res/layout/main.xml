@@ -20,14 +20,14 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-        <com.example.PortraitViewFlipper
+        <com.lutshe.PortraitViewFlipper
                 android:id="@+id/view_flipper"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
                 
 			<include layout="@layout/help_view"/>
             <include layout="@layout/message_view"/>
-        </com.example.PortraitViewFlipper>
+        </com.lutshe.PortraitViewFlipper>
 
         <include layout="@layout/sliding_drawer"/>
 
