@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -169,10 +168,15 @@ public class MainActivity extends Activity {
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
         slider.close();
         
-        BugSenseHandler.flush(MainActivity.this); //How to use it. See https://www.bugsense.com/docs
-        Debug.stopMethodTracing();
+        BugSenseHandler.flush(MainActivity.this); 
     }
 
+	@Override
+	protected void onStop() {
+		super.onStop();
+		mediaPlayer.pause();
+	}
+	
 	@Override
     protected void onNewIntent(Intent intent) {
         Bundle extras = intent.getExtras();
@@ -184,34 +188,35 @@ public class MainActivity extends Activity {
         }
     }
 	
-    @Override
-    protected void onResume() {
-    	Log.d("time", "onResume!");
-        super.onResume();
-        if (isFirstLaunch()) {
-        	new AsyncTask<Void, Void, Void>() {
-				@Override
-				protected Void doInBackground(Void... params) {
-					NotificationServiceThatJustWorks.startService(getApplicationContext());
-					return null;
-				}
-			}.execute((Void)null);
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+		super.onWindowFocusChanged(hasFocus);
+		
+		if (hasFocus) {
+			mediaPlayer.start();
 			
-        	store.registerFirstLaunch();
-            pointsController.addPoints(10);
-            getUserMessageController().showMessage("Твой первый запуск? +10 очков!");
-            store.registerPointsAddingOnCreate();
-        }
-        
-        startCountDown();
-        mediaPlayer.start();
-        messagesController.init();
-        
-        MainActivity.instance = this;
-    }
-
-
-
+			if (isFirstLaunch()) {
+	        	new AsyncTask<Void, Void, Void>() {
+					@Override
+					protected Void doInBackground(Void... params) {
+						NotificationServiceThatJustWorks.startService(getApplicationContext());
+						return null;
+					}
+				}.execute((Void)null);
+				
+	        	store.registerFirstLaunch();
+	            pointsController.addPoints(10);
+	            getUserMessageController().showMessage("Твой первый запуск? +10 очков!");
+	            store.registerPointsAddingOnCreate();
+	        }
+	        
+	        startCountDown();
+	        messagesController.init();
+	        
+	        MainActivity.instance = this;
+		}
+	}
+	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

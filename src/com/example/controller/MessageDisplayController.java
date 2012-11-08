@@ -73,6 +73,7 @@ public class MessageDisplayController {
 	
 	private void updateView() {
 		msgText.setText(currentMessage.getMainText());
+		messageScrollView.scrollTo(0, 0);
 		icon.setImageDrawable(resources.getDrawable(currentMessage.getIcon()));
 	}
 
@@ -103,7 +104,6 @@ public class MessageDisplayController {
     public void showMessageView() {
     	if (!isMessageViewActive() && canShowMessageView()) {
     		helpButton.setText("?");
-    		messageScrollView.scrollTo(0, 0);
 	    	viewFlipper.showNext();
 	    	if (slidingDrawer.isOpened()) {
 	    		slidingDrawer.animateClose();
