@@ -9,7 +9,7 @@ public class FinalCountdown extends CountDownTimer {
 	public static final int HOUR = MINUTE * 60;
 	
 	private MainActivity activity;
-    private TextView textDaysLeft;
+    //private TextView textDaysLeft;
     private int counter;
     private String formatter;
     private TextView textTimeDay;
@@ -25,7 +25,7 @@ public class FinalCountdown extends CountDownTimer {
 
         formatter = activity.getResources().getString(R.string.millisecFormatter);
 
-        textDaysLeft = (TextView) activity.findViewById(R.id.days_left);
+        //textDaysLeft = (TextView) activity.findViewById(R.id.days_left);
 
         textTimeDay = (TextView) activity.findViewById(R.id.textTimeDay);
         textTimeHour = (TextView) activity.findViewById(R.id.textTimeHour);
@@ -33,12 +33,12 @@ public class FinalCountdown extends CountDownTimer {
         textTimeSec = (TextView) activity.findViewById(R.id.textTimeSec);
         textTimeMilisec = (TextView) activity.findViewById(R.id.textTimeMilisec);
 
-        Typeface type = Typeface.createFromAsset(activity.getAssets(), "TEXASLED.TTF");
-        textTimeDay.setTypeface(type);
-        textTimeHour.setTypeface(type);
-        textTimeMin.setTypeface(type);
-        textTimeSec.setTypeface(type);
-        textTimeMilisec.setTypeface(type);
+//        Typeface type = Typeface.createFromAsset(activity.getAssets(), "Acme 9 Regular.ttf");
+//        textTimeDay.setTypeface(type);
+//        textTimeHour.setTypeface(type);
+//        textTimeMin.setTypeface(type);
+//        textTimeSec.setTypeface(type);
+//        textTimeMilisec.setTypeface(type);
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class FinalCountdown extends CountDownTimer {
         	activity.checkForUpdates();
         	
             textTimeMin.setText(String.valueOf(minutesLeft));
-            textDaysLeft.setText(String.valueOf(daysLeft)+" " + activity.getResources().getString(R.string.days_left));
+            //textDaysLeft.setText(String.valueOf(daysLeft)+" " + activity.getResources().getString(R.string.days_left));
         }
         counter++;
     }

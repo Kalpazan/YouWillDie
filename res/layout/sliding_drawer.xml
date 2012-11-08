@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/older_messages"
-                    android:textColor="@color/button_color"
+                    android:textColor="@color/share_btn_color"
                     android:textSize="16dip"/>
         </LinearLayout>
 
