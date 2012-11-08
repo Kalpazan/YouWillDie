@@ -23,13 +23,14 @@ public class PointsController {
     private Store store;
 
     private static Level[] levels = {
-            new Level(R.drawable.one_start_rank, 0),
+            new Level(R.drawable.ranc_1, 0),
             new Level(R.drawable.ranc_2, 21),
-            new Level(R.drawable.ranc_3, 50),
-            new Level(R.drawable.ranc_4, 103),
-            new Level(R.drawable.ranc_5, 170),
-            new Level(R.drawable.ranc_6, 210)
-//            new Level(R.drawable.ranc_7, 500)
+            new Level(R.drawable.ranc_3, 80),
+            new Level(R.drawable.ranc_4, 150),
+            new Level(R.drawable.ranc_5, 220),
+            new Level(R.drawable.ranc_6, 310),
+            new Level(R.drawable.ranc_7, 500),
+            new Level(R.drawable.ranc_8, 1000)
             };
 
     public PointsController(MainActivity activity) {

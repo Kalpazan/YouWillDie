@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="100dp"
@@ -10,6 +10,7 @@
     tools:ignore="ContentDescription" >
 
     <LinearLayout
+        android:id="@+id/image_container"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/top_panel_size"
         android:layout_marginLeft="10dp"
@@ -17,204 +18,194 @@
         android:gravity="center_vertical|right" >
 
         <ImageView
-                android:id="@+id/survivor_btn"
-                android:layout_width="@dimen/top_panel_icon_size"
-                android:layout_height="@dimen/top_panel_icon_size"
-                android:layout_gravity="center_vertical|left"
-                android:src="@drawable/icon_top_panel"
-                android:clickable="true"/>
-       
-
-        <!-- ImageButton
             android:id="@+id/survivor_btn"
             android:layout_width="@dimen/top_panel_icon_size"
             android:layout_height="@dimen/top_panel_icon_size"
             android:layout_gravity="center_vertical|left"
-            android:src="@drawable/icon_top_panel" /-->
+            android:clickable="true"
+            android:src="@drawable/icon_top_panel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/timer_container"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/image_container"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textTimeDay"
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="2dp"
+            android:gravity="left|bottom"
+            android:textSize="@dimen/timer_num_size" />
+
+        <TextView
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="2dp"
+            android:gravity="left|bottom"
+            android:text="d"
+            android:textSize="@dimen/timer_text_size" />
+
+        <TextView
+            android:id="@+id/textTimeHour"
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:gravity="left|bottom"
+            android:textSize="@dimen/timer_num_size" />
+
+        <TextView
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="2dp"
+            android:gravity="left|bottom"
+            android:text="h"
+            android:textSize="@dimen/timer_text_size" />
+
+        <TextView
+            android:id="@+id/textTimeMin"
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:gravity="left|bottom"
+            android:textSize="@dimen/timer_num_size" />
+
+        <TextView
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="2dp"
+            android:gravity="left|bottom"
+            android:text="m"
+            android:textSize="@dimen/timer_text_size" />
+
+        <TextView
+            android:id="@+id/textTimeSec"
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:gravity="left|bottom"
+            android:textSize="@dimen/timer_num_size" />
+
+        <TextView
+            android:id="@+id/textTimeMilisec"
+            style="@style/timeLeftTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="0dp"
+            android:gravity="left|bottom"
+            android:textSize="@dimen/timer_num_size" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical" >
+        android:layout_below="@+id/timer_container"
+        android:layout_toRightOf="@+id/image_container" >
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
+        <FrameLayout
+            android:id="@+id/progress_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textTimeDay"
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="2dp"
-                android:gravity="left|bottom"
-                android:textSize="@dimen/timer_num_size" />
-
-            <TextView
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="2dp"
-                android:gravity="left|bottom"
-                android:text="d"
-                android:textSize="@dimen/timer_text_size" />
-
-            <TextView
-                android:id="@+id/textTimeHour"
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:gravity="left|bottom"
-                android:textSize="@dimen/timer_num_size" />
-
-            <TextView
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="2dp"
-                android:gravity="left|bottom"
-                android:text="h"
-                android:textSize="@dimen/timer_text_size" />
-
-            <TextView
-                android:id="@+id/textTimeMin"
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:gravity="left|bottom"
-                android:textSize="@dimen/timer_num_size" />
-
-            <TextView
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="2dp"
-                android:gravity="left|bottom"
-                android:text="m"
-                android:textSize="@dimen/timer_text_size" />
-
-            <TextView
-                android:id="@+id/textTimeSec"
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:gravity="left|bottom"
-                android:textSize="@dimen/timer_num_size" />
-
-            <TextView
-                android:id="@+id/textTimeMilisec"
-                style="@style/timeLeftTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="0dp"
-                android:gravity="left|bottom"
-                android:textSize="@dimen/timer_num_size" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="@dimen/margin_frame_with_padding"
-            android:orientation="horizontal" >
-
-            <FrameLayout
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|bottom"
-                android:layout_marginBottom="12dp"
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/levelProgressBar"
                 android:layout_width="fill_parent"
-                android:orientation="vertical" >
+                android:layout_height="20dp"
+                android:layout_gravity="left|center_vertical"
+                android:max="100"
+                android:progress="32" />
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="@style/levelProgressBar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp"
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginRight="@dimen/progress_bar_text_margins"
+                android:background="@drawable/scale_bitmap_pattern" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/progressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
-                    android:max="100"
-                    android:progress="32" />
+                    android:layout_marginLeft="@dimen/progress_bar_text_margins"
+                    android:gravity="left|center_vertical"
+                    android:text="14/100"
+                    android:textColor="@color/message_bg_color"
+                    android:textSize="12dp" />
 
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="left|center_vertical"
-                    android:layout_marginRight="@dimen/progress_bar_text_margins"
-                    android:background="@drawable/scale_bitmap_pattern" />
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/bonus_points"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:orientation="horizontal" >
+                    android:layout_marginLeft="@dimen/progress_bar_text_margins"
+                    android:text="+12"
+                    android:textColor="@color/light_green"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/progressText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center_vertical"
-                        android:layout_marginLeft="@dimen/progress_bar_text_margins"
-                        android:gravity="left|center_vertical"
-                        android:text="14/100"
-                        android:textColor="@color/message_bg_color"
-                        android:textSize="12dp" />
+            <ImageView
+                android:id="@+id/pagon"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:adjustViewBounds="true"
+                android:gravity="right|center_vertical"
+                android:src="@drawable/one_start_rank" />
+            
+        </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/bonus_points"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/progress_bar_text_margins"
-                        android:text="+12"
-                        android:textColor="@color/light_green"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/pagon"
-                    android:layout_width="24dp"
-                    android:layout_height="28dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-					android:layout_marginTop="1dp"
-                    android:gravity="right|center_vertical"
-                    android:src="@drawable/one_start_rank" />
-                
-            </FrameLayout>
-
-            <Button
-                android:id="@+id/help_button"
-                android:layout_width="@dimen/margin_frame_with_padding"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center_vertical"
-                android:background="#00000000"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Ok"
-                android:textColor="@color/button_color"
-                android:textSize="18dp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/help_button"
+            android:layout_width="@dimen/margin_frame_with_padding"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center_vertical"
+            android:background="#00000000"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@android:string/ok"
+            android:textColor="@color/share_btn_color"
+            android:textSize="18dp" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

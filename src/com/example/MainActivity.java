@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -171,12 +170,6 @@ public class MainActivity extends Activity {
         BugSenseHandler.flush(MainActivity.this); 
     }
 
-	@Override
-	protected void onStop() {
-		super.onStop();
-		mediaPlayer.pause();
-	}
-	
 	@Override
     protected void onNewIntent(Intent intent) {
         Bundle extras = intent.getExtras();
