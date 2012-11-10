@@ -115,8 +115,6 @@
 <item>||В детстве, когда ты хотел в туалет, ты уединялся и представлял себя робокопом. Так вот... Эта способность тебе пригодится. Надеемся, твоя мышечная память тебя не подведет.</item>
 <item>||В скором будущем тебе нужно будет сосуществовать с группой нескольких людей. Кто из вас будет главным? а? Собери подписи у группы людей, чтобы потом шантажировать их.</item>
 <item>||Чувак, у тебя почти не осталось времени чтобы забивать на что-то. Встань и иди забей гвоздь.</item>
-<item>||Начни запасаться книгнами. Тебе же нужно будет топливо, чтобы греться. И прочти Автостопом по галактике.</item>
-<item>||И чувак, если ты умрешь, нырни в мусульманизм и иудаизм. С головой.Еще в православизм и сатанизм. Короче все, что заанчивается на -изм.</item>
 <item>||Аудиозапись обращения главы МПЖКСФМНК к человечест ву</item>
 <item>||Фотор сбежавшего преступника</item>
 <item>||Анимация уроки борьбы или с легким паром</item>
@@ -129,56 +127,55 @@
     </string-array>
 
 <string-array name="icons">
-        <item>@drawable/smile</item>
-        <item>@drawable/drug</item>
-        <item>@drawable/bullshit</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/smile</item>
-        <item>@drawable/drug</item>
-        <item>@drawable/bullshit</item>
+        <item>@drawable/icon_smile</item>
+        <item>@drawable/icon_drug</item>
+        <item>@drawable/icon_bullshit</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_smile</item>
+        <item>@drawable/icon_drug</item>
+        <item>@drawable/icon_bullshit</item>
         <item>@drawable/icon_gentelman</item>
-        <item>@drawable/horny</item>
-        <item>@drawable/hipster</item>
-        <item>@drawable/horny</item>
-        <item>@drawable/money</item>
-        <item>@drawable/pirate</item>
-        <item>@drawable/radioactive</item>
-        <item>@drawable/smile</item>
-        <item>@drawable/star</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/wtf</item>
+        <item>@drawable/icon_horny</item>
+        <item>@drawable/icon_hipster</item>
+        <item>@drawable/icon_horny</item>
+        <item>@drawable/icon_money</item>
+        <item>@drawable/icon_pirate</item>
+        <item>@drawable/icon_radioactive</item>
+        <item>@drawable/icon_smile</item>
+        <item>@drawable/icon_star</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_wtf</item>
         <item>@drawable/icon_bat</item>
-        <item>@drawable/crazy</item>
-        <item>@drawable/crying</item>
-        <item>@drawable/drug</item>
-        <item>@drawable/gasmask</item>
+        <item>@drawable/icon_crazy</item>
+        <item>@drawable/icon_crying</item>
+        <item>@drawable/icon_drug</item>
+        <item>@drawable/icon_gasmask</item>
         <item>@drawable/icon_gentelman</item>
-        <item>@drawable/hipster</item>
-        <item>@drawable/horny</item>
-        <item>@drawable/money</item>
-        <item>@drawable/pirate</item>
-        <item>@drawable/radioactive</item>
-        <item>@drawable/smile</item>
-        <item>@drawable/star</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/wtf</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
-        <item>@drawable/tongue</item>
+        <item>@drawable/icon_hipster</item>
+        <item>@drawable/icon_horny</item>
+        <item>@drawable/icon_money</item>
+        <item>@drawable/icon_pirate</item>
+        <item>@drawable/icon_radioactive</item>
+        <item>@drawable/icon_smile</item>
+        <item>@drawable/icon_star</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_wtf</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
+        <item>@drawable/icon_tongue</item>
     </string-array>
 
 </resources>
