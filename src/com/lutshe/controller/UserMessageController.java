@@ -1,5 +1,7 @@
 package com.lutshe.controller;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -10,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lutshe.MainActivity;
-import com.lutshe.NotificationsListAdapter;
 import com.lutshe.R;
 
 public class UserMessageController {
@@ -59,7 +60,7 @@ public class UserMessageController {
 	
 	private View getView(String msgText) {
 		if (msgView == null) {
-			msgView = NotificationsListAdapter.inflater.inflate(R.layout.top_message, null);	
+			msgView = ((LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.top_message, null);	
 			msgView.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 			msgView.setOnClickListener(new OnClickListener() {
 				@Override

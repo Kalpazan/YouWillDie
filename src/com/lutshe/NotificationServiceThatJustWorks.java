@@ -161,7 +161,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			if (lastNotificationNumber == -1) {
 				store.updateLastNotificationNumber(0);
 				store.saveNotificationTime(0, System.currentTimeMillis());
-				when = System.currentTimeMillis() + 3;// * 60 * 1000;
+				when = System.currentTimeMillis() + 10 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);

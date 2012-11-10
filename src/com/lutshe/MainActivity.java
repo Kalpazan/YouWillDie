@@ -4,6 +4,7 @@ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 import android.app.Activity;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,7 +34,9 @@ import com.lutshe.store.Store;
 
 public class MainActivity extends Activity {
 
-    private FinalCountdown timer;
+    private static final Random RANDOM = new Random();
+
+	private FinalCountdown timer;
 
     private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
@@ -46,14 +50,31 @@ public class MainActivity extends Activity {
     
     public static MainActivity instance;
     
+//    private View mainView;
+//    
+//    private View getMainView(){
+//    	LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+//        return inflater.inflate(R.layout.main, null);
+//    }
+    
+//    @Override
+//    public View findViewById(int id) {
+//    	return mainView.findViewById(id);
+//    }
+    
     @Override
     public void onCreate(Bundle bundle) {
+    	Log.d("test", "oncre");
         try {
+        	
 	    	super.onCreate(bundle);
-
+	    	MainActivity.instance = this;
+	    	
 	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
 	    	
-	        setContentView(R.layout.main);
+//	        mainView = getMainView();
+	        
+	      	setContentView(R.layout.main);
 	        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
 	        store = new Store(getApplicationContext());
@@ -61,7 +82,10 @@ public class MainActivity extends Activity {
 	        
 	        provider = NotificationProvider.getInstance(getResources());
 	        messagesController = new MessageDisplayController(provider, this);
+	        messagesController.init();
 	
+	        setupHistoryList(provider, messagesController);
+	        
 	        findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
 	            @Override
 	            public void onClick(View view) {
@@ -73,8 +97,12 @@ public class MainActivity extends Activity {
 	        findViewById(R.id.messageIcon).setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					NotificationTemplate notification = provider.getNotification(new Random().nextInt(store.getLastNotificationNumber()));
-					messagesController.setCurrentMessage(notification);
+					int lastNotificationNumber = store.getLastNotificationNumber();
+					if (lastNotificationNumber > 1) {
+						int next = RANDOM.nextInt(lastNotificationNumber - 1) + 1;
+						NotificationTemplate notification = provider.getNotification(next);
+						messagesController.setCurrentMessage(notification);
+					}
 				}
 			});
 	        
@@ -97,8 +125,6 @@ public class MainActivity extends Activity {
 			findViewById(R.id.help_button_container).setOnClickListener(helpListener);
 			findViewById(R.id.help_button).setOnClickListener(helpListener);
 			
-	        setupHistoryList(provider, messagesController);
-	      
 			playSound();
         } catch (Exception e) {
         	BugSenseHandler.sendException(e);
@@ -109,6 +135,12 @@ public class MainActivity extends Activity {
 		return !store.wasLaunchedBefore();
 	}
 
+    private boolean isFirstLaunchToday() {
+    	Date today = new Date();
+    	Date lastLaunch = new Date(store.getLastLaunchTime());
+    	return lastLaunch.getDate() != today.getDate() || lastLaunch.getMonth() != today.getMonth() ;
+    }
+    
 	private void setupHistoryList(final NotificationProvider provider, final MessageDisplayController messageController) {
         ListView historyListView = (ListView) findViewById(R.id.content);
 		listAdapter = new NotificationsListAdapter(this, provider);
@@ -127,7 +159,7 @@ public class MainActivity extends Activity {
                 messageController.setCurrentMessage(notification);
                 messageController.showMessageView();
                 slider.animateClose();
-                if (store.wasPointsAddedOnMsgView()){
+                if (realPosition == 0 && store.wasPointsAddedOnMsgView()){
                     pointsController.addPoints(6);
                     getUserMessageController().showMessage("Перечитываешь? Молодец!");
                     store.registerPointsAddingOnMsgView();
@@ -175,7 +207,9 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
     	super.onStop();
-    	mediaPlayer.pause();
+    	if (mediaPlayer != null) {
+    		mediaPlayer.pause();
+    	}
     	stopCountdown();
     }
 
@@ -192,7 +226,9 @@ public class MainActivity extends Activity {
         super.onPause();
         stopCountdown();
         
-        mediaPlayer.pause();
+        if (mediaPlayer != null) {
+        	mediaPlayer.pause();
+        }
         
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
         slider.close();
@@ -204,8 +240,11 @@ public class MainActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
+        	instance = this;
             int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
             NotificationTemplate notification = provider.getNotification(id);
+            pointsController.addPoints(4);
+            getUserMessageController().showMessage("новое сообщение: +4 очка!");
             messagesController.setCurrentMessage(notification);
             messagesController.showMessageView();
         }
@@ -213,10 +252,14 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
+		Log.d("test", "onwfc");
 		super.onWindowFocusChanged(hasFocus);
 		
 		if (hasFocus) {
-			mediaPlayer.start();
+			if (mediaPlayer != null) {
+				mediaPlayer.start();
+			}
+			MainActivity.instance = this;
 			
 			if (isFirstLaunch()) {
 	        	new AsyncTask<Void, Void, Void>() {
@@ -229,18 +272,16 @@ public class MainActivity extends Activity {
 				
 	        	store.registerFirstLaunch();
 	            pointsController.addPoints(10);
-	            getUserMessageController().showMessage("Твой первый запуск? +10 очков!");
 	            store.registerPointsAddingOnCreate();
+	        } else if (isFirstLaunchToday()) {
+	        	pointsController.addPoints(7);
+	            getUserMessageController().showMessage("велкам бэк :)");
+	            store.registerLaunch();
 	        }
 	        
 	        startCountDown();
-	        messagesController.init();
-	        
-	        MainActivity.instance = this;
-		} else {
-			mediaPlayer.pause();
-			stopCountdown();
 		}
+		Log.d("test", "onwfc");
 	}
 	
     @Override
@@ -275,16 +316,15 @@ public class MainActivity extends Activity {
 	
 	public synchronized void checkForUpdates() {
 		if (nextNotification != null) {
-			messagesController.setCurrentMessage(nextNotification);
-			messagesController.showMessageView();
-			if (store.wasPointsAddedOnMsgView()){
-                pointsController.addPoints(4);
-                getUserMessageController().showMessage("новое сообщение: +4 очка!");
-                store.registerPointsAddingOnMsgView();
-            }
-
 			store.updateLastNotificationNumber(notificationId);
 			listAdapter.notifyDataSetChanged();
+			
+			messagesController.setCurrentMessage(nextNotification);
+			messagesController.showMessageView();
+			
+			pointsController.addPoints(4);
+            getUserMessageController().showMessage("новое сообщение: +4 очка!");
+
 			nextNotification = null;
 			notificationId = -1;
 		}

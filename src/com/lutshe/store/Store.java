@@ -1,10 +1,10 @@
 package com.lutshe.store;
 
 import java.util.Date;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.SparseArray;
 
 public class Store {
 
@@ -13,7 +13,7 @@ public class Store {
 	private static final String LAST_NOTIFICATION_NUM = "lastNotificationNum";
 	private static final String STORE_NAME = "huj";
 	
-	private HashMap<Integer, Long> notificationTimesCache = new HashMap<Integer, Long>();
+	private SparseArray<Long> notificationTimesCache = new SparseArray<Long>();
 	
 	private Context context;
 	
@@ -95,7 +95,9 @@ public class Store {
     public boolean wasPointsAddedOnMsgView() {
         SharedPreferences settings = context.getSharedPreferences(STORE_NAME, 0);
         Date date = new Date(settings.getLong("pointsOnMsgView", 0));
-        if (date.getDay() == new Date().getDay() & date.getMonth() == new Date().getMonth()) return false;
+        Date today = new Date();
+        
+		if (date.getDay() == today.getDay() && date.getMonth() == today.getMonth()) return false;
         return true;
     }
 
@@ -105,5 +107,13 @@ public class Store {
 	
 	public boolean hasAlreadyRated() {
 		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("hasRated", false);
+	}
+
+	public long getLastLaunchTime() {
+		return context.getSharedPreferences(STORE_NAME, 0).getLong("ll", 0);
+	}
+	
+	public void registerLaunch() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("ll", new Date().getTime()).commit();
 	}
 }

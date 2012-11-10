@@ -36,7 +36,6 @@ public class NotificationsListAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
-		long start = System.currentTimeMillis();
 		int size = store.getLastNotificationNumber() + 1;
 		if (size != previousSize) {
 			previousSize = size;
@@ -44,7 +43,6 @@ public class NotificationsListAdapter extends BaseAdapter {
 			notifyDataSetChanged();
 		}
 		previousSize = size;
-		Log.d("lview", "count took: " + (System.currentTimeMillis() - start));
 		return size;
 	}
 

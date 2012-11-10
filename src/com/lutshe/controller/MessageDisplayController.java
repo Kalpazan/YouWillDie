@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
@@ -47,7 +48,9 @@ public class MessageDisplayController {
 	private Activity activity;
 	private String header;
 	private boolean helpLoaded;
+	private ScrollView helpContainer;
 	
+	LinearLayout webViewContainer;
 	
 	private Drawable questionMarkBg;
 	private Drawable closeBg;
@@ -66,8 +69,10 @@ public class MessageDisplayController {
 		linkBtn = (Button)activity.findViewById(R.id.link_button);
         linkBtn.setVisibility(View.INVISIBLE);
 		helpText = (WebView) activity.findViewById(R.id.help_text);
-		helpText.setVerticalScrollBarEnabled(false);
 		provider = notificationProvider;
+		
+		helpContainer = (ScrollView) activity.findViewById(R.id.help_view_container);
+		webViewContainer = (LinearLayout) activity.findViewById(R.id.web_view_container);
 		
 		questionMarkBg = resources.getDrawable(R.drawable.vopros);
 		closeBg = resources.getDrawable(R.drawable.x);
@@ -86,7 +91,8 @@ public class MessageDisplayController {
                 }
             });
         }
-		helpButton.setVisibility(View.VISIBLE);
+		
+        helpButton.setVisibility(View.VISIBLE);
 		currentMessage = message;
 		updateView();
 		if (!helpLoaded) {
@@ -115,7 +121,8 @@ public class MessageDisplayController {
 	}
 	
 	public void showGreetingView() {
-		helpText.loadDataWithBaseURL(null, header + resources.getString(R.string.greeting_text), "text/html", "UTF-8", null);
+		loadHelp(resources.getString(R.string.greeting_text));
+		
 		helpLoaded = false;
 		if (currentView == MESSAGE) {
 			viewFlipper.showNext();
@@ -144,8 +151,19 @@ public class MessageDisplayController {
 	}
 
 	private void loadHelp(String htmlText) {
+		helpContainer.scrollTo(0, 0);
+		
+		webViewContainer.removeView(helpText);
+		android.view.ViewGroup.LayoutParams params = helpText.getLayoutParams();
+		helpText.clearView();
+		
+		helpText = new WebView(MainActivity.instance);
+		helpText.setVerticalScrollBarEnabled(false);
+		helpText.setLayoutParams(params);
 		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
-		helpLoaded = true;
+		
+		webViewContainer.addView(helpText);
+		helpContainer.scrollTo(0, 0);
 	}
 	
     public void showMessageView() {
@@ -158,6 +176,7 @@ public class MessageDisplayController {
 
 	    	if (!helpLoaded) {
 	    		loadHelp(resources.getString(R.string.help_text));
+	    		helpLoaded = true;
 	    	}
 	    	currentView = MESSAGE;
     	}
