@@ -58,7 +58,7 @@ public class SendToChooser {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setClassName(ri.activityInfo.packageName, ri.activityInfo.name);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Sample subject");
+               // intent.putExtra(Intent.EXTRA_SUBJECT, "Sample subject");
                 intent.putExtra(Intent.EXTRA_TEXT, messageText);
 
                 activity.startActivity(intent);

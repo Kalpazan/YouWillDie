@@ -9,27 +9,6 @@
                  android:layout_height="wrap_content"
                  android:orientation="horizontal">
         <Button
-                android:id="@+id/link_button"
-                android:background="@drawable/button_link"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="8dp"
-                android:clickable="true"
-                android:paddingBottom="8dp"
-                android:paddingTop="6dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="  link  "
-                android:textColor="@color/message_bg_color"
-                android:textSize="15dp"
-                android:shadowColor="#99000000"
-                android:shadowRadius="1"
-                android:shadowDx="-.5"
-                android:shadowDy="-1"
-                />
-        <Button
                 android:id="@+id/share_button"
                 android:background="@drawable/button_share"
                 android:layout_width="wrap_content"
@@ -50,69 +29,78 @@
                 android:shadowDx="-.5"
                 android:shadowDy="-1"
                 />
-        <!--<TextView-->
-                <!--android:id="@+id/days_left"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="40dp"-->
-                <!--android:layout_marginBottom="5dp"-->
-                <!--android:layout_gravity="left|bottom"-->
-                <!--android:text="@string/day"-->
-                <!--android:textColor="@color/bottom_panel_bg_color"-->
-                <!--android:textSize="30dp"/>-->
+        <Button
+                android:id="@+id/link_button"
+                android:background="@drawable/button_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="115dp"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="6dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="link"
+                android:textColor="@color/message_bg_color"
+                android:textSize="15dp"
+                android:shadowColor="#99000000"
+                android:shadowRadius="1"
+                android:shadowDx="-.5"
+                android:shadowDy="-1"
+                />
+
         <ImageView
                 android:id="@+id/messageIcon"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:layout_width="70dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_gravity="right|bottom"
                 android:layout_marginRight="35dp"
-                android:paddingBottom="10dp"
-                android:paddingTop="5dp"
+                android:paddingTop="10dp"
                 android:src="@drawable/crazy"/>
     </FrameLayout>
 
 
-        <ImageView android:src="@drawable/corner"
-                   android:layout_height="7dp"
-                   android:layout_width="wrap_content"
-                   android:layout_marginRight="@dimen/margin_frame"
-                   android:layout_gravity="right"/>
+    <ImageView android:src="@drawable/corner"
+               android:layout_height="7dp"
+               android:layout_width="wrap_content"
+               android:layout_marginRight="@dimen/margin_frame"
+               android:layout_gravity="right"/>
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                     android:gravity="center_vertical"
-                     android:layout_width="fill_parent"
-                     android:layout_height="fill_parent"
-                     android:background="@drawable/message_bg"
-                     android:layout_marginLeft="@dimen/margin_frame"
-                     android:layout_marginRight="@dimen/margin_frame"
-                     android:layout_marginBottom="65dp"
-                     android:orientation="vertical">
-            <ScrollView
-                	android:id="@+id/message_scroll_view"
-                    android:layout_width="wrap_content"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:gravity="center_vertical"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:background="@drawable/message_bg"
+                 android:layout_marginLeft="@dimen/margin_frame"
+                 android:layout_marginRight="@dimen/margin_frame"
+                 android:layout_marginBottom="65dp"
+                 android:orientation="vertical">
+        <ScrollView
+                android:id="@+id/message_scroll_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/message_margin_frame"
+                android:paddingRight="@dimen/message_margin_frame"
+                android:paddingTop="@dimen/margin_frame"
+                android:paddingBottom="@dimen/margin_frame">
+
+            <TextView
+                    android:id="@+id/notification_text"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/message_margin_frame"
-                    android:paddingRight="@dimen/message_margin_frame"
-                    android:paddingTop="@dimen/margin_frame"
-                    android:paddingBottom="@dimen/margin_frame">
+                    android:gravity="center_horizontal"
+                    android:autoLink="web"
+                    android:textColor="@color/bottom_panel_bg_color"
+                    android:textSize="16dp"
+                    android:text="какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще пиздец"
+                    />
 
-                <TextView
-                        android:id="@+id/notification_text"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:autoLink="web"
-                        android:textColor="@color/bottom_panel_bg_color"
-                        android:textSize="16dp"
-                        android:text="какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще пиздец"
-                        />
+        </ScrollView>
 
-            </ScrollView>
-
-        </FrameLayout>
+    </FrameLayout>
 
 </LinearLayout>
 
