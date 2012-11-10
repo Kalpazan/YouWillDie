@@ -75,7 +75,7 @@ public class PointsController {
 
         if (currentPoints < levels[lastLevel].pointsNeeded) {
             bonusText.setText("+" + bonus);
-            bonusText.setTextColor(0xff00ff00);
+            bonusText.setTextColor(0xffFAF398);
 
             AlphaAnimation animation = new AlphaAnimation((float) 1, (float) 0);
             animation.setDuration(ANIMATION_DURATION);
