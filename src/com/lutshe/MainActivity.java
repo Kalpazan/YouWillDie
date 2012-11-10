@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -64,7 +63,6 @@ public class MainActivity extends Activity {
     
     @Override
     public void onCreate(Bundle bundle) {
-    	Log.d("test", "oncre");
         try {
         	
 	    	super.onCreate(bundle);
@@ -252,7 +250,6 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-		Log.d("test", "onwfc");
 		super.onWindowFocusChanged(hasFocus);
 		
 		if (hasFocus) {
@@ -281,7 +278,6 @@ public class MainActivity extends Activity {
 	        
 	        startCountDown();
 		}
-		Log.d("test", "onwfc");
 	}
 	
     @Override

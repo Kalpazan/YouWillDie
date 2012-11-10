@@ -6,6 +6,8 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -158,6 +160,8 @@ public class MessageDisplayController {
 		helpText.clearView();
 		
 		helpText = new WebView(MainActivity.instance);
+		helpText.getSettings().setRenderPriority(RenderPriority.HIGH);
+		helpText.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		helpText.setVerticalScrollBarEnabled(false);
 		helpText.setLayoutParams(params);
 		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
