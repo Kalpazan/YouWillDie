@@ -4,6 +4,7 @@ import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -68,6 +69,14 @@ public class MainActivity extends Activity {
 	                sendToChooser.sendViaCustomChooser();
 	            }
 	        });
+	        
+	        findViewById(R.id.messageIcon).setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					NotificationTemplate notification = provider.getNotification(new Random().nextInt(store.getLastNotificationNumber()));
+					messagesController.setCurrentMessage(notification);
+				}
+			});
 	        
 	        findViewById(R.id.survivor_btn).setOnClickListener(new OnClickListener() {
 				@Override
