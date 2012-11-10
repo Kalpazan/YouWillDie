@@ -167,7 +167,6 @@ public class MessageDisplayController {
 		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
 		
 		webViewContainer.addView(helpText);
-		helpContainer.scrollTo(0, 0);
 	}
 	
     public void showMessageView() {
@@ -178,6 +177,7 @@ public class MessageDisplayController {
 	    		slidingDrawer.animateClose();
 	    	}
 
+	    	helpContainer.scrollTo(0, 0);
 	    	if (!helpLoaded) {
 	    		loadHelp(resources.getString(R.string.help_text));
 	    		helpLoaded = true;
