@@ -10,7 +10,7 @@
             android:layout_height="fill_parent"
             android:background="@drawable/message_bg"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="65dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
@@ -25,15 +25,7 @@
             android:layout_height="wrap_content"
             android:paddingRight="8dp"
             >
-        <!-- TextView
-                android:id="@+id/help_text"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="@string/help_text"
-                android:textColor="@color/bottom_panel_bg_color"
-                android:textSize="18dp"
-                android:autoLink="web"/-->
+      
              <WebView 
                  android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

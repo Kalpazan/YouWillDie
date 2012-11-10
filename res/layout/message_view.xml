@@ -82,11 +82,15 @@
                 android:id="@+id/message_scroll_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/message_margin_frame"
-                android:paddingRight="@dimen/message_margin_frame"
+                android:paddingLeft="@dimen/message_margin_frame_left"
+                android:paddingRight="@dimen/message_margin_frame_right"
                 android:paddingTop="@dimen/margin_frame"
                 android:paddingBottom="@dimen/margin_frame">
-
+			
+            <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="8dp"
+            >
             <TextView
                     android:id="@+id/notification_text"
                     android:layout_width="fill_parent"
@@ -97,7 +101,7 @@
                     android:textSize="16dp"
                     android:text="какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще пиздец"
                     />
-
+			</LinearLayout>
         </ScrollView>
 
     </FrameLayout>
