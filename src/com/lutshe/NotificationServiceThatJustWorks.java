@@ -5,7 +5,6 @@ import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Random;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -160,10 +159,8 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
 			if (lastNotificationNumber == -1) {
-				store.updateLastNotificationNumber(2);
+				store.updateLastNotificationNumber(0);
 				store.saveNotificationTime(0, System.currentTimeMillis());
-				store.saveNotificationTime(1, System.currentTimeMillis());
-				store.saveNotificationTime(2, System.currentTimeMillis());
 				when = System.currentTimeMillis() + 3;// * 60 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);

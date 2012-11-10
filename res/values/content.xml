@@ -23,22 +23,30 @@
 	  	 </head>
 	  	 ]]>
     </string>
-    <string name="greeting_text">
-<![CDATA[
+    
+    <string name="greeting_text" formatted="false">
+		<![CDATA[
         <body style="background-color:"#FAF398">
-        Приветствуем. С вами на связи межгалактический комитет по сохранности живых форм  (далее МКПСЖФ). Вчера наши (неведомые вам) приборы позволили с точностью определить конечную дату существования вашей колонии. Вы называете это событие “концом света”. Его точная дата 21 декабря 2012 года по Гринвичу Земного времени. Цель МКПСЖФ - обнаружить и защитить потенциально вымирающие живые формы жизни.
-		<br/>
+        <font color="#3A2313">
+        Приветствуем. С вами на связи межгалактический комитет по сохранности живых форм  (далее МКПСЖФ). Вчера наши (неведомые вам) приборы позволили с точностью определить конечную дату существования вашей колонии. Вы называете это событие “концом света”. Его точная дата 21 декабря 2012 года по Гринвичу Земного времени. Цель МКПСЖФ - обнаружить и защитить потенциально вымирающие формы жизни.
+<br/>		<br/>
+		<img src="file:///android_res/drawable/illustration_1.png" width="100%" />
+	<br/>	<br/>
 		Эта программа послана землянам дабы спасти вас. Для начала обрати внимание на таймер, расположенный в верху экрана. Если количество оставшихся дней меньше трех - мы тебе уже не поможем. Не читай дальше и удали программу.
+		<br/>
 		<br/>
 		Много планет постигла таже участь, что вскоре настигнет вашу. Мы обладаем необходимыми знаниями, которыми поделимся с тобой. С этого момента ты будешь получать сообщения. Наполненные бесценным опытом. Или нет. 
 		<br/>
 		Ввиду недостаточного финансирования МКПСЖФ мы не можем передавать на вашу планету белее одного сообщения в день. Цените эту помощь и возможно некоторые из вас выживут.
-		<br/>
+		<br/><br/>
+		<img src="file:///android_res/drawable/illustration_2.png" width="100%" />
+		<br/><br/>
 		Наши корабли уже в пути. Продержитесь один световой парсек после наступления конца света и человечество будет спасено
 		<br/>
 		С уважением, глава МКПСЖФ.
 		]]>
     </string>
+    
     <string name="help_text" formatted="false">
 <![CDATA[
         <body style="background-color:"#FAF398">
@@ -46,7 +54,7 @@
         <table>
         <tr border="1px">
         <td align="left"><img src="file:///android_res/drawable/help_hipster.png" width="80%"/></td>
-        <td width="70%" padding-left="10px"><b>Давай, я тебе все расскажу: </b><td>
+        <td width="70%" padding-left="10px"><font color="#3A2313"><b>Давай, я тебе все расскажу: </b><td>
 		</tr>
 		<table>
 		<br/>
@@ -65,14 +73,11 @@
 		<img src="file:///android_res/drawable/message.png" width="100%"/>
 		<br/><br/>
 		Тебе так же доступна <b>история</b> твоих сообщений. Она внизу. Так и называется: “История сообщений”. 
-		
 		]]>
     </string>
 
 <string-array name="messages">
 <item>|Прив|Приветствуем. С вами на связи межгалактический комитет по сохранности живых форм  (далее МКПСЖФ). Вчера наши (неведомые вам) приборы позволили с точностью определить конечную дату существования вашей колонии. Вы называете это событие “концом света”. Его точная дата 21 декабря 2012 года по Гринвичу Земного времени. Цель МКПСЖФ - обнаружить и защитить потенциально вымирающие живые формы жизни.</item>
-<item>|Прив|Эта программа послана землянам дабы спасти вас. Много планет постигла таже участь, что вскоре настигнет вашу. Мы обладаем необходимыми знаниями, которыми поделимся с тобой. С этого момента ты будешь получать сообщения. Наполненные бесценным опытом. Или нет.</item>
-<item>|Прив|Наши корабли уже в пути. Продержитесь один световой парсек после наступления конца света и человечество будет спасено</item>
 <item>https://docs.google.com/document/d/1k2yZj2QpJFm2pEgrZr9QRMuQnygRnXzh5HhVycNbLdY/edit|Корм|Тебе интересно, чем мы будем кормить тебя во время межгалактического перелета? В основном - надеждой...Рекомендуем запастись мешками с капустой и мертвой рыбой. Возьми всякую снедь.	Жир - вообще твое всё! С полным списком ты можешь ознакомиться, нажав на кнопку снизу. Можешь дописывать и отписывать.</item>
 <item>||Мы слышали историю о мальчике, который спасаясь от шторма, попал на необитаемый остров.\n И жил-был там один. Ему было таааааааааааак скучно, что он стал девочкой. И ему все-еще было скучно.\n\nЭтим “мальчиком” можешь стать ты, если будешь держать эту программу в тайне. Не пользуйся этим шансом украдкой. Расскажи друзьям!</item>
 <item>http://haiam.ru/|Ты| с нами уже третий день! МКПСЖФ неискренне рад этому!\n	Чтобы отметить это событие, мы призываем сходить в бар на этой неделе и заказать три бокала пива с омарами. Омарами Хаямами. Пиво под хорошее хокку никто не отменял!</item>
@@ -125,48 +130,48 @@
         <item>@drawable/drug</item>
         <item>@drawable/bullshit</item>
         <item>@drawable/icon_gentelman</item>
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_hipster</item>
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_money</item>
-        <item>@drawable/icon_pirate</item>
-        <item>@drawable/icon_radioactive</item>
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_wtf</item>
+        <item>@drawable/horny</item>
+        <item>@drawable/hipster</item>
+        <item>@drawable/horny</item>
+        <item>@drawable/money</item>
+        <item>@drawable/pirate</item>
+        <item>@drawable/radioactive</item>
+        <item>@drawable/smile</item>
+        <item>@drawable/star</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/wtf</item>
         <item>@drawable/icon_bat</item>
-        <item>@drawable/icon_crazy</item>
-        <item>@drawable/icon_crying</item>
-        <item>@drawable/icon_drug</item>
-        <item>@drawable/icon_gasmask</item>
+        <item>@drawable/crazy</item>
+        <item>@drawable/crying</item>
+        <item>@drawable/drug</item>
+        <item>@drawable/gasmask</item>
         <item>@drawable/icon_gentelman</item>
-        <item>@drawable/icon_hipster</item>
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_money</item>
-        <item>@drawable/icon_pirate</item>
-        <item>@drawable/icon_radioactive</item>
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_wtf</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
+        <item>@drawable/hipster</item>
+        <item>@drawable/horny</item>
+        <item>@drawable/money</item>
+        <item>@drawable/pirate</item>
+        <item>@drawable/radioactive</item>
+        <item>@drawable/smile</item>
+        <item>@drawable/star</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/wtf</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
+        <item>@drawable/tongue</item>
     </string-array>
 
 </resources>

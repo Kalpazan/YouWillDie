@@ -196,18 +196,23 @@
             
         </FrameLayout>
 
-        <Button
-            android:id="@+id/help_button"
+        <LinearLayout 
+            android:id="@+id/help_button_container"
             android:layout_width="@dimen/margin_frame_with_padding"
             android:layout_height="fill_parent"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginBottom="2dp"
-            android:background="#00000000"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@android:string/ok"
-            android:textColor="@color/share_btn_color"
-            android:textSize="18dp" />
-
+            android:gravity="center"
+            >
+	        <Button
+	            android:id="@+id/help_button"
+	            android:layout_width="20dp"
+	            android:layout_height="20dp"
+	            android:layout_gravity="center_horizontal|center_vertical"
+	            android:layout_marginBottom="2dp"
+	            android:background="@drawable/vopros"
+	            android:gravity="center_horizontal|center_vertical"
+	            android:textColor="@color/share_btn_color"
+	            android:textSize="18dp" />
+		</LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

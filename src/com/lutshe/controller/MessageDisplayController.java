@@ -3,6 +3,7 @@ package com.lutshe.controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.View;
 import android.webkit.WebView;
@@ -48,6 +49,9 @@ public class MessageDisplayController {
 	private boolean helpLoaded;
 	
 	
+	private Drawable questionMarkBg;
+	private Drawable closeBg;
+	
 	public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
         this.activity = activity;
 		msgText = (TextView) activity.findViewById(R.id.notification_text);
@@ -63,8 +67,10 @@ public class MessageDisplayController {
         linkBtn.setVisibility(View.INVISIBLE);
 		helpText = (WebView) activity.findViewById(R.id.help_text);
 		helpText.setVerticalScrollBarEnabled(false);
-//		helpText.setBackgroundColor(Color.TRANSPARENT);
 		provider = notificationProvider;
+		
+		questionMarkBg = resources.getDrawable(R.drawable.vopros);
+		closeBg = resources.getDrawable(R.drawable.x);
 	}
 
 	public void setCurrentMessage(final NotificationTemplate message) {
@@ -114,7 +120,7 @@ public class MessageDisplayController {
 		if (currentView == MESSAGE) {
 			viewFlipper.showNext();
 		}
-		helpButton.setText("Ok");
+		helpButton.setBackgroundDrawable(closeBg);
 		currentView = GREETING;
     	if (slidingDrawer.isOpened()) {
     		slidingDrawer.animateClose();
@@ -127,7 +133,7 @@ public class MessageDisplayController {
 				loadHelp(htmlText);
 				helpLoaded = true;
 			}
-			helpButton.setText("Ok");			
+			helpButton.setBackgroundDrawable(closeBg);			
     		if (currentView == MESSAGE) {
     			viewFlipper.showNext();
     		}
@@ -144,7 +150,7 @@ public class MessageDisplayController {
 	
     public void showMessageView() {
     	if (!isMessageViewActive() && canShowMessageView()) {
-    		helpButton.setText("?");
+    		helpButton.setBackgroundDrawable(questionMarkBg);
     		viewFlipper.showNext();
 	    	if (slidingDrawer.isOpened()) {
 	    		slidingDrawer.animateClose();

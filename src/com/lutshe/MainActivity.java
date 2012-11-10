@@ -89,13 +89,13 @@ public class MainActivity extends Activity {
 				}
 			});
 	        
-	        Button helpButton = (Button) findViewById(R.id.help_button);
-	        
-			helpButton.setOnClickListener(new Button.OnClickListener() {
+	        Button.OnClickListener helpListener = new Button.OnClickListener() {
 	            public void onClick(View view) {
 					messagesController.flipViews();
 	            }
-	        });
+	        };
+			findViewById(R.id.help_button_container).setOnClickListener(helpListener);
+			findViewById(R.id.help_button).setOnClickListener(helpListener);
 			
 	        setupHistoryList(provider, messagesController);
 	      
