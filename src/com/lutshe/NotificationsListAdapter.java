@@ -23,12 +23,14 @@ public class NotificationsListAdapter extends BaseAdapter {
 	public static LayoutInflater inflater = null;
 	private NotificationProvider provider;
 	private Store store;
+//	private TextView historySize;
 	
 	private int previousSize = -1;
 	
 	public NotificationsListAdapter(MainActivity a, NotificationProvider provider) {
 		activity = a;
 		inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
+//		historySize = (TextView) activity.findViewById(R.id.history_size);
 		this.provider = provider;
 		this.store = a.getStore();
 	}
@@ -38,6 +40,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		int size = store.getLastNotificationNumber() + 1;
 		if (size != previousSize) {
 			previousSize = size;
+//			historySize.setText(" ("+size+")");
 			notifyDataSetChanged();
 		}
 		previousSize = size;

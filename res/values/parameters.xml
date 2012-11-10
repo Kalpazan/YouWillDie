@@ -18,6 +18,7 @@
     <color name="light_green">#09D60E</color>
 
     <color name="share_btn_color">#DA6625</color>
+    <color name="share_btn_color_halftransparent">#88DA6625</color>
     <color name="share_btn_text_color">#9D4813</color>
     <color name="share_btn_text_shadow_color">#7A2212</color>
     <color name="share_btn_pressed_color">#B5511C</color>

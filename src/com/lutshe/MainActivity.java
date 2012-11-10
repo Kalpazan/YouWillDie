@@ -109,7 +109,12 @@ public class MainActivity extends Activity {
 
         historyListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                NotificationTemplate notification = provider.getNotifications()[listAdapter.flipPosition(position)];
+                int realPosition = listAdapter.flipPosition(position);
+                if (realPosition == 0) {
+                	messageController.showGreetingView();
+                	return;
+                }
+				NotificationTemplate notification = provider.getNotifications()[realPosition];
                 messageController.setCurrentMessage(notification);
                 messageController.showMessageView();
                 slider.animateClose();
@@ -162,13 +167,22 @@ public class MainActivity extends Activity {
     protected void onStop() {
     	super.onStop();
     	mediaPlayer.pause();
+    	stopCountdown();
     }
+
+	private void stopCountdown() {
+    	if (timer != null) {
+    		timer.cancel();
+    		timer = null;
+    	}
+	}
     
 	@Override
     protected void onPause() {
 		MainActivity.instance = null;
         super.onPause();
-        timer.cancel();
+        stopCountdown();
+        
         mediaPlayer.pause();
         
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
@@ -216,6 +230,7 @@ public class MainActivity extends Activity {
 	        MainActivity.instance = this;
 		} else {
 			mediaPlayer.pause();
+			stopCountdown();
 		}
 	}
 	

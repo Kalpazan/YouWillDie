@@ -18,11 +18,7 @@ public class NotificationProvider {
 		for (int i = 0; i < messages.length; i++) {
 			String[] strings = messages[i].split("\\|");
 			int icon = imgs.getResourceId(i, -1);
-			if (strings.length == 2) {
-				notifications[i] = new NotificationTemplate(strings[0], strings[1], "instruction for today", icon);
-			} else {
-				notifications[i] = new NotificationTemplate(strings[0].split(" ")[0], strings[0], "instruction for today", icon);
-			}
+				notifications[i] = new NotificationTemplate(strings[1], strings[2], strings[1], icon);
 		}
 	}
 	

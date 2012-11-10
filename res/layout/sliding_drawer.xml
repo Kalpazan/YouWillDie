@@ -29,6 +29,16 @@
                     android:text="@string/older_messages"
                     android:textColor="@color/share_btn_color"
                     android:textSize="16dip"/>
+            
+            <!-- TextView
+                    android:id="@+id/history_size"
+                    style="@style/AudioFileInfoOverlayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text=" (3)"
+                    android:textColor="@color/share_btn_color_halftransparent"
+                    android:textSize="16dip"/> -->
         </LinearLayout>
 
         <ListView

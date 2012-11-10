@@ -19,12 +19,19 @@ import com.lutshe.store.Store;
 public class MessageDisplayController {
 	
 	private static final int MESSAGE_VIEW_ID = 1;
+
+	private static final int MESSAGE = 1;
+	private static final int HELP = 2;
+	private static final int GREETING = 3;
+	
 	private NotificationTemplate currentMessage;
 	private TextView msgText;
 	private ImageView icon;
 	private Resources resources;
 	private Store store;
 	private SlidingDrawer slidingDrawer;
+	
+	private int currentView = 0;
 	
 	private ViewFlipper viewFlipper;
 	private Button helpButton;
@@ -81,24 +88,32 @@ public class MessageDisplayController {
 
 	public void showHelpView() {
 		showWebView(resources.getString(R.string.help_text));
+		currentView = HELP;
 	}
 	
 	public void showGreetingView() {
-    	helpText.loadDataWithBaseURL(null, header + resources.getString(R.string.greeting_text), "text/html", "UTF-8", null);
-    		
-		if (slidingDrawer.isOpened()) {
-			slidingDrawer.animateClose();
+		helpText.loadDataWithBaseURL(null, header + resources.getString(R.string.greeting_text), "text/html", "UTF-8", null);
+		helpLoaded = false;
+		if (currentView == MESSAGE) {
+			viewFlipper.showNext();
 		}
+		helpButton.setText("Ok");
+		currentView = GREETING;
+    	if (slidingDrawer.isOpened()) {
+    		slidingDrawer.animateClose();
+    	}
 	}
 	
 	private void showWebView(String htmlText) {
-		if (isMessageViewActive()) {
+		if (isMessageViewActive() || currentView == GREETING) {
 			if (!helpLoaded) {
 				loadHelp(htmlText);
+				helpLoaded = true;
 			}
-    		
-    		helpButton.setText("Ok");
-	    	viewFlipper.showNext();
+			helpButton.setText("Ok");			
+    		if (currentView == MESSAGE) {
+    			viewFlipper.showNext();
+    		}
 	    	if (slidingDrawer.isOpened()) {
 	    		slidingDrawer.animateClose();
 	    	}
@@ -112,15 +127,20 @@ public class MessageDisplayController {
     public void showMessageView() {
     	if (!isMessageViewActive() && canShowMessageView()) {
     		helpButton.setText("?");
-	    	viewFlipper.showNext();
+    		viewFlipper.showNext();
 	    	if (slidingDrawer.isOpened()) {
 	    		slidingDrawer.animateClose();
 	    	}
+
+	    	if (!helpLoaded) {
+	    		loadHelp(resources.getString(R.string.help_text));
+	    	}
+	    	currentView = MESSAGE;
     	}
 	}
     
     private boolean canShowMessageView() {
-    	return store.getLastNotificationNumber() != -1;
+    	return store.getLastNotificationNumber() > 0;
 	}
     
     private boolean isMessageViewActive() {
@@ -142,7 +162,11 @@ public class MessageDisplayController {
 	}
     
     public void flipViews() {
-    	if (isMessageViewActive()) {
+    	if (currentView == GREETING) {
+    		if (canShowMessageView()) {
+    			showMessageView();
+    		} 
+    	} else if (isMessageViewActive()){
     		showHelpView();
     	} else {
     		showMessageView();
