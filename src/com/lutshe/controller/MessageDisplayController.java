@@ -35,6 +35,7 @@ public class MessageDisplayController {
 	private NotificationProvider provider;
 	
 	private String header;
+	private boolean helpLoaded;
 	
 	
 	public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
@@ -58,6 +59,10 @@ public class MessageDisplayController {
 		helpButton.setVisibility(View.VISIBLE);
 		currentMessage = message;
 		updateView();
+		if (!helpLoaded) {
+			loadHelp(resources.getString(R.string.help_text));
+			helpLoaded = true;
+		}
 	}
 	
 	public NotificationTemplate getCurrentMessage() {
@@ -88,7 +93,9 @@ public class MessageDisplayController {
 	
 	private void showWebView(String htmlText) {
 		if (isMessageViewActive()) {
-    		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
+			if (!helpLoaded) {
+				loadHelp(htmlText);
+			}
     		
     		helpButton.setText("Ok");
 	    	viewFlipper.showNext();
@@ -96,6 +103,10 @@ public class MessageDisplayController {
 	    		slidingDrawer.animateClose();
 	    	}
     	}
+	}
+
+	private void loadHelp(String htmlText) {
+		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
 	}
 	
     public void showMessageView() {

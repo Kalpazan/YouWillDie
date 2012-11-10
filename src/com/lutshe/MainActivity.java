@@ -49,7 +49,9 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle bundle) {
         try {
 	    	super.onCreate(bundle);
-	        
+
+	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
+	    	
 	        setContentView(R.layout.main);
 	        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
@@ -90,7 +92,6 @@ public class MainActivity extends Activity {
 	      
 			playSound();
         } catch (Exception e) {
-        	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
         	BugSenseHandler.sendException(e);
         }
     }
