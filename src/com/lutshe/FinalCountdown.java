@@ -10,6 +10,7 @@ public class FinalCountdown extends CountDownTimer {
 	private MainActivity activity;
     //private TextView textDaysLeft;
     private int counter;
+    private String decimalFormatter;
     private String formatter;
     private TextView textTimeDay;
     private TextView textTimeHour;
@@ -22,7 +23,9 @@ public class FinalCountdown extends CountDownTimer {
 		super(millisInFuture, countDownInterval);
 		this.activity = activity;
 
-        formatter = activity.getResources().getString(R.string.millisecFormatter);
+		decimalFormatter = activity.getResources().getString(R.string.millisecFormatter);
+		formatter = activity.getResources().getString(R.string.datesFormatter);
+        
 
         //textDaysLeft = (TextView) activity.findViewById(R.id.days_left);
 
@@ -57,7 +60,7 @@ public class FinalCountdown extends CountDownTimer {
         long secondsLeft = (timeLeft % MINUTE) / 1000;
         textTimeSec.setText(String.valueOf(secondsLeft));
         long millisecLeft = timeLeft % 1000;
-        textTimeMilisec.setText(String.format(formatter,(int)millisecLeft));
+        textTimeMilisec.setText(String.format(decimalFormatter,(int)millisecLeft));
 
 
         counter %= 100;

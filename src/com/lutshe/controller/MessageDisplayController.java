@@ -139,6 +139,7 @@ public class MessageDisplayController {
 
 	private void loadHelp(String htmlText) {
 		helpText.loadDataWithBaseURL(null, header + htmlText, "text/html", "UTF-8", null);
+		helpLoaded = true;
 	}
 	
     public void showMessageView() {

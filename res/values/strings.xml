@@ -9,6 +9,7 @@
     
     <string name="day">days left</string>
     <string name="millisecFormatter" formatted="false">.%03d</string>
+    <string name="datesFormatter" formatted="false">%02d</string>
     <string name="days_left"> days left</string>
     
     <!-- past days -->
