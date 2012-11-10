@@ -35,19 +35,18 @@ public class FinalCountdown extends CountDownTimer {
 		decimalFormatter = activity.getResources().getString(R.string.millisecFormatter);
 		formatter = activity.getResources().getString(R.string.datesFormatter);
 
-		Typeface type = Typeface.createFromAsset(activity.getAssets(), "MyriadPro-Semibold.otf");
-        textTimeDay.setTypeface(type);
-        textTimeHour.setTypeface(type);
-        textTimeMin.setTypeface(type);
-        textTimeSec.setTypeface(type);
-        textTimeMilisec.setTypeface(type);
-		
         textTimeDay = (TextView) activity.findViewById(R.id.textTimeDay);
         textTimeHour = (TextView) activity.findViewById(R.id.textTimeHour);
         textTimeMin = (TextView) activity.findViewById(R.id.textTimeMin);
         textTimeSec = (TextView) activity.findViewById(R.id.textTimeSec);
         textTimeMilisec = (TextView) activity.findViewById(R.id.textTimeMilisec);
-        
+
+        Typeface type = Typeface.createFromAsset(activity.getAssets(), "MyriadPro-Semibold.otf");
+        textTimeDay.setTypeface(type);
+        textTimeHour.setTypeface(type);
+        textTimeMin.setTypeface(type);
+        textTimeSec.setTypeface(type);
+        textTimeMilisec.setTypeface(type);
 	}
 
 	@Override
