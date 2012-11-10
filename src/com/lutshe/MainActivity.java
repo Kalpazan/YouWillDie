@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
                 slider.animateClose();
                 if (realPosition == 0 && store.wasPointsAddedOnMsgView()){
                     pointsController.addPoints(6);
-                    getUserMessageController().showMessage("Перечитываешь? Молодец!");
+                    getUserMessageController().showMessage(getString(R.string.review_bonus_text));
                     store.registerPointsAddingOnMsgView();
                 }
             }
@@ -242,7 +242,7 @@ public class MainActivity extends Activity {
             int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
             NotificationTemplate notification = provider.getNotification(id);
             pointsController.addPoints(4);
-            getUserMessageController().showMessage("новое сообщение: +4 очка!");
+            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
             messagesController.setCurrentMessage(notification);
             messagesController.showMessageView();
         }
@@ -270,9 +270,10 @@ public class MainActivity extends Activity {
 	        	store.registerFirstLaunch();
 	            pointsController.addPoints(10);
 	            store.registerPointsAddingOnCreate();
+	            store.registerLaunch();
 	        } else if (isFirstLaunchToday()) {
 	        	pointsController.addPoints(7);
-	            getUserMessageController().showMessage("велкам бэк :)");
+	            getUserMessageController().showMessage(getString(R.string.welcome_back_bonus_text));
 	            store.registerLaunch();
 	        }
 	        
@@ -319,7 +320,7 @@ public class MainActivity extends Activity {
 			messagesController.showMessageView();
 			
 			pointsController.addPoints(4);
-            getUserMessageController().showMessage("новое сообщение: +4 очка!");
+            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
 
 			nextNotification = null;
 			notificationId = -1;

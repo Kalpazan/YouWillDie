@@ -30,7 +30,7 @@ public class PointsController {
             new Level(R.drawable.ranc_5, 220),
             new Level(R.drawable.ranc_7, 310),
             new Level(R.drawable.ranc_6, 500),
-            new Level(R.drawable.ranc_8, 1000)
+            new Level(R.drawable.ranc_8, 500)
             };
 
     public PointsController(MainActivity activity) {

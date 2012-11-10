@@ -22,7 +22,6 @@ public class RateViewController {
 	private Store store;
 	private MainActivity activity;
 	private boolean isViewVisible;
-	private InternetController internetController;
 
 	public RateViewController(MainActivity activity, PointsController pointsController, Store store) {
 		this.pointsController = pointsController;
@@ -46,16 +45,15 @@ public class RateViewController {
 
 	public void rateClicked() {
 		hideRateView();
-        internetController = new InternetController(activity);
 		store.registerRate();
 		try {
-            if (internetController.isNetworkAvailable()) {
+            if (InternetController.isNetworkAvailable(activity)) {
 
                 pointsController.addPoints(50);
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
 
             } else {
-                activity.showMessage("You are not online");
+                activity.showMessage(activity.getString(R.string.msg_you_need_internet));
             }
 
 		} catch (Exception e) {

@@ -1,6 +1,5 @@
 package com.lutshe.controller;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -47,7 +46,7 @@ public class MessageDisplayController {
 	private ScrollView messageScrollView;
 	
 	private NotificationProvider provider;
-	private Activity activity;
+	private MainActivity activity;
 	private String header;
 	private boolean helpLoaded;
 	private ScrollView helpContainer;
@@ -87,9 +86,13 @@ public class MessageDisplayController {
             linkBtn.setVisibility(View.VISIBLE);
             linkBtn.setOnClickListener(new Button.OnClickListener() {
                 public void onClick(View view) {
-
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(message.getLink()));
-                    activity.startActivity(browserIntent);
+                	if (InternetController.isNetworkAvailable(activity)) {
+	                	activity.getPointsController().addPoints(53);
+	                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(message.getLink()));
+	                    activity.startActivity(browserIntent);
+                	} else {
+                		activity.showMessage(activity.getString(R.string.msg_you_need_internet));
+                	}
                 }
             });
         }
