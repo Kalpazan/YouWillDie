@@ -179,7 +179,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/progress_bar_text_margins"
                     android:text="+12"
-                    android:textColor="@color/light_green"
+                    android:textColor="@color/message_bg_color"
                     android:textSize="14dp"
                     android:textStyle="bold" />
             </LinearLayout>
