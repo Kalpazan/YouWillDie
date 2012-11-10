@@ -18,7 +18,15 @@ public class FinalCountdown extends CountDownTimer {
     private TextView textTimeSec;
     private TextView textTimeMilisec;
 
+    private long previousMinute = -1;
+    
+    long minutesLeft;
+    long secondsLeft;
+    long millisecLeft;
+    long daysLeft;
+    long hourLeft;
 
+    
 	public FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
 		super(millisInFuture, countDownInterval);
 		this.activity = activity;
@@ -26,21 +34,12 @@ public class FinalCountdown extends CountDownTimer {
 		decimalFormatter = activity.getResources().getString(R.string.millisecFormatter);
 		formatter = activity.getResources().getString(R.string.datesFormatter);
         
-
-        //textDaysLeft = (TextView) activity.findViewById(R.id.days_left);
-
         textTimeDay = (TextView) activity.findViewById(R.id.textTimeDay);
         textTimeHour = (TextView) activity.findViewById(R.id.textTimeHour);
         textTimeMin = (TextView) activity.findViewById(R.id.textTimeMin);
         textTimeSec = (TextView) activity.findViewById(R.id.textTimeSec);
         textTimeMilisec = (TextView) activity.findViewById(R.id.textTimeMilisec);
 
-//        Typeface type = Typeface.createFromAsset(activity.getAssets(), "Acme 9 Regular.ttf");
-//        textTimeDay.setTypeface(type);
-//        textTimeHour.setTypeface(type);
-//        textTimeMin.setTypeface(type);
-//        textTimeSec.setTypeface(type);
-//        textTimeMilisec.setTypeface(type);
 	}
 
 	@Override
@@ -51,25 +50,28 @@ public class FinalCountdown extends CountDownTimer {
 	@Override
 	public void onTick(long timeLeft) {
 
-		long daysLeft = timeLeft / (HOUR * 24);
-        textTimeDay.setText(String.valueOf(daysLeft));
-        long hourLeft = (timeLeft / HOUR) - (24 * daysLeft);
-        textTimeHour.setText(String.valueOf(hourLeft));
-        long minutesLeft = (timeLeft % HOUR) / MINUTE;
-		
-        long secondsLeft = (timeLeft % MINUTE) / 1000;
-        textTimeSec.setText(String.valueOf(secondsLeft));
-        long millisecLeft = timeLeft % 1000;
-        textTimeMilisec.setText(String.format(decimalFormatter,(int)millisecLeft));
+        minutesLeft = (timeLeft % HOUR) / MINUTE;
+        secondsLeft = (timeLeft % MINUTE) / 1000;
+        millisecLeft = timeLeft % 1000;
+        
+        if (previousMinute != minutesLeft) {
+        	previousMinute = minutesLeft;
+        	
+        	daysLeft = timeLeft / (HOUR * 24);
+            hourLeft = (timeLeft / HOUR) - (24 * daysLeft);
+            textTimeDay.setText(String.format(formatter, daysLeft));
+            textTimeHour.setText(String.format(formatter, hourLeft));
+            textTimeMin.setText(String.format(formatter, minutesLeft));
+        }
 
+        
+        textTimeSec.setText(String.format(formatter, secondsLeft));
+        textTimeMilisec.setText(String.format(decimalFormatter,(int)millisecLeft));
 
         counter %= 100;
         
         if (counter == 0) {
         	activity.checkForUpdates();
-        	
-            textTimeMin.setText(String.valueOf(minutesLeft));
-            //textDaysLeft.setText(String.valueOf(daysLeft)+" " + activity.getResources().getString(R.string.days_left));
         }
         counter++;
     }

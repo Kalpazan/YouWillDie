@@ -43,7 +43,7 @@ public class NotificationProvider {
 	}
 	
 	public NotificationTemplate getNotification(int number) {
-		if (number < notifications.length) {
+		if (number >= 0 && number < notifications.length) {
 			return notifications[number];
 		}
 		return null;
