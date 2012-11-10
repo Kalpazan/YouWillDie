@@ -58,8 +58,8 @@
                 android:layout_width="70dp"
                 android:layout_gravity="right|bottom"
                 android:layout_marginRight="35dp"
-                android:paddingTop="20dp"
-                android:src="@drawable/crazy"/>
+                android:paddingBottom="1dp"
+                android:src="@drawable/icon_crazy"/>
     </FrameLayout>
 
 

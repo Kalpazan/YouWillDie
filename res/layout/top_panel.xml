@@ -25,7 +25,8 @@
             android:clickable="true"
             android:src="@drawable/icon_top_panel" />
     </LinearLayout>
-
+
+
     <LinearLayout
         android:id="@+id/timer_container"
         android:layout_width="fill_parent"
@@ -44,6 +45,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="2dp"
             android:gravity="left|bottom"
+            android:textStyle="bold"
             android:textSize="@dimen/timer_num_size" />
 
         <TextView
@@ -54,7 +56,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="2dp"
             android:gravity="left|bottom"
-            android:text="d"
+            android:text="@string/d"
             android:textSize="@dimen/timer_text_size" />
 
         <TextView
@@ -66,8 +68,13 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="4dp"
             android:gravity="left|bottom"
+            android:textStyle="bold"
             android:textSize="@dimen/timer_num_size" />
-
+
+
+
+
+
         <TextView
             style="@style/timeLeftTextStyle"
             android:layout_width="wrap_content"
@@ -76,7 +83,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="2dp"
             android:gravity="left|bottom"
-            android:text="h"
+            android:text="@string/h"
             android:textSize="@dimen/timer_text_size" />
 
         <TextView
@@ -88,6 +95,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="4dp"
             android:gravity="left|bottom"
+            android:textStyle="bold"
             android:textSize="@dimen/timer_num_size" />
 
         <TextView
@@ -98,7 +106,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="2dp"
             android:gravity="left|bottom"
-            android:text="m"
+            android:text="@string/m"
             android:textSize="@dimen/timer_text_size" />
 
         <TextView
@@ -110,6 +118,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="4dp"
             android:gravity="left|bottom"
+            android:textStyle="bold"
             android:textSize="@dimen/timer_num_size" />
 
         <TextView
@@ -120,6 +129,7 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="4dp"
             android:layout_marginLeft="0dp"
+            android:textStyle="bold"
             android:gravity="left|bottom"
             android:textSize="@dimen/timer_num_size" />
     </LinearLayout>
@@ -195,7 +205,8 @@
                 android:src="@drawable/one_start_rank" />
             
         </FrameLayout>
-
+
+
         <LinearLayout 
             android:id="@+id/help_button_container"
             android:layout_width="@dimen/margin_frame_with_padding"
