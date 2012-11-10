@@ -6,10 +6,12 @@ public class NotificationTemplate {
 	private String statusBarText;
 	private String mainText;
 	private String title;
+    private String link;
 	private int icon = R.drawable.icon_tongue;
-	
-	public NotificationTemplate(String title, String mainText, String statusBarText, int icon) {
-		this.statusBarText = statusBarText;
+
+	public NotificationTemplate(String link, String title, String mainText, int icon) {
+        this.link = link;
+		this.statusBarText = title;
 		this.mainText = mainText;
 		this.title = title;
 		this.icon = icon;
@@ -19,7 +21,11 @@ public class NotificationTemplate {
 		return statusBarText;
 	}
 
-	public String getMainText() {
+    public String getLink() {
+        return link;
+    }
+
+    public String getMainText() {
 		return mainText;
 	}
 

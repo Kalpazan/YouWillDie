@@ -1,6 +1,9 @@
 package com.lutshe.controller;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -36,16 +39,17 @@ public class MessageDisplayController {
 	private ViewFlipper viewFlipper;
 	private Button helpButton;
 	private WebView helpText;
-	
+	private Button linkBtn;
 	private ScrollView messageScrollView;
 	
 	private NotificationProvider provider;
-	
+	private Activity activity;
 	private String header;
 	private boolean helpLoaded;
 	
 	
 	public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
+        this.activity = activity;
 		msgText = (TextView) activity.findViewById(R.id.notification_text);
 		icon = (ImageView) activity.findViewById(R.id.messageIcon);
 		resources = activity.getResources();
@@ -55,14 +59,27 @@ public class MessageDisplayController {
 		slidingDrawer = (SlidingDrawer) activity.findViewById(R.id.drawer);
 		header = activity.getResources().getString(R.string.html_header);
 		messageScrollView = (ScrollView) activity.findViewById(R.id.message_scroll_view);
-		
+		linkBtn = (Button)activity.findViewById(R.id.link_button);
+        linkBtn.setVisibility(View.INVISIBLE);
 		helpText = (WebView) activity.findViewById(R.id.help_text);
 		helpText.setVerticalScrollBarEnabled(false);
 //		helpText.setBackgroundColor(Color.TRANSPARENT);
 		provider = notificationProvider;
 	}
 
-	public void setCurrentMessage(NotificationTemplate message) {
+	public void setCurrentMessage(final NotificationTemplate message) {
+        if (message.getLink().equals("")){
+            linkBtn.setVisibility(View.INVISIBLE);
+        } else {
+            linkBtn.setVisibility(View.VISIBLE);
+            linkBtn.setOnClickListener(new Button.OnClickListener() {
+                public void onClick(View view) {
+
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(message.getLink()));
+                    activity.startActivity(browserIntent);
+                }
+            });
+        }
 		helpButton.setVisibility(View.VISIBLE);
 		currentMessage = message;
 		updateView();
