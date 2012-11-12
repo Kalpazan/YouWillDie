@@ -31,24 +31,24 @@
 		<![CDATA[
         <body style="background-color:"#FAF398">
         <font color="#3A2313">
-        <b>Приветствуем!</b><br/><br/>С вами на связи единый межгалактический комитет по сохранности живых форм (далее МКПСЖФ). Вчера наши (неведомые вам) приборы позволили с точностью определить конечную дату существования вашей колонии.
+        <b>Welcome!</b><br/><br/>This is Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.
         <br/>		<br/>
 		<img src="file:///android_res/drawable/illustration_1.png" width="100%" />
 	<br/>	<br/>
-        Вы называете это событие “концом света”. Его точная дата 21 декабря 2012 года по Гринвичу Земного времени. Цель МКПСЖФ - обнаружить и защитить потенциально вымирающие формы жизни.
-		Эта программа послана землянам дабы спасти вас. Для начала обрати внимание на таймер, расположенный вверху экрана. Если количество оставшихся дней меньше трех - мы тебе уже не поможем. Не читай дальше и удали программу.
+        You call the event \"end of the world\" or \"apocalypse\".  It's exact date is December 21, 2012 UTC Earth time. The purpose of ICLSP is to detect and protect potentially endangered forms of life.
+		This program was sent to earthlings in order to save you. To get started, check out the timer, located at the top of the screen. If the numbers show that it's less than three days left - we will not help you. Do not read any more and delete the program.
 		<br/>
 		<br/>
-		Много планет постигла таже участь, что вскоре настигнет вашу. Мы обладаем необходимыми знаниями, которыми поделимся с тобой. С этого момента ты будешь получать сообщения. Наполненные бесценным опытом.
-		<br/>Или нет. 
+		Many planets have suffered the exact same fate that will soon become your reality. We have the necessary knowledge, and we'll  share it to you. From now on you will start to receive messages. Filled with invaluable experience. 
+		<br/>Or not.
 		<br/><br/>
-		Ввиду недостаточного финансирования МКПСЖФ мы не можем передавать на вашу планету более одного сообщения в день. Цените эту помощь и возможно некоторые из вас выживут.
+		Due to insufficient funding, ICLSP can not send more than one message per day.  Appreciate this help and maybe some of you will survive.
 		<br/><br/>
 		<img src="file:///android_res/drawable/illustration_2.png" width="100%" />
 		<br/><br/>
-		Наши корабли уже в пути. Продержитесь один световой парсек после наступления конца света и человечество будет спасено
+		Our rescue ships are on their way. Survive the apocalypse and you will be saved.
 		<br/>
-		С уважением, глава МКПСЖФ.
+		Sincerely yours, head of ICLSP.
 		]]>
     </string>
     
@@ -59,55 +59,51 @@
         <table>
         <tr border="1px">
         <td align="left"><img src="file:///android_res/drawable/help_hipster.png" width="80%"/></td>
-        <td width="70%" padding-left="10px"><font color="#3A2313"><b>Давай, я тебе все расскажу: </b><td>
+        <td width="70%" padding-left="10px"><font color="#3A2313"><b>Ok, I'll explain you everything: </b><td>
 		</tr>
 		<table>
 		<br/>
-        <b>Цифры</b> вверху - это очень важные цифры. Они считают, сколько осталось жить цивилизации. Не забывай иногда поглядывать туда. 
+        See the <b>numbers</b> above? They are very important. They show the amount of time that your civilization have. Do not forget to keep an eye on it. 
 		<br/><br/>
-		Когда наши корабли будут эвакуировать землян, твое <b>звание</b> сыграет решающую роль. Свое текущее звание ты можешь видеть на верхней панели. Тут же ты можешь следить за прогрессом по его достижению.
+		When our ships will be evacuating humans, your <b>rank</b> will play a crucial role. You can see your current rank on the top panel. You can monitor the progress in achieving new ranks on the same panel.
 		<br/><br/>
 		<img src="file:///android_res/drawable/pogon.png" width="95%" align="center"/> 
 		<br/><br/>		
-		Получай <b>очки</b> опыта для повышения звания. Чем больше активности ты проявляешь, тем больше очков можешь получить. Заглядывай в приложение хотя бы раз в день, читай сообщения, делись ими с друзьями и ты заметно подрастешь в наших глазах.
+		Get the experience <b>points</b> to earn new ranks. The more active you are, the more points you can get. Visit the application at least once a day, read messages, share them with friends and you will stand out! 
 		<br/><br/>
 		<img src="file:///android_res/drawable/points.png" width="95%" align="center" />
 		<br/><br/>		
-		Сообщения будут приходить от разных экспертов МКПСЖФ, <b>лица</b> которых будут отображаться рядом с текстом.
+		You will receive messages from the best ICLSP experts. Their <b>faces</b> will be shown near the text.
 		<br/><br/>
-		<img src="file:///android_res/drawable/message.png" width="100%"/>
+		<img src="file:///android_res/drawable/help_en.png" width="100%"/>
 		<br/><br/>
-		Тебе так же доступна <b>история</b> твоих сообщений. Она внизу. Так и называется: “История сообщений”. 
+		You are also able to see the <b>messages history</b>. It is at the bottom of the screen. It is called: \"Messages history\". \nThat's just it :) 
 		]]>
     </string>
 
 <string-array name="messages">
-<item>|МКПСЖФ|Приветствуем. С вами на связи межгалактический комитет по сохранности живых форм  (далее МКПСЖФ). Вчера наши (неведомые вам) приборы позволили с точностью определить конечную дату существования вашей колонии. Вы называете это событие “концом света”. Его точная дата 21 декабря 2012 года по Гринвичу Земного времени. Цель МКПСЖФ - обнаружить и защитить потенциально вымирающие живые формы жизни.</item>
-<item>http://bit.ly/Xtj9un|Антропофагия|Тебе интересно, чем мы будем кормить тебя во время межгалактического перелета? В основном - надеждой...Рекомендуем запастись мешками с капустой и мертвой рыбой. Возьми всякую снедь.	Жир - вообще твое всё! С полным списком ты можешь ознакомиться, нажав на кнопку снизу. Можешь дописывать и отписывать.</item>
-<item>|Малчик|Мы слышали историю о мальчике, который спасаясь от шторма, попал на необитаемый остров.\n И жил-был там один. Ему было таааааааааааак скучно, что он стал девочкой. И ему все-еще было скучно.\n\nЭтим “мальчиком” можешь стать ты, если будешь держать эту программу в тайне. Не пользуйся этим шансом украдкой. Расскажи друзьям!</item>
-<item>http://bit.ly/XtjFJ2|Омары|Ты с нами уже третий день! МКПСЖФ неискренне рад этому!\n	Чтобы отметить это событие, мы призываем сходить в бар на этой неделе и заказать три бокала пива с омарами. Омарами Хаямами. Пиво под хорошие хокку никто не отменял!</item>
-<item>http://bit.ly/PMylzA|Шмотки|Наши инженэры подготовят абсолютно все, что тебе понадобится на новой планете. Только мы не знаем, что это. Добавь в спиок названия вещей, растительности и животного мира, которые тебе нужны (левый носок, жеврот или живородящий насрал - все там будет).</item>
-<item>http://bit.ly/UuDKhn|Морзянка, сэр!|Я смотрю ты уже осмелел и поднялся в ранге. Так держать!\nТы настоящий ---. . -- --- -.. .- -.\nЕсли ты вдруг чувствуешь, что что-то не понял - подучи азбуку морзе. Именно она заменит тебе телефон, когда всему придет полный -.- --- -. . -.-.  </item>
-<item>|Поле-полюшко|Срочно иди и займись сексом - пора уже думать о восстановлении популяции людей.\n\nИ помни: чем больше детей у тебя будет, тем больше полей сможет вспахать твоя семья!</item>
-<item>|Тибонахи|Этим сообщением мы открываем серию очерков о том, как следует выживать.\n\nОчерк 1.\n\nТибетские монахи (далее Тибонахи) коварны и непредсказуемы. Они одержимы желанием втереться своими лысыми лбами к вам в доверие.\n\nОни любят освещенные помещения и влажность. Бывают среднего роста (из-за чего именно среди них мы так часто встречаем случаи проявления кризиса среднего роста).\n\nХалат, под которым скрывается вся их монашья лысость, служит.\n\nИзбегайте опасности. </item>
-<item>|Совет дня|Подготовка для выживания требует средств для подготовки для выживания. Начинай занимать деньги уже сегодня. Много и часто - отдавать все-равно не придется.\n\nК примеру, это приложение полностью сотворено из занятых денег. Методом перемалывания и папьемашироания.\n\nО том, как пришить к трусам кармашек для денег мы расскажем в следующий раз.</item>
-<item>|Муу|Реклама, она как корова. Зато корова не как реклама, она знает что к чему. Она не подведет. Вот знал я одну. Он так и жаждал попасть на корабль, а попал.\n\nТы, наверное, догадаля, к чему мы ведем. К вымечку да с молочочком, конечно!</item>
-<item>|Зомби|Очерк 2.\n\nМожно про зомби. Зомби бывают пяти с половиной видов:\n- классические\n- куринные\n- зомби-медсестра\n- живой шпинат\n- водители маршруток (1.5х)\n\nБытует мнение, что их нужно избегать. Напротив. Их нужно использовать против вас в суде. Знаете, как говорится, "зомби на дворе - на дрове трава". \n\nЗнаете. </item>
-<item>|Паварод|К этому моменту ты должен уже чувтвовать себя подготовленным.\n\n	Не страшны тебе \n	ни дождь, ни слякоть\n	Крепкий касагор\n И па-ва-род\n\n Так же ты уже должен был забыть о чем эта программа. Перечитай первые сообщения, получи очки и защищайся.</item>
-<item>|SIQ|Сегодня на ужин тест. Он поможет вам оценить вашу подготовку. \n\nОтвечайте честно и не раздумывая.\n\n1. вы М или Ж? (если да, то следуйте к вопросу 2.)\n2. вы смогли бы сохранить жизнь в условиях, в которых тяжело сохранить жизнь? (если да, перейдите к расшифровке теста)\n\n расшифровка теста: Поздравляем, ваше siq (survival intelligence quotient) равнен 113!</item>
-<item>market://details?id=com.lutshe|Хм...|Обновиться пора бы</item>
-    </string-array>
+<item>|ICLSP|Welcome! \nThis is Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.</item>
+<item>|Advice of a day|Survival preparation requires funds for survival preparation. \n Start borrowing money today. Borrow a lot and do it often - you’ll not have to give anything back. \n \nI.e., this application was created using borrowed money only. By grinding and ‘papier-mache’-ing. \n \n You will see a lesson on how to sew a cowards pocket (to hold all your money) in the next messages.</item>
+<item>http://bit.ly/TU4FB9|Anthropophagy|You may wonder, what are we going to feed you during intergalactic flight?\n\n Basically, hope is the only thing we provide...\nWe recommend you to stock up on bags with cabbage and dead fish. Take any food at all. Please, ensure to be fat enough to survive.\n\nThere are also many other things you should take. You can see the complete list by clicking the button above. You can change it by adding anything you want!</item>
+<item>|A boy|We heard the story of a boy who saved himself from the storm on a desert island. And he lived there alone for a long time. He was sooooooooo bored that he even turned into a girl. And he was still too bored. You can become this “boy”, if you keep this program a secret. Don’t use this chance by your own. Tell your friends!</item>
+<item>http://bit.ly/Tq1sah|Lobsterz|You\'re with us for four days already! ICLSP is insincerely happy about it! To mark the occasion, we urge you to go to the bar this week and order three glasses of beer with lobsters. Lobsters are cool and we\'re almost sure that you\'ve never tried one :)</item>
+<item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet. But we do not know exactly what it is. Add the the names of all the things, flora and fauna, that are necessary for you to the list.</item>
+
+<item>market://details?id=com.lutshe|Hmm...|It\'s time to update</item>
+</string-array>
 
 <string-array name="icons">
         <item>@drawable/icon_gentelman</item>
+		<item>@drawable/icon_money</item>
         <item>@drawable/icon_bat</item>
         <item>@drawable/icon_smile</item>
         <item>@drawable/icon_star</item>
         <item>@drawable/icon_bullshit</item>
-        <item>@drawable/icon_gasmask</item>
+        
+        <item>@drawable/icon_wtf</item>
+        
         <item>@drawable/icon_horny</item>
         <item>@drawable/icon_crazy</item>
-        <item>@drawable/icon_money</item>
         <item>@drawable/icon_bullshit</item>
         <item>@drawable/icon_gasmask</item>
         <item>@drawable/icon_pirate</item>

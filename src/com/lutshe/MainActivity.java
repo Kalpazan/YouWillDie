@@ -5,6 +5,7 @@ import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 
 import android.app.Activity;
@@ -71,7 +72,7 @@ public class MainActivity extends Activity {
 	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
 	    	
 //	        mainView = getMainView();
-	        
+	        Locale locale = getResources().getConfiguration().locale;
 	      	setContentView(R.layout.main);
 	        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
@@ -186,21 +187,21 @@ public class MainActivity extends Activity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.exit:
-                showMessage("All the same, this does not stop. It is waiting for you.");
-                System.exit(0);
-                return true;
-            case R.id.help:
-                showMessage("Who will help you?");
-                showMessage("No one!");
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.exit:
+//                showMessage("All the same, this does not stop. It is waiting for you.");
+//                System.exit(0);
+//                return true;
+//            case R.id.help:
+//                showMessage("Who will help you?");
+//                showMessage("No one!");
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     @Override
     protected void onStop() {
@@ -281,12 +282,12 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
     public void showMessage(String string) {
         getUserMessageController().showMessage(string);

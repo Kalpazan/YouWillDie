@@ -24,12 +24,12 @@ public class PointsController {
 
     private static Level[] levels = {
             new Level(R.drawable.ranc_1, 0),
-            new Level(R.drawable.ranc_2, 21),
+            new Level(R.drawable.ranc_2, 25),
             new Level(R.drawable.ranc_3, 80),
             new Level(R.drawable.ranc_4, 150),
             new Level(R.drawable.ranc_5, 220),
             new Level(R.drawable.ranc_7, 310),
-            new Level(R.drawable.ranc_6, 500),
+            new Level(R.drawable.ranc_6, 400),
             new Level(R.drawable.ranc_8, 500)
             };
 
