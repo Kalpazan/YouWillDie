@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="locale">en</string>
+    
+    
     <string name="app_name">Survival Guide</string>
     <string name="exit">Exit</string>
     <string name="help">Help</string>

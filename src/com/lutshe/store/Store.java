@@ -116,4 +116,12 @@ public class Store {
 	public void registerLaunch() {
 		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("ll", new Date().getTime()).commit();
 	}
+
+	public long getLastSyncTime() {
+		return context.getSharedPreferences(STORE_NAME, 0).getLong("lastSync", 0);
+	}
+
+	public void registerSync() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("lastSync", new Date().getTime()).commit();
+	}
 }

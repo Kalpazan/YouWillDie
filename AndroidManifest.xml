@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
     <!-- uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
 
     <application
@@ -35,6 +36,13 @@
                 <action android:name="com.lutshe.NotificationServiceThatJustWorks" />
             </intent-filter>
         </service>
+		<service
+            android:name=".SynchronizationService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.lutshe.SynchronizationService" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name=".NotificationServiceThatJustWorks$BootListener"
@@ -51,7 +59,14 @@
                 <action android:name="com.lutshe.AlarmListener" />
             </intent-filter>
         </receiver>
-
+		
+        <receiver 
+            android:name=".ConnectionListener"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>	
+            </intent-filter>
+        </receiver>
         <!--
         <service
             android:name=".NotificationSchedulerService"

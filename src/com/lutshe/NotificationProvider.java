@@ -10,6 +10,10 @@ public class NotificationProvider {
 	private NotificationTemplate[] notifications;
 	
 	private NotificationProvider(Resources resources) {
+		loadNotifications(resources);
+	}
+	
+	private synchronized void loadNotifications(Resources resources) {
 		String[] messages = resources.getStringArray(R.array.messages);
 		TypedArray imgs = resources.obtainTypedArray(R.array.icons);
 		
@@ -30,23 +34,31 @@ public class NotificationProvider {
 		return instance;
 	}
 	
-	public NotificationTemplate[] getNotifications() {
+	public synchronized NotificationTemplate[] getNotifications() {
 		return notifications;
 	}
 
-	public int getPreviousNotificationsCount() {
+	public synchronized int getPreviousNotificationsCount() {
 		return notifications.length;
 	}
 
-	public boolean hasNotificationWithNumber(int number) {
+	public synchronized boolean hasNotificationWithNumber(int number) {
 		return number < notifications.length && number >= 0;
 	}
 	
-	public NotificationTemplate getNotification(int number) {
+	public synchronized NotificationTemplate getNotification(int number) {
 		if (number >= 0 && number < notifications.length) {
 			return notifications[number];
 		}
 		return null;
+	}
+
+	public synchronized int getAvailableNotificationsCount() {
+		return notifications.length;
+	}
+
+	public synchronized void reload(Resources resources) {
+		loadNotifications(resources);
 	}
 	
 }

@@ -27,7 +27,9 @@
     <string name="d">д</string>
     <string name="h">ч</string>
     <string name="m">м</string>
-	    	
+	
+    <string name="locale">ru</string>	
+    
   	<string name="review_bonus_text">Перечитываешь? Молодец!</string>
     <string name="notification_bonus_text">новое сообщение: +4 очка!</string>
     <string name="welcome_back_bonus_text">велкам бэк :)</string>
