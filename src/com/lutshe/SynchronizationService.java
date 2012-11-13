@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.Scanner;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
 import android.content.res.Resources;
 import android.util.Log;
 
@@ -20,14 +20,16 @@ public class SynchronizationService extends IntentService {
 	private static final long RETRY_TIME = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 1 /*hours*/;
 	private NotificationProvider notificationProvider;
 	private Store store;
+	private Database database;
 	
 	public SynchronizationService() {
 		super("sync service");
 	}
 
 	private void init() {
-		notificationProvider = NotificationProvider.getInstance(getResources());
+		notificationProvider = NotificationProvider.getInstance(getResources(), getApplicationContext());
 		store = new Store(getApplicationContext());
+		database = new Database(getApplicationContext());
 	}
 	
 	@Override
@@ -36,22 +38,36 @@ public class SynchronizationService extends IntentService {
 		Log.i("sgsync", "starting synchronization");
 		
 		int lastNotificationNumber = store.getLastNotificationNumber();
+		Log.i("sgsync", "lastNotNum: " + lastNotificationNumber);
 		long lastSyncTime = store.getLastSyncTime();
+		Log.i("sgsync", "lastSyncTime: " + lastSyncTime);
 		int availableNotifications = notificationProvider.getAvailableNotificationsCount();
+		Log.i("sgsync", "availableNotifcations: " + availableNotifications);
 	
 		boolean needToUpdate = availableNotifications - PRELOADED_MESSAGES_NUM < lastNotificationNumber && System.currentTimeMillis() - lastSyncTime > RETRY_TIME;
 		boolean shouldUpdate = System.currentTimeMillis() - lastSyncTime > SYNC_DELAY;
 
+		Log.i("sgsync", needToUpdate + " " + shouldUpdate);
 		if (needToUpdate || shouldUpdate) {
 			
 			int availableUpdates = getAvailableForUpdate(getResources());
+			Log.i("update", lastNotificationNumber +","+availableNotifications+","+availableUpdates);
+			
 			for(int i = availableNotifications + 1; i <= availableUpdates; i++) {
 				Log.i("update", "downloading day " + i);
-				String update = downloadNotificaion(getResources(), i);
+				String update = downloadNotificaion(getResources(), i).trim();
 				Log.i("update", "downloaded: " + update);
 				
-				if (update != null && !"".equals(update.trim())) {
+				if (update != null && !"".equals(update)) {
 					//save it to arsen's db
+					Log.i("update", "saving as day " + i);
+					
+					String[] notification = update.split("\\|");
+					Log.i("update", notification[0]);
+					Log.i("update", notification[1]);
+					Log.i("update", notification[2]);
+					Log.i("update", notification[3]);
+					database.addItem(i, notification[0], notification[1], notification[2], Integer.valueOf(notification[3]));
 				}
 			}
 			
@@ -62,49 +78,46 @@ public class SynchronizationService extends IntentService {
 
 	private String downloadNotificaion(Resources resources, int id) {
 		Scanner scanner = null;
-		String result = null;
+		StringBuilder result = new StringBuilder();
 		
 		String locale = resources.getString(R.string.locale);
-		int version = getVersion();
 		
 		try {
-			scanner = new Scanner(new BufferedInputStream(new URL("http://updates-survivalguide.rhcloud.com/updates/v"+version+"/"+locale+"/message/"+id).openStream()));
-			if (scanner.hasNext()) {
-				result = scanner.nextLine();
+			scanner = new Scanner(new BufferedInputStream(new URL("http://updates-survivalguide.rhcloud.com/updates/v1/"+locale+"/message/"+id).openStream()));
+			while (scanner.hasNext()) {
+				String line = scanner.nextLine().trim();
+				Log.d("update", line);
+				result.append(line).append("\n");
 			}
 		} catch (Exception e) {
 			BugSenseHandler.sendException(e);
+			Log.e("update", e.getMessage(), e);
 		} finally {
 			if (scanner != null) {
 				scanner.close();
 			}
 		}
-		return result;
+		return result.toString();
 	}
 
-	private int getVersion() {
-		try {
-			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-			return pInfo.versionCode;
-		} catch (Exception e) {
-			BugSenseHandler.sendException(e);
-			return 0;
-		}
-	}
-	
 	private int getAvailableForUpdate(Resources resources) {
 		Scanner scanner = null;
 		int result = 0;
 		
 		String locale = resources.getString(R.string.locale);
-		int version = getVersion();
+		String url = "http://updates-survivalguide.rhcloud.com/updates/v1/" + locale;
 		
+		Log.d("sgsync", url);
 		try {
-			scanner = new Scanner(new BufferedInputStream(new URL("http://updates-survivalguide.rhcloud.com/updates/v"+version+"/"+locale).openStream()));
+			
+			scanner = new Scanner(new BufferedInputStream(new URL(url).openStream()));
 			if (scanner.hasNext()) {
-				result = scanner.nextInt();
+				String line = scanner.nextLine();
+				Log.d("sgsync", line);		
+				result = Integer.valueOf(line);
 			}
 		} catch (Exception e) {
+			Log.e("update", e.getMessage(), e);
 			BugSenseHandler.sendException(e);
 		} finally {
 			if (scanner != null) {
@@ -112,5 +125,11 @@ public class SynchronizationService extends IntentService {
 			}
 		}
 		return result;
+	}
+	
+	static void start(Context context) {
+		Intent syncIntent = new Intent(context, SynchronizationService.class);
+		context.startService(syncIntent);
+		Log.d("sgsync", "starting sync service");
 	}
 }

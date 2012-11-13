@@ -26,11 +26,11 @@ public class ConnectionListener extends BroadcastReceiver {
 				+ ", available: " + available);	
 		    
 		    if (available) {
-		    	Intent syncIntent = new Intent(context, SynchronizationService.class);
-				context.startService(syncIntent);
-				Log.d(LOGTAG, "starting sync service");
+		    	SynchronizationService.start(context);
 		    }
     	}
 	}
+	
+	
 
 }

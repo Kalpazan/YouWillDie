@@ -95,61 +95,6 @@
 <item>|Зомби|Очерк 2.\n\nМожно про зомби. Зомби бывают пяти с половиной видов:\n- классические\n- куринные\n- зомби-медсестра\n- живой шпинат\n- водители маршруток (1.5х)\n\nБытует мнение, что их нужно избегать. Напротив. Их нужно использовать против вас в суде. Знаете, как говорится, "зомби на дворе - на дрове трава". \n\nЗнаете. </item>
 <item>|Паварод|К этому моменту ты должен уже чувтвовать себя подготовленным.\n\n	Не страшны тебе \n	ни дождь, ни слякоть\n	Крепкий касагор\n И па-ва-род\n\n Так же ты уже должен был забыть о чем эта программа. Перечитай первые сообщения, получи очки и защищайся.</item>
 <item>|SIQ|Сегодня на ужин тест. Он поможет вам оценить вашу подготовку. \n\nОтвечайте честно и не раздумывая.\n\n1. вы М или Ж? (если да, то следуйте к вопросу 2.)\n2. вы смогли бы сохранить жизнь в условиях, в которых тяжело сохранить жизнь? (если да, перейдите к расшифровке теста)\n\n расшифровка теста: Поздравляем, ваше siq (survival intelligence quotient) равнен 113!</item>
-<item>market://details?id=com.lutshe|Хм...|Обновиться пора бы</item>
-    </string-array>
-
-<string-array name="icons">
-        <item>@drawable/icon_gentelman</item>
-		<item>@drawable/icon_money</item>
-        <item>@drawable/icon_bat</item>
-		<item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_bullshit</item>
-        <item>@drawable/icon_gasmask</item>
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_crazy</item>
-        <item>@drawable/icon_bullshit</item>
-        <item>@drawable/icon_gasmask</item>
-        <item>@drawable/icon_pirate</item>
-        <item>@drawable/icon_hipster</item>
-        
-        <item>@drawable/icon_wtf</item>
-        
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_wtf</item>
-        <item>@drawable/icon_bat</item>
-        <item>@drawable/icon_crazy</item>
-        <item>@drawable/icon_crying</item>
-        <item>@drawable/icon_drug</item>
-        <item>@drawable/icon_gasmask</item>
-        <item>@drawable/icon_gentelman</item>
-        <item>@drawable/icon_hipster</item>
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_money</item>
-        <item>@drawable/icon_pirate</item>
-        <item>@drawable/icon_radioactive</item>
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_wtf</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
     </string-array>
 
 </resources>

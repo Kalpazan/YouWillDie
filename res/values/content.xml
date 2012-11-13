@@ -82,71 +82,13 @@
     </string>
 
 <string-array name="messages">
-<item>|ICLSP|Welcome! \nThis is Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.</item>
-<item>|Advice of a day|Survival preparation requires funds for survival preparation. \n Start borrowing money today. Borrow a lot and do it often - you’ll not have to give anything back. \n \nI.e., this application was created using borrowed money only. By grinding and ‘papier-mache’-ing. \n \n You will see a lesson on how to sew a cowards pocket (to hold all your money) in the next messages.</item>
-<item>http://bit.ly/TU4FB9|Anthropophagy|You may wonder, what are we going to feed you during intergalactic flight?\n\n Basically, hope is the only thing we provide...\nWe recommend you to stock up on bags with cabbage and dead fish. Take any food at all. Please, ensure to be fat enough to survive.\n\nThere are also many other things you should take. You can see the complete list by clicking the button above. You can change it by adding anything you want!</item>
-<item>|A boy|We heard the story of a boy who saved himself from the storm on a desert island. And he lived there alone for a long time. He was sooooooooo bored that he even turned into a girl. And he was still too bored. You can become this “boy”, if you keep this program a secret. Don’t use this chance by your own. Tell your friends!</item>
-<item>http://bit.ly/Tq1sah|Lobsterz|You\'re with us for four days already! ICLSP is insincerely happy about it! To mark the occasion, we urge you to go to the bar this week and order three glasses of beer with lobsters. Lobsters are cool and we\'re almost sure that you\'ve never tried one :)</item>
-<item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet. But we do not know exactly what it is. Add the the names of all the things, flora and fauna, that are necessary for you to the list.</item>
-
-<item>market://details?id=com.lutshe|Hmm...|It\'s time to update</item>
+<item>|ICLSP|Welcome! \nThis is Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.|0</item>
+<item>|Advice of a day|Survival preparation requires funds for survival preparation. \n Start borrowing money today. Borrow a lot and do it often - you’ll not have to give anything back. \n \nI.e., this application was created using borrowed money only. By grinding and ‘papier-mache’-ing. \n \n You will see a lesson on how to sew a cowards pocket (to hold all your money) in the next messages.|1</item>
+<!-- item>http://bit.ly/TU4FB9|Anthropophagy|You may wonder, what are we going to feed you during intergalactic flight?\n\n Basically, hope is the only thing we provide...\nWe recommend you to stock up on bags with cabbage and dead fish. Take any food at all. Please, ensure to be fat enough to survive.\n\nThere are also many other things you should take. You can see the complete list by clicking the button above. You can change it by adding anything you want!|2</item>
+<item>|A boy|We heard the story of a boy who saved himself from the storm on a desert island. And he lived there alone for a long time. He was sooooooooo bored that he even turned into a girl. And he was still too bored. You can become this “boy”, if you keep this program a secret. Don’t use this chance by your own. Tell your friends!|3</item>
+<item>http://bit.ly/Tq1sah|Lobsterz|You\'re with us for four days already! ICLSP is insincerely happy about it! To mark the occasion, we urge you to go to the bar this week and order three glasses of beer with lobsters. Lobsters are cool and we\'re almost sure that you\'ve never tried one :)|4</item>
+<item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet. But we do not know exactly what it is. Add the the names of all the things, flora and fauna, that are necessary for you to the list.|5</item-->
 </string-array>
-
-<string-array name="icons">
-        <item>@drawable/icon_gentelman</item>
-		<item>@drawable/icon_money</item>
-        <item>@drawable/icon_bat</item>
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_bullshit</item>
-        
-        <item>@drawable/icon_wtf</item>
-        
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_crazy</item>
-        <item>@drawable/icon_bullshit</item>
-        <item>@drawable/icon_gasmask</item>
-        <item>@drawable/icon_pirate</item>
-        <item>@drawable/icon_hipster</item>
-        
-        <item>@drawable/icon_wtf</item>
-        
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_wtf</item>
-        <item>@drawable/icon_bat</item>
-        <item>@drawable/icon_crazy</item>
-        <item>@drawable/icon_crying</item>
-        <item>@drawable/icon_drug</item>
-        <item>@drawable/icon_gasmask</item>
-        <item>@drawable/icon_gentelman</item>
-        <item>@drawable/icon_hipster</item>
-        <item>@drawable/icon_horny</item>
-        <item>@drawable/icon_money</item>
-        <item>@drawable/icon_pirate</item>
-        <item>@drawable/icon_radioactive</item>
-        <item>@drawable/icon_smile</item>
-        <item>@drawable/icon_star</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_wtf</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-        <item>@drawable/icon_tongue</item>
-    </string-array>
 
 </resources>
 <!--

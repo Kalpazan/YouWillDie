@@ -1,34 +1,58 @@
 package com.lutshe;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.util.Log;
 
 public class NotificationProvider {
 
 	private static NotificationProvider instance;
 	
 	private NotificationTemplate[] notifications;
+	private Database database;
 	
-	private NotificationProvider(Resources resources) {
-		loadNotifications(resources);
+	private NotificationProvider(Resources resources, Context context) {
+		database = new Database(context);
+		loadNotifications(resources, database);
 	}
 	
-	private synchronized void loadNotifications(Resources resources) {
-		String[] messages = resources.getStringArray(R.array.messages);
+	private synchronized void loadNotifications(Resources resources, Database database) {
+		
+		int count = database.getTemplatesCount();
+
 		TypedArray imgs = resources.obtainTypedArray(R.array.icons);
 		
-		notifications = new NotificationTemplate[messages.length];
-		
-		for (int i = 0; i < messages.length; i++) {
-			String[] strings = messages[i].split("\\|");
-			int icon = imgs.getResourceId(i, -1);
-				notifications[i] = new NotificationTemplate(strings[0], strings[1], strings[2], icon);
+		if (count == 0) {
+			String[] messages = resources.getStringArray(R.array.messages);
+			
+			for (int i = 0; i < messages.length; i++) {
+				String[] strings = messages[i].split("\\|");
+				int icon = Integer.valueOf(strings[3]);
+				
+				database.addItem(i, strings[0], strings[1], strings[2], icon);
+			}
 		}
+		
+		count = database.getTemplatesCount();
+		if (count == 0) Log.wtf("wtf????", "really, wtf?");
+		
+		notifications = new NotificationTemplate[count];
+		
+		for (int i = 0; i < notifications.length; i++) {
+			
+			NotificationTemplate nt = database.getItem(i);
+			int icon = imgs.getResourceId(nt.getIcon(), -1);
+			nt.setIcon(icon);
+			notifications[i] = nt;
+			
+		}
+		
 	}
 	
-	public synchronized static NotificationProvider getInstance(Resources resources) {
+	public synchronized static NotificationProvider getInstance(Resources resources, Context context) {
 		if (instance == null) {
-			instance = new NotificationProvider(resources);
+			instance = new NotificationProvider(resources, context);
 		}
 		
 		return instance;
@@ -58,7 +82,7 @@ public class NotificationProvider {
 	}
 
 	public synchronized void reload(Resources resources) {
-		loadNotifications(resources);
+		loadNotifications(resources, database);
 	}
 	
 }

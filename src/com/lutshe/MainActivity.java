@@ -5,7 +5,6 @@ import static java.util.Calendar.DECEMBER;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Random;
 
 import android.app.Activity;
@@ -13,9 +12,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -69,17 +65,17 @@ public class MainActivity extends Activity {
 	    	super.onCreate(bundle);
 	    	MainActivity.instance = this;
 	    	
-	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
+//	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
 	    	
 //	        mainView = getMainView();
-	        Locale locale = getResources().getConfiguration().locale;
 	      	setContentView(R.layout.main);
 	        this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
 	        store = new Store(getApplicationContext());
 	        pointsController = new PointsController(this);
 	        
-	        provider = NotificationProvider.getInstance(getResources());
+	        SynchronizationService.start(getApplicationContext());
+	        provider = NotificationProvider.getInstance(getResources(), getApplicationContext());
 	        messagesController = new MessageDisplayController(provider, this);
 	        messagesController.init();
 	
@@ -98,7 +94,7 @@ public class MainActivity extends Activity {
 				public void onClick(View v) {
 					int lastNotificationNumber = store.getLastNotificationNumber();
 					if (lastNotificationNumber > 1) {
-						int next = RANDOM.nextInt(lastNotificationNumber - 1) + 1;
+						int next = RANDOM.nextInt(lastNotificationNumber) + 1;
 						NotificationTemplate notification = provider.getNotification(next);
 						messagesController.setCurrentMessage(notification);
 					}

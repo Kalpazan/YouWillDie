@@ -96,7 +96,9 @@ public class PointsController {
 			case 3:
 			case 4:
 				RateViewController rateController = activity.getRateViewController();
-				rateController.showRateView(true);
+				if (!rateController.isVisible()) {
+					rateController.showRateView(true);
+				}
 			}
         }
     }

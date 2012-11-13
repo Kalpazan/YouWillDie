@@ -56,17 +56,21 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_NAME,    //откуда
-                new String[]{KEY_DAY, KEY_LINK, KEY_TITLE, KEY_TEXT, KEY_ICON},//что
+                new String[]{KEY_LINK, KEY_TITLE, KEY_TEXT, KEY_ICON},//что
                 KEY_DAY + "=?", // условие
                 new String[]{String.valueOf(day)}, // что подставить в условие
                 null, null,
                 KEY_DAY); // отсортировать по этой штуке
-        if (cursor != null)
+       
+        if (cursor != null) {
             cursor.moveToFirst();
 
-        NotificationTemplate notificationTemplate = new NotificationTemplate(cursor.getString(0),
-                cursor.getString(1), cursor.getString(2), Integer.valueOf(cursor.getString(4)));
-        return notificationTemplate;
+			NotificationTemplate notificationTemplate = new NotificationTemplate(cursor.getString(0), cursor.getString(1), cursor.getString(2), Integer.valueOf(cursor.getString(3)));
+			cursor.close();
+			return notificationTemplate;
+        }
+        
+        return null;
     }
 
     public List<NotificationTemplate> getAllTemplates() {
@@ -77,7 +81,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 NotificationTemplate nt = new NotificationTemplate(cursor.getString(0),
                         cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)));
@@ -85,6 +89,7 @@ public class Database extends SQLiteOpenHelper {
                 // Adding contact to list
                 list.add(nt);
             } while (cursor.moveToNext());
+            cursor.close();
         }
         return list;
     }
@@ -93,8 +98,9 @@ public class Database extends SQLiteOpenHelper {
         String countQuery = "SELECT  * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
         cursor.close();
-        return cursor.getCount();
+		return count;
     }
 
 }
