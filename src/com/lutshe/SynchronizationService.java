@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.util.Log;
 
 import com.bugsense.trace.BugSenseHandler;
+import com.lutshe.controller.InternetController;
 import com.lutshe.store.Store;
 
 
@@ -47,7 +48,7 @@ public class SynchronizationService extends IntentService {
 
 		Log.i("sgsync", needToUpdate + " " + shouldUpdate);
 		if (needToUpdate || shouldUpdate) {
-			
+			boolean wasUpdated = false;
 			int availableUpdates = getAvailableForUpdate(getResources());
 			Log.i("update", lastNotificationNumber +","+availableNotifications+","+availableUpdates);
 			
@@ -66,11 +67,14 @@ public class SynchronizationService extends IntentService {
 					Log.i("update", notification[2]);
 					Log.i("update", notification[3]);
 					database.addItem(i, notification[0], notification[1], notification[2], Integer.valueOf(notification[3]));
+                    wasUpdated = true;
 				}
 			}
-			
-			store.registerSync();
-			notificationProvider.reload(getResources());
+
+            if (wasUpdated) {
+                store.registerSync();
+			    notificationProvider.reload(getResources());
+            }
 		}
 	}
 	

@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.SlidingDrawer;
 
 import com.bugsense.trace.BugSenseHandler;
+import com.lutshe.controller.InternetController;
 import com.lutshe.controller.MessageDisplayController;
 import com.lutshe.controller.RateViewController;
 import com.lutshe.controller.UserMessageController;
@@ -73,8 +74,10 @@ public class MainActivity extends Activity {
 	        setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
 	        store = new Store(getApplicationContext());
 	        pointsController = new PointsController(this);
-	        
-	        SynchronizationService.start(getApplicationContext());
+
+            if (InternetController.isNetworkAvailable(getApplicationContext())) {
+	            SynchronizationService.start(getApplicationContext());
+            }
 	        provider = NotificationProvider.getInstance(getResources(), getApplicationContext());
 	        messagesController = new MessageDisplayController(provider, this);
 	        messagesController.init();
