@@ -40,19 +40,19 @@ public class SynchronizationService extends IntentService {
 		Log.i("sgsync", "lastNotNum: " + lastNotificationNumber);
 		long lastSyncTime = store.getLastSyncTime();
 		Log.i("sgsync", "lastSyncTime: " + lastSyncTime);
-		int availableNotifications = notificationProvider.getAvailableNotificationsCount();
-		Log.i("sgsync", "availableNotifcations: " + availableNotifications);
+		int lastDownloadedNotificationNumber = notificationProvider.getAvailableNotificationsCount() - 1;
+		Log.i("sgsync", "lastDownloadedNotificationNumber: " + lastDownloadedNotificationNumber);
 	
-		boolean needToUpdate = availableNotifications - PRELOADED_MESSAGES_NUM < lastNotificationNumber && System.currentTimeMillis() - lastSyncTime > RETRY_TIME;
+		boolean needToUpdate = lastDownloadedNotificationNumber - PRELOADED_MESSAGES_NUM < lastNotificationNumber && System.currentTimeMillis() - lastSyncTime > RETRY_TIME;
 		boolean shouldUpdate = System.currentTimeMillis() - lastSyncTime > SYNC_DELAY;
 
 		Log.i("sgsync", needToUpdate + " " + shouldUpdate);
 		if (needToUpdate || shouldUpdate) {
 			boolean wasUpdated = false;
 			int availableUpdates = getAvailableForUpdate(getResources());
-			Log.i("update", lastNotificationNumber +","+availableNotifications+","+availableUpdates);
+			Log.i("update", lastNotificationNumber +","+lastDownloadedNotificationNumber+","+availableUpdates);
 			
-			for(int i = availableNotifications + 1; i <= availableUpdates; i++) {
+			for(int i = lastDownloadedNotificationNumber + 1; i <= availableUpdates; i++) {
 				Log.i("update", "downloading day " + i);
 				String update = downloadNotificaion(getResources(), i).trim();
 				Log.i("update", "downloaded: " + update);
