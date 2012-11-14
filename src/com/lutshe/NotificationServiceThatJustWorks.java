@@ -170,8 +170,26 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			
 			Log.d("notification", "time of next notification: " + new Date(when).toGMTString());
 			scheduleNextNotification(when);
+		} else {
+			long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
+			when = getNextNotificationTime(lastNotificationTime);
+			scheduleCheck(when);
 		}
 		
 		finishProcessing();
+	}
+
+	private void scheduleCheck(long when) {
+
+		AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Service.ALARM_SERVICE);
+		
+		Intent intent = new Intent(getApplicationContext(), NotificationServiceThatJustWorks.class);
+		intent.putExtra(getApplicationContext().getPackageName() + IS_START_INTENT, true);
+		
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 412341234, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+		alarmManager.set(AlarmManager.RTC_WAKEUP, when, pendingIntent);
+		Log.d("notification", "check alarm was set");
+		
 	}
 }
