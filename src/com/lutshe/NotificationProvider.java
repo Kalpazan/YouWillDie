@@ -3,7 +3,6 @@ package com.lutshe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.util.Log;
 
 public class NotificationProvider {
 
@@ -13,7 +12,7 @@ public class NotificationProvider {
 	private Database database;
 	
 	private NotificationProvider(Resources resources, Context context) {
-		database = new Database(context);
+		database = Database.getDb(context);
 		loadNotifications(resources, database);
 	}
 	
@@ -34,17 +33,13 @@ public class NotificationProvider {
 			}
 		}
 		
-		count = database.getTemplatesCount();
-		if (count == 0) Log.wtf("wtf????", "really, wtf?");
-		
-		notifications = new NotificationTemplate[count];
+		notifications = database.getAllTemplates();
 		
 		for (int i = 0; i < notifications.length; i++) {
 			
-			NotificationTemplate nt = database.getItem(i);
+			NotificationTemplate nt = notifications[i];
 			int icon = imgs.getResourceId(nt.getIcon(), -1);
-			nt.setIcon(icon);
-			notifications[i] = nt;
+			notifications[i].setIcon(icon);
 			
 		}
 		

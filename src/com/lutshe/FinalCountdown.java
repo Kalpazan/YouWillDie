@@ -1,6 +1,5 @@
 package com.lutshe;
 
-import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 

@@ -29,12 +29,10 @@ public class SynchronizationService extends IntentService {
 	private void init() {
 		notificationProvider = NotificationProvider.getInstance(getResources(), getApplicationContext());
 		store = new Store(getApplicationContext());
-		database = new Database(getApplicationContext());
+		database = Database.getDb(getApplicationContext());
 	}
 	
-	@Override
-	protected void onHandleIntent(Intent intent) {
-		init();
+	private void sync() {
 		Log.i("sgsync", "starting synchronization");
 		
 		int lastNotificationNumber = store.getLastNotificationNumber();
@@ -73,6 +71,17 @@ public class SynchronizationService extends IntentService {
 			
 			store.registerSync();
 			notificationProvider.reload(getResources());
+		}
+	}
+	
+	@Override
+	protected void onHandleIntent(Intent intent) {
+		try {
+			init();
+			sync();
+		} catch (Exception e) {
+			Log.e("sgsync", e.getMessage(), e);
+			BugSenseHandler.sendExceptionMessage("update failed", getResources().getString(R.string.locale), e);
 		}
 	}
 

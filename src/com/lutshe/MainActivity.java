@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 	    	super.onCreate(bundle);
 	    	MainActivity.instance = this;
 	    	
-//	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
+	    	BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
 	    	
 //	        mainView = getMainView();
 	      	setContentView(R.layout.main);

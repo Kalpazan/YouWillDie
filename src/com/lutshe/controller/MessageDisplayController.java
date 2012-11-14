@@ -162,7 +162,7 @@ public class MessageDisplayController {
 		android.view.ViewGroup.LayoutParams params = helpText.getLayoutParams();
 		helpText.clearView();
 		
-		helpText = new WebView(MainActivity.instance);
+		helpText = new WebView(activity);
 		helpText.getSettings().setRenderPriority(RenderPriority.HIGH);
 		helpText.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		helpText.setVerticalScrollBarEnabled(false);

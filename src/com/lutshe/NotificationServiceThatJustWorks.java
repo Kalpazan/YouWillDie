@@ -5,6 +5,7 @@ import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 import java.sql.Date;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Random;
 
 import android.app.AlarmManager;
 import android.app.IntentService;
@@ -51,17 +52,17 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
 		
-//		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
-//			calendar.add(Calendar.DATE, 1);
-//		}
-//
-//		int randomHoursNumber = new Random().nextInt(10);
-//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-//
-//		int randomMinsNumber = new Random().nextInt(60);
-//		calendar.set(Calendar.MINUTE, randomMinsNumber);
+		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+			calendar.add(Calendar.DATE, 1);
+		}
 
-		calendar.add(Calendar.SECOND, 6);
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(Calendar.MINUTE, randomMinsNumber);
+
+		calendar.add(Calendar.SECOND, 20);
 		
 		return calendar.getTimeInMillis();
 	}
@@ -101,7 +102,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	public static class BootListener extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-//			BugSenseHandler.initAndStartSession(context, "f48c5119");
+			BugSenseHandler.initAndStartSession(context, "f48c5119");
 			if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 				Log.d("notification", "got boot action - starting intent");
 				startService(context);
@@ -154,14 +155,14 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
 			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());
 		} else {
-//			BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
+			BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		}
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
 			if (lastNotificationNumber == -1) {
 				store.updateLastNotificationNumber(0);
 				store.saveNotificationTime(0, System.currentTimeMillis());
-				when = System.currentTimeMillis() +  60 * 1000;
+				when = System.currentTimeMillis() + 2 * 60 * 1000;
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);

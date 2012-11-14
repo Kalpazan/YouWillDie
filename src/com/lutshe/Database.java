@@ -20,8 +20,19 @@ public class Database extends SQLiteOpenHelper {
     private static final String KEY_TEXT = "text";
     private static final String KEY_ICON = "icon";
 
-    public Database(Context context) {
+    private static Database instance;
+    
+    private Database(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+    }
+    
+    public synchronized static Database getDb(Context context) {
+    	
+    	if (instance == null) {
+    		instance = new Database(context);
+    	}
+    	
+    	return instance;
     }
 
     @Override
@@ -52,7 +63,7 @@ public class Database extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
     }
 
-    public NotificationTemplate getItem(int day) {
+    public synchronized NotificationTemplate getItem(int day) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 TABLE_NAME,    //откуда
@@ -73,8 +84,8 @@ public class Database extends SQLiteOpenHelper {
         return null;
     }
 
-    public List<NotificationTemplate> getAllTemplates() {
-        List<NotificationTemplate> list = new ArrayList<NotificationTemplate>();
+    public synchronized NotificationTemplate[] getAllTemplates() {
+        NotificationTemplate[] notifications = null;
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -82,19 +93,26 @@ public class Database extends SQLiteOpenHelper {
 
         // looping through all rows and adding to list
         if (cursor != null && cursor.moveToFirst()) {
+        	notifications = new NotificationTemplate[cursor.getCount()];
+        	int i = 0;
+        	
             do {
-                NotificationTemplate nt = new NotificationTemplate(cursor.getString(0),
-                        cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)));
+                NotificationTemplate nt = new NotificationTemplate(
+                		cursor.getString(cursor.getColumnIndex(KEY_LINK)),
+                        cursor.getString(cursor.getColumnIndex(KEY_TITLE)),
+                        cursor.getString(cursor.getColumnIndex(KEY_TEXT)),
+                        cursor.getInt(cursor.getColumnIndex(KEY_ICON))
+                        );
 
                 // Adding contact to list
-                list.add(nt);
+                notifications[i++] = nt;
             } while (cursor.moveToNext());
             cursor.close();
         }
-        return list;
+        return notifications;
     }
 
-    public int getTemplatesCount() {
+    public synchronized int getTemplatesCount() {
         String countQuery = "SELECT  * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
