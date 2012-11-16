@@ -342,24 +342,24 @@ public class MainActivity extends Activity {
 		return userMessageController;
 	}
 
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();    //To change body of overridden methods use File | Settings | File Templates.
-//
-//        unbindDrawables(findViewById(R.id.mainLayout));
-//        System.gc();
-//    }
-//
-//    private void unbindDrawables(View view) {
-//        if (view.getBackground() != null) {
-//            view.getBackground().setCallback(null);
-//        }
-//        if (view instanceof ViewGroup) {
-//            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-//                unbindDrawables(((ViewGroup) view).getChildAt(i));
-//            }
-//            ((ViewGroup) view).removeAllViews();
-//        }
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();    
+
+        unbindDrawables(findViewById(R.id.mainLayout));
+        System.gc();
+    }
+
+    private void unbindDrawables(View view) {
+        if (view.getBackground() != null) {
+            view.getBackground().setCallback(null);
+        }
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                unbindDrawables(((ViewGroup) view).getChildAt(i));
+            }
+            ((ViewGroup) view).removeAllViews();
+        }
+    }
 }
 

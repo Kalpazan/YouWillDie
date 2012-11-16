@@ -17,8 +17,8 @@ import com.lutshe.store.Store;
 public class SynchronizationService extends IntentService {
 
 	private static final int PRELOADED_MESSAGES_NUM = 3;
-	private static final long SYNC_DELAY = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 12 /*hours*/;
-	private static final long RETRY_TIME = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 1 /*hours*/;
+	private static final long SYNC_DELAY = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 24 /*hours*/;
+	private static final long RETRY_TIME = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 2 /*hours*/;
 	private NotificationProvider notificationProvider;
 	private Store store;
 	private Database database;
@@ -96,6 +96,7 @@ public class SynchronizationService extends IntentService {
 		String locale = resources.getString(R.string.locale);
 		
 		try {
+			if (!InternetController.isNetworkAvailable(getApplicationContext())) return "";
 			scanner = new Scanner(new BufferedInputStream(new URL("http://updates-survivalguide.rhcloud.com/updates/v1/"+locale+"/message/"+id).openStream()));
 			while (scanner.hasNext()) {
 				String line = scanner.nextLine().trim();
@@ -122,7 +123,7 @@ public class SynchronizationService extends IntentService {
 		
 		Log.d("sgsync", url);
 		try {
-			
+			if (!InternetController.isNetworkAvailable(getApplicationContext())) return 0;
 			scanner = new Scanner(new BufferedInputStream(new URL(url).openStream()));
 			if (scanner.hasNext()) {
 				String line = scanner.nextLine();
