@@ -80,7 +80,7 @@ public class MessageDisplayController {
 	}
 
 	public void setCurrentMessage(final NotificationTemplate message) {
-        if (message.getLink().equals("")){
+        if ("".equals(message.getLink())){
             linkBtn.setVisibility(View.INVISIBLE);
         } else {
             linkBtn.setVisibility(View.VISIBLE);

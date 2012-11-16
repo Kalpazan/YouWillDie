@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -340,6 +341,25 @@ public class MainActivity extends Activity {
 		}
 		return userMessageController;
 	}
-	
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();    //To change body of overridden methods use File | Settings | File Templates.
+//
+//        unbindDrawables(findViewById(R.id.mainLayout));
+//        System.gc();
+//    }
+//
+//    private void unbindDrawables(View view) {
+//        if (view.getBackground() != null) {
+//            view.getBackground().setCallback(null);
+//        }
+//        if (view instanceof ViewGroup) {
+//            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+//                unbindDrawables(((ViewGroup) view).getChildAt(i));
+//            }
+//            ((ViewGroup) view).removeAllViews();
+//        }
+//    }
 }
 
