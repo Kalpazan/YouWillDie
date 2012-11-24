@@ -128,7 +128,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		boolean stupidNumber = days % 10  < 5;
 		
-		return days + (stupidNumber ? res.getString(R.string.days_ago_ru1) : res.getString(R.string.days_ago_ru2));
+		return days + " " + (stupidNumber ? res.getString(R.string.days_ago_ru1) : res.getString(R.string.days_ago_ru2));
 	}
 	
 }
