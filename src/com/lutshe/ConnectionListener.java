@@ -17,6 +17,9 @@ public class ConnectionListener extends BroadcastReceiver {
 		
     	if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
 		    NetworkInfo info = intent.getParcelableExtra(ConnectivityManager.EXTRA_NETWORK_INFO);
+		    
+		    if (info == null) return;
+		    
 		    String typeName = info.getTypeName();
 		    String subtypeName = info.getSubtypeName();
 		    boolean available = info.isAvailable();

@@ -9,7 +9,6 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +35,6 @@ public class MainActivity extends Activity {
 
 	private FinalCountdown timer;
 
-    private MediaPlayer mediaPlayer;
 	private NotificationsListAdapter listAdapter;
 	private RateViewController rateViewController;
 	private UserMessageController userMessageController;
@@ -123,8 +121,7 @@ public class MainActivity extends Activity {
 	        };
 			findViewById(R.id.help_button_container).setOnClickListener(helpListener);
 			findViewById(R.id.help_button).setOnClickListener(helpListener);
-			
-			playSound();
+
         } catch (Exception e) {
         	BugSenseHandler.sendException(e);
         }
@@ -167,16 +164,6 @@ public class MainActivity extends Activity {
         });
     }
 
-    public void playSound() {
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.stopwatch);
-        mediaPlayer.setLooping(true);
-        
-        int maxVolume = 11;
-		float log1=(float)(Math.log(maxVolume-2)/Math.log(maxVolume));
-        mediaPlayer.setVolume(1 - log1, 1 - log1);
-        mediaPlayer.start();
-    }
-
     public void startCountDown() {
         final Calendar finalDate = Calendar.getInstance();
         finalDate.clear();
@@ -206,9 +193,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onStop() {
     	super.onStop();
-    	if (mediaPlayer != null) {
-    		mediaPlayer.pause();
-    	}
     	stopCountdown();
     }
 
@@ -224,10 +208,6 @@ public class MainActivity extends Activity {
 		MainActivity.instance = null;
         super.onPause();
         stopCountdown();
-        
-        if (mediaPlayer != null) {
-        	mediaPlayer.pause();
-        }
         
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
         slider.close();
@@ -254,9 +234,6 @@ public class MainActivity extends Activity {
 		super.onWindowFocusChanged(hasFocus);
 		
 		if (hasFocus) {
-			if (mediaPlayer != null) {
-				mediaPlayer.start();
-			}
 			MainActivity.instance = this;
 			
 			if (isFirstLaunch()) {
@@ -354,11 +331,11 @@ public class MainActivity extends Activity {
         if (view.getBackground() != null) {
             view.getBackground().setCallback(null);
         }
-        if (view instanceof ViewGroup) {
+        if (view instanceof ViewGroup && !(view instanceof AdapterView)) {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
                 unbindDrawables(((ViewGroup) view).getChildAt(i));
             }
-            ((ViewGroup) view).removeAllViews();
+            ((ViewGroup) view).removeAllViews();  // Bug. I can repeat this
         }
     }
 }
