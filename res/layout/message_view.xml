@@ -80,6 +80,7 @@
                  android:orientation="vertical">
         <ScrollView
                 android:id="@+id/message_scroll_view"
+                android:overScrollMode="never"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/message_margin_frame_left"
