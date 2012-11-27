@@ -17,5 +17,6 @@
         <item>@drawable/icon_crying</item>
         <item>@drawable/icon_drug</item>
         <item>@drawable/icon_radioactive</item><!-- 15 -->
+        <item>@drawable/icon_hair</item>
     </string-array>
 </resources>
