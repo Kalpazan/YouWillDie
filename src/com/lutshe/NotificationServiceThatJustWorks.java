@@ -84,6 +84,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	}
 
 	private void scheduleNextNotification(long when) {
+		store.saveNextNotificationTime(when);
 		AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Service.ALARM_SERVICE);
 		Intent intent = new Intent(this, AlarmListener.class);
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 412341234, intent, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -106,6 +107,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 				Log.d("notification", "got boot action - starting intent");
 				startService(context);
+				MessagesDeliveryMonitoringService.startService(context);
 			}
 		}
 	}

@@ -269,6 +269,7 @@ public class MainActivity extends Activity {
                     @Override
                     protected Void doInBackground(Void... params) {
                         NotificationServiceThatJustWorks.startService(getApplicationContext());
+                        MessagesDeliveryMonitoringService.startService(getApplicationContext());
                         return null;
                     }
                 }.execute((Void) null);
