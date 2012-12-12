@@ -51,7 +51,14 @@
                 <action android:name="com.lutshe.SynchronizationService" />
             </intent-filter>
         </service>
-
+		<service
+            android:name=".PanicNotificationsService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.lutshe.PanicNotificationsService" />
+            </intent-filter>
+        </service>
+		
         <receiver
             android:name=".NotificationServiceThatJustWorks$BootListener"
             android:enabled="true" >
@@ -67,7 +74,13 @@
                 <action android:name="com.lutshe.AlarmListener" />
             </intent-filter>
         </receiver>
-		
+		<receiver
+            android:name=".StartPanicServiceAlarmReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.lutshe.StartPanicServiceAlarmReceiver" />
+            </intent-filter>
+        </receiver>
         <receiver 
             android:name=".ConnectionListener"
             android:enabled="true" >

@@ -90,6 +90,14 @@
 <item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet. But we do not know exactly what it is. Add the names of all the things, flora and fauna, that are necessary for you to the list.|5</item>
 </string-array>
 
+<string-array name="panic_messages">
+    <item>00</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+</string-array>
+
 </resources>
 <!--
 <item>|Рог|Привыкай к единорогам: их у нас много. Многорог - всего один</item>

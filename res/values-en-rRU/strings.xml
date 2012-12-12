@@ -34,5 +34,5 @@
     <string name="notification_bonus_text">новое сообщение: +4 очка!</string>
     <string name="welcome_back_bonus_text">велкам бэк :)</string>
     <string name="msg_you_need_internet">Для этого нужен интернет</string>
-
+	<string name="panic_message_title">Внимание!</string>
 </resources>

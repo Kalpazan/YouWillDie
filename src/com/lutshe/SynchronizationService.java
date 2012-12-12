@@ -16,7 +16,7 @@ import com.lutshe.store.Store;
 
 public class SynchronizationService extends IntentService {
 
-	private static final int PRELOADED_MESSAGES_NUM = 3;
+	private static final int PRELOADED_MESSAGES_NUM = 5;
 	private static final long SYNC_DELAY = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 24 /*hours*/;
 	private static final long RETRY_TIME = 1000 /*ms*/ * 60 /*sec*/ * 60 /*min*/ * 2 /*hours*/;
 	private NotificationProvider notificationProvider;
@@ -52,7 +52,7 @@ public class SynchronizationService extends IntentService {
 			int availableUpdates = getAvailableForUpdate(getResources());
 			Log.i("update", lastNotificationNumber +","+lastDownloadedNotificationNumber+","+availableUpdates);
 			
-			for(int i = lastDownloadedNotificationNumber + 1; i <= availableUpdates; i++) {
+			for(int i = lastDownloadedNotificationNumber + 1; i <= Math.min(availableUpdates, lastDownloadedNotificationNumber + PRELOADED_MESSAGES_NUM + 1); i++) {
 				Log.i("update", "downloading day " + i);
 				String update = downloadNotificaion(getResources(), i).trim();
 				Log.i("update", "downloaded: " + update);

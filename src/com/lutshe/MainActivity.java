@@ -23,6 +23,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.bugsense.trace.BugSenseHandler;
 import com.lutshe.controller.InternetController;
 import com.lutshe.controller.MessageDisplayController;
+import com.lutshe.controller.PanicController;
 import com.lutshe.controller.RateViewController;
 import com.lutshe.controller.UserMessageController;
 import com.lutshe.points.PointsController;
@@ -248,13 +249,22 @@ public class MainActivity extends Activity {
         Bundle extras = intent.getExtras();
         if (extras != null) {
             instance = this;
-            int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
-            NotificationTemplate notification = provider.getNotification(id);
-            pointsController.addPoints(4);
-            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
-            messagesController.setCurrentMessage(notification);
-            messagesController.showMessageView();
-        }
+            
+            boolean isItJustPanic = extras.getBoolean(PanicNotificationsService.IS_PANIC_MESSAGE_EXTRA, false);
+            if (isItJustPanic) {
+            	int messageId = extras.getInt(PanicController.PANIC_MESSAGE_ID_EXTRA);
+            	String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
+        		String message = messages[messageId];            	
+            	showMessage(message);
+            } else {
+	            int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
+	            NotificationTemplate notification = provider.getNotification(id);
+	            pointsController.addPoints(4);
+	            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
+	            messagesController.setCurrentMessage(notification);
+	            messagesController.showMessageView();
+            }
+		}
     }
 
     @Override
@@ -269,7 +279,6 @@ public class MainActivity extends Activity {
                     @Override
                     protected Void doInBackground(Void... params) {
                         NotificationServiceThatJustWorks.startService(getApplicationContext());
-                        MessagesDeliveryMonitoringService.startService(getApplicationContext());
                         return null;
                     }
                 }.execute((Void) null);
@@ -283,7 +292,10 @@ public class MainActivity extends Activity {
                 getUserMessageController().showMessage(getString(R.string.welcome_back_bonus_text));
                 store.registerLaunch();
             }
-
+            
+            MessagesDeliveryMonitoringService.startService(getApplicationContext());
+            PanicController.shedulePanic(getApplicationContext(), store);
+            
             startCountDown();
         }
     }
@@ -318,6 +330,15 @@ public class MainActivity extends Activity {
         notificationId = id;
     }
 
+    public void showPanicMessage(final String message, String buttonText) {
+    	runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				showMessage(message);
+			}
+		});
+    }
+    
     public synchronized void checkForUpdates() {
         if (nextNotification != null) {
             store.updateLastNotificationNumber(notificationId);

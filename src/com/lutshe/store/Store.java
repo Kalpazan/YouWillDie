@@ -132,4 +132,12 @@ public class Store {
 	public long getNextNotificationTime() {
 		return context.getSharedPreferences(STORE_NAME, 0).getLong("nextNotificationTime", 0);
 	}
+	
+	public void registerPanicMessagesScheduled() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("panicScheduled", true).commit();
+	}
+	
+	public boolean hasAlreadyScheduledPanic() {
+		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("panicScheduled", false);
+	}
 }
