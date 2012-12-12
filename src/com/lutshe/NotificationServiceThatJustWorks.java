@@ -84,6 +84,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	}
 
 	private void scheduleNextNotification(long when) {
+		store.saveNextNotificationTime(when);
 		AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Service.ALARM_SERVICE);
 		Intent intent = new Intent(this, AlarmListener.class);
 		PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 412341234, intent, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -102,10 +103,11 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	public static class BootListener extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			BugSenseHandler.initAndStartSession(context, "3d42042b");
+			BugSenseHandler.initAndStartSession(context, "f48c5119");
 			if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 				Log.d("notification", "got boot action - starting intent");
 				startService(context);
+				MessagesDeliveryMonitoringService.startService(context);
 			}
 		}
 	}
@@ -155,7 +157,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
 			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());
 		} else {
-			BugSenseHandler.initAndStartSession(getApplicationContext(), "3d42042b");
+			BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
 		}
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {

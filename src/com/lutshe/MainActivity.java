@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
             super.onCreate(bundle);
             MainActivity.instance = this;
 
-            BugSenseHandler.initAndStartSession(MainActivity.this, "3d42042b");
+            BugSenseHandler.initAndStartSession(MainActivity.this, "f48c5119");
 
 //	        mainView = getMainView();
             setContentView(R.layout.main);
@@ -269,6 +269,7 @@ public class MainActivity extends Activity {
                     @Override
                     protected Void doInBackground(Void... params) {
                         NotificationServiceThatJustWorks.startService(getApplicationContext());
+                        MessagesDeliveryMonitoringService.startService(getApplicationContext());
                         return null;
                     }
                 }.execute((Void) null);

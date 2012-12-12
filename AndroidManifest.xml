@@ -38,6 +38,13 @@
             </intent-filter>
         </service>
 		<service
+            android:name=".MessagesDeliveryMonitoringService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.lutshe.MessagesDeliveryMonitoringService" />
+            </intent-filter>
+        </service>
+		<service
             android:name=".SynchronizationService"
             android:enabled="true" >
             <intent-filter>

@@ -124,4 +124,12 @@ public class Store {
 	public void registerSync() {
 		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("lastSync", new Date().getTime()).commit();
 	}
+
+	public void saveNextNotificationTime(long when) {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("nextNotificationTime", when).commit();
+	}
+	
+	public long getNextNotificationTime() {
+		return context.getSharedPreferences(STORE_NAME, 0).getLong("nextNotificationTime", 0);
+	}
 }
