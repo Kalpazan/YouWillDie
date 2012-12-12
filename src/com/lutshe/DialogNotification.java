@@ -30,7 +30,7 @@ public class DialogNotification {
     }
 
     public void load() {
-        final Dialog d = new Dialog(activity, R.style.shareDialogStyle);
+        final Dialog d = new Dialog(activity, R.style.apocalipseDialogStyle);
         dialogButton.setText(btnTxt);
         dialogText.setText(text);
         dialogButton.setOnClickListener(new View.OnClickListener() {
