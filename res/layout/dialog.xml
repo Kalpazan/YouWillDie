@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        android:layout_gravity="center">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center">
 
     <TextView
             android:id="@+id/dialog_text"
             android:layout_gravity="center"
             android:gravity="center"
+            android:textColor="@color/main_bg_color"
             android:text="Тут очень смешное сообщение"
             android:layout_width="300dp"
             android:layout_height="250dp"/>
@@ -24,9 +25,9 @@
             android:paddingTop="6dp"
             android:paddingLeft="18dp"
             android:paddingRight="18dp"
+            android:layout_marginBottom="20dp"
             android:text="кнопка"
             android:textSize="15dp"
-
             />
 
 

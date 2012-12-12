@@ -17,25 +17,29 @@ public class DialogNotification {
     private Button dialogButton;
 
 
-    public DialogNotification(Activity activity, String btnTxt, String text) {
+    public DialogNotification(Activity activity, String text,String btnTxt ) {
         this.activity = activity;
         BugSenseHandler.initAndStartSession(activity, "3d42042b");
         this.btnTxt = btnTxt;
         this.text = text;
         dialogView = View.inflate(activity, R.layout.dialog, null);
         dialogText = (TextView) dialogView.findViewById(R.id.dialog_text);
-        dialogButton = (Button) activity.findViewById(R.id.dialog_button);
+        dialogButton = (Button) dialogView.findViewById(R.id.dialog_button);
 
 
     }
 
     public void load() {
-         try {
-        dialogButton.setText(btnTxt); } catch (Exception e){
-             BugSenseHandler.sendException(e);
-         }
+        final Dialog d = new Dialog(activity, R.style.shareDialogStyle);
+        dialogButton.setText(btnTxt);
         dialogText.setText(text);
-        Dialog d = new Dialog(activity, R.style.shareDialogStyle);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                d.cancel();
+            }
+        });
+
         d.setContentView(dialogView);
         d.show();
     }
