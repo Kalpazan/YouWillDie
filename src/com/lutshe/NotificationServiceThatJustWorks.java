@@ -103,7 +103,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	public static class BootListener extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			BugSenseHandler.initAndStartSession(context, "f48c5119");
+			BugSenseHandler.initAndStartSession(context, "3d42042b");
 			if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 				Log.d("notification", "got boot action - starting intent");
 				startService(context);
@@ -157,7 +157,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
 			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());
 		} else {
-			BugSenseHandler.initAndStartSession(getApplicationContext(), "f48c5119");
+			BugSenseHandler.initAndStartSession(getApplicationContext(), "3d42042b");
 		}
 		
 		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
