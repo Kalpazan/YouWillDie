@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.lutshe;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
@@ -390,4 +391,3 @@ public class MainActivity extends Activity {
     }
 
 }
-
