@@ -358,7 +358,7 @@ public class MainActivity extends Activity {
     	runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				new DialogNotification(activity, message, buttonText).load();
+				new PanicDialog(activity, message, buttonText).load();
 			}
 		});
     }

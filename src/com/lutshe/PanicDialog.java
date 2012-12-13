@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.bugsense.trace.BugSenseHandler;
 
-public class DialogNotification {
+public class PanicDialog {
 
     private Activity activity;
     private String text;
@@ -17,7 +17,7 @@ public class DialogNotification {
     private Button dialogButton;
 
 
-    public DialogNotification(Activity activity, String text,String btnTxt ) {
+    public PanicDialog(Activity activity, String text, String btnTxt) {
         this.activity = activity;
         BugSenseHandler.initAndStartSession(activity, "3d42042b");
         this.btnTxt = btnTxt;
