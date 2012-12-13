@@ -98,6 +98,14 @@
     <item>4</item>
 </string-array>
 
+<string-array name="panic_messages_btn_text">
+    <item>Ok</item>
+    <item>C\'mon guys</item>
+    <item>Cool!</item>
+    <item>\@#$%k!</item>
+    <item>Oh, I am!</item>
+</string-array>
+
 </resources>
 <!--
 <item>|Рог|Привыкай к единорогам: их у нас много. Многорог - всего один</item>

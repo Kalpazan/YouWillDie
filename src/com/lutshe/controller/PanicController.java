@@ -16,6 +16,7 @@ import com.lutshe.store.Store;
 
 public class PanicController {
 
+	public static final int STORY_MESSAGE_ID = 100;
 	public static final String PANIC_MESSAGE_ID_EXTRA = "com.lutshe.panicMessageId";
 	public static long APPOCALYPSE_TIME = new GregorianCalendar(2012, DECEMBER, 21, 15, 7).getTimeInMillis();
 	
@@ -41,6 +42,27 @@ public class PanicController {
 		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
 
+		calendar.add(MINUTE, 7);
+		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
+		
+//		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 12, 23, 45);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
+//		
+//		calendar.add(GregorianCalendar.SECOND, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 1); // 2 hours to Earth!
+//		
+//		calendar.add(GregorianCalendar.SECOND, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 2); // Small Earth..
+//		
+//		calendar.add(GregorianCalendar.SECOND, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 3); // Error003
+//		
+//		calendar.add(GregorianCalendar.SECOND, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
+//
+//		calendar.add(GregorianCalendar.SECOND, 7);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
+		
 		store.registerPanicMessagesScheduled();
 	}
 

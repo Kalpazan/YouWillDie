@@ -160,22 +160,24 @@ public class NotificationServiceThatJustWorks extends IntentService {
 			BugSenseHandler.initAndStartSession(getApplicationContext(), "3d42042b");
 		}
 		
-		if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
-			if (lastNotificationNumber == -1) {
-				store.updateLastNotificationNumber(0);
-				store.saveNotificationTime(0, System.currentTimeMillis());
-				when = System.currentTimeMillis() + 2 * 60 * 1000;
+		if (!store.hasApocalypseFinished()) {
+			if (notificationProvider.hasNotificationWithNumber(lastNotificationNumber + 1)) {
+				if (lastNotificationNumber == -1) {
+					store.updateLastNotificationNumber(0);
+					store.saveNotificationTime(0, System.currentTimeMillis());
+					when = System.currentTimeMillis() + 2 * 60 * 1000;
+				} else {
+					long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
+					when = getNextNotificationTime(lastNotificationTime);
+				}
+				
+				Log.d("notification", "time of next notification: " + new Date(when).toGMTString());
+				scheduleNextNotification(when);
 			} else {
 				long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
 				when = getNextNotificationTime(lastNotificationTime);
+				scheduleCheck(when);
 			}
-			
-			Log.d("notification", "time of next notification: " + new Date(when).toGMTString());
-			scheduleNextNotification(when);
-		} else {
-			long lastNotificationTime = store.getNotofocationTime(lastNotificationNumber);
-			when = getNextNotificationTime(lastNotificationTime);
-			scheduleCheck(when);
 		}
 		
 		finishProcessing();

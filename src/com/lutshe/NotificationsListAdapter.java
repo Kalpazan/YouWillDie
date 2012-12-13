@@ -23,6 +23,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 	public static LayoutInflater inflater = null;
 	private NotificationProvider provider;
 	private Store store;
+	private boolean hasApocalypseStory = false;
 //	private TextView historySize;
 	
 	private int previousSize = -1;
@@ -37,6 +38,10 @@ public class NotificationsListAdapter extends BaseAdapter {
 
 	public int getCount() {
 		int size = store.getLastNotificationNumber() + 1;
+		if (store.hasApocalypseFinished()) {
+			size ++;
+			hasApocalypseStory = true;
+		}
 		if (size != previousSize) {
 			previousSize = size;
 //			historySize.setText(" ("+size+")");
@@ -65,20 +70,25 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		ViewHolder row = (ViewHolder) view.getTag();
 		
-		if (row.position == position) {
-			// nothing changed
-			Log.d("lview", "same position");
-			return view;
-		} 
+//		if (row.position == position) {
+//			// nothing changed
+//			Log.d("lview", "same position");
+//			return view;
+//		} 
 		
 		row.position = position;
 		
-		final NotificationTemplate notification = provider.getNotification(position);
-
+		final NotificationTemplate notification; 
+		if (hasApocalypseStory && flipPosition(position) == 0) {
+			notification = new NotificationTemplate(null, "The end", activity.getString(R.string.story_part_one), R.drawable.icon_gentelman);
+			row.notificationTime.setText("Day X "); 
+		} else {
+			notification = provider.getNotification(position);
+			row.notificationTime.setText(formatDate(store.getNotofocationTime(position)));
+		}
 		row.title.setText(notification.getTitle());
 		row.artist.setText(notification.getMainText());
 		
-		row.notificationTime.setText(formatDate(store.getNotofocationTime(position)));
 		row.icon.setImageDrawable(activity.getResources().getDrawable(notification.getIcon()));
 
 		return view;

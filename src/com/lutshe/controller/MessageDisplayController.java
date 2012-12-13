@@ -155,6 +155,12 @@ public class MessageDisplayController {
     	}
 	}
 
+	public void hideSlider() {
+		if (slidingDrawer.isOpened()) {
+    		slidingDrawer.animateClose();
+    	}
+	}
+	
 	private void loadHelp(String htmlText) {
 		helpContainer.scrollTo(0, 0);
 		

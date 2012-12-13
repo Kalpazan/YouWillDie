@@ -4,6 +4,7 @@ import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 
 import com.bugsense.trace.BugSenseHandler;
+import com.lutshe.controller.PanicController;
 import com.sun.org.apache.bcel.internal.generic.BranchHandle;
 
 import android.app.IntentService;
@@ -34,9 +35,15 @@ public class PanicNotificationsService extends IntentService {
 				Notification notification = createPanicNotification(messageId);
 				((NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE)).notify(2012+messageId, notification);
 			} else {
-				String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
-				String message = messages[messageId];
-				activity.showPanicMessage(message, "Ok");
+				if (messageId == PanicController.STORY_MESSAGE_ID) {
+					activity.showStoryMessage();
+				} else {
+					String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
+					String[] buttonTexts = getApplicationContext().getResources().getStringArray(R.array.panic_messages_btn_text);
+	        		String message = messages[messageId];
+	        		String buttonText = buttonTexts[messageId];
+					activity.showPanicMessage(message, buttonText);
+				}
 			}
 		} catch (Exception e) {
 			BugSenseHandler.sendException(e);

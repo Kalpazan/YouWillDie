@@ -140,4 +140,12 @@ public class Store {
 	public boolean hasAlreadyScheduledPanic() {
 		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("panicScheduled", false);
 	}
+	
+	public void registerApocalypse() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("apocalypseFinished", true).commit();
+	}
+	
+	public boolean hasApocalypseFinished() {
+		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("apocalypseFinished", false);
+	}
 }

@@ -103,6 +103,14 @@
     <item>3</item>
     <item>4</item>
 </string-array>
+
+<string-array name="panic_messages_btn_text">
+    <item>Ok</item>
+    <item>Давайте быстрее</item>
+    <item>Это круто!</item>
+    <item>\@#$%й!</item>
+    <item>О, я обеспокоен!</item>
+</string-array>
 </resources>
 <!--
 <item>|Рог|Привыкай к единорогам: их у нас много. Многорог - всего один</item>
