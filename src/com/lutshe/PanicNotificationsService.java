@@ -2,11 +2,6 @@ package com.lutshe;
 
 import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
-
-import com.bugsense.trace.BugSenseHandler;
-import com.lutshe.controller.PanicController;
-import com.sun.org.apache.bcel.internal.generic.BranchHandle;
-
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -15,6 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.bugsense.trace.BugSenseHandler;
+import com.lutshe.controller.PanicController;
 
 public class PanicNotificationsService extends IntentService {
 

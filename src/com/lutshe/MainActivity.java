@@ -304,7 +304,7 @@ public class MainActivity extends Activity {
                 store.registerLaunch();
             }
             
-//            MessagesDeliveryMonitoringService.startService(getApplicationContext());
+            MessagesDeliveryMonitoringService.startService(getApplicationContext());
             PanicController.shedulePanic(getApplicationContext(), store);
             
             startCountDown();
