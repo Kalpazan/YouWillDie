@@ -207,11 +207,11 @@
                 android:adjustViewBounds="true"
                 android:gravity="right|center_vertical"
                 android:src="@drawable/one_start_rank" />
-            
+
         </FrameLayout>
 
 
-        <LinearLayout 
+        <LinearLayout
             android:id="@+id/help_button_container"
             android:layout_width="@dimen/margin_frame_with_padding"
             android:layout_height="fill_parent"
@@ -236,8 +236,8 @@
                 android:adjustViewBounds="true"
                 android:visibility="invisible"
                 android:layout_gravity="center"
-                android:paddingRight="10dp"
-                android:clickable="true"
+                android:paddingRight="30dp"
+                android:clickable="false"
                 android:src="@drawable/stamp" />
     </FrameLayout>
 
