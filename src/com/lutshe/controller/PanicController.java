@@ -29,34 +29,34 @@ public class PanicController {
 		
 		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 21, 11, 0);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
-		
+
 		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 1); // 2 hours to Earth!
-		
+
 		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 2); // Small Earth..
-		
+
 		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 3); // Error003
-		
+
 		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
 
 		calendar.add(MINUTE, 7);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
-//		
-//		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 15, 14, 9);
+
+//		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 15, 14, 52);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
-//		
+//
 //		calendar.add(GregorianCalendar.SECOND, 5);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 1); // 2 hours to Earth!
-//		
+//
 //		calendar.add(GregorianCalendar.SECOND, 5);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 2); // Small Earth..
-//		
+//
 //		calendar.add(GregorianCalendar.SECOND, 5);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 3); // Error003
-//		
+//
 //		calendar.add(GregorianCalendar.SECOND, 5);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
 //

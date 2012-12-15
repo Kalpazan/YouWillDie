@@ -208,7 +208,10 @@ public class MainActivity extends Activity {
 
     public void startCountDown() {
         if (store.hasApocalypseFinished()) {
-        	timer = new FinalCountdown(0, 100, this);
+            if (timer != null) {
+        	    timer.cancel();
+                timer = new FinalCountdown(0, 100, this);
+            }
         	timer.showTimeLeft(PanicController.APPOCALYPSE_TIME - store.getApocalypseTime());
         	findViewById(R.id.stamp).setVisibility(View.VISIBLE);
         } else {
@@ -313,7 +316,7 @@ public class MainActivity extends Activity {
                 store.registerLaunch();
             }
 
-            MessagesDeliveryMonitoringService.startService(getApplicationContext());
+//            MessagesDeliveryMonitoringService.startService(getApplicationContext());
             PanicController.shedulePanic(getApplicationContext(), store);
 
             startCountDown();
