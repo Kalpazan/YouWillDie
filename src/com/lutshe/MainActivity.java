@@ -307,7 +307,7 @@ public class MainActivity extends Activity {
                 }.execute((Void) null);
 
                 store.registerFirstLaunch();
-                pointsController.addPoints(10);
+                pointsController.addPoints(11);
                 store.registerPointsAddingOnCreate();
                 store.registerLaunch();
             } else if (isFirstLaunchToday()) {
