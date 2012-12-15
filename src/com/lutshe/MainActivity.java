@@ -209,9 +209,11 @@ public class MainActivity extends Activity {
     public void startCountDown() {
         if (store.hasApocalypseFinished()) {
             if (timer != null) {
-        	    timer.cancel();
-                timer = new FinalCountdown(0, 100, this);
+        	    stopCountdown();
             }
+            
+            timer = new FinalCountdown(0, 100, this);
+            timer.cancel();
         	timer.showTimeLeft(PanicController.APPOCALYPSE_TIME - store.getApocalypseTime());
         	findViewById(R.id.stamp).setVisibility(View.VISIBLE);
         } else {
@@ -363,9 +365,7 @@ public class MainActivity extends Activity {
                 	store.registerApocalypse();
                 	listAdapter.notifyDataSetChanged();
                 	store.saveApocalypseTime();
-                	if (timer != null) {
-                		timer.cancel();
-                	}
+                	stopCountdown();
                 }
             }
         });
