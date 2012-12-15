@@ -12,6 +12,13 @@
         <item name="android:shadowRadius">1</item>
     </style>
 
+    <style name="Apocalipse_window_text_style">
+        <item name="android:textColor">@color/main_bg_color</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:paddingLeft">2dp</item>
+
+    </style>
+
     <style name="shareButtonTextStyle">
             <item name="android:shadowColor">#444444</item>
             <item name="android:shadowDx">1</item>
@@ -49,7 +56,7 @@
         <item name="android:gravity">center_horizontal|center_vertical</item>
     </style>
 
-    <style name="apocalipseDialogStyle" parent="android:Theme.DeviceDefault.Dialog.NoActionBar" >
+    <style name="apocalypseDialogStyle" parent="android:Theme.DeviceDefault.Dialog.NoActionBar" >
         <item name="android:windowTitleStyle">@style/DialogWindowTitle</item>
         <item name="android:windowBackground">@drawable/nine_patch</item>
         <item name="android:windowIsFloating">true</item>

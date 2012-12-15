@@ -38,4 +38,9 @@
     <string name="panic_message_title">Attention!</string>
     <string name="story_part_one">story</string>
 
+    <string name="mail_button">Let\'s write</string>
+    <string name="close_button">Close</string>
+    <string name="mail_subject">Mail from fan</string>
+    <string name="no_mail_client">There are no email clients installed</string>
+
 </resources>

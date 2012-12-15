@@ -35,4 +35,9 @@
     <string name="welcome_back_bonus_text">велкам бэк :)</string>
     <string name="msg_you_need_internet">Для этого нужен интернет</string>
 <string name="panic_message_title">Внимание!</string>
+
+    <string name="mail_button">Хочу писать</string>
+    <string name="close_button">Закрыть</string>
+    <string name="mail_subject">Письмо от фаната</string>
+    <string name="no_mail_client">Нет почтового клиента. Странно</string>
 </resources>

@@ -19,7 +19,6 @@ public class PanicDialog {
 
     public PanicDialog(Activity activity, String text, String btnTxt) {
         this.activity = activity;
-        BugSenseHandler.initAndStartSession(activity, "3d42042b");
         this.btnTxt = btnTxt;
         this.text = text;
         dialogView = View.inflate(activity, R.layout.dialog, null);
@@ -30,7 +29,7 @@ public class PanicDialog {
     }
 
     public void load() {
-        final Dialog d = new Dialog(activity, R.style.apocalipseDialogStyle);
+        final Dialog d = new Dialog(activity, R.style.apocalypseDialogStyle);
         dialogButton.setText(btnTxt);
         dialogText.setText(text);
         dialogButton.setOnClickListener(new View.OnClickListener() {

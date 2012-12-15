@@ -161,7 +161,7 @@ public class MainActivity extends Activity {
     }
 
     @SuppressWarnings("deprecation")
-	private boolean isFirstLaunchToday() {
+    private boolean isFirstLaunchToday() {
         Date today = new Date();
         Date lastLaunch = new Date(store.getLastLaunchTime());
         return lastLaunch.getDate() != today.getDate() || lastLaunch.getMonth() != today.getMonth();
@@ -173,32 +173,32 @@ public class MainActivity extends Activity {
         historyListView.setAdapter(listAdapter);
 
         @SuppressWarnings("deprecation")
-		final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
+        final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
 
         historyListView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 int realPosition = listAdapter.flipPosition(position);
-	                if (position == 0 && store.hasApocalypseFinished()) {
-		                showStoryMessage();
-		                slider.close();
-		                return;
-	                }
-	                
-	                if (realPosition == 0) {
-	                	messageController.showGreetingView();
-	                	return;
-	                }
-	                
-	                NotificationTemplate notification = provider.getNotifications()[realPosition];
-	                messageController.setCurrentMessage(notification);
-	                messageController.showMessageView();
-	                slider.animateClose();
-	                if (realPosition == 0 && !store.wasPointsAddedOnMsgView()) {
-	                    pointsController.addPoints(6);
-	                    getUserMessageController().showMessage(getString(R.string.review_bonus_text));
-	                    store.registerPointsAddingOnMsgView();
-	                }
+                if (position == 0 && store.hasApocalypseFinished()) {
+                    showStoryMessage();
+                    slider.close();
+                    return;
                 }
+
+                if (realPosition == 0) {
+                    messageController.showGreetingView();
+                    return;
+                }
+
+                NotificationTemplate notification = provider.getNotifications()[realPosition];
+                messageController.setCurrentMessage(notification);
+                messageController.showMessageView();
+                slider.animateClose();
+                if (realPosition == 0 && !store.wasPointsAddedOnMsgView()) {
+                    pointsController.addPoints(6);
+                    getUserMessageController().showMessage(getString(R.string.review_bonus_text));
+                    store.registerPointsAddingOnMsgView();
+                }
+            }
         });
     }
 
@@ -258,24 +258,24 @@ public class MainActivity extends Activity {
         Bundle extras = intent.getExtras();
         if (extras != null) {
             instance = this;
-            
+
             boolean isItJustPanic = extras.getBoolean(PanicNotificationsService.IS_PANIC_MESSAGE_EXTRA, false);
             if (isItJustPanic) {
-            	int messageId = extras.getInt(PanicController.PANIC_MESSAGE_ID_EXTRA);
-            	String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
-            	String[] buttonTexts = getApplicationContext().getResources().getStringArray(R.array.panic_messages_btn_text);
-        		String message = messages[messageId];
-        		String buttonText = buttonTexts[messageId];
-            	showPanicMessage(message, buttonText);
+                int messageId = extras.getInt(PanicController.PANIC_MESSAGE_ID_EXTRA);
+                String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
+                String[] buttonTexts = getApplicationContext().getResources().getStringArray(R.array.panic_messages_btn_text);
+                String message = messages[messageId];
+                String buttonText = buttonTexts[messageId];
+                showPanicMessage(message, buttonText);
             } else {
-	            int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
-	            NotificationTemplate notification = provider.getNotification(id);
-	            pointsController.addPoints(4);
-	            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
-	            messagesController.setCurrentMessage(notification);
-	            messagesController.showMessageView();
+                int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
+                NotificationTemplate notification = provider.getNotification(id);
+                pointsController.addPoints(4);
+                getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
+                messagesController.setCurrentMessage(notification);
+                messagesController.showMessageView();
             }
-		}
+        }
     }
 
     @Override
@@ -303,10 +303,10 @@ public class MainActivity extends Activity {
                 getUserMessageController().showMessage(getString(R.string.welcome_back_bonus_text));
                 store.registerLaunch();
             }
-            
+
             MessagesDeliveryMonitoringService.startService(getApplicationContext());
             PanicController.shedulePanic(getApplicationContext(), store);
-            
+
             startCountDown();
         }
     }
@@ -342,27 +342,27 @@ public class MainActivity extends Activity {
     }
 
     public void showStoryMessage() {
-    	final MainActivity activity = this;
-    	runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				new ApocalipseWindow(activity).load();
-				store.registerApocalypse();
-				listAdapter.notifyDataSetChanged();
-			}
-		});
+        final MainActivity activity = this;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new ApocalypseWindow(activity).load();
+                store.registerApocalypse();
+                listAdapter.notifyDataSetChanged();
+            }
+        });
     }
-    
+
     public void showPanicMessage(final String message, final String buttonText) {
-    	final MainActivity activity = this;
-    	runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				new PanicDialog(activity, message, buttonText).load();
-			}
-		});
+        final MainActivity activity = this;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new PanicDialog(activity, message, buttonText).load();
+            }
+        });
     }
-    
+
     public synchronized void checkForUpdates() {
         if (nextNotification != null) {
             store.updateLastNotificationNumber(notificationId);

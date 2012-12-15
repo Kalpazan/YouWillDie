@@ -2,7 +2,7 @@
 <resources>
 
     <string name="html_header">
-<![CDATA[
+        <![CDATA[
         <?xml version="1.0" encoding="UTF-8" ?>
         <html><head>
         <meta charset="utf-8">
@@ -26,9 +26,9 @@
 	  	 </head>
 	  	 ]]>
     </string>
-    
+
     <string name="greeting_text" formatted="false">
-		<![CDATA[
+        <![CDATA[
         <body style="background-color:"#FAF398">
         <font color="#3A2313">
         <b>Welcome!</b><br/><br/>This is Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.
@@ -51,9 +51,9 @@
 		Sincerely yours, head of ICLSP.
 		]]>
     </string>
-    
+
     <string name="help_text" formatted="false">
-<![CDATA[
+        <![CDATA[
         <body style="background-color:"#FAF398">
         <font color="#3A2313">
         <table>
@@ -81,57 +81,80 @@
 		]]>
     </string>
 
-<string-array name="messages">
-<item>|ICLSP|Welcome! \nThis is the Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.|0</item>
-<item>|Advice of a day|Survival preparation requires funds for survival preparation. \n Start borrowing money today. Borrow a lot and do it often - you’ll not have to give anything back. \n \nI.e., this application was created using borrowed money only. By grinding and ‘papier-mache’-ing. \n \n You will see a lesson on how to sew a cowards pocket (to hold all your money) in the next messages.|1</item>
-<item>http://bit.ly/TU4FB9|Anthropophagy|You may wonder, what are we going to feed you during the intergalactic flight?\n\n Basically, hope is the only thing we provide...\nWe recommend you to stock up on bags with cabbage and dead fish. Take any food at all. Please, ensure to be fat enough to survive.\n\nThere are also many other things you should take. You can see the complete list by clicking the button above. You can change it by adding anything you want!|2</item>
-<item>|A boy|We heard the story of a boy who saved himself from the storm on a desert island. \nAnd he lived there alone for a long time. He was sooooooooo bored that he even turned into a girl. \nAnd he was still too bored.\n\n You can become this “boy”, if you keep this program a secret. Don’t use this chance by your own. Tell your friends!|3</item>
-<item>http://bit.ly/Tq1sah|Lobsterz|You\'re with us for four days already! ICLSP is insincerely happy about it! To mark the occasion, we urge you to go to the bar this week and order three glasses of beer with lobsters. Lobsters are cool and we\'re almost sure that you\'ve never tried one :)|4</item>
-<item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet. But we do not know exactly what it is. Add the names of all the things, flora and fauna, that are necessary for you to the list.|5</item>
-</string-array>
+    <string-array name="messages">
+        <item>|ICLSP|Welcome! \nThis is the Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday
+            our (still unknown to you) devices made it possible to precisely calculate the end date of your colony
+            existence.|0
+        </item>
+        <item>|Advice of a day|Survival preparation requires funds for survival preparation. \n Start borrowing money
+            today. Borrow a lot and do it often - you’ll not have to give anything back. \n \nI.e., this application was
+            created using borrowed money only. By grinding and ‘papier-mache’-ing. \n \n You will see a lesson on how to
+            sew a cowards pocket (to hold all your money) in the next messages.|1
+        </item>
+        <item>http://bit.ly/TU4FB9|Anthropophagy|You may wonder, what are we going to feed you during the intergalactic
+            flight?\n\n Basically, hope is the only thing we provide...\nWe recommend you to stock up on bags with
+            cabbage and dead fish. Take any food at all. Please, ensure to be fat enough to survive.\n\nThere are also
+            many other things you should take. You can see the complete list by clicking the button above. You can
+            change it by adding anything you want!|2
+        </item>
+        <item>|A boy|We heard the story of a boy who saved himself from the storm on a desert island. \nAnd he lived
+            there alone for a long time. He was sooooooooo bored that he even turned into a girl. \nAnd he was still too
+            bored.\n\n You can become this “boy”, if you keep this program a secret. Don’t use this chance by your own.
+            Tell your friends!|3
+        </item>
+        <item>http://bit.ly/Tq1sah|Lobsterz|You\'re with us for four days already! ICLSP is insincerely happy about it!
+            To mark the occasion, we urge you to go to the bar this week and order three glasses of beer with lobsters.
+            Lobsters are cool and we\'re almost sure that you\'ve never tried one :)|4
+        </item>
+        <item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet.
+            But we do not know exactly what it is. Add the names of all the things, flora and fauna, that are necessary
+            for you to the list.|5
+        </item>
+    </string-array>
 
-<string-array name="panic_messages">
-    <item>5 hours till apocalypse. \nEverything is under control. Stay cool</item>
-    <item>We're almost here. Time till lending:\n\n2 hours</item>
-    <item>The Earth seems so small... Much smaller, than we imagined. \nBut that is good, - that means that we can evacuate everyone in one shot!</item>
-    <item>This is a pilot of ICLSP spaceship. \nUnexpected error has occured. Code: \n\n ЕГГОГ 003 (wrong planet landing) \n\n I declare panic!</item>
-    <item>We have a new plan. You'll see it soon. Everything will be clear in 7 minutes. \nWorry.</item>
-</string-array>
+    <string-array name="panic_messages">
+        <item>5 hours till apocalypse. \nEverything is under control. Stay cool</item>
+        <item>We\'re almost here. Time till lending:\n\n2 hours</item>
+        <item>The Earth seems so small… Much smaller, than we imagined. \nBut that is good, - that means that we can
+            evacuate everyone in one shot!
+        </item>
+        <item>This is a pilot of ICLSP spaceship. \nUnexpected error has occured. Code: \n\n ЕГГОГ 003 (wrong planet
+            landing) \n\n I declare panic!
+        </item>
+        <item>We have a new plan. You\'ll see it soon. Everything will be clear in 7 minutes. \nWorry.</item>
+    </string-array>
 
-<string-array name="panic_messages_btn_text">
-    <item>Ok</item>
-    <item>C\'mon guys</item>
-    <item>Cool!</item>
-    <item>\@#$%k!</item>
-    <item>Oh, I am!</item>
-</string-array>
+    <string-array name="panic_messages_btn_text">
+        <item>Ok</item>
+        <item>C\'mon guys</item>
+        <item>Cool!</item>
+        <item>\@#$%k!</item>
+        <item>Oh, I do!</item>
+    </string-array>
+
+    <string name="apocalypse_window_text1">
+        Great news! \n\nIt’s still few hours remaining till the apocalypse, and we have already saved you! As you
+        already know, our plans implied evacuation of people like you - brave and insistent. \n\nHere’s a detailed
+        scheme of our plan:
+    </string>
+
+    <string name="apocalypse_window_text2">
+        It is obvious that the plan was developed by the best ICLSP engineers and contains no mistakes. But, as it
+        usually happens, our Glorious programmers programmed an error: \n\nError 003 \n(wrong planet landing)\n\nMeanwhile you
+        were preparing your stuff and looking into the sky with hope waiting for the plane. \n\nSee the photo from the
+        scene, it explains everything:
+    </string>
+
+    <string name="apocalypse_window_text3">
+        You may think that it’s a complete fail, but… \nThe pilot’s name is But. His parents gave him this name because
+        he has to stand against any difficulties and against actually everything. So while we were developing brand new
+        ideal and perfect plan, he just destroyed the danger himself. \n\nThis it:
+    </string>
+
+    <string name="apocalypse_window_text4">
+        So that is all. It’s the end of a beautiful adventure which connected us. We were glad to help you. \nSee you next
+        apocalypse. \n\nBye! \n\nWe’ll be glad to hear your love to us! Just drop something here:
+        \n\nlutshe.studio@gmail.com
+    </string>
 
 </resources>
-<!--
-<item>|Рог|Привыкай к единорогам: их у нас много. Многорог - всего один</item>
-<item>|Зато|Апокалипсис... Ну зато тебе не нужен айфон. Серьезно: наше приложение на нем не работает</item>
-<item>||Купи саперную лопату! Тебе она подадобится, чтобы что-то откапывать и закапывать.</item>
-<item>||Ты никогда не был в гей-баре. Скоро конец света. Ты отлично держишься, продолжай в том же духе. </item>
-<item>||Попроси у друзей хомячка, который будет вырабатывать электричество</item>
-<item>||Если ты хочешь, чтобы у тебя были домашние животные, налови тараканов и пауков. </item>
-<item>||Научись дышать под водой.</item>
-<item>||Воспользовавшись интернетом, найди планетарий в твоем городе и посети его. Наверняка он не посещался. Там можно выбрать себе убежище.</item>
-<item>||Замри на 10 секунд. Отомри. Задержи дыхание на 20 секунд... Дыши. </item>
-<item>||Этот навык тебе пригодится при встрече со слепыми мутантами и зомби. </item>
-<item>||По нашим подсчетам в твоем округе намечается наводнение. Построй ковчег, как у того чудака. Ной его звали, кажется.</item>
-<item>||Репетиция отбытия с планеты состоится в твоем любимом пабе или баре твоего города! В субботу и пятницу! С собой иметь идентификатор межпланетного контактного центра. </item>
-<item>||Выбери себе место для выживания тут</item>
-<item>||Внимание! На одну из планет твоей галактики высадился объект Curiosity. Мы хотим, чтобы ты изучил его детально. </item>
-<item>||Не ошибается тот, кто ничего не делает. Так иди и ошибись в чем-нибудь! Пусть все знают, что ты не бездельник</item>
-<item>||В детстве, когда ты хотел в туалет, ты уединялся и представлял себя робокопом. Так вот... Эта способность тебе пригодится. Надеемся, твоя мышечная память тебя не подведет.</item>
-<item>||В скором будущем тебе нужно будет сосуществовать с группой нескольких людей. Кто из вас будет главным? а? Собери подписи у группы людей, чтобы потом шантажировать их.</item>
-<item>||Чувак, у тебя почти не осталось времени чтобы забивать на что-то. Встань и иди забей гвоздь.</item>
-<item>||Аудиозапись обращения главы МПЖКСФМНК к человечест ву</item>
-<item>||Фотор сбежавшего преступника</item>
-<item>||Анимация уроки борьбы или с легким паром</item>
-<item>||сколько нужно выживших чтоб вкрутить лампочку?</item>
-<item>||арсен выебал вола, пока писал эту программу</item>
-<item>||на обезпечения землян сообщениями тратиться примерно 79,907636791 мелобарозов ежедневно! айм лавин ит!</item>
-<item>||привыкай к единорогам, их у нас много. Многорог всего один :-(</item>
-<item>||инструкция как вести себя на кораблике блеать</item>
-<item>||Не страшны тебе не дождь не слякоть, крепкий косагор и па-ва-род. </item>  -->

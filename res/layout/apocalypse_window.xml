@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/apocalipse_scroll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="@dimen/apocalipse_window"
+            android:scrollbarSize="0dp">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <TextView
+                android:text="@string/apocalypse_window_text1"
+                style="@style/Apocalipse_window_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:src="@drawable/illustration_2"
+                android:adjustViewBounds="true"
+                android:paddingTop="@dimen/apocalipse_window"
+                android:paddingBottom="@dimen/apocalipse_window"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        <TextView
+                android:text="@string/apocalypse_window_text2"
+                style="@style/Apocalipse_window_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:src="@drawable/illustration_3"
+                android:adjustViewBounds="true"
+                android:paddingTop="@dimen/apocalipse_window"
+                android:paddingBottom="@dimen/apocalipse_window"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        <TextView
+                android:text="@string/apocalypse_window_text3"
+                style="@style/Apocalipse_window_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:src="@drawable/illustration_2"
+                android:adjustViewBounds="true"
+                android:paddingTop="@dimen/apocalipse_window"
+                android:paddingBottom="@dimen/apocalipse_window"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        <TextView
+                android:text="@string/apocalypse_window_text4"
+                style="@style/Apocalipse_window_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+
+        <Button
+                android:id="@+id/close_apocalypse_button"
+                android:background="@drawable/button_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="6dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="@string/close_button"
+                android:textColor="@color/message_bg_color"
+                android:textSize="15dp"
+                android:shadowColor="#99000000"
+                android:shadowRadius="1"
+                android:shadowDx="-.5"
+                android:shadowDy="-1"
+
+                />
+        <Button
+                android:id="@+id/mail_apocalypse_button"
+                android:background="@drawable/button_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="6dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:text="@string/mail_button"
+                android:textColor="@color/message_bg_color"
+                android:textSize="15dp"
+                android:shadowColor="#99000000"
+                android:shadowRadius="1"
+                android:shadowDx="-.5"
+                android:shadowDy="-1"
+                />
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
