@@ -23,7 +23,9 @@
                 android:paddingTop="@dimen/apocalipse_window"
                 android:paddingBottom="@dimen/apocalipse_window"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:layout_width="wrap_content"
+
+                />
         <TextView
                 android:text="@string/apocalypse_window_text2"
                 style="@style/Apocalipse_window_text_style"
@@ -44,7 +46,7 @@
                 android:layout_height="wrap_content"/>
 
         <ImageView
-                android:src="@drawable/illustration_2"
+                android:src="@drawable/illustration_4"
                 android:adjustViewBounds="true"
                 android:paddingTop="@dimen/apocalipse_window"
                 android:paddingBottom="@dimen/apocalipse_window"

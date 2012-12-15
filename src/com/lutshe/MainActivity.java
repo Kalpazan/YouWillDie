@@ -108,10 +108,14 @@ public class MainActivity extends Activity {
             findViewById(R.id.survivor_btn).setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (getRateViewController().isVisible()) {
-                        getRateViewController().hideRateView();
+                   if (store.hasApocalypseFinished()) {
+                        new ApocalypseWindow(MainActivity.this).load();
                     } else {
-                        getRateViewController().showRateView(false);
+                        if (getRateViewController().isVisible()) {
+                            getRateViewController().hideRateView();
+                        } else {
+                            getRateViewController().showRateView(false);
+                        }
                     }
                 }
             });
