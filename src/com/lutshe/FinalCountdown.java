@@ -55,8 +55,18 @@ public class FinalCountdown extends CountDownTimer {
 
 	@Override
 	public void onTick(long timeLeft) {
+		showTimeLeft(timeLeft);
+        
+        counter %= 100;
+        
+        if (counter == 0) {
+        	activity.checkForUpdates();
+        }
+        counter++;
+    }
 
-        minutesLeft = (timeLeft % HOUR) / MINUTE;
+	public void showTimeLeft(long timeLeft) {
+		minutesLeft = (timeLeft % HOUR) / MINUTE;
         secondsLeft = (timeLeft % MINUTE) / 1000;
         millisecLeft = timeLeft % 1000;
         
@@ -73,13 +83,6 @@ public class FinalCountdown extends CountDownTimer {
         
         textTimeSec.setText(String.format(formatter, secondsLeft));
         textTimeMilisec.setText(String.format(decimalFormatter,(int)millisecLeft));
-
-        counter %= 100;
-        
-        if (counter == 0) {
-        	activity.checkForUpdates();
-        }
-        counter++;
-    }
+	}
 
 }

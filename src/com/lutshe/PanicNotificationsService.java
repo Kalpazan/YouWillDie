@@ -50,8 +50,14 @@ public class PanicNotificationsService extends IntentService {
 
 	public Notification createPanicNotification(int messageId) {
 		Context context = getApplicationContext();
-		String[] messages = context.getResources().getStringArray(R.array.panic_messages);
-		String message = messages[messageId];
+		String message = null;
+		
+		if (messageId == PanicController.STORY_MESSAGE_ID) {
+			message = context.getResources().getString(R.string.apocalypse_window_text1);
+		} else {
+			String[] messages = context.getResources().getStringArray(R.array.panic_messages);
+			message = messages[messageId];
+		}
 		
 		Intent notificationIntent = new Intent(context, MainActivity.class);
 		notificationIntent.putExtra(PANIC_MESSAGE_ID_EXTRA, messageId);

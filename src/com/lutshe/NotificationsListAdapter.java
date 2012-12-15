@@ -80,7 +80,7 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		final NotificationTemplate notification; 
 		if (hasApocalypseStory && flipPosition(position) == 0) {
-			notification = new NotificationTemplate(null, "The end", activity.getString(R.string.story_part_one), R.drawable.icon_gentelman);
+			notification = new NotificationTemplate(null, "The end", activity.getString(R.string.apocalypse_window_text1), R.drawable.icon_gentelman);
 			row.notificationTime.setText("Day X "); 
 		} else {
 			notification = provider.getNotification(position);

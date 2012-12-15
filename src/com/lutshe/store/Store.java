@@ -8,6 +8,7 @@ import android.util.SparseArray;
 
 public class Store {
 
+	private static final String APOCALYPOSE_TIME = "apocalyposeTime";
 	private static final String POINTS = "points";
 	private static final String TIME_PREFIX = "time_of_";
 	private static final String LAST_NOTIFICATION_NUM = "lastNotificationNum";
@@ -147,5 +148,13 @@ public class Store {
 	
 	public boolean hasApocalypseFinished() {
 		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("apocalypseFinished", false);
+	}
+
+	public void saveApocalypseTime() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putLong(APOCALYPOSE_TIME, System.currentTimeMillis()).commit();
+	}
+	
+	public long getApocalypseTime() {
+		return context.getSharedPreferences(STORE_NAME, 0).getLong(APOCALYPOSE_TIME, Long.MAX_VALUE);
 	}
 }

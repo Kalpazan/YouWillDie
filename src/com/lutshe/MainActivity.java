@@ -207,13 +207,14 @@ public class MainActivity extends Activity {
     }
 
     public void startCountDown() {
-        final Calendar finalDate = Calendar.getInstance();
-        finalDate.clear();
-        finalDate.set(2012, DECEMBER, 21, 0, 0);
-
-        timer = new FinalCountdown(PanicController.APPOCALYPSE_TIME - System.currentTimeMillis(), 51, this);
-        timer.start();
-
+        if (store.hasApocalypseFinished()) {
+        	timer = new FinalCountdown(0, 100, this);
+        	timer.showTimeLeft(PanicController.APPOCALYPSE_TIME - store.getApocalypseTime());
+        	findViewById(R.id.stamp).setVisibility(View.VISIBLE);
+        } else {
+	        timer = new FinalCountdown(PanicController.APPOCALYPSE_TIME - System.currentTimeMillis(), 51, this);
+	        timer.start();
+        }
     }
 
 //    @Override
@@ -266,11 +267,15 @@ public class MainActivity extends Activity {
             boolean isItJustPanic = extras.getBoolean(PanicNotificationsService.IS_PANIC_MESSAGE_EXTRA, false);
             if (isItJustPanic) {
                 int messageId = extras.getInt(PanicController.PANIC_MESSAGE_ID_EXTRA);
-                String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
-                String[] buttonTexts = getApplicationContext().getResources().getStringArray(R.array.panic_messages_btn_text);
-                String message = messages[messageId];
-                String buttonText = buttonTexts[messageId];
-                showPanicMessage(message, buttonText);
+                if (messageId == PanicController.STORY_MESSAGE_ID) {
+                	showStoryMessage();
+                } else {
+	                String[] messages = getApplicationContext().getResources().getStringArray(R.array.panic_messages);
+	                String[] buttonTexts = getApplicationContext().getResources().getStringArray(R.array.panic_messages_btn_text);
+	                String message = messages[messageId];
+	                String buttonText = buttonTexts[messageId];
+	                showPanicMessage(message, buttonText);
+                }
             } else {
                 int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
                 NotificationTemplate notification = provider.getNotification(id);
@@ -351,8 +356,14 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 new ApocalypseWindow(activity).load();
-                store.registerApocalypse();
-                listAdapter.notifyDataSetChanged();
+                if (!store.hasApocalypseFinished()) {
+                	store.registerApocalypse();
+                	listAdapter.notifyDataSetChanged();
+                	store.saveApocalypseTime();
+                	if (timer != null) {
+                		timer.cancel();
+                	}
+                }
             }
         });
     }
