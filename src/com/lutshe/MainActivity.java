@@ -1,6 +1,7 @@
 package com.lutshe;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+import static com.lutshe.controller.PanicController.APPOCALYPSE_TIME;
 import static java.util.Calendar.DECEMBER;
 
 import java.lang.reflect.Method;
@@ -209,13 +210,15 @@ public class MainActivity extends Activity {
     public void startCountDown() {
         if (store.hasApocalypseFinished()) {
             if (timer != null) {
-        	    timer.cancel();
-                timer = new FinalCountdown(0, 100, this);
+        	    stopCountdown();
             }
-        	timer.showTimeLeft(PanicController.APPOCALYPSE_TIME - store.getApocalypseTime());
+            
+            timer = FinalCountdown.getInstance(0, 100, this);
+            timer.cancel();
+        	timer.showTimeLeft(APPOCALYPSE_TIME - store.getApocalypseTime());
         	findViewById(R.id.stamp).setVisibility(View.VISIBLE);
         } else {
-	        timer = new FinalCountdown(PanicController.APPOCALYPSE_TIME - System.currentTimeMillis(), 51, this);
+	        timer = FinalCountdown.getInstance(APPOCALYPSE_TIME - System.currentTimeMillis(), 51, this);
 	        timer.start();
         }
     }
@@ -358,14 +361,13 @@ public class MainActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                stopCountdown();
                 new ApocalypseWindow(activity).load();
                 if (!store.hasApocalypseFinished()) {
                 	store.registerApocalypse();
                 	listAdapter.notifyDataSetChanged();
                 	store.saveApocalypseTime();
-                	if (timer != null) {
-                		timer.cancel();
-                	}
+                	stopCountdown();
                 }
             }
         });

@@ -26,8 +26,17 @@ public class FinalCountdown extends CountDownTimer {
     long daysLeft;
     long hourLeft;
 
+
+    private static FinalCountdown instance;
+
+    public static synchronized FinalCountdown getInstance(long millisInFuture, long countDownInterval, MainActivity activity) {
+        if (instance == null) {
+            instance = new FinalCountdown(millisInFuture, countDownInterval, activity);
+        }
+        return instance;
+    }
     
-	public FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
+	private FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
 		super(millisInFuture, countDownInterval);
 		this.activity = activity;
 
