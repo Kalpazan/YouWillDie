@@ -63,7 +63,7 @@ public class PanicNotificationsService extends IntentService {
 		notificationIntent.putExtra(PANIC_MESSAGE_ID_EXTRA, messageId);
 		notificationIntent.putExtra(IS_PANIC_MESSAGE_EXTRA, true);
 
-		PendingIntent pendingIntent = PendingIntent.getActivity(context, messageId, notificationIntent, FLAG_CANCEL_CURRENT);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, messageId, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		
 		NotificationCompat.Builder nb = 
 				new NotificationCompat.Builder(context).setSmallIcon(R.drawable.icon_hair).setAutoCancel(true).setTicker(message)

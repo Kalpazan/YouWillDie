@@ -60,9 +60,24 @@ public class MainActivity extends Activity {
 //    }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+    	super.onNewIntent(intent);
+    	setIntent(intent);
+    }
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	Intent intent = getIntent();
+    	if (intent != null) {
+    		handleIntent(intent);
+    		setIntent(null);
+    	}
+    }
+    
+    @Override
     public void onCreate(Bundle bundle) {
         try {
-
             super.onCreate(bundle);
             MainActivity.instance = this;
 
@@ -265,8 +280,8 @@ public class MainActivity extends Activity {
         BugSenseHandler.flush(MainActivity.this);
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
+//    @Override
+    protected void handleIntent(Intent intent) {
         Bundle extras = intent.getExtras();
         if (extras != null) {
             instance = this;
@@ -284,7 +299,10 @@ public class MainActivity extends Activity {
 	                showPanicMessage(message, buttonText);
                 }
             } else {
-                int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME);
+                int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME, -1);
+                if (id < 0) {
+                	return;
+                }
                 NotificationTemplate notification = provider.getNotification(id);
                 pointsController.addPoints(4);
                 getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
@@ -300,7 +318,7 @@ public class MainActivity extends Activity {
 
         if (hasFocus) {
             MainActivity.instance = this;
-
+            
             if (isFirstLaunch()) {
                 new AsyncTask<Void, Void, Void>() {
                     @Override

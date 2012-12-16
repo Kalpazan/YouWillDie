@@ -45,7 +45,7 @@ public class PanicController {
 		calendar.add(MINUTE, 7);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
 
-//		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 15, 14, 52);
+//		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 16, 12, 25);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
 //
 //		calendar.add(GregorianCalendar.SECOND, 5);
