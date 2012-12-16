@@ -26,13 +26,15 @@ public class FinalCountdown extends CountDownTimer {
     long daysLeft;
     long hourLeft;
 
-
+    private static Object lock = new Object();
     private static FinalCountdown instance;
 
-    public static synchronized FinalCountdown getInstance(long millisInFuture, long countDownInterval, MainActivity activity) {
-        if (instance == null) {
-            instance = new FinalCountdown(millisInFuture, countDownInterval, activity);
-        }
+    public static FinalCountdown getInstance(long millisInFuture, long countDownInterval, MainActivity activity) {
+		synchronized (lock) {
+	    	if (instance == null) {
+	            instance = new FinalCountdown(millisInFuture, countDownInterval, activity);
+	        }
+		}
         return instance;
     }
     
@@ -94,4 +96,10 @@ public class FinalCountdown extends CountDownTimer {
         textTimeMilisec.setText(String.format(decimalFormatter,(int)millisecLeft));
 	}
 
+	public void clean() {
+		synchronized (lock) {
+			instance = null;	
+		}
+	}
+	
 }

@@ -248,6 +248,7 @@ public class MainActivity extends Activity {
     private void stopCountdown() {
         if (timer != null) {
             timer.cancel();
+            timer.clean();
             timer = null;
         }
     }
