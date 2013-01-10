@@ -2,10 +2,8 @@ package com.lutshe;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static com.lutshe.controller.PanicController.APPOCALYPSE_TIME;
-import static java.util.Calendar.DECEMBER;
 
 import java.lang.reflect.Method;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -149,17 +147,15 @@ public class MainActivity extends Activity {
         }
     }
 
+    //Method removes the stupid horizontal highlighting in ScrollView
     private void overScrollSetting() {
         // find scroll view
-        Log.d("scrollView", "start point");
         ScrollView messageScroll = (ScrollView) findViewById(R.id.message_scroll_view);
         ListView listView = (ListView) findViewById(R.id.content);
         ScrollView helpScroll = (ScrollView) findViewById(R.id.help_view_container);
-        Log.d("scrollView", "scroll init");
         try {
             // look for setOverScrollMode method
             Method setOverScroll = messageScroll.getClass().getMethod("setOverScrollMode", new Class[]{Integer.TYPE});
-
             if (setOverScroll != null) {
                 try {
                     // if found call it (OVER_SCROLL_NEVER == 2)

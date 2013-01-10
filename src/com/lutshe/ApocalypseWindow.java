@@ -54,16 +54,13 @@ public class ApocalypseWindow {
         d.show();
     }
 
+    //Method removes the stupid horizontal highlighting in ScrollView
     private void overScrollSetting() {
         // find scroll view
-        Log.d("scrollView", "start point");
         ScrollView messageScroll = (ScrollView) apocalypseView.findViewById(R.id.apocalipse_scroll_view);
-
-        Log.d("scrollView", "scroll init");
         try {
             // look for setOverScrollMode method
             Method setOverScroll = messageScroll.getClass().getMethod("setOverScrollMode", new Class[]{Integer.TYPE});
-
             if (setOverScroll != null) {
                 try {
                     // if found call it (OVER_SCROLL_NEVER == 2)
