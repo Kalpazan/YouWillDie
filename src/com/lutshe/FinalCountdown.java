@@ -20,11 +20,11 @@ public class FinalCountdown extends CountDownTimer {
 
     private long previousMinute = -1;
     
-    long minutesLeft;
-    long secondsLeft;
-    long millisecLeft;
-    long daysLeft;
-    long hourLeft;
+    private long minutesLeft;
+    private long secondsLeft;
+    private long millisecLeft;
+    private long daysLeft;
+    private long hourLeft;
 
     private static Object lock = new Object();
     private static FinalCountdown instance;
@@ -56,7 +56,7 @@ public class FinalCountdown extends CountDownTimer {
 //        textTimeHour.setTypeface(type);
 //        textTimeMin.setTypeface(type);
 //        textTimeSec.setTypeface(type);
-//        textTimeMilisec.setTypeface(type);
+//        textTimeMs.setTypeface(type);
 	}
 
 	@Override

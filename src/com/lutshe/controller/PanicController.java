@@ -1,6 +1,7 @@
 package com.lutshe.controller;
 
 import static java.util.Calendar.DECEMBER;
+import static java.util.Calendar.FEBRUARY;
 import static java.util.Calendar.MINUTE;
 
 import java.util.GregorianCalendar;
@@ -18,7 +19,7 @@ public class PanicController {
 
 	public static final int STORY_MESSAGE_ID = 100;
 	public static final String PANIC_MESSAGE_ID_EXTRA = "com.lutshe.panicMessageId";
-	public static long APPOCALYPSE_TIME = new GregorianCalendar(2012, DECEMBER, 21, 15, 7).getTimeInMillis();
+	public static long APPOCALYPSE_TIME = new GregorianCalendar(2013, FEBRUARY, 21, 15, 7).getTimeInMillis();
 	
 	public static void shedulePanic(Context context, Store store) {
 		if (store.hasAlreadyScheduledPanic()) {
@@ -27,7 +28,7 @@ public class PanicController {
 		
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Service.ALARM_SERVICE);
 		
-		GregorianCalendar calendar = new GregorianCalendar(2012, DECEMBER, 21, 11, 0);
+		GregorianCalendar calendar = new GregorianCalendar(2013, FEBRUARY, 21, 11, 0);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
 
 		calendar.add(MINUTE, 30);

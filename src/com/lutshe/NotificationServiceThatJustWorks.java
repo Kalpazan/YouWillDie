@@ -39,7 +39,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 
 	public void init() {
 		Log.d("notification", "init called");
-		notificationProvider = NotificationProvider.getInstance(getResources(), getApplicationContext());
+		notificationProvider = NotificationProvider.getInstance(getResources());
 		store = new Store(getApplicationContext());
 		manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 	}
@@ -51,19 +51,20 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	private long getNextNotificationTime(long lastNotificationTime) {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
-		
-		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
-			calendar.add(Calendar.DATE, 1);
-		}
 
-		int randomHoursNumber = new Random().nextInt(10);
-		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+//		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+//			calendar.add(Calendar.DATE, 1);
+//		}
+//
+//		int randomHoursNumber = new Random().nextInt(10);
+//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+//
+//		int randomMinsNumber = new Random().nextInt(60);
+//		calendar.set(Calendar.MINUTE, randomMinsNumber);
 
-		int randomMinsNumber = new Random().nextInt(60);
-		calendar.set(Calendar.MINUTE, randomMinsNumber);
+//		calendar.add(Calendar.SECOND, 20);
+		calendar.add(Calendar.SECOND, 5);
 
-		calendar.add(Calendar.SECOND, 20);
-		
 		return calendar.getTimeInMillis();
 	}
 

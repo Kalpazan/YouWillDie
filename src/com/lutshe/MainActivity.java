@@ -89,11 +89,7 @@ public class MainActivity extends Activity {
             setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
             store = new Store(getApplicationContext());
             pointsController = new PointsController(this);
-
-            if (InternetController.isNetworkAvailable(getApplicationContext())) {
-                SynchronizationService.start(getApplicationContext());
-            }
-            provider = NotificationProvider.getInstance(getResources(), getApplicationContext());
+            provider = NotificationProvider.getInstance(getResources());
             messagesController = new MessageDisplayController(provider, this);
             messagesController.init();
 
