@@ -77,6 +77,7 @@ public class MainActivity extends Activity {
             this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             setRequestedOrientation(SCREEN_ORIENTATION_PORTRAIT);
             store = new Store(getApplicationContext());
+            
             pointsController = new PointsController(this);
             provider = NotificationProvider.getInstance(getResources());
             messagesController = new MessageDisplayController(provider, this);
@@ -322,6 +323,11 @@ public class MainActivity extends Activity {
             PanicController.shedulePanic(getApplicationContext(), store);
 
             startCountDown();
+            
+            if (store.containsOldVersionData()) {
+            	store.cleanupOldVersionData();
+            	new PanicDialog(this, "Чувак, это опять мы!", "О, круто! :)").load();
+            }
         }
     }
 
