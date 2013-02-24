@@ -2,9 +2,11 @@ package com.lutshe;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 import static com.lutshe.controller.PanicController.APPOCALYPSE_TIME;
+import static java.util.Calendar.*;
 
 import java.lang.reflect.Method;
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 import android.app.Activity;
@@ -20,7 +22,6 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.bugsense.trace.BugSenseHandler;
-import com.lutshe.controller.InternetController;
 import com.lutshe.controller.MessageDisplayController;
 import com.lutshe.controller.PanicController;
 import com.lutshe.controller.RateViewController;
@@ -172,11 +173,13 @@ public class MainActivity extends Activity {
         return !store.wasLaunchedBefore();
     }
 
-    @SuppressWarnings("deprecation")
     private boolean isFirstLaunchToday() {
-        Date today = new Date();
-        Date lastLaunch = new Date(store.getLastLaunchTime());
-        return lastLaunch.getDate() != today.getDate() || lastLaunch.getMonth() != today.getMonth();
+        Calendar today = new GregorianCalendar();
+        
+        Calendar lastLaunch = new GregorianCalendar();
+        lastLaunch.setTimeInMillis(store.getLastLaunchTime());
+        
+        return lastLaunch.get(DATE) != today.get(DATE) || lastLaunch.get(MONTH) != today.get(MONTH);
     }
 
     private void setupHistoryList(final NotificationProvider provider, final MessageDisplayController messageController) {
@@ -359,12 +362,20 @@ public class MainActivity extends Activity {
         return pointsController;
     }
 
-    private NotificationTemplate nextNotification;
-    private int notificationId;
+    public synchronized void setCurrentNotification(final NotificationTemplate template, final int id) {
+        runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				store.updateLastNotificationNumber(id);
+	            listAdapter.notifyDataSetChanged();
 
-    public synchronized void setCurrentNotification(NotificationTemplate template, int id) {
-        nextNotification = template;
-        notificationId = id;
+	            messagesController.setCurrentMessage(template);
+	            messagesController.showMessageView();
+
+	            pointsController.addPoints(4);
+	            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
+			}
+		});
     }
 
     public void showStoryMessage() {
@@ -392,22 +403,6 @@ public class MainActivity extends Activity {
                 new PanicDialog(activity, message, buttonText).load();
             }
         });
-    }
-
-    public synchronized void checkForUpdates() {
-        if (nextNotification != null) {
-            store.updateLastNotificationNumber(notificationId);
-            listAdapter.notifyDataSetChanged();
-
-            messagesController.setCurrentMessage(nextNotification);
-            messagesController.showMessageView();
-
-            pointsController.addPoints(4);
-            getUserMessageController().showMessage(getString(R.string.notification_bonus_text));
-
-            nextNotification = null;
-            notificationId = -1;
-        }
     }
 
     public RateViewController getRateViewController() {

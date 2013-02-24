@@ -24,14 +24,12 @@ public class NotificationsListAdapter extends BaseAdapter {
 	private NotificationProvider provider;
 	private Store store;
 	private boolean hasApocalypseStory = false;
-//	private TextView historySize;
 	
 	private int previousSize = -1;
 	
 	public NotificationsListAdapter(MainActivity a, NotificationProvider provider) {
 		activity = a;
 		inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
-//		historySize = (TextView) activity.findViewById(R.id.history_size);
 		this.provider = provider;
 		this.store = a.getStore();
 	}
@@ -44,7 +42,6 @@ public class NotificationsListAdapter extends BaseAdapter {
 		}
 		if (size != previousSize) {
 			previousSize = size;
-//			historySize.setText(" ("+size+")");
 			notifyDataSetChanged();
 		}
 		previousSize = size;
@@ -70,14 +67,6 @@ public class NotificationsListAdapter extends BaseAdapter {
 		
 		ViewHolder row = (ViewHolder) view.getTag();
 		
-//		if (row.position == position) {
-//			// nothing changed
-//			Log.d("lview", "same position");
-//			return view;
-//		} 
-		
-		row.position = position;
-		
 		final NotificationTemplate notification; 
 		if (hasApocalypseStory && flipPosition(position) == 0) {
 			notification = new NotificationTemplate(null, "The end", activity.getString(R.string.apocalypse_window_text1), R.drawable.icon_gentelman);
@@ -99,7 +88,6 @@ public class NotificationsListAdapter extends BaseAdapter {
 		TextView artist;
 		TextView notificationTime;
 		ImageView icon;
-		int position = -2;
 		
 		public ViewHolder(View view) {
 			title = (TextView) view.findViewById(R.id.title); 

@@ -7,9 +7,6 @@ public class FinalCountdown extends CountDownTimer {
 	public static final int MINUTE = 1000 * 60;
 	public static final int HOUR = MINUTE * 60;
 	
-	private MainActivity activity;
-    //private TextView textDaysLeft;
-    private int counter;
     private String decimalFormatter;
     private String formatter;
     private TextView textTimeDay;
@@ -40,7 +37,6 @@ public class FinalCountdown extends CountDownTimer {
     
 	private FinalCountdown(long millisInFuture, long countDownInterval, MainActivity activity) {
 		super(millisInFuture, countDownInterval);
-		this.activity = activity;
 
 		decimalFormatter = activity.getResources().getString(R.string.millisecFormatter);
 		formatter = activity.getResources().getString(R.string.datesFormatter);
@@ -67,13 +63,6 @@ public class FinalCountdown extends CountDownTimer {
 	@Override
 	public void onTick(long timeLeft) {
 		showTimeLeft(timeLeft);
-        
-        counter %= 100;
-        
-        if (counter == 0) {
-        	activity.checkForUpdates();
-        }
-        counter++;
     }
 
 	public void showTimeLeft(long timeLeft) {

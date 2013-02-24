@@ -1,6 +1,5 @@
 package com.lutshe;
 
-import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 import android.app.IntentService;
 import android.app.Notification;
