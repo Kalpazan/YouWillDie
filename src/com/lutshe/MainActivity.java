@@ -46,18 +46,6 @@ public class MainActivity extends Activity {
 
     public static MainActivity instance;
 
-//    private View mainView;
-//    
-//    private View getMainView(){
-//    	LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-//        return inflater.inflate(R.layout.main, null);
-//    }
-
-//    @Override
-//    public View findViewById(int id) {
-//    	return mainView.findViewById(id);
-//    }
-
     @Override
     protected void onNewIntent(Intent intent) {
     	super.onNewIntent(intent);
@@ -82,7 +70,6 @@ public class MainActivity extends Activity {
 
             BugSenseHandler.initAndStartSession(MainActivity.this, "3d42042b");
 
-//	        mainView = getMainView();
             setContentView(R.layout.main);
             overScrollSetting();
 
