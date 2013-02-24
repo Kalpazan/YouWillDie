@@ -16,6 +16,8 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -75,9 +77,11 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		notificationIntent.putExtra(EXTRA_NAME, notificationId);
 
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, notificationId, notificationIntent, FLAG_CANCEL_CURRENT);
-		
+
+        Bitmap icon = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), template.getIcon()),80,100,false);
+
 		NotificationCompat.Builder nb = 
-				new NotificationCompat.Builder(context).setSmallIcon(template.getIcon()).setAutoCancel(true).setTicker(template.getStatusBarText())
+				new NotificationCompat.Builder(context).setSmallIcon(template.getIcon()).setLargeIcon(icon).setAutoCancel(true).setTicker(template.getStatusBarText())
 				.setContentText(template.getMainText()).setContentIntent(pendingIntent).setContentTitle(template.getTitle())
 				.setDefaults(Notification.FLAG_SHOW_LIGHTS);
 

@@ -7,6 +7,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -63,9 +65,11 @@ public class PanicNotificationsService extends IntentService {
 		notificationIntent.putExtra(IS_PANIC_MESSAGE_EXTRA, true);
 
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, messageId, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		
+
+        Bitmap icon = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_hair),80,100,false);
+
 		NotificationCompat.Builder nb = 
-				new NotificationCompat.Builder(context).setSmallIcon(R.drawable.icon_hair).setAutoCancel(true).setTicker(message)
+				new NotificationCompat.Builder(context).setSmallIcon(R.drawable.icon_hair).setLargeIcon(icon).setAutoCancel(true).setTicker(message)
 				.setContentText(message).setContentIntent(pendingIntent)/*.setContentTitle(getString(R.string.panic_message_title))*/
 				.setDefaults(Notification.FLAG_SHOW_LIGHTS);
 
