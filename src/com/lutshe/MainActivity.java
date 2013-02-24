@@ -206,11 +206,8 @@ public class MainActivity extends Activity {
     }
 
     public void startCountDown() {
+        stopCountdown();
         if (store.hasApocalypseFinished()) {
-            if (timer != null) {
-        	    stopCountdown();
-            }
-            
             timer = FinalCountdown.getInstance(0, 100, this);
             timer.cancel();
         	timer.showTimeLeft(store.getCountdownTime() - store.getApocalypseFinishingTime());
