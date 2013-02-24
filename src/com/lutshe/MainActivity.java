@@ -1,7 +1,7 @@
 package com.lutshe;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-import static com.lutshe.controller.PanicController.APPOCALYPSE_TIME;
+
 import static java.util.Calendar.*;
 
 import java.lang.reflect.Method;
@@ -45,18 +45,6 @@ public class MainActivity extends Activity {
     private NotificationProvider provider;
 
     public static MainActivity instance;
-
-//    private View mainView;
-//    
-//    private View getMainView(){
-//    	LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-//        return inflater.inflate(R.layout.main, null);
-//    }
-
-//    @Override
-//    public View findViewById(int id) {
-//    	return mainView.findViewById(id);
-//    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -225,10 +213,10 @@ public class MainActivity extends Activity {
             
             timer = FinalCountdown.getInstance(0, 100, this);
             timer.cancel();
-        	timer.showTimeLeft(APPOCALYPSE_TIME - store.getApocalypseTime());
+        	timer.showTimeLeft(store.getCountdownTime() - store.getApocalypseFinishingTime());
         	findViewById(R.id.stamp).setVisibility(View.VISIBLE);
         } else {
-	        timer = FinalCountdown.getInstance(APPOCALYPSE_TIME - System.currentTimeMillis(), 51, this);
+	        timer = FinalCountdown.getInstance(store.getCountdownTime() - System.currentTimeMillis(), 51, this);
 	        timer.start();
         }
     }
@@ -386,9 +374,9 @@ public class MainActivity extends Activity {
                 stopCountdown();
                 new ApocalypseWindow(activity).load();
                 if (!store.hasApocalypseFinished()) {
-                	store.registerApocalypse();
+                	store.registerApocalypseFinishing();
                 	listAdapter.notifyDataSetChanged();
-                	store.saveApocalypseTime();
+                	store.saveApocalypseFinishingTime();
                 	stopCountdown();
                 }
             }

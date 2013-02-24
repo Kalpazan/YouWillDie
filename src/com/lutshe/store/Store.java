@@ -8,7 +8,7 @@ import android.util.SparseArray;
 
 public class Store {
 
-	private static final String APOCALYPOSE_TIME = "apocalyposeTime";
+	private static final String APOCALYPSE_TIME = "apocalyposeTime";
 	private static final String POINTS = "points";
 	private static final String TIME_PREFIX = "time_of_";
 	private static final String LAST_NOTIFICATION_NUM = "lastNotificationNum";
@@ -20,6 +20,7 @@ public class Store {
 	
 	public Store(Context context) {
 		this.context = context;
+        registerCountdownTime();
 	}
 
 	public void saveNotificationTime(int notificationNumber, long time) {
@@ -118,14 +119,6 @@ public class Store {
 		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("ll", new Date().getTime()).commit();
 	}
 
-	public long getLastSyncTime() {
-		return context.getSharedPreferences(STORE_NAME, 0).getLong("lastSync", 0);
-	}
-
-	public void registerSync() {
-		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("lastSync", new Date().getTime()).commit();
-	}
-
 	public void saveNextNotificationTime(long when) {
 		context.getSharedPreferences(STORE_NAME, 0).edit().putLong("nextNotificationTime", when).commit();
 	}
@@ -142,7 +135,7 @@ public class Store {
 		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("panicScheduled", false);
 	}
 	
-	public void registerApocalypse() {
+	public void registerApocalypseFinishing() {
 		context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("apocalypseFinished", true).commit();
 	}
 	
@@ -150,11 +143,20 @@ public class Store {
 		return context.getSharedPreferences(STORE_NAME, 0).getBoolean("apocalypseFinished", false);
 	}
 
-	public void saveApocalypseTime() {
-		context.getSharedPreferences(STORE_NAME, 0).edit().putLong(APOCALYPOSE_TIME, System.currentTimeMillis()).commit();
+	public void saveApocalypseFinishingTime() {
+		context.getSharedPreferences(STORE_NAME, 0).edit().putLong(APOCALYPSE_TIME, System.currentTimeMillis()).commit();
 	}
 	
-	public long getApocalypseTime() {
-		return context.getSharedPreferences(STORE_NAME, 0).getLong(APOCALYPOSE_TIME, Long.MAX_VALUE);
+	public long getApocalypseFinishingTime() {
+		return context.getSharedPreferences(STORE_NAME, 0).getLong(APOCALYPSE_TIME, Long.MAX_VALUE);
 	}
+
+    public void registerCountdownTime(){
+        if (!wasLaunchedBefore())
+            context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", System.currentTimeMillis() + 10*60*1000).commit();
+    }
+
+    public long getCountdownTime(){
+        return context.getSharedPreferences(STORE_NAME, 0).getLong("finalApocalypseTime", 1000);
+    }
 }
