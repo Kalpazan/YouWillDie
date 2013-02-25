@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="locale">en</string>
-    
-    
     <string name="app_name">Survival Guide</string>
     <string name="exit">Exit</string>
     <string name="help">Help</string>
-    <string name="older_messages">Messages history</string>
+    <string name="older_messages">История сообщений</string>
     <string name="dead_fish">Привыкай к единорогам, у нас их много. Многорог всего один :-( </string>
     
     <string name="day">days left</string>
@@ -16,31 +13,31 @@
     <string name="days_left"> days left</string>
     
     <!-- past days -->
-    <string name="few_mins_ago">few mins ago</string>
-    <string name="today">today</string>
-    <string name="yesterday">yesterday</string>
-    <string name="two_days_ago">two days ago</string>
-    <string name="recently">recently</string>
-    <string name="days_ago_ru1"> days ago</string>
-    <string name="days_ago_ru2"> days ago</string>
+    <string name="few_mins_ago">только что</string>
+    <string name="today">сегодня</string>
+    <string name="yesterday">вчера</string>
+    <string name="two_days_ago">позавчера</string>
+    <string name="recently">недавно</string>
+    <string name="days_ago_ru1"> дня назад</string>
+    <string name="days_ago_ru2"> дней назад</string>
     
-    <string name="rate_message">likes and reviews are cool :)</string>
+    <string name="rate_message">отзывы - это хорошо :)</string>
     <string name="chooser_title">share and get points</string>
 
-    <string name="d">d</string>
-    <string name="h">h</string>
-    <string name="m">m</string>
+    <string name="d">д</string>
+    <string name="h">ч</string>
+    <string name="m">м</string>
+    
+    <string name="locale">ru</string>
 	    	
-  	<string name="review_bonus_text">Yes, yes! read and re-read :)</string>
-    <string name="notification_bonus_text">new message: +4 points!</string>
-    <string name="welcome_back_bonus_text">welcome back :)</string>
-    <string name="msg_you_need_internet">No internet - no deal</string>
-    <string name="panic_message_title">Attention!</string>
-    <string name="story_part_one">story</string>
+  	<string name="review_bonus_text">Перечитываешь? Молодец!</string>
+    <string name="notification_bonus_text">новое сообщение: +4 очка!</string>
+    <string name="welcome_back_bonus_text">велкам бэк :)</string>
+    <string name="msg_you_need_internet">Для этого нужен интернет</string>
+<string name="panic_message_title">Внимание!</string>
 
-    <string name="mail_button">Let\'s write</string>
-    <string name="close_button">Close</string>
-    <string name="mail_subject">Mail from fan</string>
-    <string name="no_mail_client">There are no email clients installed</string>
-
+    <string name="mail_button">Хочу писать</string>
+    <string name="close_button">Закрыть</string>
+    <string name="mail_subject">Письмо от фаната</string>
+    <string name="no_mail_client">Нет почтового клиента. Странно</string>
 </resources>

@@ -165,7 +165,7 @@ public class Store {
 
     public void registerCountdownTime(){
         if (!wasLaunchedBefore())
-            context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", System.currentTimeMillis() + 10*60*1000).commit();
+            context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", System.currentTimeMillis() + 13*60*60*1000).commit();
     }
 
     public long getCountdownTime(){
