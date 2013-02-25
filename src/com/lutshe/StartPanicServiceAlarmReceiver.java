@@ -1,10 +1,11 @@
 package com.lutshe;
 
-import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 
 public class StartPanicServiceAlarmReceiver extends BroadcastReceiver {
 

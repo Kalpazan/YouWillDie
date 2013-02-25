@@ -1,6 +1,5 @@
 package com.lutshe.controller;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,9 +9,10 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.lutshe.MainActivity;
 import com.lutshe.R;
+
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class UserMessageController {
 	private static final int FADE_DELAY = 1350;

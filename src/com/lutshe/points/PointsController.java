@@ -1,15 +1,15 @@
 package com.lutshe.points;
 
-import static android.graphics.Color.TRANSPARENT;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.lutshe.MainActivity;
 import com.lutshe.R;
 import com.lutshe.controller.RateViewController;
 import com.lutshe.store.Store;
+
+import static android.graphics.Color.TRANSPARENT;
 
 public class PointsController {
 

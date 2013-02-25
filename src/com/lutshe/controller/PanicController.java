@@ -1,6 +1,5 @@
 package com.lutshe.controller;
 
-import java.util.GregorianCalendar;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -8,6 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import com.lutshe.StartPanicServiceAlarmReceiver;
 import com.lutshe.store.Store;
+
+import java.util.Calendar;
+
+import static java.util.Calendar.*;
 
 public class PanicController {
 
@@ -21,42 +24,44 @@ public class PanicController {
 
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Service.ALARM_SERVICE);
 
-//		GregorianCalendar calendar = new GregorianCalendar(2013, FEBRUARY, 21, 11, 0);
-//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
-//
-//		calendar.add(MINUTE, 30);
-//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 1); // 2 hours to Earth!
-//
-//		calendar.add(MINUTE, 30);
-//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 2); // Small Earth..
-//
-//		calendar.add(MINUTE, 30);
-//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 3); // Error003
-//
-//		calendar.add(MINUTE, 30);
-//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
-//
-//		calendar.add(MINUTE, 7);
-//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
-
-		GregorianCalendar calendar = new GregorianCalendar();
-        calendar.setTimeInMillis(store.getCountdownTime() - 30*60*1000);
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(DATE, 36);
+        calendar.set(HOUR, 12);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
 
-		calendar.add(GregorianCalendar.MINUTE, 5);
+		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 1); // 2 hours to Earth!
 
-		calendar.add(GregorianCalendar.MINUTE, 5);
+		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 2); // Small Earth..
 
-		calendar.add(GregorianCalendar.MINUTE, 5);
+		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 3); // Error003
 
-		calendar.add(GregorianCalendar.MINUTE, 5);
+		calendar.add(MINUTE, 30);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
 
-		calendar.add(GregorianCalendar.MINUTE, 5);
+		calendar.add(MINUTE, 7);
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
+
+//		GregorianCalendar calendar = new GregorianCalendar();
+//      calendar.setTimeInMillis(store.getCountdownTime() - 30*60*1000);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
+
+//		calendar.add(GregorianCalendar.MINUTE, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 1); // 2 hours to Earth!
+//
+//		calendar.add(GregorianCalendar.MINUTE, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 2); // Small Earth..
+//
+//		calendar.add(GregorianCalendar.MINUTE, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 3); // Error003
+//
+//		calendar.add(GregorianCalendar.MINUTE, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 4); // New plan...
+//
+//		calendar.add(GregorianCalendar.MINUTE, 5);
+//		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
 
 		store.registerPanicMessagesScheduled();
 	}

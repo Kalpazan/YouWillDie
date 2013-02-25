@@ -1,10 +1,11 @@
 package com.lutshe.store;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.SparseArray;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class Store {
 
@@ -164,9 +165,12 @@ public class Store {
 	}
 
     public void registerCountdownTime(){
-        if (!wasLaunchedBefore())
-            context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", System.currentTimeMillis() + 13*60*60*1000).commit();
-    }
+        if (!wasLaunchedBefore()){
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(Calendar.DATE, 36);
+            calendar.set(Calendar.HOUR, 16);
+            context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", calendar.getTimeInMillis()).commit();
+    }     }
 
     public long getCountdownTime(){
         return context.getSharedPreferences(STORE_NAME, 0).getLong("finalApocalypseTime", 1000);

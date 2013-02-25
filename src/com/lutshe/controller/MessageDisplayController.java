@@ -8,14 +8,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.SlidingDrawer;
-import android.widget.TextView;
-import android.widget.ViewFlipper;
-
+import android.widget.*;
 import com.lutshe.MainActivity;
 import com.lutshe.NotificationProvider;
 import com.lutshe.NotificationTemplate;

@@ -1,18 +1,6 @@
 package com.lutshe;
 
-import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
-
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Random;
-
-import android.app.AlarmManager;
-import android.app.IntentService;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.Service;
+import android.app.*;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,9 +9,14 @@ import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
-import com.bugsense.trace.BugSenseHandler;
 import com.lutshe.store.Store;
+
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
+
+import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
 
 public class NotificationServiceThatJustWorks extends IntentService {
 
@@ -46,26 +39,21 @@ public class NotificationServiceThatJustWorks extends IntentService {
 		manager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 	}
 	
-	public void finishProcessing() {
-		BugSenseHandler.flush(getApplicationContext());
-	}
-	
 	private long getNextNotificationTime(long lastNotificationTime) {
 		Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTimeInMillis(lastNotificationTime);
 
-//		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
-//			calendar.add(Calendar.DATE, 1);
-//		}
-//
-//		int randomHoursNumber = new Random().nextInt(10);
-//		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
-//
-//		int randomMinsNumber = new Random().nextInt(60);
-//		calendar.set(Calendar.MINUTE, randomMinsNumber);
+		if(calendar.get(Calendar.HOUR_OF_DAY) > 5) {
+			calendar.add(Calendar.DATE, 1);
+		}
 
-//		calendar.add(Calendar.SECOND, 20);
-		calendar.add(Calendar.MINUTE, 20);
+		int randomHoursNumber = new Random().nextInt(10);
+		calendar.set(Calendar.HOUR_OF_DAY, 11 + randomHoursNumber);
+
+		int randomMinsNumber = new Random().nextInt(60);
+		calendar.set(Calendar.MINUTE, randomMinsNumber);
+
+		calendar.add(Calendar.SECOND, 20);
 
 		return calendar.getTimeInMillis();
 	}
@@ -108,7 +96,6 @@ public class NotificationServiceThatJustWorks extends IntentService {
 	public static class BootListener extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			BugSenseHandler.initAndStartSession(context, "3d42042b");
 			if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
 				Log.d("notification", "got boot action - starting intent");
 				startService(context);
@@ -161,8 +148,6 @@ public class NotificationServiceThatJustWorks extends IntentService {
 
 			Log.d("notification", "saving notId " + lastNotificationNumber + " at " + new Date(System.currentTimeMillis()).toGMTString());
 			store.saveNotificationTime(lastNotificationNumber, System.currentTimeMillis());
-		} else {
-			BugSenseHandler.initAndStartSession(getApplicationContext(), "3d42042b");
 		}
 		
 		if (!store.hasApocalypseFinished()) {
@@ -185,8 +170,6 @@ public class NotificationServiceThatJustWorks extends IntentService {
 				scheduleCheck(when);
 			}
 		}
-		
-		finishProcessing();
 	}
 
 	private void scheduleCheck(long when) {

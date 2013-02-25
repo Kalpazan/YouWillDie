@@ -1,6 +1,5 @@
 package com.lutshe;
 
-import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -11,9 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-
 import com.bugsense.trace.BugSenseHandler;
 import com.lutshe.controller.PanicController;
+
+import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 
 public class PanicNotificationsService extends IntentService {
 

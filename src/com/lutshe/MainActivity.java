@@ -1,14 +1,5 @@
 package com.lutshe;
 
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-
-import static java.util.Calendar.*;
-
-import java.lang.reflect.Method;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Random;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-
 import com.bugsense.trace.BugSenseHandler;
 import com.lutshe.controller.MessageDisplayController;
 import com.lutshe.controller.PanicController;
@@ -28,6 +18,15 @@ import com.lutshe.controller.RateViewController;
 import com.lutshe.controller.UserMessageController;
 import com.lutshe.points.PointsController;
 import com.lutshe.store.Store;
+
+import java.lang.reflect.Method;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Random;
+
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+import static java.util.Calendar.DATE;
+import static java.util.Calendar.MONTH;
 
 public class MainActivity extends Activity {
 
@@ -68,7 +67,7 @@ public class MainActivity extends Activity {
             super.onCreate(bundle);
             MainActivity.instance = this;
 
-            BugSenseHandler.initAndStartSession(MainActivity.this, "3d42042b");
+            BugSenseHandler.initAndStartSession(MainActivity.this, getResources().getString(R.string.bugsenseApiKey));
 
 //	        mainView = getMainView();
             setContentView(R.layout.main);
@@ -326,7 +325,7 @@ public class MainActivity extends Activity {
             
             if (store.containsOldVersionData()) {
             	store.cleanupOldVersionData();
-            	new PanicDialog(this, "Чувак, это опять мы!", "О, круто! :)").load();
+            	new PanicDialog(this, "пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ!", "пїЅ, пїЅпїЅпїЅпїЅпїЅ! :)").load();
             }
         }
     }

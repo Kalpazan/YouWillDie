@@ -7,8 +7,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-
-import com.bugsense.trace.BugSenseHandler;
 import com.lutshe.MainActivity;
 import com.lutshe.NotificationsListAdapter;
 import com.lutshe.R;
@@ -58,7 +56,6 @@ public class RateViewController {
 
 		} catch (Exception e) {
 			activity.showMessage("Seems like you don't have Google Play installed..");
-			BugSenseHandler.sendException(e);
 		}
 	}
 	
