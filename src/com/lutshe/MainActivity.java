@@ -325,7 +325,7 @@ public class MainActivity extends Activity {
             
             if (store.containsOldVersionData()) {
             	store.cleanupOldVersionData();
-            	new PanicDialog(this, "�����, ��� ����� ��!", "�, �����! :)").load();
+            	new PanicDialog(this, getResources().getString(R.string.sorryDialogText), getResources().getString(R.string.sorryDialogButtonText)).load();
             }
         }
     }

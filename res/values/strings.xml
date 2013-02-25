@@ -42,4 +42,9 @@
     <string name="close_button">Закрыть</string>
     <string name="mail_subject">Письмо от фаната</string>
     <string name="no_mail_client">Нет почтового клиента. Странно</string>
+
+    <!-- sorry dialog -->
+    <string name="sorryDialogText">О, это опять мы! Мы решили дать тебе еще один шанс пережить это концесветное приключение
+        с начала и до самого конца. Внимай!</string>
+    <string name="sorryDialogButtonText">О, круто! :)</string>
 </resources>
