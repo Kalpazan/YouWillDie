@@ -12,7 +12,10 @@ import android.widget.TextView;
 import com.lutshe.MainActivity;
 import com.lutshe.R;
 
+import java.util.Random;
+
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import static android.content.Context.NFC_SERVICE;
 
 public class UserMessageController {
 	private static final int FADE_DELAY = 1350;
@@ -28,12 +31,14 @@ public class UserMessageController {
 	public void showMessage(String message) {
 		final View msgView = createMessageView(message);
 		topLayout.addView(msgView);
-		msgView.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				hideMessageView(msgView);
-			}
-		}, 2000);
+        Runnable hideTask = new Runnable() {
+            @Override
+            public void run() {
+                hideMessageView(msgView);
+            }
+        };
+		msgView.postDelayed(hideTask, 1500);
+//        msgView.setTag(0, hideTask);
 	}
 	
 	private void hideMessageView(final View msgView) {
@@ -53,12 +58,15 @@ public class UserMessageController {
 	}
 
 	private View createMessageView(String msgText) {
-		View msgView = layoutInflater.inflate(R.layout.top_message, null);	
+		View msgView = layoutInflater.inflate(R.layout.top_message, null);
 		msgView.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 		msgView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+                v.removeCallbacks((Runnable) v.getTag(0));
 				hideMessageView(v);
+                v.setClickable(false);
+                v.setOnClickListener(null);
 			}
 		});
 		

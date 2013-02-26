@@ -9,6 +9,7 @@ import com.lutshe.StartPanicServiceAlarmReceiver;
 import com.lutshe.store.Store;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import static java.util.Calendar.*;
 
@@ -17,16 +18,17 @@ public class PanicController {
 	public static final int STORY_MESSAGE_ID = 100;
 	public static final String PANIC_MESSAGE_ID_EXTRA = "com.lutshe.panicMessageId";
 
-	public static void shedulePanic(Context context, Store store) {
-		if (store.hasAlreadyScheduledPanic()) {
-			return;
-		}
+	public static void schedulePanic(Context context, Store store) {
+//		if (store.hasAlreadyScheduledPanic()) {
+//			return;
+//		}
 
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Service.ALARM_SERVICE);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(DATE, 36);
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTimeInMillis(store.getCountdownTime());
         calendar.set(HOUR, 12);
+
 		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), 0); // Apocalypse in ~4 hours
 
 		calendar.add(MINUTE, 30);
@@ -63,13 +65,13 @@ public class PanicController {
 //		calendar.add(GregorianCalendar.MINUTE, 5);
 //		schedulePanicMessage(alarmManager, context, calendar.getTimeInMillis(), STORY_MESSAGE_ID); // WHOLE STORY!
 
-		store.registerPanicMessagesScheduled();
+//		store.registerPanicMessagesScheduled();
 	}
 
 	private static void schedulePanicMessage(AlarmManager alarmManager, Context context,  long when, int messageId) {
 		Intent intent = new Intent(context, StartPanicServiceAlarmReceiver.class);
 		intent.putExtra(PANIC_MESSAGE_ID_EXTRA, messageId);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, messageId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(context, messageId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
 		alarmManager.set(AlarmManager.RTC_WAKEUP, when, pendingIntent);
 	}

@@ -43,12 +43,13 @@ public class RateViewController {
 
 	public void rateClicked() {
 		hideRateView();
-		store.registerRate();
+
 		try {
             if (InternetController.isNetworkAvailable(activity)) {
 
-                pointsController.addPoints(50);
                 activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + activity.getPackageName())));
+                store.registerRate();
+                pointsController.addPoints(50);
 
             } else {
                 activity.showMessage(activity.getString(R.string.msg_you_need_internet));
@@ -56,12 +57,13 @@ public class RateViewController {
 
 		} catch (Exception e) {
 			activity.showMessage("Seems like you don't have Google Play installed..");
+            store.registerRate();
 		}
 	}
 	
 	private View getRateView() {
 		if (rateView == null) {
-			rateView = NotificationsListAdapter.inflater.inflate(R.layout.rate_app, null);	
+            rateView = NotificationsListAdapter.inflater.inflate(R.layout.rate_app, null);
 			rateView.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 			
 			OnClickListener clickListener = new OnClickListener() {

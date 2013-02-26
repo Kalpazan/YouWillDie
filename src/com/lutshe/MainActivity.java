@@ -87,7 +87,8 @@ public class MainActivity extends Activity {
             findViewById(R.id.share_button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    SendToChooser sendToChooser = new SendToChooser(MainActivity.this, messagesController.getCurrentMessage().getMainText(), pointsController);
+                    SendToChooser sendToChooser = new SendToChooser(MainActivity.this,
+                            messagesController.getCurrentMessage().getMainText() +"\n\nhttps://play.google.com/store/apps/details?id=com.lutshe", pointsController);
                     sendToChooser.sendViaCustomChooser();
                 }
             });
@@ -319,7 +320,7 @@ public class MainActivity extends Activity {
             }
 
 //            MessagesDeliveryMonitoringService.startService(getApplicationContext());
-            PanicController.shedulePanic(getApplicationContext(), store);
+            PanicController.schedulePanic(getApplicationContext(), store);
 
             startCountDown();
             
