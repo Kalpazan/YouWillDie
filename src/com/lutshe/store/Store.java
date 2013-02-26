@@ -167,12 +167,20 @@ public class Store {
     public void registerCountdownTime(){
         if (!wasLaunchedBefore()){
             Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DATE, 36);
-            calendar.set(Calendar.HOUR, 16);
+            calendar.set(Calendar.HOUR_OF_DAY, 13);
+            calendar.set(Calendar.MINUTE, 0);
             context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", calendar.getTimeInMillis()).commit();
     }     }
 
     public long getCountdownTime(){
         return context.getSharedPreferences(STORE_NAME, 0).getLong("finalApocalypseTime", 1000);
+    }
+
+    public void registerPanicMessage(int messageId) {
+        context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("panic_"+messageId, true).commit();
+    }
+
+    public boolean isPanicMessageDelivered(int messageId) {
+        return context.getSharedPreferences(STORE_NAME, 0).getBoolean("panic_"+messageId, false);
     }
 }

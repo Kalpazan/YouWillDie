@@ -38,7 +38,7 @@ public class UserMessageController {
             }
         };
 		msgView.postDelayed(hideTask, 1500);
-//        msgView.setTag(0, hideTask);
+        msgView.setTag(hideTask);
 	}
 	
 	private void hideMessageView(final View msgView) {
@@ -63,7 +63,7 @@ public class UserMessageController {
 		msgView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-                v.removeCallbacks((Runnable) v.getTag(0));
+                v.removeCallbacks((Runnable) v.getTag());
 				hideMessageView(v);
                 v.setClickable(false);
                 v.setOnClickListener(null);

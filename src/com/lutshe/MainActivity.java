@@ -279,6 +279,8 @@ public class MainActivity extends Activity {
 	                String buttonText = buttonTexts[messageId];
 	                showPanicMessage(message, buttonText);
                 }
+
+                store.registerPanicMessage(messageId);
             } else {
                 int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME, -1);
                 if (id < 0) {

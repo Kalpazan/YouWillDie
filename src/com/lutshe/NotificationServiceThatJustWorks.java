@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import com.lutshe.controller.PanicController;
 import com.lutshe.store.Store;
 
 import java.sql.Date;
@@ -100,6 +101,7 @@ public class NotificationServiceThatJustWorks extends IntentService {
 				Log.d("notification", "got boot action - starting intent");
 				startService(context);
 				MessagesDeliveryMonitoringService.startService(context);
+                PanicController.schedulePanic(context, new Store(context));
 			}
 		}
 	}
