@@ -12,10 +12,7 @@ import android.widget.TextView;
 import com.lutshe.MainActivity;
 import com.lutshe.R;
 
-import java.util.Random;
-
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-import static android.content.Context.NFC_SERVICE;
 
 public class UserMessageController {
 	private static final int FADE_DELAY = 1350;

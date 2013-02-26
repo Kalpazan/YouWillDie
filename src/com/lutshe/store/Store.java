@@ -2,6 +2,7 @@ package com.lutshe.store;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.util.SparseArray;
 
 import java.util.Calendar;
@@ -167,7 +168,8 @@ public class Store {
     public void registerCountdownTime(){
         if (!wasLaunchedBefore()){
             Calendar calendar = Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY, 13);
+            calendar.add(Calendar.DATE, 36);
+            calendar.set(Calendar.HOUR_OF_DAY, 15);
             calendar.set(Calendar.MINUTE, 0);
             context.getSharedPreferences(STORE_NAME, 0).edit().putLong("finalApocalypseTime", calendar.getTimeInMillis()).commit();
     }     }
@@ -177,10 +179,12 @@ public class Store {
     }
 
     public void registerPanicMessage(int messageId) {
-        context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("panic_"+messageId, true).commit();
+        context.getSharedPreferences(STORE_NAME, 0).edit().putBoolean("panic_" + messageId, true).commit();
+        Log.d("panic", "panic_"+messageId + " true registered");
     }
 
     public boolean isPanicMessageDelivered(int messageId) {
+        Log.d("panic", "panic_"+messageId + " readding");
         return context.getSharedPreferences(STORE_NAME, 0).getBoolean("panic_"+messageId, false);
     }
 }

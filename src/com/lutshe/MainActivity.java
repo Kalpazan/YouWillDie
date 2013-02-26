@@ -269,7 +269,9 @@ public class MainActivity extends Activity {
 
             boolean isItJustPanic = extras.getBoolean(PanicNotificationsService.IS_PANIC_MESSAGE_EXTRA, false);
             if (isItJustPanic) {
+                Log.d("panic", "isJustPanic");
                 int messageId = extras.getInt(PanicController.PANIC_MESSAGE_ID_EXTRA);
+
                 if (messageId == PanicController.STORY_MESSAGE_ID) {
                 	showStoryMessage();
                 } else {
@@ -278,9 +280,8 @@ public class MainActivity extends Activity {
 	                String message = messages[messageId];
 	                String buttonText = buttonTexts[messageId];
 	                showPanicMessage(message, buttonText);
+                    Log.d("panic", "panic msg " + messageId +" shown");
                 }
-
-                store.registerPanicMessage(messageId);
             } else {
                 int id = extras.getInt(NotificationServiceThatJustWorks.EXTRA_NAME, -1);
                 if (id < 0) {
@@ -342,9 +343,6 @@ public class MainActivity extends Activity {
 
     public void showMessage(String string) {
         getUserMessageController().showMessage(string);
-//        final Toast toast = Toast.makeText(getApplicationContext(), string, LENGTH_LONG);
-//        toast.setGravity(0, 0, 0);
-//        toast.show();
     }
 
     public Store getStore() {

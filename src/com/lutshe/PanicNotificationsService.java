@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import com.bugsense.trace.BugSenseHandler;
 import com.lutshe.controller.PanicController;
+import com.lutshe.store.Store;
 
 import static com.lutshe.controller.PanicController.PANIC_MESSAGE_ID_EXTRA;
 
@@ -29,6 +30,8 @@ public class PanicNotificationsService extends IntentService {
 			Log.i("service", "was called");
 			MainActivity activity = MainActivity.instance;
 			int messageId = intent.getIntExtra(PANIC_MESSAGE_ID_EXTRA, -1);
+            Log.d("panic", "panic msg " + messageId+ " try to register");
+            new Store(getApplicationContext()).registerPanicMessage(messageId);
 
 			if (activity == null) {
 				Notification notification = createPanicNotification(messageId);
