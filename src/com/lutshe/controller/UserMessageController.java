@@ -39,19 +39,19 @@ public class UserMessageController {
 	}
 	
 	private void hideMessageView(final View msgView) {
-		Animation fadeout = new AlphaAnimation(1.f, 0.f);
-		
-		fadeout.setDuration(FADE_DELAY);
-		fadeout.setAnimationListener(new Animation.AnimationListener() {
-			@Override public void onAnimationStart(Animation animation) {}
-			@Override public void onAnimationRepeat(Animation animation) {}
-			
-			@Override public void onAnimationEnd(Animation animation) {
+//		Animation fadeout = new AlphaAnimation(1.f, 0.f);
+//
+//		fadeout.setDuration(FADE_DELAY);
+//		fadeout.setAnimationListener(new Animation.AnimationListener() {
+//			@Override public void onAnimationStart(Animation animation) {}
+//			@Override public void onAnimationRepeat(Animation animation) {}
+//
+//			@Override public void onAnimationEnd(Animation animation) {
 				topLayout.removeView(msgView);
-			}
-		});
-		
-		msgView.startAnimation(fadeout);
+//			}
+//		});
+//
+//		msgView.startAnimation(fadeout);
 	}
 
 	private View createMessageView(String msgText) {
