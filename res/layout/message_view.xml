@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
+              >
+
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:orientation="horizontal">
+                 >
         <Button
                 android:id="@+id/share_button"
                 android:background="@drawable/button_share"
@@ -69,7 +72,7 @@
                android:layout_marginRight="@dimen/margin_frame"
                android:layout_gravity="right"/>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:gravity="center_vertical"
                  android:layout_width="fill_parent"
                  android:layout_height="fill_parent"
@@ -78,21 +81,23 @@
                  android:layout_marginRight="@dimen/margin_frame"
                  android:layout_marginBottom="65dp"
                  android:orientation="vertical">
+        <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent">
         <ScrollView
                 android:id="@+id/message_scroll_view"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:paddingLeft="@dimen/message_margin_frame_left"
                 android:paddingRight="@dimen/message_margin_frame_right"
                 android:paddingTop="@dimen/margin_frame"
-                android:paddingBottom="@dimen/margin_frame"
                 android:scrollbarSize="6dp"
+                android:layout_marginBottom="@dimen/margin_frame"
                 >
                 <!--android:overScrollMode="never">-->
 
-            <LinearLayout android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:paddingRight="8dp"
+            android:orientation="vertical"
             >
             <TextView
                     android:id="@+id/notification_text"
@@ -106,8 +111,17 @@
                     />
 			</LinearLayout>
         </ScrollView>
+        </LinearLayout>
+        <com.google.android.gms.ads.AdView android:id="@+id/adView"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           ads:adUnitId="@string/ad_unit_id"
+                                           ads:adSize="BANNER"
+                                           android:layout_gravity="bottom"
+                                           android:layout_alignParentBottom="true"
+                />
+    </RelativeLayout>
 
-    </FrameLayout>
 
 </LinearLayout>
 

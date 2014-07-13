@@ -9,6 +9,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.widget.*;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.lutshe.MainActivity;
 import com.lutshe.NotificationProvider;
 import com.lutshe.NotificationTemplate;
@@ -111,6 +113,7 @@ public class MessageDisplayController {
 		msgText.setText(currentMessage.getMainText());
 		messageScrollView.scrollTo(0, 0);
 		icon.setImageDrawable(resources.getDrawable(currentMessage.getIcon()));
+        showAd();
 	}
 
 	public void showHelpView() {
@@ -185,9 +188,17 @@ public class MessageDisplayController {
 	    		helpLoaded = true;
 	    	}
 	    	currentView = MESSAGE;
+            showAd();
     	}
 	}
-    
+
+    private void showAd() {
+        AdView adView = (AdView) activity.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("472CE6BF38CD543BDBC51B9DFB268DBB").build();
+        adView.loadAd(adRequest);
+    }
+
+
     private boolean canShowMessageView() {
     	return store.getLastNotificationNumber() > 0;
 	}

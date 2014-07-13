@@ -1,6 +1,7 @@
 package com.lutshe;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +12,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
-import com.bugsense.trace.BugSenseHandler;
+import com.crashlytics.android.Crashlytics;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.lutshe.controller.MessageDisplayController;
 import com.lutshe.controller.PanicController;
 import com.lutshe.controller.RateViewController;
@@ -59,15 +63,15 @@ public class MainActivity extends Activity {
     		handleIntent(intent);
     		setIntent(null);
     	}
+        initGooglePlayServices();
     }
     
     @Override
     public void onCreate(Bundle bundle) {
         try {
             super.onCreate(bundle);
+            Crashlytics.start(this);
             MainActivity.instance = this;
-
-            BugSenseHandler.initAndStartSession(MainActivity.this, getResources().getString(R.string.bugsenseApiKey));
 
 //	        mainView = getMainView();
             setContentView(R.layout.main);
@@ -129,9 +133,26 @@ public class MainActivity extends Activity {
             findViewById(R.id.help_button).setOnClickListener(helpListener);
 
         } catch (Exception e) {
-            BugSenseHandler.sendException(e);
+            Crashlytics.logException(e);
         }
     }
+
+    private void initGooglePlayServices() {
+        try {
+            int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+            if (resultCode == ConnectionResult.SUCCESS) {
+                return;
+            }
+            else if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode, this, this.getClass().getPackage().hashCode());
+                dialog.show();
+            }
+        }
+        catch (Exception ex) {
+            Crashlytics.log("Google play services not available");
+        }
+    }
+
 
     //Method removes the stupid horizontal highlighting in ScrollView
     private void overScrollSetting() {
@@ -219,26 +240,17 @@ public class MainActivity extends Activity {
         }
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.exit:
-//                showMessage("All the same, this does not stop. It is waiting for you.");
-//                System.exit(0);
-//                return true;
-//            case R.id.help:
-//                showMessage("Who will help you?");
-//                showMessage("No one!");
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+    }
 
     @Override
     protected void onStop() {
         super.onStop();
         stopCountdown();
+        EasyTracker.getInstance(this).activityStop(this);
     }
 
     private void stopCountdown() {
@@ -257,8 +269,6 @@ public class MainActivity extends Activity {
 
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
         slider.close();
-
-        BugSenseHandler.flush(MainActivity.this);
     }
 
 //    @Override

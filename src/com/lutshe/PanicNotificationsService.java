@@ -10,7 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import com.bugsense.trace.BugSenseHandler;
+import com.crashlytics.android.Crashlytics;
 import com.lutshe.controller.PanicController;
 import com.lutshe.store.Store;
 
@@ -48,7 +48,7 @@ public class PanicNotificationsService extends IntentService {
 				}
 			}
 		} catch (Exception e) {
-			BugSenseHandler.sendException(e);
+			Crashlytics.logException(e);
 		}
 	}
 
