@@ -19,6 +19,8 @@
 #   public *;
 #}
 
+-verbose
+
 -keep class * extends java.util.ListResourceBundle {
     protected Object[][] getContents();
 }
@@ -35,3 +37,9 @@
 -keepnames class * implements android.os.Parcelable {
     public static final ** CREATOR;
 }
+
+-keep class com.google.ads.**
+-dontwarn com.google.ads.**
+
+-dontwarn android.support.**
+-dontwarn com.google.android.gms.**
