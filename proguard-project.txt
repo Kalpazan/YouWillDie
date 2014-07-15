@@ -43,3 +43,9 @@
 
 -dontwarn android.support.**
 -dontwarn com.google.android.gms.**
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+-keep class **.R$*

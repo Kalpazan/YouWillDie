@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.RenderPriority;
@@ -193,9 +195,18 @@ public class MessageDisplayController {
 	}
 
     private void showAd() {
-        AdView adView = (AdView) activity.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("472CE6BF38CD543BDBC51B9DFB268DBB").build();
-        adView.loadAd(adRequest);
+        Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                AdView adView = (AdView) activity.findViewById(R.id.adView);
+                AdRequest adRequest = new AdRequest.Builder().addTestDevice("472CE6BF38CD543BDBC51B9DFB268DBB").build();
+                adView.loadAd(adRequest);
+
+                super.handleMessage(msg);
+            }
+        };
+
+        handler.sendEmptyMessageDelayed(0, 300);
     }
 
 

@@ -64,6 +64,19 @@ public class MainActivity extends Activity {
     		setIntent(null);
     	}
         initGooglePlayServices();
+
+        final Thread.UncaughtExceptionHandler defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread thread, Throwable ex) {
+                //defaultHandler should probably be
+                //com.google.analytics.tracking.android.ExceptionReporter
+                Crashlytics.logException(ex);
+                if (defaultHandler != null) {
+                    defaultHandler.uncaughtException(thread, ex);
+                }
+            }
+        });
     }
     
     @Override
