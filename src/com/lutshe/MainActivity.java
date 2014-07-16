@@ -14,6 +14,7 @@ import android.widget.*;
 import android.widget.AdapterView.OnItemClickListener;
 import com.crashlytics.android.Crashlytics;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.lutshe.controller.MessageDisplayController;
@@ -49,6 +50,8 @@ public class MainActivity extends Activity {
 
     public static MainActivity instance;
 
+    private AdView adView;
+
     @Override
     protected void onNewIntent(Intent intent) {
     	super.onNewIntent(intent);
@@ -77,6 +80,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        adView.resume();
     }
     
     @Override
@@ -136,6 +140,8 @@ public class MainActivity extends Activity {
                     }
                 }
             });
+
+            adView = (AdView) findViewById(R.id.adView);
 
             Button.OnClickListener helpListener = new Button.OnClickListener() {
                 public void onClick(View view) {
@@ -282,6 +288,7 @@ public class MainActivity extends Activity {
 
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
         slider.close();
+        adView.pause();
     }
 
 //    @Override
@@ -439,6 +446,7 @@ public class MainActivity extends Activity {
 
         unbindDrawables(findViewById(R.id.mainLayout));
         System.gc();
+        adView.destroy();
     }
 
     private void unbindDrawables(View view) {
