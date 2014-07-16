@@ -11,6 +11,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
 import android.widget.*;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.lutshe.MainActivity;
@@ -19,7 +20,7 @@ import com.lutshe.NotificationTemplate;
 import com.lutshe.R;
 import com.lutshe.store.Store;
 
-public class MessageDisplayController {
+public class MessageDisplayController extends AdListener {
 	
 	private static final int MESSAGE_VIEW_ID = 1;
 
@@ -52,8 +53,10 @@ public class MessageDisplayController {
 	
 	private Drawable questionMarkBg;
 	private Drawable closeBg;
-	
-	public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
+
+    private boolean adLoaded;
+
+    public MessageDisplayController(NotificationProvider notificationProvider, MainActivity activity) {
         this.activity = activity;
 		msgText = (TextView) activity.findViewById(R.id.notification_text);
 		icon = (ImageView) activity.findViewById(R.id.messageIcon);
@@ -115,7 +118,6 @@ public class MessageDisplayController {
 		msgText.setText(currentMessage.getMainText());
 		messageScrollView.scrollTo(0, 0);
 		icon.setImageDrawable(resources.getDrawable(currentMessage.getIcon()));
-        showAd();
 	}
 
 	public void showHelpView() {
@@ -195,10 +197,15 @@ public class MessageDisplayController {
 	}
 
     private void showAd() {
+        if (adLoaded) {
+            return;
+        }
+
         Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 AdView adView = (AdView) activity.findViewById(R.id.adView);
+                adView.setAdListener(MessageDisplayController.this);
                 AdRequest adRequest = new AdRequest.Builder().addTestDevice("472CE6BF38CD543BDBC51B9DFB268DBB").build();
                 adView.loadAd(adRequest);
 
@@ -206,9 +213,20 @@ public class MessageDisplayController {
             }
         };
 
-        handler.sendEmptyMessageDelayed(0, 300);
+        handler.sendEmptyMessageDelayed(0, 400);
     }
 
+    @Override
+    public void onAdLoaded() {
+        super.onAdLoaded();
+        adLoaded = true;
+    }
+
+    @Override
+    public void onAdFailedToLoad(int errorCode) {
+        super.onAdFailedToLoad(errorCode);
+        adLoaded = false;
+    }
 
     private boolean canShowMessageView() {
     	return store.getLastNotificationNumber() > 0;
