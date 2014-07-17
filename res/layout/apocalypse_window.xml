@@ -4,7 +4,7 @@
             android:id="@+id/apocalipse_scroll_view"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:padding="@dimen/apocalipse_window"
+            android:padding="@dimen/apocalypse_dialog_content"
             android:scrollbarSize="0dp">
 
     <LinearLayout
@@ -20,8 +20,8 @@
         <ImageView
                 android:src="@drawable/illustration_2"
                 android:adjustViewBounds="true"
-                android:paddingTop="@dimen/apocalipse_window"
-                android:paddingBottom="@dimen/apocalipse_window"
+                android:paddingTop="@dimen/apocalypse_dialog_content"
+                android:paddingBottom="@dimen/apocalypse_dialog_content"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
 
@@ -35,8 +35,8 @@
         <ImageView
                 android:src="@drawable/illustration_3"
                 android:adjustViewBounds="true"
-                android:paddingTop="@dimen/apocalipse_window"
-                android:paddingBottom="@dimen/apocalipse_window"
+                android:paddingTop="@dimen/apocalypse_dialog_content"
+                android:paddingBottom="@dimen/apocalypse_dialog_content"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"/>
         <TextView
@@ -48,8 +48,8 @@
         <ImageView
                 android:src="@drawable/illustration_4"
                 android:adjustViewBounds="true"
-                android:paddingTop="@dimen/apocalipse_window"
-                android:paddingBottom="@dimen/apocalipse_window"
+                android:paddingTop="@dimen/apocalypse_dialog_content"
+                android:paddingBottom="@dimen/apocalypse_dialog_content"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"/>
         <TextView

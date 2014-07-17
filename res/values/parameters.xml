@@ -35,7 +35,8 @@
     <dimen name="message_margin_frame_left">12dp</dimen>
     <dimen name="message_margin_frame_right">6dp</dimen>
     <dimen name="margin_frame_with_padding">39dp</dimen>
-    <dimen name="apocalipse_window">10dp</dimen>
+    <dimen name="apocalypse_dialog_content">10dp</dimen>
+    <dimen name="apocalypse_dialog_frame_top_bottom">20dp</dimen>
 
 
 </resources>
