@@ -49,3 +49,5 @@
 }
 
 -keep class **.R$*
+
+-keepattributes SourceFile,LineNumberTable
