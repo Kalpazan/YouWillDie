@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="html_header">
+        <![CDATA[
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <html><head>
+        <meta charset="utf-8">
+        <style>
+		   .leftimg {
+		   	align:left;
+		    float:left;
+		    margin: 0px 0px 0px 0px;
+		   }
+		   .rightimg  {
+		    float: right;  
+		    margin: 7px 0 7px 7px;
+		   }
+	  	   body{
+	  	       text-align:justify;
+	  	   }
+	  	    p {
+    		text-indent: 35px;
+   			}
+	  	 </style>
+	  	 </head>
+	  	 ]]>
+    </string>
+
+    <string name="greeting_text" formatted="false">
+        <![CDATA[
+        <body style="background-color:"#FAF398">
+        <font color="#3A2313">
+        <b>Welcome!</b><br/><br/>This is Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday our (still unknown to you) devices made it possible to precisely calculate the end date of your colony existence.
+        <br/>		<br/>
+		<img src="file:///android_res/drawable/illustration_1.png" width="100%" />
+	<br/>	<br/>
+        You call the event \"end of the world\" or \"apocalypse\".  It's exact date is December 21, 2012 UTC Earth time. The purpose of ICLSP is to detect and protect potentially endangered forms of life.
+		This program was sent to earthlings in order to save you. To get started, check out the timer, located at the top of the screen. If the numbers show that it's less than three days left - we will not help you. Do not read any more and delete the program.
+		<br/>
+		<br/>
+		Many planets have suffered the exact same fate that will soon become your reality. We have the necessary knowledge, and we'll  share it to you. From now on you will start to receive messages. Filled with invaluable experience. 
+		<br/>Or not.
+		<br/><br/>
+		Due to insufficient funding, ICLSP can not send more than one message per day.  Appreciate this help and maybe some of you will survive.
+		<br/><br/>
+		<img src="file:///android_res/drawable/illustration_2.png" width="100%" />
+		<br/><br/>
+		Our rescue ships are on their way. Survive the apocalypse and you will be saved.
+		<br/>
+		Sincerely yours, head of ICLSP.
+		]]>
+    </string>
+
+    <string name="help_text" formatted="false">
+        <![CDATA[
+        <body style="background-color:"#FAF398">
+        <font color="#3A2313">
+        <table>
+        <tr border="1px">
+        <td align="left"><img src="file:///android_res/drawable/help_hipster.png" width="80%"/></td>
+        <td width="70%" padding-left="10px"><font color="#3A2313"><b>Ok, I'll explain you everything: </b><td>
+		</tr>
+		<table>
+		<br/>
+        Do you see the <b>numbers</b> above? They are very important. They show the amount of time that your civilization has. Do not forget to keep an eye on it. 
+		<br/><br/>
+		When our ships will be evacuating humans, your <b>rank</b> will play a crucial role. You can see your current rank on the top panel. You can monitor the progress in achieving new ranks on the same panel.
+		<br/><br/>
+		<img src="file:///android_res/drawable/pogon.png" width="95%" align="center"/> 
+		<br/><br/>		
+		Get the experience <b>points</b> to earn new ranks. The more active you are, the more points you can get. Visit the application at least once a day, read messages, share them with friends and you will stand out! 
+		<br/><br/>
+		<img src="file:///android_res/drawable/points.png" width="95%" align="center" />
+		<br/><br/>		
+		You will receive messages from the best ICLSP experts. Their <b>faces</b> will be shown near the text.
+		<br/><br/>
+		<img src="file:///android_res/drawable/help_en.png" width="100%"/>
+		<br/><br/>
+		You are also able to see the <b>messages history</b>. It is at the bottom of the screen. Yes, it is called: \"Messages history\". 
+		]]>
+    </string>
+
+    <string-array name="messages">
+        <item>|ICLSP|Welcome! \nThis is the Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday
+            our (still unknown to you) devices made it possible to precisely calculate the end date of your colony
+            existence.|0
+        </item>
+        <item>|Advice of a day|Survival preparation requires funds for survival preparation. \n Start borrowing money
+            today. Borrow a lot and do it often - you’ll not have to give anything back. \n \nI.e., this application was
+            created using borrowed money only. By grinding and ‘papier-mache’-ing. \n \n You will see a lesson on how to
+            sew a cowards pocket (to hold all your money) in the next messages.|1
+        </item>
+        <item>http://bit.ly/TU4FB9|Starvation|You may wonder, what are we going to feed you during the intergalactic
+            flight?\n\n Basically, hope is the only thing we provide...\nWe recommend you to stock up on bags with
+            cabbage and dead fish. Take any food at all. Please, ensure to be fat enough to survive.\n\nThere are also
+            many other things you should take. You can see the complete list by clicking the button above. You can
+            change it by adding anything you want!|2
+        </item>
+        <item>|A boy|We heard the story of a boy who saved himself from the storm on a desert island. \nAnd he lived
+            there alone for a long time. He was sooooooooo bored that suddenly turned into a girl. \nAnd he was still too
+            bored.\n\n You can become such a “boy”, if you keep this program a secret. Don’t use this chance by your own.
+            Tell your friends!|3
+        </item>
+        <item>http://bit.ly/Tq1sah|Lobsterz|You\'re with us for four days already! ICLSP is insincerely happy about it!\n\n
+            To mark the occasion, we urge you to go to the bar this week and order three glasses of beer with lobsters.
+            Lobsters are cool and we\'re almost sure that you\'ve never tried one :)|4
+        </item>
+        <item>http://bit.ly/W1NVp7|The list|Our engineers will prepare everything that you will need on a new planet.
+            But we do not know exactly what it is. Click the link and add the names of all things, flora and fauna and any other shits you want to the list.|5
+        </item>
+
+        <item>http://bit.ly/SVTPaI|Morse code, sir!|I see you've already grew bolder and climbed up in rank. Keep it up!\n\n
+            You're a real ··· ··– ·· – –·–· ·– ··· · If you feel that you can not understand something - brush up on Morse code. It will replace your phone when everything will start to f·– ·–· –|0
+        </item>
+        <item>|Real task|Right now: go and have sex - it's time to think about restoring the human population.\n\n
+            And remember: the more children you have, the more fields your family can plow!|5
+        </item>
+        <item>|Tibetonks|This message starts the series of essays on how to survive.\n\n
+            Essay 1.\n\n
+            Tibetan monks (aka Tibetonks) are insidious and unpredictable. They are obsessed with the desire to wriggle their bald heads into your favour.\n\n
+            They love lightened locations and humidity. They are of medium height (which is why in most cases we can see the crisis of medium height mostly among them).\n\n
+            Robe, which hides all their Monash baldness, serves.\n\n
+            Please, avoid danger. |0
+        </item>
+        <item>|Moo|Advertisements are just like cows. But cows - are nothing like advertisements. They know what\'s what. A cow will never let you down! I knew one. And so she wanted to get on the ship, but that was only a sheep... Think about it...\n\n
+        You must have guessed what are we talking about. Of course you have!|7
+        </item>
+        <item>|Zombie| Essay 2.\n\n
+            Let it be zombies. There are five kinds of zombies:\n\n
+            - classic zomie\n
+            - chicken zombie\n
+            - zombie-nurse\n
+            - walking spinach\n
+            - taxi drivers (1.5x)\n\n
+            They say that zombies should be avoided. NO. They should be used against you in a court. You know, as the saying goes, "zombies in the yard - grass is on the woods".\n\n
+            Yes, you know.|1
+        </item>
+        <item>|Mushketeur|You should feel yourself prepared by now.\n\n
+            Chuck Norris is watching you!\n\n
+            Lemmings are watching you!\n\n
+            Blue gnome is watching you!\n\n
+            And you probably have already forgotten what is this program about. Re-read the first messages, get points and protect yourself!|10
+        </item>
+        <item>|SIQ|Today we have a test for a dinner! It will help you to assess your surviving skills.\n\n
+            Answer honestly and do not hesitate.\n\n
+            1. Are you M or F? (If yes, proceed to question 2.)\n
+            2. Can you save your life in an environment which makes it hard to save your life? (If your answer is yes, go to test description)\n\n
+            test description: Congratulations, your siq (survival intelligence quotient) is 113!|15
+        </item>
+        <item>|Hmmmm...|What is more valuable for you: a shovel or a car?\n\n
+            Exactly 83% of people answer "hmmmm".\n
+            Another 7% say "Sho .. car ... what’s wrong here? " - and are looking for a trick.\n
+            Another 2% start to run away.\n
+            6% - are already running back.\n\n
+            You can get to the truth.\n
+            By car.|6
+        </item>
+        <item>http://bit.ly/matsuo_base|Basho|Perhaps you feel something that reminds you of a starving irritability.\n
+            You\'re mad at us for such a uselessness. Do not trust that feeling. Trust us. The feeling is false. And we are not false. Cool - a poem!\n\n
+            Want another one? (Classic Basho. 5-7-5 mora format):\n\n
+            The Survival Guide\n
+            is installed on smartphone and\n
+            pleases me much\n\n
+            ... |9
+        </item>
+        <item>|...|Here\'s a list of few misspelled words:\n\n
+            sucksess\n
+            trolll\n
+            sik\n\n
+            Seems more than enough. You're welcome.|11
+        </item>
+        <item>|Order.|Order.\n\n
+            In the name of Head of ICLSP\n
+            name you child.\n\n
+            And you should know that in order to survive among us you will have to behave like unisexual single-assed society. Forget about personalities and faces. Behold the jar.\n\n
+            To become single-assed entity start doing simple exercises in the morning. The simpler your exercises are, the more chances you have.|8
+        </item>
+        <item>http://bit.ly/VcAXpE|Tennnndeerr!|Your life should be based on the numbers. Numbers will save your life. Don\'t mess with number 5.\n\n
+            If you are metalworker - take care of your moustache and suite. We know one metalworker – he has a contest in his mind. Here it is:\n\n
+            the link above gets you to a page of secret community. You may leave your message there, and if it is endofworlding enough, it will be seen by all our users. Absolutely each of all the egglion of our users (wannasurvivors) will receive message it from you.|12
+        </item>
+        <item>|Politics|Essay 3.\n\n
+            What should politically unprotected perch do to live in unmetastable moist-yellow surrounding or sursquaring of an ocean. This is what:\n\n
+            1. Keep to single-mandate mentality;\n
+            2. You should become adherent to posthydrobremen musician;\n
+            3. Download our application onece more;\n
+            4. Avoid angry yaks...|13
+        </item>
+        <item>|farable|We'll tell you not fable, not parable but FARABLE.\n\n
+            Once upon a time, a samurai was walking on a donkey.\n
+            His katana was so sharp, that he could shave a cat to bold, but he did not. What a fool?\n\n
+            It’s a favorite farable of our nation.|14
+        </item>
+        <item>|Advise|Here\'s the advice for you, to avoid you getting in a weird situation when you see rich fauna of our galaxy.\n\n
+            - You should get used to unicorns: we have a lot of them. There\'s only one multicorn though...\n\n
+            Looks like there\'s only one advice. Exactly the same number as the number of multicorns. Easy to remember. Keep calm and don\'t be fooled.|16
+        </item>
+        <item>|Forecast|Appocalypses forecast for the next week:\n\n
+            No appocalypses are expected in the next 5 days.\n\n
+            It\'s the good time to plan something for these dates. For example:\n\n
+            Day 1: Preparations for the end of the world\n
+            Day 2: Preparations for the end of the world\n
+            Day 3: Purchase sassy fat-free pony\n
+            Day 4: Postpone the end of the world preparations for the next day\n
+            Day 5: Preparations for the end of the world|0
+        </item>
+        <item>|50 times|Our planet\'s gravitation is 50 times higher than yours.\n\n
+            Honestly, we don't even know what to say about it. You\'ll have to crawl to keep your knees from twisting inwards.\n\n
+            Don\'t be late.|1
+        </item>
+        <item>|Note|To supply humans with wisdom and advices we spend 79 907 636 791  melobarozes daily!\n
+            First, wise men are butchering them, broke their shells, then put a spell on them to form a massage and launch them with intergalactic wind to the Earth.\n\n
+            Melobarozes are just a degrading banana-cockroach threelegs. You will meet them soon.\n\n
+            Don\'t say anything.|2
+        </item>
+        <item>http://bit.ly/Xf89kB|Breaking news!|Migrating larvae have just read information from our sensors!\n
+            It seems that specimens of your race recently delivered an object to Mars. It can work like a grandmas lungs in a pirate bay.\n
+            We strongly recommend you to read about this event and explore this object in details. To access the secret NASA data use\n\n
+            Login: curiosity\n
+            Password: Freud-damnass|3
+        </item>
+        <item>http://en.wikipedia.org/wiki/Potlatch|Potlatch|Take all luxuries and excesses that you have accumulated over the years and spend it as ridiculous as you can in front of the neighbors.\n\n
+            They\'ll start to treat you as a leader. Of Nuu-cha-nulth, or Tsimshian.\n\n
+            Don't you believe?\n\n
+            Follow the link (the button (named link (green one))))|4
+        </item>
+        <item>|Threat(s)|Russian deputies forbidded talks about appocalypse. ICLSP even received few death threat letters from them.\n\n
+            The content of one of this letters will not be disclosed to right now.\n\n
+            Meanwhile deputies themselves totally believe in the apocalypse and enjoy this app. So the Head of ICLSP allows you to start running around the city, foaming and screaming all sorts of epic stuff.|5
+        </item>
+        <item>|Not false|It's time for you to know the truth. You are the chosen one! There are no colonies, no humanity, - we do all this just for you alone.\n
+            You are the child of ICLSP!\n
+            Ok, the thing is: I\'m kidding now. The head of wise messages department asked me to write something useless, to play for time. Aaaand... here we go. Y\'re welcome ;)|6
+        </item>|
+        <item>|So|Now things become serious... From now on you will receive real tips on survival which we are stealing from various sites (ICLSP can not afford english translator anymore :( balls hurt when thinking about it, but this is how it goes... ).\n\n
+        Ha! Just kidding: we've never had an english translator!\n\n
+        So everything is fine: you will continue to receive stupid, poorly translated, wise messages|7
+        </item>
+        <item>|Fact|We gather a lot of statistics. Amount of data we have is huge and it's growing every day. Wise men say that it becomes so big that it\'ll be the reason for the next apocalypse!\n\n
+            But this message is not about data. We analyzed it and found extremely amazing and interesting fact!\n
+            The problem is: we forgot it. Sorry - wait for the next message, we\'ll try to include it there.|8
+        </item>
+        <item>|Solace|Not many days left till the End. We feel the fear and worrying grow inside of you. That is absolutely normal,
+            because everything is going to be very bad.\n
+            But there are good news too: You will not need an iPhone. Really: our app doesn\'t work on it.|9
+        </item>
+        <item>|Еггогs|Only those, who do nothing, don\'t make mistakes. So go and make a mistake! Let everyone know that you are a doer!\n
+            To help you make a mistake, we give you some words which are easy to misspell so that no one will notice:\n\n
+            1. Apocalypse - Appocalypse\n
+            2. Google - Gooogle\n
+            3. Helicopter - Heliceraptor\n
+            4. Fat man - Fartman\n
+            etc.\n\n
+            Another possible mistake is to not tell all your friends about this app and then marry on of them. There is a saying: “Lying bull never stops”.|10
+        </item>
+        <item>|Grandpa\'s mouth|Have you ever heard of a snuffbox called "Grandpa\'s mouth"?\n
+            Just know that it exists no matter what you do or think. It is called that way because of its smell.\n\n
+            Tribal legends say that the one who drinks from it standing in front of the leader - becomes a leader.\n\n
+            Beware of rains and trains.|12
+        </item>
+        <item>|Duckface|Some of you like it. Some of you - don't. Everyone has seen it at least once.\n\n
+            We all know what a duckface is. It's a face of a duck of course.\n
+            You are free to share this information and use it for any commercial or non-commercial needs.\n\n
+            License no:\n "380-66-809-20-86. Artikul 3.241 Hochu-Sardelek 2014"\n as per international committee of a tea|13
+        </item>
+        <item>|Facts and wisdoms|Remember:\n
+            Horse is not a wolf, Man is not a wolf, Only a wolf is a wolf.\n\n
+            Do:\n
+            Always keep close to old women. They always have a pie for you. And nice pair of socks.\n\n
+            Too much wisdom for one message already.|16
+        </item>
+        <item>|Dumby|My name is easy:\n
+            "Dumb".\n
+            I can not eat or go to a bathroom by myself, but I'm good in all other things. I just realized that we\'re coming to save apocalypse from people. You see it? I\'m not that dumb!\n
+            I have a story about it.\n
+            The story:\n\n
+            Hmm.\n\n
+            The end... I guess...|15
+        </item>
+        <item>|The Names|You have been seeing 3 names in your dreams lately. We know exactly whose names are those.\n\n
+            Just sleep more and you will know it too some day. Good luck!|7
+        </item>
+    </string-array>
+
+    <string-array name="panic_messages">
+        <item>5 hours till apocalypse. \nEverything is under control. Stay cool</item>
+        <item>We\'re almost here. Time till lending:\n\n2 hours</item>
+        <item>The Earth seems so small… Much smaller, than we imagined. \nBut that is good, - that means that we can
+            evacuate everyone in one shot!
+        </item>
+        <item>This is a pilot of ICLSP spaceship. \nUnexpected error has occured. Code: \n\n ЕГГОГ 003 \n(wrong planet
+            landing) \n\n I declare panic!
+        </item>
+        <item>We have a new plan. You\'ll see it soon. Everything will be clear in 7 minutes. \nWorry.</item>
+    </string-array>
+
+    <string-array name="panic_messages_btn_text">
+        <item>Ok</item>
+        <item>C\'mon guys</item>
+        <item>Cool!</item>
+        <item>\@#$%k!</item>
+        <item>Oh, I do!</item>
+    </string-array>
+
+    <string name="apocalypse_window_text1">
+        Great news! \n\nIt’s still few hours remaining till the apocalypse, and we have already saved you! As you
+        already know, our plans implied evacuation of people like you - brave and insistent. \n\nHere’s a detailed
+        scheme of our plan:
+    </string>
+
+    <string name="apocalypse_window_text2">
+        It is obvious that the plan was developed by the best ICLSP engineers and contains no mistakes. But, as it
+        usually happens, our Glorious programmers programmed an error: \n\nError 003 \n(wrong planet landing)\n\nMeanwhile you
+        were preparing your stuff and looking into the sky with hope waiting for the plane. \n\nSee the photo from the
+        scene, it explains everything:
+    </string>
+
+    <string name="apocalypse_window_text3">
+        You may think that it’s a complete fail, but… \nThe pilot’s name is But. His parents gave him this name because
+        he has to stand against any difficulties and against actually everything. So while we were developing brand new
+        ideal and perfect plan, he just destroyed the danger himself. \n\nLike this:
+    </string>
+
+    <string name="apocalypse_window_text4">
+        So that is all. It’s the end of a beautiful adventure which connected us. We were glad to help you. \nSee you next
+        apocalypse. \n\nBye! \n\nWe’ll be glad to hear your love to us! Just drop something here:
+        \n\nlutshe.studio@gmail.com
+    </string>
+
+</resources>

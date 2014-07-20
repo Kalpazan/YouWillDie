@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Survival Guide</string>
+    <string name="exit">Exit</string>
+    <string name="help">Help</string>
+    <string name="older_messages">Messages history</string>
+    <string name="dead_fish">Привыкай к единорогам, у нас их много. Многорог всего один :-( </string>
+
+    <string name="day">days left</string>
+    <string name="millisecFormatter" formatted="false">.%03d</string>
+    <string name="datesFormatter" formatted="false">%02d</string>
+    <string name="days_left"> days left</string>
+
+    <!-- past days -->
+    <string name="few_mins_ago">few mins ago</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="two_days_ago">two days ago</string>
+    <string name="recently">recently</string>
+    <string name="days_ago_ru1"> days ago</string>
+    <string name="days_ago_ru2"> days ago</string>
+
+    <string name="rate_message">likes and reviews are cool :)</string>
+    <string name="chooser_title">share and get points</string>
+
+    <string name="d">d</string>
+    <string name="h">h</string>
+    <string name="m">m</string>
+
+    <string name="review_bonus_text">Yes, yes! read and re-read :)</string>
+    <string name="notification_bonus_text">new message: +4 points!</string>
+    <string name="welcome_back_bonus_text">welcome back :)</string>
+    <string name="msg_you_need_internet">No internet - no deal</string>
+    <string name="panic_message_title">Attention!</string>
+    <string name="story_part_one">story</string>
+
+    <string name="mail_button">Let\'s write!</string>
+    <string name="close_button">Close</string>
+    <string name="mail_subject">Mail from fan</string>
+    <string name="no_mail_client">No e-mail app. Hmm, that's strange...</string>
+
+    <!-- sorry dialog -->
+    <string name="sorryDialogText">Hey hey! \nWe decided to give you another chance to live through this apocalyptic adventure from the very beginning. Get ready!</string>
+    <string name="sorryDialogButtonText">Wow, cool! :)</string>
+</resources>

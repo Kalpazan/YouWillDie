@@ -31,8 +31,6 @@
     
     <string name="locale">ru</string>
 
-    <string name="bugsenseApiKey">f05cd9f4</string>
-	    	
   	<string name="review_bonus_text">Перечитываешь? Молодец!</string>
     <string name="notification_bonus_text">новое сообщение: +4 очка!</string>
     <string name="welcome_back_bonus_text">велкам бэк :)</string>
