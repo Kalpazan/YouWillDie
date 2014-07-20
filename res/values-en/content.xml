@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--suppress AndroidLintTypographyEllipsis -->
 <resources>
 
     <string name="html_header">
@@ -35,11 +36,11 @@
         <br/>		<br/>
 		<img src="file:///android_res/drawable/illustration_1.png" width="100%" />
 	<br/>	<br/>
-        You call the event \"end of the world\" or \"apocalypse\".  It's exact date is December 21, 2012 UTC Earth time. The purpose of ICLSP is to detect and protect potentially endangered forms of life.
-		This program was sent to earthlings in order to save you. To get started, check out the timer, located at the top of the screen. If the numbers show that it's less than three days left - we will not help you. Do not read any more and delete the program.
+        You call the event \"end of the world\" or \"apocalypse\".  It\'s exact date is December 21, 2012 UTC Earth time. The purpose of ICLSP is to detect and protect potentially endangered forms of life.
+		This program was sent to earthlings in order to save you. To get started, check out the timer, located at the top of the screen. If the numbers show that it\'s less than three days left - we will not help you. Do not read any more and delete the program.
 		<br/>
 		<br/>
-		Many planets have suffered the exact same fate that will soon become your reality. We have the necessary knowledge, and we'll  share it to you. From now on you will start to receive messages. Filled with invaluable experience. 
+		Many planets have suffered the exact same fate that will soon become your reality. We have the necessary knowledge, and we\'ll  share it to you. From now on you will start to receive messages. Filled with invaluable experience.
 		<br/>Or not.
 		<br/><br/>
 		Due to insufficient funding, ICLSP can not send more than one message per day.  Appreciate this help and maybe some of you will survive.
@@ -59,7 +60,7 @@
         <table>
         <tr border="1px">
         <td align="left"><img src="file:///android_res/drawable/help_hipster.png" width="80%"/></td>
-        <td width="70%" padding-left="10px"><font color="#3A2313"><b>Ok, I'll explain you everything: </b><td>
+        <td width="70%" padding-left="10px"><font color="#3A2313"><b>Ok, I\'ll explain you everything: </b><td>
 		</tr>
 		<table>
 		<br/>
@@ -81,7 +82,7 @@
 		]]>
     </string>
 
-    <string-array name="messages">
+    <string-array name="messages" formatted="false">
         <item>|ICLSP|Welcome! \nThis is the Intergalactic Committee of Living Species Protection (aka ICLSP). Yesterday
             our (still unknown to you) devices made it possible to precisely calculate the end date of your colony
             existence.|0
@@ -110,10 +111,10 @@
             But we do not know exactly what it is. Click the link and add the names of all things, flora and fauna and any other shits you want to the list.|5
         </item>
 
-        <item>http://bit.ly/SVTPaI|Morse code, sir!|I see you've already grew bolder and climbed up in rank. Keep it up!\n\n
-            You're a real ··· ··– ·· – –·–· ·– ··· · If you feel that you can not understand something - brush up on Morse code. It will replace your phone when everything will start to f·– ·–· –|0
+        <item>http://bit.ly/SVTPaI|Morse code, sir!|I see you\'ve already grew bolder and climbed up in rank. Keep it up!\n\n
+            You\'re a real ... ..- .. - -.-. .- ... . If you feel that you can not understand something - brush up on Morse code. It will replace your phone when everything will start to f.- .-. -|0
         </item>
-        <item>|Real task|Right now: go and have sex - it's time to think about restoring the human population.\n\n
+        <item>|Real task|Right now: go and have sex - it\'s time to think about restoring the human population.\n\n
             And remember: the more children you have, the more fields your family can plow!|5
         </item>
         <item>|Tibetonks|This message starts the series of essays on how to survive.\n\n
@@ -168,7 +169,7 @@
             sucksess\n
             trolll\n
             sik\n\n
-            Seems more than enough. You're welcome.|11
+            Seems more than enough. You\'re welcome.|11
         </item>
         <item>|Order.|Order.\n\n
             In the name of Head of ICLSP\n
@@ -187,7 +188,7 @@
             3. Download our application onece more;\n
             4. Avoid angry yaks...|13
         </item>
-        <item>|farable|We'll tell you not fable, not parable but FARABLE.\n\n
+        <item>|farable|We\'ll tell you not fable, not parable but FARABLE.\n\n
             Once upon a time, a samurai was walking on a donkey.\n
             His katana was so sharp, that he could shave a cat to bold, but he did not. What a fool?\n\n
             It’s a favorite farable of our nation.|14
@@ -206,7 +207,7 @@
             Day 5: Preparations for the end of the world|0
         </item>
         <item>|50 times|Our planet\'s gravitation is 50 times higher than yours.\n\n
-            Honestly, we don't even know what to say about it. You\'ll have to crawl to keep your knees from twisting inwards.\n\n
+            Honestly, we don\'t even know what to say about it. You\'ll have to crawl to keep your knees from twisting inwards.\n\n
             Don\'t be late.|1
         </item>
         <item>|Note|To supply humans with wisdom and advices we spend 79 907 636 791  melobarozes daily!\n
@@ -222,22 +223,22 @@
         </item>
         <item>http://en.wikipedia.org/wiki/Potlatch|Potlatch|Take all luxuries and excesses that you have accumulated over the years and spend it as ridiculous as you can in front of the neighbors.\n\n
             They\'ll start to treat you as a leader. Of Nuu-cha-nulth, or Tsimshian.\n\n
-            Don't you believe?\n\n
+            Don\'t you believe?\n\n
             Follow the link (the button (named link (green one))))|4
         </item>
         <item>|Threat(s)|Russian deputies forbidded talks about appocalypse. ICLSP even received few death threat letters from them.\n\n
             The content of one of this letters will not be disclosed to right now.\n\n
             Meanwhile deputies themselves totally believe in the apocalypse and enjoy this app. So the Head of ICLSP allows you to start running around the city, foaming and screaming all sorts of epic stuff.|5
         </item>
-        <item>|Not false|It's time for you to know the truth. You are the chosen one! There are no colonies, no humanity, - we do all this just for you alone.\n
+        <item>|Not false|It\'s time for you to know the truth. You are the chosen one! There are no colonies, no humanity, - we do all this just for you alone.\n
             You are the child of ICLSP!\n
             Ok, the thing is: I\'m kidding now. The head of wise messages department asked me to write something useless, to play for time. Aaaand... here we go. Y\'re welcome ;)|6
         </item>|
         <item>|So|Now things become serious... From now on you will receive real tips on survival which we are stealing from various sites (ICLSP can not afford english translator anymore :( balls hurt when thinking about it, but this is how it goes... ).\n\n
-        Ha! Just kidding: we've never had an english translator!\n\n
+        Ha! Just kidding: we\'ve never had an english translator!\n\n
         So everything is fine: you will continue to receive stupid, poorly translated, wise messages|7
         </item>
-        <item>|Fact|We gather a lot of statistics. Amount of data we have is huge and it's growing every day. Wise men say that it becomes so big that it\'ll be the reason for the next apocalypse!\n\n
+        <item>|Fact|We gather a lot of statistics. Amount of data we have is huge and it\'s growing every day. Wise men say that it becomes so big that it\'ll be the reason for the next apocalypse!\n\n
             But this message is not about data. We analyzed it and found extremely amazing and interesting fact!\n
             The problem is: we forgot it. Sorry - wait for the next message, we\'ll try to include it there.|8
         </item>
@@ -259,8 +260,8 @@
             Tribal legends say that the one who drinks from it standing in front of the leader - becomes a leader.\n\n
             Beware of rains and trains.|12
         </item>
-        <item>|Duckface|Some of you like it. Some of you - don't. Everyone has seen it at least once.\n\n
-            We all know what a duckface is. It's a face of a duck of course.\n
+        <item>|Duckface|Some of you like it. Some of you - don\'t. Everyone has seen it at least once.\n\n
+            We all know what a duckface is. It\'s a face of a duck of course.\n
             You are free to share this information and use it for any commercial or non-commercial needs.\n\n
             License no:\n "380-66-809-20-86. Artikul 3.241 Hochu-Sardelek 2014"\n as per international committee of a tea|13
         </item>
@@ -272,7 +273,7 @@
         </item>
         <item>|Dumby|My name is easy:\n
             "Dumb".\n
-            I can not eat or go to a bathroom by myself, but I'm good in all other things. I just realized that we\'re coming to save apocalypse from people. You see it? I\'m not that dumb!\n
+            I can not eat or go to a bathroom by myself, but I\'m good in all other things. I just realized that we\'re coming to save apocalypse from people. You see it? I\'m not that dumb!\n
             I have a story about it.\n
             The story:\n\n
             Hmm.\n\n

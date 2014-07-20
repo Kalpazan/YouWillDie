@@ -37,7 +37,7 @@
     <string name="mail_button">Let\'s write!</string>
     <string name="close_button">Close</string>
     <string name="mail_subject">Mail from fan</string>
-    <string name="no_mail_client">No e-mail app. Hmm, that's strange...</string>
+    <string name="no_mail_client">No e-mail app. Hmm, that\'s strange...</string>
 
     <!-- sorry dialog -->
     <string name="sorryDialogText">Hey hey! \nWe decided to give you another chance to live through this apocalyptic adventure from the very beginning. Get ready!</string>
