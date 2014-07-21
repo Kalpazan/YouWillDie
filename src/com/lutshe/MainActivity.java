@@ -80,7 +80,9 @@ public class MainActivity extends Activity {
                 }
             }
         });
-        adView.resume();
+        if(adView!=null) {
+            adView.resume();
+        }
     }
     
     @Override
@@ -288,7 +290,9 @@ public class MainActivity extends Activity {
 
         final SlidingDrawer slider = (SlidingDrawer) findViewById(R.id.drawer);
         slider.close();
-        adView.pause();
+        if (adView!=null){
+            adView.pause();
+        }
     }
 
 //    @Override
@@ -363,13 +367,6 @@ public class MainActivity extends Activity {
             }
         }
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu, menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
 
     public void showMessage(String string) {
         getUserMessageController().showMessage(string);
@@ -446,7 +443,9 @@ public class MainActivity extends Activity {
 
         unbindDrawables(findViewById(R.id.mainLayout));
         System.gc();
-        adView.destroy();
+        if (adView!=null) {
+            adView.destroy();
+        }
     }
 
     private void unbindDrawables(View view) {

@@ -205,13 +205,14 @@ public class MessageDisplayController extends AdListener {
             @Override
             public void handleMessage(Message msg) {
                 AdView adView = (AdView) activity.findViewById(R.id.adView);
-                adView.setAdListener(MessageDisplayController.this);
                 AdRequest adRequest = new AdRequest.Builder()
                         .addTestDevice("472CE6BF38CD543BDBC51B9DFB268DBB")
                         .addTestDevice("525CB12B934917F2CCBC9860A2718C36")
                         .build();
-                adView.loadAd(adRequest);
-
+                if (adView != null) {
+                    adView.setAdListener(MessageDisplayController.this);
+                    adView.loadAd(adRequest);
+                }
                 super.handleMessage(msg);
             }
         };
