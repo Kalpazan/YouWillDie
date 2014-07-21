@@ -15,6 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.crashlytics.android.Crashlytics;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.lutshe.controller.MessageDisplayController;
@@ -416,6 +417,11 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        EasyTracker.getInstance(getApplicationContext()).send(new HitBuilders.EventBuilder()
+                .setCategory("application_progress")
+                .setAction("apocalypse_dialog_shown")
+                .setLabel("Apocalypse dialog shown")
+                .build());
     }
 
     public void showPanicMessage(final String message, final String buttonText) {
