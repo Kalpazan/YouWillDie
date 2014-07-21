@@ -224,12 +224,20 @@ public class MessageDisplayController extends AdListener {
     public void onAdLoaded() {
         super.onAdLoaded();
         adLoaded = true;
+        AdView adView = (AdView) activity.findViewById(R.id.adView);
+        if (adView != null) { // а что?! отстаньте, все так делают!
+            adView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onAdFailedToLoad(int errorCode) {
         super.onAdFailedToLoad(errorCode);
         adLoaded = false;
+        AdView adView = (AdView) activity.findViewById(R.id.adView);
+        if (adView != null) { // это здесь, чтобы везде код был однотипным
+            adView.setVisibility(View.GONE);
+        }
     }
 
     private boolean canShowMessageView() {

@@ -74,14 +74,14 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:gravity="center_vertical"
-                 android:layout_width="fill_parent"
-                 android:layout_height="fill_parent"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
                  android:background="@drawable/message_bg"
                  android:layout_marginLeft="@dimen/margin_frame"
                  android:layout_marginRight="@dimen/margin_frame"
                  android:layout_marginBottom="65dp"
                  android:orientation="vertical">
-        <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent">
+        <LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:layout_above="@+id/adView">
         <ScrollView
                 android:id="@+id/message_scroll_view"
                 android:layout_width="wrap_content"
@@ -90,31 +90,31 @@
                 android:paddingRight="@dimen/message_margin_frame_right"
                 android:paddingTop="@dimen/margin_frame"
                 android:scrollbarSize="6dp"
-                android:layout_marginBottom="@dimen/margin_frame"
+                android:layout_marginBottom="1dp"
                 >
                 <!--android:overScrollMode="never">-->
 
             <LinearLayout android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingRight="8dp"
-            android:orientation="vertical"
-            >
-            <TextView
-                    android:id="@+id/notification_text"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:autoLink="web"
-                    android:textColor="@color/bottom_panel_bg_color"
-                    android:textSize="16dp"
-                    android:text="какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще пиздец"
-                    />
+                android:layout_height="match_parent"
+                android:paddingRight="8dp"
+                android:orientation="vertical">
+                <TextView
+                        android:id="@+id/notification_text"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:autoLink="web"
+                        android:textColor="@color/bottom_panel_bg_color"
+                        android:textSize="16dp"
+                        android:text="какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще какой-то межгалактический текст и он очень смешной что аж офигеть можно и деньги нам все сильно будутхотеть дать и вообще "
+                        />
 			</LinearLayout>
         </ScrollView>
         </LinearLayout>
         <com.google.android.gms.ads.AdView android:id="@+id/adView"
                                            android:layout_width="match_parent"
                                            android:layout_height="wrap_content"
+                                           android:visibility="gone"
                                            ads:adUnitId="@string/ad_unit_id"
                                            ads:adSize="BANNER"
                                            android:layout_gravity="bottom"
