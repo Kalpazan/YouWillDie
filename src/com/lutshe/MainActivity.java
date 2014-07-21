@@ -82,6 +82,8 @@ public class MainActivity extends Activity {
         });
         if(adView!=null) {
             adView.resume();
+        }else{
+            Crashlytics.log("adView is null");
         }
     }
     
@@ -292,7 +294,10 @@ public class MainActivity extends Activity {
         slider.close();
         if (adView!=null){
             adView.pause();
+        }else{
+            Crashlytics.log("adView is null");
         }
+
     }
 
 //    @Override
@@ -445,6 +450,8 @@ public class MainActivity extends Activity {
         System.gc();
         if (adView!=null) {
             adView.destroy();
+        }else{
+            Crashlytics.log("adView is null");
         }
     }
 
